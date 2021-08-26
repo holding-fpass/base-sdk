@@ -5,7 +5,7 @@ Package de definições para integração de/com um partner orientado a eventos 
 Gerar eventos para parceiros (Partners) e receber/processar eventos de provenientes de parceiros (Partners) ou provedores (Providers) com destina a plataforma (Fpass).
 
 ## Overview
-![Overview](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Holding-Fpass/iam-provider-sdk/main/uml/event-overview-v1.0.0.iuml)
+![Overview](https://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Holding-Fpass/event-provider-sdk/main/uml/event-overview-v1.0.0.iuml)
 
 ### Event Delivery
 A execução de uma ação na plataforma Fpass resulta na geração de um evento que pode ser encaminhado ao _Partner_ em por meio de envio de requisição no modelo de entrega de Webhook: URL disponível para que seja invocada e acionada pela plataforma Fpass.
