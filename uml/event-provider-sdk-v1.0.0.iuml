@@ -1,0 +1,69 @@
+@startuml
+title "Fpass Events Overview"
+
+autonumber
+skinparam MaxMessageSize 100
+
+actor User
+
+box Fpass
+participant App
+participant API
+queue Queue
+participant DeliveryWorker as "Delivery Worker"
+boundary Webhook
+end box
+
+box Partner
+boundary PartnerWebhook as "Webhook"
+participant PartnerAPI as "API"
+participant PartnerApp as "App"
+
+end box
+
+group Fpass Generated Event
+User -> App: Use
+App -> API: Generate Event
+API -> API: Persist
+API -> Queue: Publish
+Queue -> DeliveryWorker: Get Event (async)
+DeliveryWorker -> PartnerWebhook: **Event Delivery**\nPOST https://api.{partner}.com.br\n/webhook/fpass
+note left
+**Request Body**
+*Base Event Format
+{
+  "eventId": "{uuidv4}",
+  "eventType": "user.created",
+  "eventDate": "2011-10-05T14:48:00.000Z",
+  "resourceId": "{uuidv4}",
+  "resourceType": "user",
+  "data": {
+    "externalId": "{partnerHash}"
+  }
+}
+**Expected Response**
+*Http Statuses: [200, 201]
+end note
+end
+
+group Partner Generated Event
+User -> PartnerApp: Use
+PartnerApp -> PartnerAPI: Generate Action
+PartnerAPI -> Webhook: **Event Reception**\nPOST https://api.fpass.com.br\n/webhook/{partnerCode}
+note left
+**Partner Custom Format - (Example)**
+{
+  "id": "{id}",
+  "event": "maillist.agreement.granted",
+  "userHash": "123456",
+  "userAgent": "{User Agent}",
+  "userIp": "{ip}"
+}
+end note
+Webhook -> API: Invoke
+API -> API: Persist
+API -> Queue: Publish
+Queue -> API: Get Event (async)
+API -> API: **Strategy Action Execution**
+end
+@enduml
