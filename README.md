@@ -16,7 +16,7 @@ A execução de uma ação na plataforma Fpass resulta na geração de um evento
   - eventDate: Data de geração do evento
   - resourceId: Identificação única do recurso ao qual o evento se refere
   - resourceType: Enumeração de possíveis entidades da plataforma
-  - data (Opicional): Dados extras de um evento particular. Varia de acordo com o _eventType_ e _resourceType_. 
+  - data (Opcional): Dados extras de um evento particular. Varia de acordo com o _eventType_ e _resourceType_. 
 
 #### Request (POST)
 ```sh
