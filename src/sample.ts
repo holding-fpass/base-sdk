@@ -12,7 +12,7 @@ const subscriber = new Subscriber(client);
 subscriber.setup(EventType.GenericEventCreated);
 // Listen
 subscriber.listen(EventType.GenericEventCreated,
-  (message) => {
+  (message, second) => {
     console.log(message)
     message.ack();
   },
@@ -30,6 +30,6 @@ const event = publisher.create(EventType.GenericEventCreated, {
   resourceId: uuidv4(),
   resourceType: ResourceType.DataEvent
 })
-console.log(event);
+
 // Publish
 publisher.publish();

@@ -46,7 +46,7 @@ export class PubSubClient implements Client {
 
   async onError(eventType: EventType, handle: ClientHandleFunction) {
     const subscription = this.pubsub.subscription(this.subscriptionName(eventType));
-    subscription.on(eventType, handle)
+    subscription.on('message', handle)
   }
 
 }
