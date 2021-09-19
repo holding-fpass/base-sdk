@@ -2,8 +2,6 @@ import { BaseEvent, Client, EventType, ResourceBase } from "../schema";
 
 export class Publisher {
 
-  protected event?: BaseEvent;
-
   constructor(
     private readonly client: Client
   ) {}
@@ -13,10 +11,10 @@ export class Publisher {
   }
   
   create(eventType: EventType, resource: ResourceBase): BaseEvent {
-    return this.event = new BaseEvent(eventType, resource);
+    return new BaseEvent(eventType, resource);
   }
 
-  publish() {
-    return this.client.publish(this.event);
+  publish(event: BaseEvent) {
+    return this.client.publish(event);
   }
 }
