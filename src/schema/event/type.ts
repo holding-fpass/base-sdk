@@ -3,5 +3,5 @@ export enum EventType {
   DataEventCreated = 'data-event.created',
   EmailCreated = 'email.created',
   MFACreated = 'mfa.created',
-  MFAAuthenticated = 'mfa.authenticated', 
+  MFAVerified = 'mfa.verified', 
 }
