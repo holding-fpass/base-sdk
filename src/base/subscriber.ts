@@ -8,13 +8,13 @@ export class Subscriber {
     Subscriber.client = client;
   }
 
-  async setup(eventTypes: EventType[]) {
+  async setup(eventTypes: EventType[] | string[]) {
     eventTypes.forEach(async eventType => {
       await Subscriber.client.setupSource(eventType);
     });
   }
   
-  static listen(eventType: EventType, handleMessage: ClientHandleFunction, handleError: ClientHandleFunction) {
+  static listen(eventType: EventType | string, handleMessage: ClientHandleFunction, handleError: ClientHandleFunction) {
     Subscriber.client.onMessage(eventType, handleMessage)
     Subscriber.client.onError(eventType, handleError)
   }

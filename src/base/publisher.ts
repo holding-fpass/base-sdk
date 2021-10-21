@@ -8,7 +8,7 @@ export class Publisher {
     Publisher.client = client;
   }
 
-  async setup(eventTypes: EventType[]) {
+  async setup(eventTypes: EventType[] | string[]) {
     eventTypes.forEach(async eventType => {
       await Publisher.client.setupDestination(eventType);
     });

@@ -3,9 +3,9 @@ import { BaseEvent, EventType } from "..";
 export type ClientHandleFunction = (...args: any[]) => void
 
 export interface Client {
-  setupDestination(eventType: EventType): any;
-  setupSource(eventType: EventType): any;
+  setupDestination(eventType: EventType | string): any;
+  setupSource(eventType: EventType | string): any;
   publish(event?: BaseEvent): Promise<boolean>;
-  onMessage(eventType: EventType, handle: ClientHandleFunction): void;
-  onError(eventType: EventType, handle: ClientHandleFunction): void;
+  onMessage(eventType: EventType | string, handle: ClientHandleFunction): void;
+  onError(eventType: EventType | string, handle: ClientHandleFunction): void;
 }

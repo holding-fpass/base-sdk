@@ -7,7 +7,7 @@ export class BaseEvent extends ResourceBase {
   public eventDate: string = new Date().toISOString()
 
   constructor(
-    public eventType: EventType,
+    public eventType: EventType | string,
     resource: ResourceBase,
   ) {
     super(

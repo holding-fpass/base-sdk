@@ -1,6 +1,6 @@
 {
   "name": "@holding-fpass/event-provider-sdk",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Package de definições para integração de/com um partner orientado a eventos gerados e recebidos de sistemas da plataforma Fpass.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
