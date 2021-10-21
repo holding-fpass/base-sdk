@@ -24,7 +24,7 @@ subscriber.listen(EventType.GenericEventCreated,
 // Prepare Publisher
 const publisher = new Publisher(client)
 // Configure Topic on service infrastructure
-publisher.setup(EventType.GenericEventCreated);
+publisher.setup([EventType.GenericEventCreated]);
 // Create Event
 const event = new BaseEvent(EventType.GenericEventCreated, {
   resourceId: uuidv4(),
