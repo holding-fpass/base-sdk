@@ -2,10 +2,16 @@ import { BaseEvent, Client, ClientHandleFunction, EventType, ResourceBase } from
 
 export class Subscriber {
 
-  static readonly client: Client
+  private static client: Client;
 
-  setup(eventType: EventType) {
-    return Subscriber.client.setupSource(eventType);
+  constructor(client: Client) {
+    Subscriber.client = client;
+  }
+
+  async setup(eventTypes: EventType[]) {
+    eventTypes.forEach(async eventType => {
+      await Subscriber.client.setupSource(eventType);
+    });
   }
   
   listen(eventType: EventType, handleMessage: ClientHandleFunction, handleError: ClientHandleFunction) {

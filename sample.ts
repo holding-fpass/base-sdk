@@ -9,7 +9,7 @@ const client = new PubSubClient('app-test', 'project-id');
 // Prepare Subscriber
 const subscriber = new Subscriber(client);
 // Configure Subscription
-subscriber.setup(EventType.GenericEventCreated);
+subscriber.setup([EventType.GenericEventCreated]);
 // Listen
 subscriber.listen(EventType.GenericEventCreated,
   (message, second) => {
