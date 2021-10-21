@@ -1,10 +1,7 @@
-import { BaseEvent, Client, EventType, ResourceBase } from "../schema";
+import { BaseEvent, Client, EventType } from "../schema";
 export declare class Publisher {
     private readonly client;
-    protected event?: BaseEvent;
     constructor(client: Client);
     setup(eventType: EventType): any;
-    create(eventType: EventType, resource: ResourceBase): BaseEvent;
-    publish(): Promise<boolean>;
+    publish(event: BaseEvent): Promise<boolean>;
 }
-//# sourceMappingURL=publisher.d.ts.map

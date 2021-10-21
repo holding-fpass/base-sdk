@@ -1,17 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Subscriber = void 0;
-class Subscriber {
-    constructor(client) {
+var Subscriber = /** @class */ (function () {
+    function Subscriber(client) {
         this.client = client;
     }
-    setup(eventType) {
+    Subscriber.prototype.setup = function (eventType) {
         return this.client.setupSource(eventType);
-    }
-    listen(eventType, handleMessage, handleError) {
+    };
+    Subscriber.prototype.listen = function (eventType, handleMessage, handleError) {
         this.client.onMessage(eventType, handleMessage);
         this.client.onError(eventType, handleError);
-    }
-}
+    };
+    return Subscriber;
+}());
 exports.Subscriber = Subscriber;
 //# sourceMappingURL=subscriber.js.map

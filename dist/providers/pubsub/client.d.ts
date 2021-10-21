@@ -13,4 +13,3 @@ export declare class PubSubClient implements Client {
     onMessage(eventType: EventType, handle: ClientHandleFunction): Promise<void>;
     onError(eventType: EventType, handle: ClientHandleFunction): Promise<void>;
 }
-//# sourceMappingURL=client.d.ts.map

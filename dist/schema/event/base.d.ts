@@ -6,4 +6,3 @@ export declare class BaseEvent extends ResourceBase {
     eventDate: string;
     constructor(eventType: EventType, resource: ResourceBase);
 }
-//# sourceMappingURL=base.d.ts.map

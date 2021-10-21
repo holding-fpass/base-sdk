@@ -6,4 +6,3 @@ export declare class Subscriber {
     setup(eventType: EventType): any;
     listen(eventType: EventType, handleMessage: ClientHandleFunction, handleError: ClientHandleFunction): void;
 }
-//# sourceMappingURL=subscriber.d.ts.map

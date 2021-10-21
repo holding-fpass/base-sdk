@@ -7,4 +7,3 @@ export interface Client {
     onMessage(eventType: EventType, handle: ClientHandleFunction): void;
     onError(eventType: EventType, handle: ClientHandleFunction): void;
 }
-//# sourceMappingURL=client.d.ts.map

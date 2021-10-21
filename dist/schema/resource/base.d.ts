@@ -5,4 +5,3 @@ export declare abstract class ResourceBase {
     data?: any;
     constructor(resourceId: string, resourceType: ResourceType, data?: any);
 }
-//# sourceMappingURL=base.d.ts.map
