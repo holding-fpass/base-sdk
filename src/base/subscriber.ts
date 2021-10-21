@@ -2,18 +2,14 @@ import { BaseEvent, Client, ClientHandleFunction, EventType, ResourceBase } from
 
 export class Subscriber {
 
-  protected event?: BaseEvent;
-
-  constructor(
-    private readonly client: Client
-  ) {}
+  static readonly client: Client
 
   setup(eventType: EventType) {
-    return this.client.setupSource(eventType);
+    return Subscriber.client.setupSource(eventType);
   }
   
   listen(eventType: EventType, handleMessage: ClientHandleFunction, handleError: ClientHandleFunction) {
-    this.client.onMessage(eventType, handleMessage)
-    this.client.onError(eventType, handleError)
+    Subscriber.client.onMessage(eventType, handleMessage)
+    Subscriber.client.onError(eventType, handleError)
   }
 }

@@ -1,16 +1,16 @@
 import { BaseEvent, Client, EventType, ResourceBase } from "../schema";
 
 export class Publisher {
+  
+  private static readonly client: Client
 
-  constructor(
-    private readonly client: Client
-  ) {}
-
-  setup(eventType: EventType) {
-    return this.client.setupDestination(eventType);
+  async setup(eventTypes: EventType[]) {
+    eventTypes.forEach(async eventType => {
+      await Publisher.client.setupDestination(eventType);
+    });
   }
 
   publish(event: BaseEvent) {
-    return this.client.publish(event);
+    return Publisher.client.publish(event);
   }
 }
