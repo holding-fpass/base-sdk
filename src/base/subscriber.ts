@@ -14,7 +14,7 @@ export class Subscriber {
     });
   }
   
-  listen(eventType: EventType, handleMessage: ClientHandleFunction, handleError: ClientHandleFunction) {
+  static listen(eventType: EventType, handleMessage: ClientHandleFunction, handleError: ClientHandleFunction) {
     Subscriber.client.onMessage(eventType, handleMessage)
     Subscriber.client.onError(eventType, handleError)
   }

@@ -14,7 +14,7 @@ export class Publisher {
     });
   }
 
-  publish(event: BaseEvent) {
+  static publish(event: BaseEvent) {
     return Publisher.client.publish(event);
   }
 }
