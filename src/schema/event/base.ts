@@ -7,7 +7,8 @@ export class BaseEvent extends ResourceBase {
 
   constructor(
     public eventType: EventType | string,
-    public resource: ResourceBase
+    public resource: ResourceBase,
+    public ownerId?: string
   ) {
     super(resource.resourceId, resource.resourceType, resource.data);
   }
