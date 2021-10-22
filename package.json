@@ -22,6 +22,7 @@
   "homepage": "https://github.com/Holding-Fpass/event-provider-sdk#readme",
   "dependencies": {
     "@google-cloud/pubsub": "^2.17.0",
+    "@nestjs/swagger": "^5.1.4",
     "rimraf": "^3.0.2",
     "uuid": "^8.3.2"
   },
