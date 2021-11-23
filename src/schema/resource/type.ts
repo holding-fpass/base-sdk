@@ -1,3 +1,4 @@
 export enum ResourceType {
-  DataEvent
+  DATA_EVENT = 'data-event',
+  WEBHOOK = 'webhook',
 }
