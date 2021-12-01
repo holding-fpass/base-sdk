@@ -1,6 +1,11 @@
 import { ResourceType } from "../resource";
 import { EventType } from "./type";
 import { v4 as uuidv4 } from "uuid";
+
+export interface SlimEvent {
+  id: string;
+  date: string;
+}
 export class BaseEvent {
   public eventId: string = uuidv4();
   public eventDate: string = new Date().toISOString();
@@ -13,7 +18,7 @@ export class BaseEvent {
     public ownerId?: string
   ) {}
 
-  asSimpleReturn() {
+  asSlimEvent(): SlimEvent {
     return {
       id: this.eventId,
       date: this.eventDate,
