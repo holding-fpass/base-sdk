@@ -13,6 +13,10 @@ export class Publisher {
       await Publisher.client.setupDestination(eventType);
     });
   }
+  
+  static setOwnerId(ownerId: string) {
+    return Publisher.client.setOwnerId(ownerId);
+  }
 
   static publish(event: BaseEvent) {
     return Publisher.client.publish(event);

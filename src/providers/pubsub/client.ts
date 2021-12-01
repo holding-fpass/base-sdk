@@ -5,12 +5,17 @@ import { PubSub } from "@google-cloud/pubsub";
 export class PubSubClient implements Client {
 
   readonly pubsub: PubSub;
+  private ownerId?: string;
 
   constructor(
     readonly id: string,
     readonly projectId: string
   ) {
     this.pubsub = new PubSub({projectId});
+  }
+
+  setOwnerId(ownerId: string): void {
+    this.ownerId = ownerId;
   }
 
   private subscriptionName(eventType: EventType): string {
@@ -33,6 +38,7 @@ export class PubSubClient implements Client {
   }
 
   async publish(event: BaseEvent): Promise<boolean> {
+    if (!event.ownerId) event.ownerId = this.ownerId ?? '';
     this.pubsub
       .topic(event.eventType)
       .publish(Buffer.from(JSON.stringify(event)))

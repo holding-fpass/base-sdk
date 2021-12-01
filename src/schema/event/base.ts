@@ -12,4 +12,11 @@ export class BaseEvent {
     public data?: any,
     public ownerId?: string
   ) {}
+
+  asSimpleReturn() {
+    return {
+      id: this.eventId,
+      date: this.eventDate,
+    };
+  }
 }

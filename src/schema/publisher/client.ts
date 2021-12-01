@@ -8,4 +8,5 @@ export interface Client {
   publish(event?: BaseEvent): Promise<boolean>;
   onMessage(eventType: EventType | string, handle: ClientHandleFunction): void;
   onError(eventType: EventType | string, handle: ClientHandleFunction): void;
+  setOwnerId(ownerId: string): void;
 }
