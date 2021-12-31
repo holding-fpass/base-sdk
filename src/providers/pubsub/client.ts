@@ -47,7 +47,9 @@ export class PubSubClient implements Client {
     if (!event.whitelabel) event.whitelabel = this.whitelabel ?? "default";
     const eventBuffer = Buffer.from(JSON.stringify(event));
     this.pubsub.topic(event.eventType).publish(eventBuffer);
-    this.pubsub.topic(EventType.WEBHOOK_OUTGOING_CREATED).publish(eventBuffer);
+    this.pubsub
+      .topic(`${EventType.WEBHOOK_OUTGOING_CREATED}--${event.whitelabel}`)
+      .publish(eventBuffer);
     return true;
   }
 
