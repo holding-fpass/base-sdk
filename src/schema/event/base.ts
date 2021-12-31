@@ -15,7 +15,8 @@ export class BaseEvent {
     public resourceId?: string,
     public resourceType?: ResourceType | string,
     public data?: any,
-    public ownerId?: string
+    public ownerId?: string,
+    public whitelabel?: string
   ) {}
 
   asSlimEvent(): SlimEvent {

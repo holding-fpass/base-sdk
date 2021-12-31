@@ -6,4 +6,5 @@ export enum EventType {
   MFAVerified = "mfa.verified",
   ClaimCreated = "claim.created",
   ClaimAuthorized = "claim.authorized",
+  WEBHOOK_OUTGOING_CREATED = "webhook.outgoing.created",
 }

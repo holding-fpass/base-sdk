@@ -1,6 +1,6 @@
 {
   "name": "@holding-fpass/event-provider-sdk",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Package de definições para integração de/com um partner orientado a eventos gerados e recebidos de sistemas da plataforma Fpass.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -12,21 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Holding-Fpass/event-provider-sdk.git"
+    "url": "git+https://github.com/holding-fpass/event-provider-sdk.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Holding-Fpass/event-provider-sdk/issues"
+    "url": "https://github.com/holding-fpass/event-provider-sdk/issues"
   },
-  "homepage": "https://github.com/Holding-Fpass/event-provider-sdk#readme",
+  "homepage": "https://github.com/holding-fpass/event-provider-sdk#readme",
   "dependencies": {
     "@google-cloud/pubsub": "^2.17.0",
     "@nestjs/swagger": "^5.1.4",
-    "rimraf": "^3.0.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/uuid": "^8.3.1"
+    "@types/uuid": "^8.3.1",
+    "rimraf": "^3.0.2"
   }
 }
