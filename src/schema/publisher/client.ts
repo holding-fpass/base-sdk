@@ -1,6 +1,6 @@
 import { BaseEvent, EventType } from "..";
 
-export type ClientHandleFunction = (...args: any[]) => void
+export type ClientHandleFunction = (...args: any[]) => void;
 
 export interface Client {
   setupDestination(eventType: EventType | string): any;
@@ -9,4 +9,5 @@ export interface Client {
   onMessage(eventType: EventType | string, handle: ClientHandleFunction): void;
   onError(eventType: EventType | string, handle: ClientHandleFunction): void;
   setOwnerId(ownerId: string): void;
+  setOwnerExternalId(ownerExternalId: string): void;
 }
