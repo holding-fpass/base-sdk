@@ -16,6 +16,7 @@ export class BaseEvent {
     public resourceType?: ResourceType | string,
     public data?: any,
     public ownerId?: string,
+    public ownerExternalId?: string,
     public whitelabel?: string
   ) {}
 

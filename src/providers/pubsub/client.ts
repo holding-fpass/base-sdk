@@ -6,6 +6,7 @@ export class PubSubClient implements Client {
   readonly pubsub: PubSub;
   private ownerId?: string;
   private whitelabel?: string = "default";
+  private ownerExternalId?: string;
 
   constructor(readonly id: string, readonly projectId: string) {
     this.pubsub = new PubSub({ projectId });
@@ -13,6 +14,10 @@ export class PubSubClient implements Client {
 
   setOwnerId(ownerId: string): void {
     this.ownerId = ownerId;
+  }
+
+  setOwnerExternalId(ownerExternalId: string): void {
+    this.ownerExternalId = ownerExternalId;
   }
 
   setWhitelabel(whitelabel: string): void {
@@ -44,6 +49,7 @@ export class PubSubClient implements Client {
 
   async publish(event: BaseEvent): Promise<boolean> {
     if (!event.ownerId) event.ownerId = this.ownerId ?? "";
+    if (!event.ownerExternalId) event.ownerExternalId = this.ownerExternalId;
     if (!event.whitelabel) event.whitelabel = this.whitelabel ?? "default";
     const eventBuffer = Buffer.from(JSON.stringify(event));
     this.pubsub.topic(event.eventType).publish(eventBuffer);
