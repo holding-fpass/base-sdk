@@ -8,4 +8,7 @@ export enum InteractionTypes {
   LIVE_PLAYER_FULLSCREEN_CLICK = "live.player.fullscreen.click",
   LIVE_PLAYER_REACTION_CLICK = "live.player.reaction.click",
   LIVE_PLAYER_REACTION_CREATED = "live.player.reaction.created",
+  // User
+  USER_WEBSITE_LOGOUT_CLICK = "user.website.logout.click",
+  USER_WEBSITE_HELP_CLICK = "user.website.help.click",
 }
