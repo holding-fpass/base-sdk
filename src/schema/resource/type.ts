@@ -1,7 +1,7 @@
 export enum ResourceType {
   DATA_EVENT = "data-event",
   WEBHOOK = "webhook",
-  LESSON = "lesson",
-  IMMERSION = "immersion",
-  LIVE = "live",
+  LESSON = "lesson.free",
+  IMMERSION = "lesson.immersion",
+  LIVE = "lesson.live",
 }
