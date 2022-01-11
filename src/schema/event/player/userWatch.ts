@@ -10,6 +10,5 @@ export class PlayerWatchEvent extends BaseEvent {
   public parentId!: string;
   public parentType!: string;
   public resourceType!: ResourceType;
-  public timestamp!: string;
   public data!: PlayerWatchEventData;
 }
