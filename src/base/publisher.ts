@@ -24,4 +24,8 @@ export class Publisher {
   static publish(event: BaseEvent) {
     return Publisher.client.publish(event);
   }
+
+  static publishForWhitelabel(event: BaseEvent) {
+    return Publisher.client.publishForWhitelabel(event);
+  }
 }

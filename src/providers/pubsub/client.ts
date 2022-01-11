@@ -47,16 +47,24 @@ export class PubSubClient implements Client {
     return createdTopic;
   }
 
-  async publish(event: BaseEvent): Promise<boolean> {
+  private async _publish(event: BaseEvent, topic?: string): Promise<boolean> {
     if (!event.ownerId) event.ownerId = this.ownerId ?? "";
     if (!event.ownerExternalId) event.ownerExternalId = this.ownerExternalId;
     if (!event.whitelabel) event.whitelabel = this.whitelabel ?? "default";
     const eventBuffer = Buffer.from(JSON.stringify(event));
-    this.pubsub.topic(event.eventType).publish(eventBuffer);
+    this.pubsub.topic(topic ?? event.eventType).publish(eventBuffer);
     this.pubsub
       .topic(`${EventType.WEBHOOK_OUTGOING_CREATED}--${event.whitelabel}`)
       .publish(eventBuffer);
     return true;
+  }
+
+  async publish(event: BaseEvent): Promise<boolean> {
+    return this._publish(event);
+  }
+
+  async publishForWhitelabel(event: BaseEvent): Promise<boolean> {
+    return this._publish(event, `${event.eventType}--${event.whitelabel}`);
   }
 
   async onMessage(eventType: EventType, handle: ClientHandleFunction) {
