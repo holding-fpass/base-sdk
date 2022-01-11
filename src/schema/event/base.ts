@@ -14,6 +14,8 @@ export class BaseEvent {
     public eventType: EventType | string,
     public resourceId?: string,
     public resourceType?: ResourceType | string,
+    public parentId?: string,
+    public parentType?: ResourceType | string,
     public data?: any,
     public ownerId?: string,
     public ownerExternalId?: string,
