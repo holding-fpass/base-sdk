@@ -8,6 +8,7 @@ export enum EventType {
   ClaimAuthorized = "claim.authorized",
   VIDEO_CREATED = "video.created",
   VIDEO_AUDIO_CREATED = "video.audio.created",
+  VIDEO_SUBTITLE_CREATED = "video.subtitle.created",
   VIDEO_SUBTITLE_REQUESTED = "video.subtitle.requested",
   WEBHOOK_OUTGOING_CREATED = "webhook.outgoing.created",
 }
