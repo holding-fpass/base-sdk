@@ -32,9 +32,9 @@ export class PubSubClient implements Client {
   };
 
   constructor(readonly id: string, readonly projectId: string) {
-    const apiEndpoint = "us-central1-pubsub.googleapis.com:443";
-    this.publisher = new v1.PublisherClient({ projectId, apiEndpoint });
-    this.publisherWebhook = new v1.PublisherClient({ projectId, apiEndpoint });
+    // const apiEndpoint = "us-central1-pubsub.googleapis.com:443";
+    this.publisher = new v1.PublisherClient({ projectId });
+    this.publisherWebhook = new v1.PublisherClient({ projectId });
     this.pubsub = new PubSub({ projectId });
   }
 
@@ -79,34 +79,38 @@ export class PubSubClient implements Client {
     if (!event.ownerExternalId) event.ownerExternalId = this.ownerExternalId;
     if (!event.whitelabel) event.whitelabel = this.whitelabel ?? "default";
     const eventBuffer = Buffer.from(JSON.stringify(event));
-    const formattedTopic = this.publisher.projectTopicPath(
-      this.projectId,
-      topic ?? event.eventType
-    );
-    const messages = [
-      {
-        data: eventBuffer,
-      },
-    ];
-    this.publisher.publish(
-      {
-        topic: formattedTopic,
-        messages,
-      },
-      { retry: PubSubClient.retrySettings }
-    );
+    this.pubsub.topic(topic ?? event.eventType).publish(eventBuffer);
+    this.pubsub
+      .topic(`${EventType.WEBHOOK_OUTGOING_CREATED}--${event.whitelabel}`)
+      .publish(eventBuffer);
+    // const formattedTopic = this.publisher.projectTopicPath(
+    //   this.projectId,
+    //   topic ?? event.eventType
+    // );
+    // const messages = [
+    //   {
+    //     data: eventBuffer,
+    //   },
+    // ];
+    // this.publisher.publish(
+    //   {
+    //     topic: formattedTopic,
+    //     messages,
+    //   },
+    //   { retry: PubSubClient.retrySettings }
+    // );
     // Webhook Event Prepare
-    const formattedTopicWebhook = this.publisher.projectTopicPath(
-      this.projectId,
-      `${EventType.WEBHOOK_OUTGOING_CREATED}--${event.whitelabel}`
-    );
-    this.publisher.publish(
-      {
-        topic: formattedTopicWebhook,
-        messages,
-      },
-      { retry: PubSubClient.retrySettings }
-    );
+    // const formattedTopicWebhook = this.publisher.projectTopicPath(
+    //   this.projectId,
+    //   `${EventType.WEBHOOK_OUTGOING_CREATED}--${event.whitelabel}`
+    // );
+    // this.publisher.publish(
+    //   {
+    //     topic: formattedTopicWebhook,
+    //     messages,
+    //   },
+    //   { retry: PubSubClient.retrySettings }
+    // );
     return true;
   }
 
