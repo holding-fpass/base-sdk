@@ -1,6 +1,6 @@
 {
   "name": "@holding-fpass/event-provider-sdk",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Package de definições para integração de/com um partner orientado a eventos gerados e recebidos de sistemas da plataforma Fpass.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/holding-fpass/event-provider-sdk#readme",
   "dependencies": {
-    "@google-cloud/pubsub": "^2.18.4",
+    "@google-cloud/pubsub": "2.17.0",
     "@nestjs/swagger": "^5.1.4",
     "uuid": "^8.3.2"
   },
