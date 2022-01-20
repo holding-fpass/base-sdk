@@ -32,7 +32,7 @@ export class PubSubClient implements Client {
   };
 
   constructor(readonly id: string, readonly projectId: string) {
-    const apiEndpoint = "https://us-central1-pubsub.googleapis.com";
+    const apiEndpoint = "us-central1-pubsub.googleapis.com:443";
     this.publisher = new v1.PublisherClient({ projectId, apiEndpoint });
     this.publisherWebhook = new v1.PublisherClient({ projectId, apiEndpoint });
     this.pubsub = new PubSub({ projectId });
