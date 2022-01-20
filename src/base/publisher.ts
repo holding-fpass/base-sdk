@@ -1,4 +1,4 @@
-import { BaseEvent, Client, EventType, ResourceBase } from "../schema";
+import { BaseEvent, Client, EventType } from "../schema";
 
 export class Publisher {
   private static client: Client;
