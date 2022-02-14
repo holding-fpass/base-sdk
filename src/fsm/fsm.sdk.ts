@@ -1,4 +1,8 @@
-import { DocumentReference, getFirestore } from "firebase-admin/firestore";
+import {
+  DocumentReference,
+  getFirestore,
+  QueryDocumentSnapshot,
+} from "firebase-admin/firestore";
 
 export interface StateEntity<Status> {
   resourceId: string;
@@ -23,9 +27,10 @@ export abstract class StateMachine<Entity, Status> {
     collectionPath: string,
     resourceId: string
   ): Promise<StateEntity<Status> & Entity> {
-    this.docRef = getFirestore().collection(collectionPath).doc(resourceId);
-    this.instance =
-      (await this.docRef.get()) as unknown as StateEntity<Status> & Entity;
+    this.docRef = getFirestore().doc(`${collectionPath}/${resourceId}`);
+    this.instance = (
+      await this.docRef.withConverter(firestoreConverter).get()
+    ).data() as unknown as StateEntity<Status> & Entity;
     return this.instance;
   }
 
@@ -35,7 +40,7 @@ export abstract class StateMachine<Entity, Status> {
     // Document Referent
     if (!this.docRef) throw new Error("No document initialized.");
     // Status to
-    if (!this.instance.statusTo) throw new Error("No instance statusTo found");
+    if (!this.instance?.statusTo) throw new Error("[statusTo] not found");
     // Status
     if (this.instance?.status === to)
       throw new Error(`Cannot go to same status [to: ${to}].`);
@@ -52,3 +57,18 @@ export abstract class StateMachine<Entity, Status> {
     return await this.actions.get(to)!(to, this.instance!, this.docRef!);
   }
 }
+
+const firestoreConverter = {
+  toFirestore(entity: any) {
+    return entity;
+  },
+  fromFirestore(snapshot: QueryDocumentSnapshot) {
+    const data = snapshot.data()!;
+    return {
+      ...data,
+      updatedAt: data?.updatedAt?.toDate(),
+      deletedAt: data?.deletedAt?.toDate(),
+      timestamp: data?.timestamp?.toDate(),
+    };
+  },
+};
