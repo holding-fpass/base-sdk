@@ -24,8 +24,9 @@ export abstract class StateMachine<Entity, Status> {
     resourceId: string
   ): Promise<StateEntity<Status> & Entity> {
     this.docRef = getFirestore().collection(collectionPath).doc(resourceId);
-    return (this.instance =
-      (await this.docRef.get()) as unknown as StateEntity<Status> & Entity);
+    this.instance =
+      (await this.docRef.get()) as unknown as StateEntity<Status> & Entity;
+    return this.instance;
   }
 
   canGoCheck(to: Status): boolean {
