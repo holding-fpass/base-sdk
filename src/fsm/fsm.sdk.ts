@@ -22,11 +22,10 @@ export abstract class StateMachine<Entity, Status> {
   async setInstance(
     collectionPath: string,
     resourceId: string
-  ): Promise<Required<StateMachine<Entity, Status>>> {
+  ): Promise<StateEntity<Status> & Entity> {
     this.docRef = getFirestore().collection(collectionPath).doc(resourceId);
-    this.instance =
-      (await this.docRef.get()) as unknown as StateEntity<Status> & Entity;
-    return this as Required<StateMachine<Entity, Status>>;
+    return (this.instance =
+      (await this.docRef.get()) as unknown as StateEntity<Status> & Entity);
   }
 
   canGoCheck(to: Status): boolean {
