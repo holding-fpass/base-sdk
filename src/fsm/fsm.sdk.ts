@@ -1,5 +1,6 @@
 import {
   DocumentReference,
+  FieldValue,
   getFirestore,
   QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
@@ -8,6 +9,14 @@ export interface StateEntity<Status> {
   resourceId: string;
   status: Status;
   statusTo?: Status;
+}
+
+export interface StateActionHistory<Status> {
+  statusFrom: Status;
+  statusTo: Status;
+  timestamp: FieldValue;
+  success: boolean;
+  reason?: string;
 }
 
 export interface StateAction<Entity, Status> extends Function {
@@ -28,33 +37,87 @@ export abstract class StateMachine<Entity, Status> {
     resourceId: string
   ): Promise<StateEntity<Status> & Entity> {
     this.docRef = getFirestore().doc(`${collectionPath}/${resourceId}`);
+    return await this.loadInstance();
+  }
+
+  async loadInstance(): Promise<StateEntity<Status> & Entity> {
     this.instance = (
-      await this.docRef.withConverter(firestoreConverter).get()
+      await this.docRef!.withConverter(firestoreConverter).get()
     ).data() as unknown as StateEntity<Status> & Entity;
     return this.instance;
   }
 
   canGoCheck(to: Status): boolean {
-    // Instance
-    if (!this.instance) throw new Error("No instance initialized.");
     // Document Referent
-    if (!this.docRef) throw new Error("No document initialized.");
+    if (!this.docRef) throw new Error("Instance not set.");
+    // Instance
+    if (!this.instance) throw new Error("Instance not loaded.");
     // Status to
-    if (!this.instance?.statusTo) throw new Error("[statusTo] not found");
+    if (!this.instance?.statusTo)
+      throw new Error("Instance value not found [statusTo]");
     // Status
     if (this.instance?.status === to)
-      throw new Error(`Cannot go to same status [to: ${to}].`);
+      throw new Error(`Instance cannot go to same status [to: ${to}].`);
     // Action
-    if (!this.actions.get(to)) throw new Error(`No action found [to: ${to}].`);
+    if (!this.actions.get(to))
+      throw new Error(
+        `Instance has no action found for transition [to: ${to}].`
+      );
     // Continue
     return true;
   }
 
   async go(to: Status): Promise<boolean> {
-    // Validate
-    this.canGoCheck(to);
+    // Prepare
+    const statusFrom = this.instance?.status;
     // Execute
-    return await this.actions.get(to)!(to, this.instance!, this.docRef!);
+    let result: boolean = false;
+    let error: Error | undefined = undefined;
+    try {
+      this.canGoCheck(to);
+      result = await this.actions.get(to)!(to, this.instance!, this.docRef!);
+    } catch (err) {
+      error = err as Error;
+    }
+    return this.goAfter(to, this.instance!, result, error);
+  }
+
+  async goAfter(
+    to: Status,
+    instance: StateEntity<Status> & Entity,
+    result: boolean,
+    error?: Error
+  ): Promise<boolean> {
+    // Prepare
+    let statusHistory: Partial<StateActionHistory<Status>> = {
+      statusFrom: instance.status,
+      statusTo: to,
+    };
+    // Success
+    if (result) {
+      const writeResult = await this.docRef?.update({
+        status: to,
+        statusTo: FieldValue.delete(),
+        statusAt: FieldValue.serverTimestamp(),
+      });
+      statusHistory = {
+        ...statusHistory,
+        timestamp: writeResult?.writeTime,
+        success: result,
+      };
+      // Fail
+    } else {
+      statusHistory = {
+        ...statusHistory,
+        timestamp: FieldValue.serverTimestamp(),
+        success: result,
+        reason: error?.message,
+      };
+    }
+    // Persist
+    await this.docRef?.collection("_status").add(statusHistory);
+    // Return
+    return result;
   }
 }
 
@@ -68,6 +131,7 @@ const firestoreConverter = {
       ...data,
       updatedAt: data?.updatedAt?.toDate(),
       deletedAt: data?.deletedAt?.toDate(),
+      statusAt: data?.statusAt?.toDate(),
       timestamp: data?.timestamp?.toDate(),
     };
   },
