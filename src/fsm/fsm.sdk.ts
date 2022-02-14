@@ -34,12 +34,13 @@ export abstract class StateMachine<Entity, Status> {
     if (!this.instance) throw new Error("No instance initialized.");
     // Document Referent
     if (!this.docRef) throw new Error("No document initialized.");
-    // Status
-    if (this.instance?.status === to) throw new Error("Same status.");
-    // Action
-    if (!this.actions.get(to)) throw new Error("No action found.");
     // Status to
     if (!this.instance.statusTo) throw new Error("No instance statusTo found");
+    // Status
+    if (this.instance?.status === to)
+      throw new Error(`Cannot go to same status [to: ${to}].`);
+    // Action
+    if (!this.actions.get(to)) throw new Error(`No action found [to: ${to}].`);
     // Continue
     return true;
   }
