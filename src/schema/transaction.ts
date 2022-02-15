@@ -22,6 +22,7 @@ export interface Transaction {
   providerExtra: ProviderExtra[];
   productId: string;
   productType: ProductType;
+  productDescription: string;
   value: number;
   status: TransactionStatus;
 }
