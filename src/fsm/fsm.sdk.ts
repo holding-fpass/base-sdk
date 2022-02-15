@@ -40,6 +40,12 @@ export abstract class StateMachine<Entity, Status> {
     return await this.loadInstance();
   }
 
+  addActions(actions: { key: Status; value: StateAction<Entity, Status> }[]) {
+    for (const action of actions) {
+      this.actions.set(action.key, action.value);
+    }
+  }
+
   async loadInstance(): Promise<StateEntity<Status> & Entity> {
     this.instance = (
       await this.docRef!.withConverter(firestoreConverter).get()

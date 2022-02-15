@@ -1,8 +1,13 @@
 import { Provider, ProviderExtra } from "./provider";
 
+export enum Asset {
+  BRL = "fiat.brl",
+  FTOKEN = "token.f",
+}
 export interface Transaction {
   resourceId: string;
   type: TransactionType;
+  asset: Asset;
   description: string;
   parent?: Transaction;
   userFrom: string;
@@ -22,6 +27,8 @@ export enum TransactionType {
   SPLIT = "split",
   P2P = "p2p",
   REFUND = "refund",
+  WITHDRAW = "withdraw",
+  DEPOSIT = "deposit",
 }
 
 export enum ProductType {
