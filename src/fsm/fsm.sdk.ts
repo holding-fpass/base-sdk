@@ -68,8 +68,6 @@ export abstract class StateMachine<Entity, Status> {
   }
 
   async go(to: Status): Promise<boolean> {
-    // Prepare
-    const statusFrom = this.instance?.status;
     // Execute
     let result: boolean = false;
     let error: Error | undefined = undefined;

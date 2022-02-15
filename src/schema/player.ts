@@ -1,5 +1,4 @@
-import { ResourceType } from "schema";
-import { BaseEvent } from "..";
+import { BaseEvent, ResourceType } from "schema";
 
 export interface PlayerWatchEventData {
   start: number;

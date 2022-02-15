@@ -1,9 +1,10 @@
-import { BaseEvent, Client, EventType } from "../schema";
+import { BaseEvent, EventType } from "../schema";
+import { MessageBrokerClient } from "./messageBrokerClient";
 
 export class Publisher {
-  private static client: Client;
+  private static client: MessageBrokerClient;
 
-  constructor(client: Client) {
+  constructor(client: MessageBrokerClient) {
     Publisher.client = client;
   }
 

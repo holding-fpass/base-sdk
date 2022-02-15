@@ -1,8 +1,8 @@
-import { Client } from "../..";
-import { EventType, BaseEvent, ClientHandleFunction } from "../../schema";
+import { MessageBrokerClient, MessageBrokerHandleFunction } from "../../..";
+import { EventType, BaseEvent } from "../../../schema";
 import { PubSub, v1 } from "@google-cloud/pubsub";
 
-export class PubSubClient implements Client {
+export class PubSubClient implements MessageBrokerClient {
   readonly pubsub: PubSub;
   readonly publisher: v1.PublisherClient;
   readonly publisherWebhook: v1.PublisherClient;
@@ -122,12 +122,12 @@ export class PubSubClient implements Client {
     return this._publish(event, `${event.eventType}--${event.whitelabel}`);
   }
 
-  async onMessage(eventType: EventType, handle: ClientHandleFunction) {
+  async onMessage(eventType: EventType, handle: MessageBrokerHandleFunction) {
     const subscription = this.setupSource(eventType);
     (await subscription).on("message", handle);
   }
 
-  async onError(eventType: EventType, handle: ClientHandleFunction) {
+  async onError(eventType: EventType, handle: MessageBrokerHandleFunction) {
     const subscription = this.pubsub.subscription(
       this.subscriptionName(eventType)
     );
