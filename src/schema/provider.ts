@@ -17,11 +17,30 @@ export interface ProviderExtra {
 }
 
 export class ProviderExtraMap {
+  private provider: Provider;
   private extra: ProviderExtra[] = [];
   constructor(provider: Provider, extra: ProviderExtra[]) {
-    this.extra = extra.filter((value) => value.provider === provider);
+    this.provider = provider;
+    this.extra = extra;
   }
   get(key: string) {
-    return this.extra.find((value) => value.key === key);
+    return this.extra.find(
+      (value) => value.provider == this.provider && value.key === key
+    );
+  }
+  set(key: string, value: any) {
+    const index = this.extra.findIndex(
+      (value) => value.provider == this.provider && value.key === key
+    );
+    if (index === -1) return; // Not found
+    this.extra[index] = {
+      provider: this.provider,
+      key,
+      value,
+      timestamp: new Date().toISOString(),
+    } as ProviderExtra;
+  }
+  getAll(): ProviderExtra[] {
+    return this.extra;
   }
 }
