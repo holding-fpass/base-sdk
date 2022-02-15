@@ -40,10 +40,11 @@ export abstract class StateMachine<Entity, Status> {
     return await this.loadInstance();
   }
 
-  addActions(actions: { key: Status; value: StateAction<Entity, Status> }[]) {
-    for (const action of actions) {
-      this.actions.set(action.key, action.value);
-    }
+  addActions(actions: Map<Status, StateAction<Entity, Status>>) {
+    actions.forEach((action, key) => {
+      this.actions.set(key, action);
+    });
+    return this;
   }
 
   async loadInstance(): Promise<StateEntity<Status> & Entity> {
