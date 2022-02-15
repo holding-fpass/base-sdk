@@ -2,6 +2,7 @@ export * from "./baseEvent";
 export * from "./certificate";
 export * from "./eventType";
 export * from "./interactionTypes";
+export * from "./metadata";
 export * from "./player";
 export * from "./provider";
 export * from "./resource";

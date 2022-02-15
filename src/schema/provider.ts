@@ -1,3 +1,5 @@
+import { Metadata } from "./metadata";
+
 export enum Provider {
   // Content
   FPASS = "fpass",
@@ -9,11 +11,8 @@ export enum Provider {
   COGNA = "cogna",
 }
 
-export interface ProviderExtra {
+export interface ProviderExtra extends Metadata {
   provider: Provider;
-  key: string;
-  value: any;
-  timestamp: string;
 }
 
 export class ProviderExtraMap {
