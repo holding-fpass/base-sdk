@@ -1,8 +1,13 @@
+import { BaseEvent } from "./baseEvent";
 import { Provider, ProviderExtra } from "./provider";
 
 export enum Asset {
   BRL = "fiat.brl",
   FTOKEN = "token.f",
+}
+
+export interface TransactionEvent extends BaseEvent {
+  provider: Provider;
 }
 export interface Transaction {
   resourceId: string;
