@@ -17,7 +17,7 @@ export interface ProviderExtra {
 }
 
 export class ProviderExtraMap {
-  private extra: ProviderExtra[];
+  private extra: ProviderExtra[] = [];
   constructor(provider: Provider, extra: ProviderExtra[]) {
     this.extra = extra.filter((value) => value.provider === provider);
   }
