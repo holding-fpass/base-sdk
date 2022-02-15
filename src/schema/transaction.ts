@@ -25,6 +25,7 @@ export interface Transaction {
   productDescription: string;
   value: number;
   status: TransactionStatus;
+  dryRun: boolean;
 }
 
 export enum TransactionType {
