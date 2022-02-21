@@ -1,4 +1,7 @@
 import { StateAction } from "./fsm.sdk";
 
-export const BypassStateAction: StateAction<unknown, unknown> = async () =>
-  true;
+export const BypassStateAction: StateAction<unknown, unknown> = async () => {
+  return {
+    result: true,
+  };
+};
