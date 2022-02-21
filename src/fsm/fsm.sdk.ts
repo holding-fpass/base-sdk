@@ -21,7 +21,7 @@ export interface StateActionHistory<Status> {
 
 export interface StateActionReturn<Status> {
   result: boolean;
-  next: Status;
+  next?: Status;
 }
 export interface StateAction<Entity, Status> extends Function {
   (
