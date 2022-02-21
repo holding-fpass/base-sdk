@@ -1,4 +1,3 @@
-import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
 import { Scope } from "./scope";
 import { Whitelabel } from "./whitelabel";
