@@ -74,9 +74,7 @@ export class DisplayResource extends Resource {
   @ApiPropertyOptional()
   parentType?: ResourceType;
   @ApiPropertyOptional()
-  timestamp?: Date;
+  dateStart?: string;
   @ApiPropertyOptional()
-  dateStart?: Date;
-  @ApiPropertyOptional()
-  dateEnd?: Date;
+  dateEnd?: string;
 }
