@@ -1,34 +1,34 @@
-import { PubSubClient, Publisher } from "./src";
-import { EventType, ResourceType, BaseEvent } from "./src/schema";
+import { BaseEvent, Publisher, PubSubClient, Subscriber } from "./src";
 import { v4 as uuidv4 } from "uuid";
-import { Subscriber } from "./src/base";
 
 // Define Client
-const client = new PubSubClient('app-test', 'project-id');
+const client = new PubSubClient("app-test", "project-id");
 
 // Prepare Subscriber
 const subscriber = new Subscriber(client);
 // Configure Subscription
-subscriber.setup([EventType.GenericEventCreated]);
+subscriber.setup(["generic"]);
 // Listen
-subscriber.listen(EventType.GenericEventCreated,
+Subscriber.listen(
+  "generic",
   (message, second) => {
-    console.log(message)
+    console.log(message);
     message.ack();
   },
   (error) => {
-    console.log(error)
+    console.log(error);
   }
-)
+);
 
 // Prepare Publisher
-const publisher = new Publisher(client)
+const publisher = new Publisher(client);
 // Configure Topic on service infrastructure
-publisher.setup([EventType.GenericEventCreated]);
+publisher.setup(["generic"]);
 // Create Event
-const event = new BaseEvent(EventType.GenericEventCreated, {
+const event = new BaseEvent({
+  eventType: "generic",
   resourceId: uuidv4(),
-  resourceType: ResourceType.DataEvent
-})
+  resourceType: "dataevent",
+});
 // Publish
-publisher.publish(event);
+Publisher.publish(event);

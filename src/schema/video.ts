@@ -1,4 +1,4 @@
-import { BaseEvent } from "schema";
+import { BaseEvent } from "../schema";
 
 // Video
 export interface VideoCreatedEventData {

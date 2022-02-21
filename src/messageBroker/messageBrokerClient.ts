@@ -1,4 +1,4 @@
-import { BaseEvent, EventType } from "schema";
+import { EventType, BaseEvent } from "../schema";
 
 export type MessageBrokerHandleFunction = (...args: any[]) => void;
 
