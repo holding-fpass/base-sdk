@@ -1,8 +1,9 @@
 import { ProviderExtra } from "./provider";
+import { Resource } from "./resource";
 import { Scope } from "./scope";
 import { Whitelabel } from "./whitelabel";
 
-export interface User {
+export interface User extends Resource {
   name: string;
   email: string;
   taxId: string;

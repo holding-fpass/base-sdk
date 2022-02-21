@@ -39,9 +39,13 @@ export class Resource {
   @ApiProperty()
   resourceType?: ResourceType;
   @ApiPropertyOptional()
+  timestamp?: Date;
+  @ApiPropertyOptional()
   createdAt?: Date;
   @ApiPropertyOptional()
   updatedAt?: Date;
+  @ApiPropertyOptional()
+  statusAt?: Date;
   @ApiPropertyOptional()
   deletedAt?: Date;
 }
