@@ -39,15 +39,15 @@ export class Resource {
   @ApiProperty()
   resourceType?: ResourceType;
   @ApiPropertyOptional()
-  timestamp?: Date;
+  timestamp?: string;
   @ApiPropertyOptional()
-  createdAt?: Date;
+  createdAt?: string;
   @ApiPropertyOptional()
-  updatedAt?: Date;
+  updatedAt?: string;
   @ApiPropertyOptional()
-  statusAt?: Date;
+  statusAt?: string;
   @ApiPropertyOptional()
-  deletedAt?: Date;
+  deletedAt?: string;
 }
 
 export class DisplayResource extends Resource {
