@@ -5,8 +5,8 @@ export interface User {
   name: string;
   email: string;
   taxId: string;
-  image128x128: string;
-  providerExtra: ProviderExtra[];
+  image128x128?: string;
+  providerExtra?: ProviderExtra[];
 }
 
 export enum UserStatus {
