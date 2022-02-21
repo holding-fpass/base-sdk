@@ -19,12 +19,16 @@ export interface StateActionHistory<Status> {
   reason?: string;
 }
 
+export interface StateActionReturn<Status> {
+  result: boolean;
+  next: Status;
+}
 export interface StateAction<Entity, Status> extends Function {
   (
     to: Status,
     instance: StateEntity<Status> & Entity,
     docRef: DocumentReference
-  ): Promise<boolean>;
+  ): Promise<StateActionReturn<Status>>;
 }
 
 export abstract class StateMachine<Entity, Status> {
@@ -77,14 +81,24 @@ export abstract class StateMachine<Entity, Status> {
   async go(to: Status): Promise<boolean> {
     // Execute
     let result: boolean = false;
+    let next: Status | undefined = undefined;
     let error: Error | undefined = undefined;
     try {
       this.canGoCheck(to);
-      result = await this.actions.get(to)!(to, this.instance!, this.docRef!);
+      const { result, next } = await this.actions.get(to)!(
+        to,
+        this.instance!,
+        this.docRef!
+      );
     } catch (err) {
       error = err as Error;
+    } finally {
+      // After
+      await this.goAfter(to, this.instance!, result, error);
+      // Next
+      if (next) this.go(next);
+      return result;
     }
-    return this.goAfter(to, this.instance!, result, error);
   }
 
   async goAfter(
