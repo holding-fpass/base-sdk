@@ -1,3 +1,4 @@
+import { BaseEvent } from "./events";
 import { Resource } from "./resource";
 import { User } from "./user";
 
@@ -25,10 +26,10 @@ export interface Certificate extends Resource<CertificateStatus> {
   image1000x1000: string;
 }
 
-export class CertificateEvent extends BaseEvent {
-  data!: {
-    fileUrl: string;
-    fileDocPath: string;
-    publicUrl: string;
-  };
+export interface CertificateEventData {
+  fileUrl: string;
+  fileDocPath: string;
+  publicUrl: string;
 }
+
+export class CertificateEvent extends BaseEvent<CertificateEventData> {}
