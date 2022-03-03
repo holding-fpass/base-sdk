@@ -47,12 +47,49 @@ export enum ProductType {
 export enum TransactionStatus {
   CREATED = "created",
   APPROVED = "approved",
+  CANCELED = "canceled",
   PROVIDER_USER_CREATED = "provider.user.created",
   PROVIDER_PAYMENT_CREATED = "provider.payment.created",
   PROVIDER_PAYMENT_PAID = "provider.payment.paid",
   PROVIDER_PAYMENT_FAILED = "provider.payment.failed",
   PAID = "paid",
   FAILED = "failed",
-  CANCELED = "canceled",
   DELETED = "deleted",
 }
+
+export const TransactionStatusTransitionMap = new Map<
+  TransactionStatus,
+  TransactionStatus[]
+>([
+  [
+    TransactionStatus.CREATED,
+    [
+      TransactionStatus.APPROVED,
+      TransactionStatus.CANCELED,
+      TransactionStatus.DELETED,
+    ],
+  ],
+  [
+    TransactionStatus.APPROVED,
+    [
+      TransactionStatus.PROVIDER_USER_CREATED,
+      TransactionStatus.PAID,
+      TransactionStatus.FAILED,
+    ],
+  ],
+  [
+    TransactionStatus.PROVIDER_USER_CREATED,
+    [TransactionStatus.PROVIDER_PAYMENT_CREATED],
+  ],
+  [
+    TransactionStatus.PROVIDER_PAYMENT_CREATED,
+    [
+      TransactionStatus.PROVIDER_PAYMENT_PAID,
+      TransactionStatus.PROVIDER_PAYMENT_FAILED,
+    ],
+  ],
+  [TransactionStatus.PROVIDER_PAYMENT_PAID, [TransactionStatus.PAID]],
+  [TransactionStatus.PROVIDER_PAYMENT_FAILED, [TransactionStatus.FAILED]],
+  [TransactionStatus.FAILED, [TransactionStatus.DELETED]],
+  [TransactionStatus.CANCELED, [TransactionStatus.DELETED]],
+]);
