@@ -1,0 +1,10 @@
+@startuml User State Machine
+title User State Machine
+hide empty description
+
+[*] --> CREATED
+CREATED --> ACTIVE
+CREATED: Criado
+ACTIVE: Disponível
+ACTIVE --> [*]
+@enduml

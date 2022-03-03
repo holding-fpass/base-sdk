@@ -1,0 +1,10 @@
+@startuml Contract State Machine
+title Contract State Machine
+hide empty description
+
+[*] --> CREATED
+CREATED --> ACTIVE
+CREATED: Criado
+ACTIVE: Disponível e imutável
+ACTIVE --> [*]
+@enduml

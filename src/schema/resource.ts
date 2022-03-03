@@ -3,41 +3,52 @@ import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 export enum ResourceType {
   APIKEY = "apikey",
   CERTIFICATE = "certificate",
-  USER = "user",
-  MFA = "mfa",
-  INTERACTION = "interaction",
-  FILE = "file",
-  LESSON = "lesson",
-  IMMERSION = "immersion",
-  LIVE = "live",
-  COURSE = "course",
-  CONTENT_MATERIAL = "content.material",
+  CHANNEL = "channel",
   CHANNEL_IMAGE_AVATAR = "channel.image.avatar",
   CHANNEL_IMAGE_BANNER = "channel.image.banner",
-  CHAT_MESSAGE = "chat.message",
-  CHAT_IMAGE = "chat.image",
   CHAT_FILE = "chat.file",
-  USER_CONSENT = "user.consent",
-  USER_IMAGE_AVATAR = "user.image.avatar",
-  USER_IMAGE_WEBCAM = "user.image.webcam",
+  CHAT_IMAGE = "chat.image",
+  CHAT_MESSAGE = "chat.message",
+  CONTENT = "content",
+  CONTENT_ITEM = "content.item",
+  CONTRACT = "contract",
+  COURSE = "course",
+  DEVICE = "device",
+  FILE = "file",
+  IMMERSION = "immersion",
+  INTERACTION = "interaction",
+  LESSON = "lesson",
+  LIVE = "live",
+  MFA = "mfa",
+  PAGE_VIEW = "page.view",
+  PLAN = "plan",
+  PLATFORM = "platform",
+  PLAYLIST = "playlist",
   STAGE = "stage",
   STAGE_CALENDAR_GROUP = "stage.calendar.group",
   STAGE_CALENDAR_ITEM = "stage.calendar.item",
   STAGE_PARTICIPANT = "stage.participant",
   STORIES_STORY_IMAGE = "stories.story.image",
   STORIES_STORY_VIDEO = "stories.story.video",
-  TRANSACTION = "transaction",
+  SUBSCRIPTION = "subscription",
   THREAD = "thread",
+  TRANSACTION = "transaction",
+  USER = "user",
+  USER_CONSENT = "user.consent",
+  USER_IMAGE_AVATAR = "user.image.avatar",
+  USER_IMAGE_WEBCAM = "user.image.webcam",
   WALLET = "wallet",
   WALLET_FIAT = "wallet.fiat",
   WALLET_TOKEN = "wallet.token",
+  WHITELABEL = "whitelabel",
 }
 
-export class Resource {
+export class Resource<Status = any> {
   @ApiProperty()
   resourceId!: string;
   @ApiProperty()
   resourceType?: ResourceType;
+  // Dates
   @ApiPropertyOptional()
   timestamp?: string;
   @ApiPropertyOptional()
@@ -45,9 +56,14 @@ export class Resource {
   @ApiPropertyOptional()
   updatedAt?: string;
   @ApiPropertyOptional()
+  deletedAt?: string;
+  // Status
+  @ApiPropertyOptional()
+  status?: Status;
+  @ApiPropertyOptional()
   statusAt?: string;
   @ApiPropertyOptional()
-  deletedAt?: string;
+  statusTo?: Status;
 }
 
 export class DisplayResource extends Resource {

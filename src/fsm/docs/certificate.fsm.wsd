@@ -1,0 +1,10 @@
+@startuml Certificate State Machine
+title Certificate State Machine
+hide empty description
+
+[*] --> CREATED
+CREATED --> ACTIVE
+CREATED: Criado
+ACTIVE: Gerado
+ACTIVE --> [*]
+@enduml

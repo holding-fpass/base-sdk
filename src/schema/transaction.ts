@@ -1,32 +1,7 @@
-import { BaseEvent } from "./baseEvent";
+import { BaseEvent } from "./events";
 import { Provider, ProviderExtra } from "./provider";
-
-export enum Asset {
-  BRL = "brl",
-  FTOKEN = "ftoken",
-}
-
-export interface TransactionEvent extends BaseEvent {
-  provider: Provider;
-}
-export interface Transaction {
-  resourceId: string;
-  type: TransactionType;
-  asset: Asset;
-  description: string;
-  parent?: Transaction;
-  userFrom: string;
-  userTo: string;
-  provider: Provider;
-  providerExternalId: string;
-  providerExtra: ProviderExtra[];
-  productId: string;
-  productType: ProductType;
-  productDescription: string;
-  value: number;
-  status: TransactionStatus;
-  dryRun: boolean;
-}
+import { Resource } from "./resource";
+import { ProductType } from "./subscription";
 
 export enum TransactionType {
   PURCHASE = "purchase",
@@ -38,16 +13,10 @@ export enum TransactionType {
   DEPOSIT = "deposit",
 }
 
-export enum ProductType {
-  PLATAFORM_SUBSCRIPTION = "plataform.subscription",
-  CHANNEL_SUBSCRIPTION = "channel.subscription",
-  COURSE_PURCHASE = "course.purchase",
-}
-
 export enum TransactionStatus {
   CREATED = "created",
-  APPROVED = "approved",
   CANCELED = "canceled",
+  APPROVED = "approved",
   PROVIDER_USER_CREATED = "provider.user.created",
   PROVIDER_PAYMENT_CREATED = "provider.payment.created",
   PROVIDER_PAYMENT_PAID = "provider.payment.paid",
@@ -64,9 +33,9 @@ export const TransactionStatusTransitionMap = new Map<
   [
     TransactionStatus.CREATED,
     [
-      TransactionStatus.APPROVED,
       TransactionStatus.CANCELED,
       TransactionStatus.DELETED,
+      TransactionStatus.APPROVED,
     ],
   ],
   [
@@ -93,3 +62,32 @@ export const TransactionStatusTransitionMap = new Map<
   [TransactionStatus.FAILED, [TransactionStatus.DELETED]],
   [TransactionStatus.CANCELED, [TransactionStatus.DELETED]],
 ]);
+
+export enum Asset {
+  BRL = "brl",
+  FTOKEN = "ftoken",
+}
+export interface Transaction extends Resource<TransactionStatus> {
+  type: TransactionType;
+  description: string;
+  asset: Asset;
+  //
+  userFrom: string;
+  userTo: string;
+  //
+  parent?: Transaction;
+  // Provider
+  provider: Provider;
+  providerExtra: ProviderExtra[];
+  //
+  productId: string;
+  productType: ProductType;
+  productDescription: string;
+  //
+  value: number;
+  dryRun: boolean;
+}
+
+export interface TransactionEvent extends BaseEvent {
+  provider: Provider;
+}

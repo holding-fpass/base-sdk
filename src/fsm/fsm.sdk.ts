@@ -4,10 +4,13 @@ import {
   getFirestore,
   QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
+import { Publisher } from "messageBroker";
+import { BaseEvent, ResourceType } from "schema";
 import { BypassStateAction } from "./bypass.action";
 
 export interface StateEntity<Status> {
   resourceId: string;
+  resourceType: ResourceType;
   status: Status;
   statusTo?: Status;
 }
@@ -33,6 +36,8 @@ export interface StateAction<Entity, Status> extends Function {
 }
 
 export abstract class StateMachine<Entity, Status> {
+  public sync: boolean = false;
+  public publisher?: Publisher;
   public instance?: StateEntity<Status> & Entity;
   public docRef?: DocumentReference;
   public actions!: Map<Status, StateAction<Entity, Status>>;
@@ -65,7 +70,7 @@ export abstract class StateMachine<Entity, Status> {
     return this.instance;
   }
 
-  canGoCheck(to: Status): boolean {
+  canGo(to: Status): boolean {
     // Document Referent
     if (!this.docRef) throw new Error("Instance not set.");
     // Instance
@@ -106,28 +111,46 @@ export abstract class StateMachine<Entity, Status> {
 
   async go(to: Status): Promise<boolean> {
     // Execute
-    let result: boolean = false;
-    let next: Status | undefined = undefined;
     let error: Error | undefined = undefined;
     try {
-      this.canGoCheck(to);
-      const { result, next } = await this.actions.get(to)!(
+      this.canGo(to);
+      const response = await this.actions.get(to)!(
         to,
         this.instance!,
         this.docRef!
       );
+      if (!response) return false;
+      // After
+      await this.updateStatus(to, this.instance!, response.result);
+      // Next
+      if (!response.next) return response.result;
+      if (this.sync) {
+        return await this.go(response.next);
+      } else {
+        this.goAsync(response.next);
+      }
+      return response.result;
     } catch (err) {
       error = err as Error;
-    } finally {
       // After
-      await this.goAfter(to, this.instance!, result, error);
-      // Next
-      if (next) this.go(next);
-      return result;
+      return await this.updateStatus(to, this.instance!, false, error);
     }
   }
 
-  async goAfter(
+  async goAsync(to: Status): Promise<boolean> {
+    await this.docRef?.update({
+      statusTo: to,
+    });
+    return Publisher.publish(
+      new BaseEvent({
+        eventType: `${this.instance?.resourceType}.updated`,
+        resourceId: this.instance?.resourceId,
+        resourceType: this.instance?.resourceType,
+      })
+    );
+  }
+
+  async updateStatus(
     to: Status,
     instance: StateEntity<Status> & Entity,
     result: boolean,

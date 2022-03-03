@@ -1,0 +1,14 @@
+@startuml Channel State Machine
+title Channel State Machine
+hide empty description
+
+[*] --> CREATED
+CREATED --> ACTIVE
+ACTIVE: Disponível e não listado
+ACTIVE --> PUBLISHED
+PUBLISHED: Disponível e listado
+ACTIVE --> RESTRICTED
+RESTRICTED: Disponível e listado para\num whitelabel específico
+PUBLISHED --> [*]
+RESTRICTED --> [*]
+@enduml

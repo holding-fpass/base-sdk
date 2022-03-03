@@ -28,16 +28,24 @@ export class ProviderExtraMap {
     );
   }
   set(key: string, value: any) {
-    const index = this.extra.findIndex(
-      (value) => value.provider == this.provider && value.key === key
-    );
-    if (index === -1) return; // Not found
-    this.extra[index] = {
+    // Prepare
+    const providerExtra = {
       provider: this.provider,
       key,
       value,
       timestamp: new Date().toISOString(),
     } as ProviderExtra;
+    // Search
+    const index = this.extra.findIndex(
+      (value) => value.provider == this.provider && value.key === key
+    );
+    if (index === -1) {
+      // New
+      this.extra.push(providerExtra);
+      return;
+    }
+    // Update
+    this.extra[index] = providerExtra;
   }
   getAll(): ProviderExtra[] {
     return this.extra;

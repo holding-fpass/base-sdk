@@ -13,13 +13,21 @@ export class MetadataMap {
     return this.metadatas.find((value) => value.key === key);
   }
   set(key: string, value: any) {
-    const index = this.metadatas.findIndex((value) => value.key === key);
-    if (index === -1) return; // Not found
-    this.metadatas[index] = {
+    // Prepare
+    const metadata = {
       key,
       value,
       timestamp: new Date().toISOString(),
     } as Metadata;
+    // Search
+    const index = this.metadatas.findIndex((value) => value.key === key);
+    if (index === -1) {
+      // New
+      this.metadatas.push(metadata);
+      return;
+    }
+    // Update
+    this.metadatas[index] = metadata;
   }
   getAll(): Metadata[] {
     return this.metadatas;

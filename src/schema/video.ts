@@ -5,9 +5,7 @@ export interface VideoCreatedEventData {
   language: string;
 }
 
-export class VideoCreatedEvent extends BaseEvent {
-  public data!: VideoCreatedEventData;
-}
+export class VideoCreatedEvent extends BaseEvent<VideoCreatedEventData> {}
 
 // Audio
 export interface VideoAudioCreatedEventData {
@@ -15,15 +13,11 @@ export interface VideoAudioCreatedEventData {
   resourceUrl: string;
 }
 
-export class VideoAudioCreatedEvent extends BaseEvent {
-  public data!: VideoAudioCreatedEventData;
-}
+export class VideoAudioCreatedEvent extends BaseEvent<VideoAudioCreatedEventData> {}
 
 // Subtitle
 export interface VideoSubtitleRequestedEventData {
   language: string;
 }
 
-export class VideoSubtitleRequestedEvent extends BaseEvent {
-  public data!: VideoSubtitleRequestedEventData;
-}
+export class VideoSubtitleRequestedEvent extends BaseEvent<VideoSubtitleRequestedEventData> {}

@@ -1,0 +1,10 @@
+@startuml MFA State Machine
+title MFA State Machine
+hide empty description
+
+[*] --> CREATED
+CREATED --> ACTIVE
+CREATED: Criado e disponível
+ACTIVE: Utilizado
+ACTIVE --> [*]
+@enduml
