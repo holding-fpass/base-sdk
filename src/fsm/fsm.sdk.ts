@@ -4,6 +4,7 @@ import {
   getFirestore,
   QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
+import { BypassStateAction } from "./bypass.action";
 
 export interface StateEntity<Status> {
   resourceId: string;
@@ -76,10 +77,18 @@ export abstract class StateMachine<Entity, Status> {
     if (this.instance?.status === to)
       throw new Error(`Instance cannot go to same status [to: ${to}].`);
     // Action
-    if (!this.actions.get(to) && this.actionRequired)
-      throw new Error(
-        `Instance has a required action and was not found for transition [to: ${to}].`
+    if (!this.actions.get(to)) {
+      // Action Required
+      if (this.actionRequired) {
+        throw new Error(
+          `Instance has a required action and was not found for transition [to: ${to}].`
+        );
+      }
+      // Add Bypass Action
+      this.addActions(
+        new Map<Status, StateAction<Entity, Status>>([[to, BypassStateAction]])
       );
+    }
     // Possible transition
     if (
       this.transitionMap &&
