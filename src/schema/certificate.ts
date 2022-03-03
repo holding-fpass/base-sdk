@@ -1,5 +1,3 @@
-import { BaseEvent } from "./baseEvent";
-import { Course } from "./course";
 import { Resource } from "./resource";
 import { User } from "./user";
 
