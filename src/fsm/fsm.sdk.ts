@@ -35,6 +35,7 @@ export abstract class StateMachine<Entity, Status> {
   public instance?: StateEntity<Status> & Entity;
   public docRef?: DocumentReference;
   public actions!: Map<Status, StateAction<Entity, Status>>;
+  public transitionMap: Map<Status, Status[]> | undefined;
 
   async setInstance(
     collectionPath: string,
@@ -49,6 +50,10 @@ export abstract class StateMachine<Entity, Status> {
       this.actions.set(key, action);
     });
     return this;
+  }
+
+  addTransitionMap(transtitionMap: Map<Status, Status[]>) {
+    this.transitionMap = transtitionMap;
   }
 
   async loadInstance(): Promise<StateEntity<Status> & Entity> {
@@ -74,6 +79,17 @@ export abstract class StateMachine<Entity, Status> {
       throw new Error(
         `Instance has no action found for transition [to: ${to}].`
       );
+    // Possible transition
+    if (
+      this.transitionMap &&
+      !this.transitionMap
+        .get(this.instance.status)
+        ?.find((status) => status === to)
+    ) {
+      throw new Error(
+        `Instance has no possible transition [from: ${this.instance.status} - to: ${to}].`
+      );
+    }
     // Continue
     return true;
   }
