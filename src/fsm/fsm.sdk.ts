@@ -35,6 +35,7 @@ export abstract class StateMachine<Entity, Status> {
   public instance?: StateEntity<Status> & Entity;
   public docRef?: DocumentReference;
   public actions!: Map<Status, StateAction<Entity, Status>>;
+  public actionRequired: boolean = false;
   public transitionMap: Map<Status, Status[]> | undefined;
 
   async setInstance(
@@ -75,9 +76,9 @@ export abstract class StateMachine<Entity, Status> {
     if (this.instance?.status === to)
       throw new Error(`Instance cannot go to same status [to: ${to}].`);
     // Action
-    if (!this.actions.get(to))
+    if (!this.actions.get(to) && this.actionRequired)
       throw new Error(
-        `Instance has no action found for transition [to: ${to}].`
+        `Instance has a required action and was not found for transition [to: ${to}].`
       );
     // Possible transition
     if (
