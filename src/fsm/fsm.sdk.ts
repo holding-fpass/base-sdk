@@ -187,19 +187,6 @@ export abstract class StateMachine<Entity, Status> {
     // Return
     return result;
   }
-
-  static async getDocumentRef(collectionPath: string, resourceId: string) {
-    return getFirestore().doc(`${collectionPath}/${resourceId}`);
-  }
-
-  static async getDocumentData<T>(collectionPath: string, resourceId: string) {
-    return (
-      await getFirestore()
-        .doc(`${collectionPath}/${resourceId}`)
-        .withConverter(firestoreConverter)
-        .get()
-    ).data() as unknown as T;
-  }
 }
 
 const firestoreConverter = {
