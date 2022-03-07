@@ -2,6 +2,7 @@ import { BaseEvent } from "./events";
 import { Provider, ProviderExtra } from "./provider";
 import { Resource } from "./resource";
 import { ProductType } from "./subscription";
+import { Whitelabel } from "./whitelabel";
 
 export enum TransactionType {
   PURCHASE = "purchase",
@@ -72,6 +73,7 @@ export interface Transaction extends Resource<TransactionStatus> {
   description: string;
   asset: Asset;
   //
+  whitelabel: Whitelabel;
   userFrom: string;
   userTo: string;
   //
