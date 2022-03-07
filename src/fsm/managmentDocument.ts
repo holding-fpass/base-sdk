@@ -1,4 +1,8 @@
-import { getFirestore, QueryDocumentSnapshot } from "firebase-admin/firestore";
+import {
+  FieldValue,
+  getFirestore,
+  QueryDocumentSnapshot,
+} from "firebase-admin/firestore";
 import { Whitelabel } from "schema";
 
 export interface ManagmentDocumentOptions {
@@ -30,6 +34,26 @@ export class ManagmentDocument<T> {
         .withConverter(firestoreConverter)
         .get()
     ).data() as unknown as T;
+  }
+
+  async create(data: Partial<T>) {
+    return (await this.getDocumentRef()).create(data);
+  }
+
+  async update(data: Partial<T>) {
+    return (await this.getDocumentRef()).update(data);
+  }
+
+  async touch() {
+    return (await this.getDocumentRef()).update({
+      updateAt: FieldValue.serverTimestamp,
+    });
+  }
+
+  async delete() {
+    return (await this.getDocumentRef()).update({
+      deletedAt: FieldValue.serverTimestamp,
+    });
   }
 }
 
