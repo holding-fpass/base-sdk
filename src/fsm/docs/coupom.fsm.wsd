@@ -1,0 +1,13 @@
+@startuml Coupom State Machine
+title Coupom State Machine
+hide empty description
+
+[*] --> CREATED
+CREATED --> ACTIVE
+CREATED: Criado
+ACTIVE: Disponível
+ACTIVE --> UNAVALIABLE
+UNAVALIABLE: Indisponível
+ACTIVE --> [*]
+UNAVALIABLE --> [*]
+@enduml

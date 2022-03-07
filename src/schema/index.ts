@@ -1,6 +1,7 @@
 export * from "./certificate";
 export * from "./channel";
 export * from "./contract";
+export * from "./coupom";
 export * from "./course";
 export * from "./device";
 export * from "./events";

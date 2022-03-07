@@ -17,6 +17,7 @@ export enum ContractItemScopeKey {
   PRODUCER = "producer",
   MENTOR = "mentor",
   AFFILIATE = "affiliate",
+  CUSTOM = "custom",
 }
 
 export interface ContractItem {
