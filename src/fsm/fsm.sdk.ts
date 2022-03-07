@@ -188,11 +188,11 @@ export abstract class StateMachine<Entity, Status> {
     return result;
   }
 
-  async getDocumentRef(collectionPath: string, resourceId: string) {
+  static async getDocumentRef(collectionPath: string, resourceId: string) {
     return getFirestore().doc(`${collectionPath}/${resourceId}`);
   }
 
-  async getDocumentData<T>(collectionPath: string, resourceId: string) {
+  static async getDocumentData<T>(collectionPath: string, resourceId: string) {
     return (
       await getFirestore()
         .doc(`${collectionPath}/${resourceId}`)
