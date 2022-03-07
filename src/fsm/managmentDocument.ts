@@ -16,7 +16,7 @@ export class ManagmentDocument<T> {
   private entity: string;
   private resourceId: string;
 
-  constructor(options: ManagmentDocumentOptions, entity: () => T) {
+  constructor(options: ManagmentDocumentOptions, entity: new () => T) {
     this.whitelabel = options.whitelabel;
     this.entity = entity.name.toLowerCase();
     this.resourceId = options.resourceId;
