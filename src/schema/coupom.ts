@@ -21,4 +21,6 @@ export interface Coupom extends Resource<CoupomStatus> {
     | ResourceType.CHANNEL
     | ResourceType.COURSE;
   transactions?: Partial<Transaction>[];
+  value: number;
+  percentage: number;
 }

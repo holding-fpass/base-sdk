@@ -142,6 +142,8 @@ package Finance {
     -productId
     ..Status..
     +status: \n | created \n | active \n | unavaliable
+    -value: number
+    -percentage: number
   }
 
   together {
