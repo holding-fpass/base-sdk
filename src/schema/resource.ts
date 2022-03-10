@@ -12,6 +12,7 @@ export enum ResourceType {
   CONTENT = "content",
   CONTENT_ITEM = "content.item",
   CONTRACT = "contract",
+  COUPOM = "coupom",
   COURSE = "course",
   DEVICE = "device",
   FILE = "file",
