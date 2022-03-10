@@ -1,5 +1,5 @@
-import { Transaction } from "firebase-admin/firestore";
 import { Resource, ResourceType } from "./resource";
+import { Transaction } from "./transaction";
 
 export enum CoupomStatus {
   CREATED = "created",
