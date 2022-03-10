@@ -74,21 +74,26 @@ export abstract class StateMachine<Entity, Status> {
 
   canGo(to: Status): boolean {
     // Document Referent
-    if (!this.docRef) throw new Error("Instance not set.");
+    if (!this.docRef) throw new FSMError("Instance not set.");
     // Instance
-    if (!this.instance) throw new Error("Instance not loaded.");
+    if (!this.instance) throw new FSMError("Instance not loaded.");
     // Status to
     if (!this.instance?.statusTo)
-      throw new Error("Instance value not found [statusTo]");
+      throw new FSMError("Instance value not found [statusTo]");
     // Status
     if (this.instance?.status === to)
-      throw new Error(`Instance cannot go to same status [to: ${to}].`);
+      throw new FSMError(`Instance cannot go to same status [to: ${to}].`, {
+        statusTo: to,
+      });
     // Action
     if (!this.actions.get(to)) {
       // Action Required
       if (this.actionRequired) {
-        throw new Error(
-          `Instance has a required action and was not found for transition [to: ${to}].`
+        throw new FSMError(
+          `Instance has a required action and was not found for transition [to: ${to}].`,
+          {
+            statusTo: to,
+          }
         );
       }
       // Add Bypass Action

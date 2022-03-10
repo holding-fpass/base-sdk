@@ -1,9 +1,6 @@
-export class FSMError extends Error {
-  public data: any;
-
-  constructor(message: string, data?: any) {
+import { CustomError } from "ts-custom-error";
+export class FSMError extends CustomError {
+  constructor(message: string, public data?: any) {
     super(message);
-    this.name = "FSMError";
-    this.data = data;
   }
 }
