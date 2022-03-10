@@ -7,6 +7,7 @@ import {
 import { Publisher } from "messageBroker";
 import { BaseEvent, ResourceType } from "schema";
 import { BypassStateAction } from "./bypass.action";
+import { FSMError } from "./fsm.error";
 
 export interface StateEntity<Status> {
   resourceId: string;
@@ -21,6 +22,7 @@ export interface StateActionHistory<Status> {
   timestamp: FieldValue;
   success: boolean;
   reason?: string;
+  errorData?: any;
 }
 
 export interface StateActionReturn<Status> {
@@ -101,8 +103,12 @@ export abstract class StateMachine<Entity, Status> {
         .get(this.instance.status)
         ?.find((status) => status === to)
     ) {
-      throw new Error(
-        `Instance has no possible transition [from: ${this.instance.status} - to: ${to}].`
+      throw new FSMError(
+        `Instance has no possible transition [from: ${this.instance.status} - to: ${to}].`,
+        {
+          statusFrom: this.instance.status,
+          statusTo: to,
+        }
       );
     }
     // Continue
@@ -180,6 +186,8 @@ export abstract class StateMachine<Entity, Status> {
         timestamp: FieldValue.serverTimestamp(),
         success: result,
         reason: error?.message,
+        errorData:
+          error?.name == FSMError.name ? (error as FSMError).data : undefined,
       };
     }
     // Persist
