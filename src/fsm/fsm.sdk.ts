@@ -1,15 +1,11 @@
-import {
-  DocumentReference,
-  FieldValue,
-  getFirestore,
-  QueryDocumentSnapshot,
-} from "firebase-admin/firestore";
+import { Document } from "data";
+import { FieldValue, QueryDocumentSnapshot } from "firebase-admin/firestore";
 import { Publisher } from "messageBroker";
 import { BaseEvent, ResourceType } from "schema";
 import { BypassStateAction } from "./bypass.action";
 import { FSMError } from "./fsm.error";
 
-export interface StateEntity<Status> {
+export interface StateEntity<Status = any> {
   resourceId: string;
   resourceType: ResourceType;
   status: Status;
@@ -32,26 +28,32 @@ export interface StateActionReturn<Status> {
 export interface StateAction<Entity, Status> extends Function {
   (
     to: Status,
-    instance: StateEntity<Status> & Entity,
-    docRef: DocumentReference
+    instance: Entity & StateEntity<Status>,
+    document: Document<Entity>
   ): Promise<StateActionReturn<Status>>;
 }
 
 export abstract class StateMachine<Entity, Status> {
+  //
   public sync: boolean = false;
   public publisher?: Publisher;
+  // Instance
+  public document?: Document<Entity>;
   public instance?: StateEntity<Status> & Entity;
-  public docRef?: DocumentReference;
+  // Actions
   public actions!: Map<Status, StateAction<Entity, Status>>;
   public actionRequired: boolean = false;
   public transitionMap: Map<Status, Status[]> | undefined;
 
-  async setInstance(
-    collectionPath: string,
-    resourceId: string
-  ): Promise<StateEntity<Status> & Entity> {
-    this.docRef = getFirestore().doc(`${collectionPath}/${resourceId}`);
-    return await this.loadInstance();
+  async setDocument(document: Document<Entity>) {
+    this.document = document;
+    return await this.loadDocument();
+  }
+
+  async loadDocument() {
+    this.instance =
+      (await this.document?.getData<Entity>()) as unknown as Entity &
+        StateEntity<Status>;
   }
 
   addActions(actions: Map<Status, StateAction<Entity, Status>>) {
@@ -65,16 +67,9 @@ export abstract class StateMachine<Entity, Status> {
     this.transitionMap = transtitionMap;
   }
 
-  async loadInstance(): Promise<StateEntity<Status> & Entity> {
-    this.instance = (
-      await this.docRef!.withConverter(firestoreConverter).get()
-    ).data() as unknown as StateEntity<Status> & Entity;
-    return this.instance;
-  }
-
   canGo(to: Status): boolean {
     // Document Referent
-    if (!this.docRef) throw new FSMError("Instance not set.");
+    if (!this.document) throw new FSMError("Document not set.");
     // Instance
     if (!this.instance) throw new FSMError("Instance not loaded.");
     // Status to
@@ -128,7 +123,7 @@ export abstract class StateMachine<Entity, Status> {
       const response = await this.actions.get(to)!(
         to,
         this.instance!,
-        this.docRef!
+        this.document!
       );
       if (!response) return false;
       // After
@@ -149,7 +144,7 @@ export abstract class StateMachine<Entity, Status> {
   }
 
   async goAsync(to: Status): Promise<boolean> {
-    await this.docRef?.update({
+    await this.document?.update({
       statusTo: to,
     });
     return Publisher.publish(
@@ -174,7 +169,7 @@ export abstract class StateMachine<Entity, Status> {
     };
     // Success
     if (result) {
-      const writeResult = await this.docRef?.update({
+      const writeResult = await this.document?.update({
         status: to,
         statusTo: FieldValue.delete(),
         statusAt: FieldValue.serverTimestamp(),
@@ -196,7 +191,9 @@ export abstract class StateMachine<Entity, Status> {
       };
     }
     // Persist
-    await this.docRef?.collection("_status").add(statusHistory);
+    await (await this.document?.getDocRef())!
+      .collection("_status")
+      .add(statusHistory);
     // Return
     return result;
   }

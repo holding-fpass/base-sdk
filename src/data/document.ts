@@ -39,7 +39,7 @@ export class Document<T> {
     return (await this.getDocRef()).create(data);
   }
 
-  async update(data: Partial<T>) {
+  async update(data: any) {
     return (await this.getDocRef()).update(data);
   }
 
