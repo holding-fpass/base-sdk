@@ -44,6 +44,10 @@ export enum ResourceType {
   WHITELABEL = "whitelabel",
 }
 
+export enum ResourceStatus {
+  CREATED = "created",
+}
+
 export class Resource<Status = any> {
   @ApiProperty()
   resourceId!: string;

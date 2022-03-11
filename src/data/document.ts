@@ -3,7 +3,8 @@ import {
   getFirestore,
   QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
-import { Resource, ResourceType, Whitelabel } from "schema";
+import { Resource, ResourceStatus, ResourceType, Whitelabel } from "schema";
+import { v4 as uuid } from "uuid";
 
 export interface DocumentOptions {
   whitelabel: Whitelabel;
@@ -35,11 +36,19 @@ export class Document<T> {
     ).data() as unknown as T;
   }
 
-  async create(data: Partial<T>) {
-    return (await this.getDocRef()).create(data);
+  async create(data: Partial<T & Resource>) {
+    return (await this.getDocRef()).create({
+      ...data,
+      resourceId: data?.resourceId ?? uuid(),
+      timestamp: FieldValue.serverTimestamp,
+      createdAt: FieldValue.serverTimestamp,
+      updatedAt: FieldValue.serverTimestamp,
+      status: ResourceStatus.CREATED,
+      statusAt: FieldValue.serverTimestamp,
+    });
   }
 
-  async update(data: any) {
+  async update(data: Partial<T & Resource>) {
     return (await this.getDocRef()).update(data);
   }
 
@@ -78,10 +87,11 @@ const firestoreConverter = {
     const data = snapshot.data()!;
     return {
       ...data,
+      timestamp: data?.timestamp?.toDate(),
+      createdAt: data?.timestamp?.toDate(),
       updatedAt: data?.updatedAt?.toDate(),
       deletedAt: data?.deletedAt?.toDate(),
       statusAt: data?.statusAt?.toDate(),
-      timestamp: data?.timestamp?.toDate(),
     };
   },
 };
