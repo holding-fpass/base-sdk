@@ -39,10 +39,9 @@ export interface User extends Resource<UserStatus> {
   //
   contentExtra?: Metadata[];
   // Purchases
-  subscriptions?: Subscription[];
-  courses?: Course[];
-  channels?: Channel[];
-  transactions?: Transaction[];
+  subscriptions?: Partial<Subscription>[];
+  courses?: Partial<Course>[];
+  transactions?: Partial<Transaction>[];
   // Playlist
   favoritePlaylist: Playlist;
   suggestPlaylist: Playlist;
