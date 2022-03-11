@@ -1,6 +1,6 @@
 import { Contract } from "./contract";
 import { ProviderExtra } from "./provider";
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
@@ -47,17 +47,17 @@ export enum ProductType {
 export interface Subscription extends Resource<SubscriptionStatus> {
   // Plan
   productId: string;
-  productType: ProductType;
+  productType: ResourceType.PLATFORM | ResourceType.PLAN;
   name: string;
   value: number;
   whitelabel: Whitelabel;
   contract: Contract;
   months: number;
+  // Provider
+  providerExtra: ProviderExtra[];
   //
   dateStart: string;
   dateEnd: string;
-  // Provider
-  providerExtra: ProviderExtra[];
   //
   user: User;
 }
