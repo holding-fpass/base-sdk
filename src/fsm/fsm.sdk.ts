@@ -54,6 +54,7 @@ export abstract class StateMachine<Entity, Status> {
     this.instance =
       (await this.document?.getData<Entity>()) as unknown as Entity &
         StateEntity<Status>;
+    return this.instance;
   }
 
   addActions(actions: Map<Status, StateAction<Entity, Status>>) {
