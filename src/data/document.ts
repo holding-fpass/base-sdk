@@ -29,7 +29,7 @@ export class Document<T> {
     );
   }
 
-  async getData<T>() {
+  async getData() {
     return (
       await (await this.getDocRef()).withConverter(firestoreConverter).get()
     ).data() as unknown as T;
