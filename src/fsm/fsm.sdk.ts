@@ -51,9 +51,8 @@ export abstract class StateMachine<Entity, Status> {
   }
 
   async loadDocument() {
-    this.instance =
-      (await this.document?.getData<Entity>()) as unknown as Entity &
-        StateEntity<Status>;
+    this.instance = (await this.document?.getData()) as unknown as Entity &
+      StateEntity<Status>;
     return this.instance;
   }
 
