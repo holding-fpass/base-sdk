@@ -36,31 +36,36 @@ export class Document<T> {
     ).data() as unknown as T;
   }
 
-  async create(data: Partial<T & Resource>) {
+  async create(data: any) {
     return (await this.getDocRef()).create({
       ...data,
       resourceId: data?.resourceId ?? uuid(),
-      timestamp: FieldValue.serverTimestamp,
-      createdAt: FieldValue.serverTimestamp,
-      updatedAt: FieldValue.serverTimestamp,
+      timestamp: FieldValue.serverTimestamp(),
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
       status: ResourceStatus.CREATED,
-      statusAt: FieldValue.serverTimestamp,
+      statusAt: FieldValue.serverTimestamp(),
     });
   }
 
-  async update(data: Partial<T & Resource>) {
-    return (await this.getDocRef()).update(data);
-  }
-
-  async touch() {
+  async update(data: any) {
+    let statusData = {};
+    if (data?.status) {
+      statusData = {
+        status: data?.status,
+        statusAt: FieldValue.serverTimestamp(),
+      };
+    }
     return (await this.getDocRef()).update({
-      updateAt: FieldValue.serverTimestamp,
+      ...data,
+      ...statusData,
+      updatedAt: FieldValue.serverTimestamp(),
     });
   }
 
   async delete() {
     return (await this.getDocRef()).update({
-      deletedAt: FieldValue.serverTimestamp,
+      deletedAt: FieldValue.serverTimestamp(),
     });
   }
 

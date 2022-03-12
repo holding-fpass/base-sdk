@@ -39,7 +39,7 @@ export abstract class StateMachine<Entity, Status> {
   public publisher?: Publisher;
   // Instance
   public document?: Document<Entity>;
-  public instance?: StateEntity<Status> & Entity;
+  public instance?: Entity & StateEntity<Status>;
   // Actions
   public actions!: Map<Status, StateAction<Entity, Status>>;
   public actionRequired: boolean = false;
@@ -117,7 +117,6 @@ export abstract class StateMachine<Entity, Status> {
 
   async go(to: Status): Promise<boolean> {
     // Execute
-    let error: Error | undefined = undefined;
     try {
       this.canGo(to);
       const response = await this.actions.get(to)!(
@@ -137,9 +136,8 @@ export abstract class StateMachine<Entity, Status> {
       }
       return response.result;
     } catch (err) {
-      error = err as Error;
       // After
-      return await this.updateStatus(to, this.instance!, false, error);
+      return await this.updateStatus(to, this.instance!, false, err as Error);
     }
   }
 
@@ -171,8 +169,8 @@ export abstract class StateMachine<Entity, Status> {
     if (result) {
       const writeResult = await this.document?.update({
         status: to,
-        statusTo: FieldValue.delete(),
         statusAt: FieldValue.serverTimestamp(),
+        statusTo: FieldValue.delete(),
       });
       statusHistory = {
         ...statusHistory,
