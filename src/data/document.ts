@@ -36,6 +36,10 @@ export class Document<T> {
     ).data() as unknown as T;
   }
 
+  async exists(): Promise<boolean> {
+    return (await (await this.getDocRef()).get()).exists;
+  }
+
   async create(data: any) {
     return (await this.getDocRef()).create({
       ...data,
