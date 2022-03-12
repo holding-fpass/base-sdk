@@ -5,5 +5,5 @@ export interface Playlist extends Resource {
   name: string;
   // Media
   image256x256: string;
-  courses: Course[];
+  courses: Partial<Course>[];
 }

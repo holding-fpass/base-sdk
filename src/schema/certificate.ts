@@ -21,7 +21,7 @@ export enum CertificateType {
 export interface Certificate extends Resource<CertificateStatus> {
   type: CertificateType;
   productId: string;
-  user: User;
+  user: Partial<User>;
   // Media
   image1000x1000: string;
 }

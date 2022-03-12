@@ -1,7 +1,9 @@
 import { BaseEvent } from "./events";
+import { Metadata } from "./metadata";
 import { Provider, ProviderExtra } from "./provider";
 import { Resource } from "./resource";
 import { ProductType } from "./subscription";
+import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
 export enum TransactionType {
@@ -74,10 +76,10 @@ export interface Transaction extends Resource<TransactionStatus> {
   asset: Asset;
   //
   whitelabel: Whitelabel;
-  userFrom: string;
-  userTo: string;
+  userFrom: Partial<User>;
+  userTo: Partial<User>;
   //
-  parent?: Transaction;
+  parent?: Partial<Transaction>;
   // Provider
   provider: Provider;
   providerExtra: ProviderExtra[];
@@ -85,6 +87,7 @@ export interface Transaction extends Resource<TransactionStatus> {
   productId: string;
   productType: ProductType;
   productDescription: string;
+  productExtra: Metadata[];
   //
   value: number;
   dryRun: boolean;

@@ -30,5 +30,5 @@ export interface Response {
   //
   reactions: Response[];
   //
-  user: User;
+  user: Partial<User>;
 }

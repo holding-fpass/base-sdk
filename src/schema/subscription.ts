@@ -59,5 +59,5 @@ export interface Subscription extends Resource<SubscriptionStatus> {
   dateStart: string;
   dateEnd: string;
   //
-  user: User;
+  user: Partial<User>;
 }
