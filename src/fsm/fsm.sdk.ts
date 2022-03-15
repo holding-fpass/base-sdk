@@ -15,7 +15,7 @@ export interface StateEntity<Status = any> {
 export interface StateActionHistory<Status> {
   statusFrom: Status;
   statusTo: Status;
-  timestamp: FieldValue;
+  timestamp: FieldValue | string;
   success: boolean;
   reason?: string;
   errorData?: any;
