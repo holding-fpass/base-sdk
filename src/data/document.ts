@@ -3,8 +3,8 @@ import {
   getFirestore,
   QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
-import { Resource, ResourceStatus, ResourceType, Whitelabel } from "../schema";
 import { v4 as uuid } from "uuid";
+import { Resource, ResourceStatus, ResourceType, Whitelabel } from "../schema";
 
 export interface DocumentOptions {
   whitelabel: Whitelabel;

@@ -1,5 +1,4 @@
 import { Certificate } from "./certificate";
-import { Channel } from "./channel";
 import { Course } from "./course";
 import { Device } from "./device";
 import { Metadata } from "./metadata";

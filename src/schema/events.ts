@@ -1,5 +1,5 @@
-import { ResourceType } from "./resource";
 import { v4 as uuidv4 } from "uuid";
+import { ResourceType } from "./resource";
 
 export enum EventType {
   // GenericEventCreated = "generic.created",
