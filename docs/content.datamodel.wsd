@@ -219,6 +219,7 @@ package Contents {
     +video1920x1080
     -items: ContentItem[]
     ..Provider..
+    +provider: Provider
     -providerExtra: ProviderExtra[]
     ..Dates..
     -dateStart: Date
