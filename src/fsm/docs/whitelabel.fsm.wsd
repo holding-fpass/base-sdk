@@ -1,5 +1,5 @@
-@startuml User State Machine
-title User State Machine
+@startuml Whitelabel State Machine
+title Whitelabel State Machine
 hide empty description
 
 [*] --> CREATED

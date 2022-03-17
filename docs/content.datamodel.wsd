@@ -203,9 +203,17 @@ package Contents {
     ..Assessments..
     +evaluationForm: Form
     +contents: Content[]
+    +modules: Module[]
     +comments: Response[]
     ..Calc..
     {abstract} #open: boolean
+  }
+
+  class Module {
+    +name
+    +description
+    ..Media..
+    image256x256
   }
 
   class Content {
@@ -217,6 +225,8 @@ package Contents {
     +image144x80
     +image1440x720
     +video1920x1080
+    ..Group..
+    -module: Module
     -items: ContentItem[]
     ..Provider..
     +provider: Provider
@@ -244,6 +254,8 @@ package Contents {
 
   Course -right-* Content
   Course *-down- Playlist
+  Course -d-* Module
+  Module -u-* Content
   Content -down-* ContentItem
 
 }
@@ -261,23 +273,33 @@ package Assessment {
     class Question {
       +name
       -description
+      ..
+      -responseOptions: ResponseOption[]
+    }
+
+    class ResponseOption {
+      +value
       ..Media..
       -image600x400
     }
 
     class Response {
       +question: Question
-      ..
+      ..Product..
+      +productType: \n | course \n | content
+      +productId
+      ..Data..
       +value
-      ..
+      +text
       -reactions: Response[]
-      ..
+      ..User..
       +user: User
     }
   }
 
   Form -l-* Question
   Question -l-* Response
+  Question -d-* ResponseOption
 
   together {
     class Certificate {
