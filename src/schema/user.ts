@@ -25,6 +25,7 @@ export interface User extends Resource<UserStatus> {
   name?: string;
   taxId?: string;
   phone?: string;
+  externalId?: string;
   providerExtra?: ProviderExtra[];
   // Media
   image128x128?: string;

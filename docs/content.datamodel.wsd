@@ -30,6 +30,7 @@ package Identity {
     +name
     -taxId
     -phone
+    -externalId
     -providerExtra: ProviderExtra[]
     +status: created | active
     ..Media..
