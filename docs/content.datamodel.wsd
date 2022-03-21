@@ -87,6 +87,7 @@ package Finance {
     +whitelabel: Whitelabel
     +userFrom: User
     +userTo: User
+    -approvals: Signature[]
     ..
     -parent: Transaction
     .. Provider ..
