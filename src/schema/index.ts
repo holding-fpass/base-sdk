@@ -14,6 +14,7 @@ export * from "./playlist";
 export * from "./provider";
 export * from "./resource";
 export * from "./scope";
+export * from "./signature";
 export * from "./subscription";
 export * from "./transaction";
 export * from "./user";
