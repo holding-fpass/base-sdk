@@ -1,3 +1,4 @@
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { v4 as uuidv4 } from "uuid";
 import { ResourceType } from "./resource";
 
@@ -48,17 +49,27 @@ export interface BaseEventOptions {
   whitelabel?: string;
 }
 export class BaseEvent<Data = any> {
+  @ApiProperty()
   public eventId: string = uuidv4();
+  @ApiProperty()
   public eventDate: string = new Date().toISOString();
-
+  @ApiProperty()
   public eventType: EventType | string;
+  @ApiPropertyOptional()
   public resourceId?: string;
+  @ApiPropertyOptional()
   public resourceType?: ResourceType | string;
+  @ApiPropertyOptional()
   public parentId?: string;
+  @ApiPropertyOptional()
   public parentType?: ResourceType | string;
+  @ApiPropertyOptional()
   public data?: Data;
+  @ApiPropertyOptional()
   public ownerId?: string;
+  @ApiPropertyOptional()
   public ownerExternalId?: string;
+  @ApiPropertyOptional()
   public whitelabel?: string;
 
   constructor(options: BaseEventOptions) {
