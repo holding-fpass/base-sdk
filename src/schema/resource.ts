@@ -26,6 +26,7 @@ export enum ResourceType {
   PLAN = "plan",
   PLATFORM = "platform",
   PLAYLIST = "playlist",
+  SIGNATURE = "signature",
   STAGE = "stage",
   STAGE_CALENDAR_GROUP = "stage.calendar.group",
   STAGE_CALENDAR_ITEM = "stage.calendar.item",
