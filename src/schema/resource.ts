@@ -1,4 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { Signature } from "./signature";
 
 export enum ResourceType {
   APIKEY = "apikey",
@@ -71,6 +72,9 @@ export class Resource<Status = any> {
   statusAt?: string;
   @ApiPropertyOptional()
   statusTo?: Status;
+  // Approval
+  @ApiPropertyOptional()
+  approvals?: Signature[];
 }
 
 export class DisplayResource extends Resource {

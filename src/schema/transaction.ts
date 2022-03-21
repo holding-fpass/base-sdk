@@ -2,7 +2,6 @@ import { BaseEvent } from "./events";
 import { Metadata } from "./metadata";
 import { Provider, ProviderExtra } from "./provider";
 import { Resource } from "./resource";
-import { Signature } from "./signature";
 import { ProductType } from "./subscription";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
@@ -75,7 +74,6 @@ export interface Transaction extends Resource<TransactionStatus> {
   whitelabel: Whitelabel;
   userFrom: Partial<User>;
   userTo: Partial<User>;
-  approvals?: Signature[];
   //
   parent?: Partial<Transaction>;
   // Provider
