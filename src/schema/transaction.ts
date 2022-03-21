@@ -36,10 +36,9 @@ export const TransactionStatusTransitionMap = new Map<
   [
     TransactionStatus.CREATED,
     [
+      TransactionStatus.APPROVED,
       TransactionStatus.CANCELED,
       TransactionStatus.DELETED,
-      TransactionStatus.APPROVED,
-      TransactionStatus.FAILED,
     ],
   ],
   [
