@@ -11,7 +11,7 @@ export enum Provider {
   COGNA = "cogna",
 }
 
-export interface ProviderExtra extends Metadata {
+export interface ProviderExtra<T = string> extends Metadata<T> {
   provider: Provider;
 }
 

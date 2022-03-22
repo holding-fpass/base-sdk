@@ -1,5 +1,5 @@
-export interface Metadata {
-  key: string;
+export interface Metadata<T = string> {
+  key: T;
   value: any;
   timestamp: string;
 }
@@ -9,8 +9,8 @@ export class MetadataMap {
   constructor(metadatas: Metadata[]) {
     this.metadatas = metadatas;
   }
-  get(key: string) {
-    return this.metadatas.find((value) => value.key === key);
+  get<T = string>(key: string) {
+    return this.metadatas.find((value) => value.key === key) as unknown as T;
   }
   set(key: string, value: any) {
     // Prepare
