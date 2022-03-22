@@ -4,21 +4,21 @@ export interface Metadata<T = string> {
   timestamp: string;
 }
 
-export class MetadataMap {
-  private metadatas: Metadata[] = [];
-  constructor(metadatas: Metadata[]) {
+export class MetadataMap<T = string> {
+  private metadatas: Metadata<T>[] = [];
+  constructor(metadatas: Metadata<T>[]) {
     this.metadatas = metadatas;
   }
-  get<T = string>(key: string) {
+  get(key: T) {
     return this.metadatas.find((value) => value.key === key) as unknown as T;
   }
-  set(key: string, value: any) {
+  set(key: T, value: any) {
     // Prepare
     const metadata = {
       key,
       value,
       timestamp: new Date().toISOString(),
-    } as Metadata;
+    } as Metadata<T>;
     // Search
     const index = this.metadatas.findIndex((value) => value.key === key);
     if (index === -1) {
@@ -29,7 +29,7 @@ export class MetadataMap {
     // Update
     this.metadatas[index] = metadata;
   }
-  getAll(): Metadata[] {
+  getAll(): Metadata<T>[] {
     return this.metadatas;
   }
 }
