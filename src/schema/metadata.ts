@@ -6,8 +6,8 @@ export interface Metadata<T = string> {
 
 export class MetadataMap<T = string> {
   private metadatas: Metadata<T>[] = [];
-  constructor(metadatas: Metadata<T>[]) {
-    this.metadatas = metadatas;
+  constructor(metadatas?: Metadata<T>[]) {
+    this.metadatas = metadatas ?? [];
   }
   get(key: T) {
     return this.metadatas.find((value) => value.key === key) as unknown as T;

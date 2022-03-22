@@ -15,26 +15,26 @@ export interface ProviderExtra<T = string> extends Metadata<T> {
   provider: Provider;
 }
 
-export class ProviderExtraMap {
+export class ProviderExtraMap<T> {
   private provider: Provider;
-  private extra: ProviderExtra[] = [];
-  constructor(provider: Provider, extra: ProviderExtra[]) {
+  private extra: ProviderExtra<T>[] = [];
+  constructor(provider: Provider, extra?: ProviderExtra<T>[]) {
     this.provider = provider;
-    this.extra = extra;
+    this.extra = extra ?? [];
   }
-  get(key: string) {
+  get(key: T) {
     return this.extra.find(
       (value) => value.provider == this.provider && value.key === key
     );
   }
-  set(key: string, value: any) {
+  set(key: T, value: any) {
     // Prepare
     const providerExtra = {
       provider: this.provider,
       key,
       value,
       timestamp: new Date().toISOString(),
-    } as ProviderExtra;
+    } as ProviderExtra<T>;
     // Search
     const index = this.extra.findIndex(
       (value) => value.provider == this.provider && value.key === key
@@ -47,7 +47,7 @@ export class ProviderExtraMap {
     // Update
     this.extra[index] = providerExtra;
   }
-  getAll(): ProviderExtra[] {
+  getAll(): ProviderExtra<T>[] {
     return this.extra;
   }
 }
