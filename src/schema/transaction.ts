@@ -88,6 +88,11 @@ export interface Transaction extends Resource<TransactionStatus> {
   dryRun?: boolean;
 }
 
+export type TransactionProviderExtraKey =
+  | "userEmail"
+  | "userTaxId"
+  | "coupon"
+  | "ftokens";
 export interface TransactionProduct {
   productId: string;
   productType: ProductType;
