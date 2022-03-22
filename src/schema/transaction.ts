@@ -78,7 +78,7 @@ export interface Transaction extends Resource<TransactionStatus> {
   parent?: Partial<Transaction>;
   // Provider
   provider: Provider;
-  providerExtra: ProviderExtra[];
+  providerExtra?: ProviderExtra[];
   //
   productId: string;
   productType: ProductType;
