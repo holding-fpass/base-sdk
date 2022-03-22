@@ -81,13 +81,17 @@ export interface Transaction extends Resource<TransactionStatus> {
   provider: Provider;
   providerExtra?: ProviderExtra[];
   //
-  productId: string;
-  productType: ProductType;
-  productDescription: string;
+  product?: TransactionProduct;
   productExtra?: Metadata[];
   //
   value: number;
   dryRun?: boolean;
+}
+
+export interface TransactionProduct {
+  productId: string;
+  productType: ProductType;
+  productDescription: string;
 }
 
 export interface TransactionEvent extends BaseEvent {
