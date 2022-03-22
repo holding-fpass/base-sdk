@@ -83,10 +83,10 @@ export interface Transaction extends Resource<TransactionStatus> {
   productId: string;
   productType: ProductType;
   productDescription: string;
-  productExtra: Metadata[];
+  productExtra?: Metadata[];
   //
   value: number;
-  dryRun: boolean;
+  dryRun?: boolean;
 }
 
 export interface TransactionEvent extends BaseEvent {
