@@ -1,9 +1,9 @@
+import { FSMError } from "../error";
 import { FieldValue, QueryDocumentSnapshot } from "firebase-admin/firestore";
 import { Document } from "../data";
 import { Publisher } from "../messageBroker";
 import { BaseEvent, ResourceType } from "../schema";
 import { BypassStateAction } from "./bypass.action";
-import { FSMError } from "./fsm.error";
 
 export interface StateEntity<Status = any> {
   resourceId: string;
