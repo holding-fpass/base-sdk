@@ -11,6 +11,9 @@ export class FSMError extends CustomError implements IError {
     super(message);
   }
   publish() {
+    Sentry.configureScope((scope) => {
+      scope.setExtra("extra", this?.data);
+    });
     Sentry.captureException(this, {
       level: Sentry.Severity.Warning,
     });

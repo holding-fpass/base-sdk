@@ -8,6 +8,9 @@ export class HTTPError extends CustomError implements IError {
     super(message);
   }
   publish() {
+    Sentry.configureScope((scope) => {
+      scope.setExtra("extra", this?.data);
+    });
     Sentry.captureException(this, {
       level:
         HttpExceptionSentryLevelMap.get(this.code) || Sentry.Severity.Error,
