@@ -3,7 +3,11 @@ import * as Sentry from "@sentry/node";
 import { IError } from "./error.interfaces";
 
 export class FSMError extends CustomError implements IError {
-  constructor(message: string, public data?: any) {
+  constructor(
+    public message: string,
+    public code: number = 0,
+    public data?: any
+  ) {
     super(message);
   }
   publish() {

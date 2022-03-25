@@ -4,7 +4,7 @@ import { HttpExceptionSentryLevelMap } from "./error.maps";
 import { IError } from "./error.interfaces";
 
 export class HTTPError extends CustomError implements IError {
-  constructor(message: string, public code: number, public data?: any) {
+  constructor(message: string, public code: number = 500, public data?: any) {
     super(message);
   }
   publish() {
