@@ -77,7 +77,7 @@ export abstract class StateMachine<Entity, Status> {
       throw new FSMError("Instance value not found [statusTo]");
     // Status
     if (this.instance?.status === to)
-      throw new FSMError(`Instance cannot go to same status [to: ${to}].`, {
+      throw new FSMError(`Instance cannot go to same status [to: ${to}].`, 0, {
         statusTo: to,
       });
     // Action
@@ -86,6 +86,7 @@ export abstract class StateMachine<Entity, Status> {
       if (this.actionRequired) {
         throw new FSMError(
           `Instance has a required action and was not found for transition [to: ${to}].`,
+          0,
           {
             statusTo: to,
           }
@@ -105,6 +106,7 @@ export abstract class StateMachine<Entity, Status> {
     ) {
       throw new FSMError(
         `Instance has no possible transition [from: ${this.instance.status} - to: ${to}].`,
+        0,
         {
           statusFrom: this.instance.status,
           statusTo: to,
