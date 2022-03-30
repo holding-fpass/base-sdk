@@ -27,6 +27,7 @@ export enum ResourceType {
   PLAN = "plan",
   PLATFORM = "platform",
   PLAYLIST = "playlist",
+  QUESTION = "question",
   RESPONSE = "response",
   SIGNATURE = "signature",
   STAGE = "stage",

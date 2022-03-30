@@ -1,7 +1,8 @@
 import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
-export class Question {
+export class Question extends Resource {
+  resourceType = ResourceType.QUESTION;
   name!: string;
   description?: string;
   // Media

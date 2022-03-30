@@ -17,7 +17,8 @@ export * from "./scope";
 export * from "./signature";
 export * from "./subscription";
 export * from "./transaction";
-export * from "./transition.maps";
 export * from "./user";
 export * from "./video";
 export * from "./whitelabel";
+// After all
+export * from "./transition.maps";
