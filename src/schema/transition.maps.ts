@@ -11,7 +11,7 @@ import {
   Subscription,
   Transaction,
   User,
-} from "schema";
+} from "../schema";
 
 export const ResourceStatusTransitionMap = new Map<
   ResourceType,
