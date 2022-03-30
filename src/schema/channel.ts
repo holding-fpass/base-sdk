@@ -1,5 +1,5 @@
 import { Playlist } from "./playlist";
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum ChannelStatus {
@@ -17,12 +17,14 @@ export const ChannelStatusTransitionMap = new Map<
   [ChannelStatus.ACTIVE, [ChannelStatus.PUBLISHED, ChannelStatus.RESTRICTED]],
 ]);
 
-export interface Channel extends Resource<ChannelStatus> {
-  name: string;
-  slug: string;
-  whitelabel: Whitelabel;
+export class Channel extends Resource<ChannelStatus> {
+  resourceType = ResourceType.CHANNEL;
+  transitionMap = ChannelStatusTransitionMap;
+  name!: string;
+  slug!: string;
+  whitelabel!: Whitelabel;
   // Media
-  image256x256: string;
-  //
-  playlists: Playlist[];
+  image256x256!: string;
+  // Related
+  playlists!: Partial<Playlist>[];
 }

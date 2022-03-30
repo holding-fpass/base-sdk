@@ -17,6 +17,7 @@ export enum ResourceType {
   COURSE = "course",
   DEVICE = "device",
   FILE = "file",
+  FORM = "form",
   IMMERSION = "immersion",
   INTERACTION = "interaction",
   JWT = "jwt",
@@ -27,6 +28,7 @@ export enum ResourceType {
   PLAN = "plan",
   PLATFORM = "platform",
   PLAYLIST = "playlist",
+  RESPONSE = "response",
   SIGNATURE = "signature",
   STAGE = "stage",
   STAGE_CALENDAR_GROUP = "stage.calendar.group",
@@ -72,6 +74,8 @@ export class Resource<Status = any> {
   statusAt?: string;
   @ApiPropertyOptional()
   statusTo?: Status;
+  @ApiPropertyOptional()
+  transitionMap?: Map<Status, Status[]>;
   // Approval
   @ApiPropertyOptional()
   approvals?: Signature[];

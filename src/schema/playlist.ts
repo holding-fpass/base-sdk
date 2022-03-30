@@ -1,9 +1,10 @@
 import { Course } from "./course";
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 
-export interface Playlist extends Resource {
-  name: string;
+export class Playlist extends Resource {
+  resourceType = ResourceType.PLAYLIST;
+  name!: string;
   // Media
-  image256x256: string;
-  courses: Partial<Course>[];
+  image256x256?: string;
+  courses?: Partial<Course>[];
 }

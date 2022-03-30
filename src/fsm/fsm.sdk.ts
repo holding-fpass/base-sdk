@@ -81,7 +81,7 @@ export abstract class StateMachine<Entity, Status> {
         statusTo: to,
       });
     // Action
-    if (!this.actions.get(to)) {
+    if (!this.actions.has(to)) {
       // Action Required
       if (this.actionRequired) {
         throw new FSMError(

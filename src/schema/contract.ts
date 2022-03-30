@@ -1,4 +1,4 @@
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum ContractStatus {
@@ -30,8 +30,10 @@ export interface ContractItem {
   children?: ContractItem[];
 }
 
-export interface Contract extends Resource<ContractStatus> {
-  name: string;
-  whitelabel: Whitelabel;
-  items: ContractItem[];
+export class Contract extends Resource<ContractStatus> {
+  resourceType = ResourceType.CONTRACT;
+  transitionMap = ContractStatusTransitionMap;
+  name!: string;
+  whitelabel!: Whitelabel;
+  items!: ContractItem[];
 }

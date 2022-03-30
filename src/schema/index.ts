@@ -1,7 +1,7 @@
 export * from "./certificate";
 export * from "./channel";
 export * from "./contract";
-export * from "./coupom";
+export * from "./coupon";
 export * from "./course";
 export * from "./device";
 export * from "./events";
@@ -17,6 +17,7 @@ export * from "./scope";
 export * from "./signature";
 export * from "./subscription";
 export * from "./transaction";
+export * from "./transition.maps";
 export * from "./user";
 export * from "./video";
 export * from "./whitelabel";

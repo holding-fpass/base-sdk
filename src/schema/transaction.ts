@@ -1,7 +1,7 @@
 import { BaseEvent } from "./events";
 import { Metadata } from "./metadata";
 import { Provider, ProviderExtra } from "./provider";
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { ProductType } from "./subscription";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
@@ -66,25 +66,27 @@ export enum Asset {
   BRL = "brl",
   FTOKEN = "ftoken",
 }
-export interface Transaction extends Resource<TransactionStatus> {
-  type: TransactionType;
-  description: string;
-  asset: Asset;
+export class Transaction extends Resource<TransactionStatus> {
+  resourceType = ResourceType.TRANSACTION;
+  transitionMap = TransactionStatusTransitionMap;
+  type!: TransactionType;
+  description!: string;
+  asset!: Asset;
+  value!: number;
   //
-  whitelabel: Whitelabel;
-  userFrom: Partial<User>;
-  userTo: Partial<User>;
+  whitelabel!: Whitelabel;
+  userFrom!: Partial<User>;
+  userTo!: Partial<User>;
   //
   parent?: Partial<Transaction>;
   // Provider
-  externalId?: string;
-  provider: Provider;
+  provider!: Provider;
   providerExtra?: ProviderExtra[];
+  externalId?: string;
   //
   product?: TransactionProduct;
   productExtra?: Metadata[];
   //
-  value: number;
   dryRun?: boolean;
 }
 

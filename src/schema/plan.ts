@@ -16,15 +16,17 @@ export const PlanStatusTransitionMap = new Map<PlanStatus, PlanStatus[]>([
   [PlanStatus.ACTIVE, [PlanStatus.DELETED]],
 ]);
 
-export interface Plan extends Resource<PlanStatus> {
+export class Plan extends Resource<PlanStatus> {
+  resourceType = ResourceType.PLAN;
+  transitionMap = PlanStatusTransitionMap;
   // Plan
-  productId: string;
-  productType: ResourceType.PLATFORM | ResourceType.PLAN;
-  name: string;
-  value: number;
-  whitelabel: Whitelabel;
-  contract: Contract;
-  months: number;
+  productId!: string;
+  productType!: ResourceType.PLATFORM | ResourceType.PLAN;
+  name!: string;
+  value!: number;
+  whitelabel!: Whitelabel;
+  contract?: Partial<Contract>;
+  months!: 1 | 12;
   // Provider
-  providerExtra: ProviderExtra[];
+  providerExtra?: ProviderExtra[];
 }

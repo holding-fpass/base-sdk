@@ -1,5 +1,5 @@
 import { BaseEvent } from "./events";
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export enum CertificateStatus {
@@ -18,12 +18,14 @@ export enum CertificateType {
   COURSE = "course",
   STAGE = "stage",
 }
-export interface Certificate extends Resource<CertificateStatus> {
-  type: CertificateType;
-  productId: string;
-  user: Partial<User>;
+export class Certificate extends Resource<CertificateStatus> {
+  resourceType = ResourceType.CERTIFICATE;
+  transitionMap = CertificateStatusTransitionMap;
+  type!: CertificateType;
+  productId!: string;
+  user!: Partial<User>;
   // Media
-  image1000x1000: string;
+  image1000x1000!: string;
 }
 
 export interface CertificateEventData {

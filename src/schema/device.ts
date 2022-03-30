@@ -1,8 +1,9 @@
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
-export interface Device extends Resource {
-  name: string;
-  fingerprint: string;
+export class Device extends Resource {
+  resourceType = ResourceType.DEVICE;
+  name!: string;
+  fingerprint!: string;
   user?: Partial<User>;
 }

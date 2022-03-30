@@ -1,4 +1,4 @@
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export interface Question {
@@ -17,18 +17,19 @@ export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
   [FormStatus.CREATED, [FormStatus.ACTIVE]],
 ]);
 
-export interface Form extends Resource<FormStatus> {
-  name: string;
+export class Form extends Resource<FormStatus> {
+  resourceType = ResourceType.FORM;
+  transitionMap = FormStatusTransitionMap;
+  name!: string;
   description?: string;
-  questions: Question[];
+  questions?: Partial<Question>[];
 }
 
-export interface Response {
-  question: Question;
-  //
-  value: string;
-  //
-  reactions: Response[];
-  //
-  user: Partial<User>;
+export class Response extends Resource {
+  resourceType = ResourceType.RESPONSE;
+  question!: Partial<Question>;
+  value!: string;
+  // Related
+  user!: Partial<User>;
+  reactions?: Partial<Response>[];
 }

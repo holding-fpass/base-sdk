@@ -44,20 +44,22 @@ export enum ProductType {
   COURSE_PURCHASE = "course.purchase",
 }
 
-export interface Subscription extends Resource<SubscriptionStatus> {
+export class Subscription extends Resource<SubscriptionStatus> {
+  resourceType = ResourceType.SUBSCRIPTION;
+  transitionMap = SubscriptionStatusTransitionMap;
   // Plan
-  productId: string;
-  productType: ResourceType.PLATFORM | ResourceType.PLAN;
-  name: string;
-  value: number;
-  whitelabel: Whitelabel;
-  contract: Contract;
-  months: number;
+  productId!: string;
+  productType!: ResourceType.PLATFORM | ResourceType.PLAN;
+  name!: string;
+  value!: number;
+  whitelabel!: Whitelabel;
+  contract?: Partial<Contract>;
+  months!: 1 | 12;
   // Provider
-  providerExtra: ProviderExtra[];
-  //
-  dateStart: string;
-  dateEnd: string;
-  //
-  user: Partial<User>;
+  providerExtra?: ProviderExtra[];
+  // Dates
+  dateStart!: string;
+  dateEnd?: string;
+  // Related
+  user!: Partial<User>;
 }

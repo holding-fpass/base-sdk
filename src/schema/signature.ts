@@ -1,7 +1,8 @@
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
-export interface Signature extends Resource {
-  user: Partial<User>;
-  footprint: string;
+export class Signature extends Resource {
+  resourceType = ResourceType.SIGNATURE;
+  user!: Partial<User>;
+  footprint!: string;
 }
