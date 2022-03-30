@@ -1,5 +1,8 @@
 import { PubSub, v1 } from "@google-cloud/pubsub";
-import { MessageBrokerClient, MessageBrokerHandleFunction } from "../../..";
+import {
+  MessageBrokerClient,
+  MessageBrokerHandleFunction,
+} from "../../../messageBroker";
 import { EventType, BaseEvent } from "../../../schema";
 
 export class PubSubClient implements MessageBrokerClient {
