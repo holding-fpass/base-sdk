@@ -1,8 +1,8 @@
 import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
-export interface Question {
-  name: string;
+export class Question {
+  name!: string;
   description?: string;
   // Media
   image600x400?: string;
