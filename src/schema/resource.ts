@@ -1,4 +1,3 @@
-import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { Signature } from "./signature";
 
 export enum ResourceType {
@@ -54,58 +53,34 @@ export enum ResourceStatus {
 }
 
 export class Resource<Status = any> {
-  @ApiProperty()
   resourceId!: string;
-  @ApiProperty()
   resourceType?: ResourceType;
   // Dates
-  @ApiPropertyOptional()
   timestamp?: string;
-  @ApiPropertyOptional()
   createdAt?: string;
-  @ApiPropertyOptional()
   updatedAt?: string;
-  @ApiPropertyOptional()
   deletedAt?: string;
   // Status
-  @ApiPropertyOptional()
   status?: Status;
-  @ApiPropertyOptional()
   statusAt?: string;
-  @ApiPropertyOptional()
   statusTo?: Status;
-  @ApiPropertyOptional()
   transitionMap?: Map<Status, Status[]>;
   // Approval
-  @ApiPropertyOptional()
   approvals?: Signature[];
 }
 
 export class DisplayResource extends Resource {
-  @ApiPropertyOptional()
   h1?: string;
-  @ApiPropertyOptional()
   h2?: string;
-  @ApiPropertyOptional()
   h3?: string;
-  @ApiPropertyOptional()
   h4?: string;
-  @ApiPropertyOptional()
   percentage?: number;
-  @ApiPropertyOptional()
   imageUrl?: string;
-  @ApiPropertyOptional()
   open?: boolean;
-  @ApiPropertyOptional({ type: DisplayResource, isArray: true })
   children?: DisplayResource[];
-  @ApiPropertyOptional({ type: DisplayResource })
   parent?: DisplayResource;
-  @ApiPropertyOptional()
   parentId?: string;
-  @ApiPropertyOptional()
   parentType?: ResourceType;
-  @ApiPropertyOptional()
   dateStart?: string;
-  @ApiPropertyOptional()
   dateEnd?: string;
 }
