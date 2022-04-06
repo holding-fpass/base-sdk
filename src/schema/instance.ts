@@ -17,11 +17,10 @@ export const InstaceStatusTransitionMap = new Map<InstaceStatus, InstaceStatus[]
 ]);
 
 export class Instance extends Resource<InstaceStatus> {
-  resourceType = ResourceType.INSTACE;
+  resourceType = ResourceType.INSTANCE;
   transitionMap = InstaceStatusTransitionMap;
   // 
-  name!: string;
-  whitelabel!: Whitelabel;
+  name!: Whitelabel;
   description!: string;
   // Media
   image256x256?: string;
