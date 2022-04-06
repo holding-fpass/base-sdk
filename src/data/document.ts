@@ -13,7 +13,7 @@ export interface DocumentOptions {
 }
 
 export class Document<T> {
-  private readonly basepath = "managment";
+  private readonly basepath = "management";
   private whitelabel: Whitelabel;
   private resourceId: string | undefined;
   private resourceType: ResourceType;
