@@ -54,9 +54,7 @@ export class Content extends Resource<ContentStatus> {
 
 // Course
 
-export interface Tag {
-  name: string;
-}
+export type Tag = string;
 
 export enum CourseStatus {
   CREATED = "created",
@@ -72,8 +70,9 @@ export class Course extends Resource<CourseStatus> {
   resourceType = ResourceType.COURSE;
   transitionMap = CourseStatusTransitionMap;
   name!: string;
-  slug?: string;
   description?: string;
+  slug?: string;
+  exclusive?: boolean;
   //
   whitelabel!: Whitelabel;
   tags?: Tag[];

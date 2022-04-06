@@ -16,6 +16,8 @@ export const PlanStatusTransitionMap = new Map<PlanStatus, PlanStatus[]>([
   [PlanStatus.ACTIVE, [PlanStatus.DELETED]],
 ]);
 
+export type MonthFrequency = 1 | 2 | 3 | 6 | 12; // In months
+
 export class Plan extends Resource<PlanStatus> {
   resourceType = ResourceType.PLAN;
   transitionMap = PlanStatusTransitionMap;
@@ -26,7 +28,7 @@ export class Plan extends Resource<PlanStatus> {
   value!: number;
   whitelabel!: Whitelabel;
   contract?: Partial<Contract>;
-  months!: 1 | 12;
+  months!: MonthFrequency;
   // Provider
   providerExtra?: ProviderExtra[];
 }

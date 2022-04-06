@@ -2,14 +2,18 @@
 
 package Identity {
 
-  class Whitelabel {
+  class Instance {
     +name
-    +slug
+    +whitelabel: Whitelabel
     +description
-    +urls: Metadata[]
     ..Media..
     -image256x256
     -image400x400
+    ..
+    +urls: Metadata[]
+    +theme: Metadata[]
+    +features: Metadata[]
+    -providerExtra: ProviderExtra[]
   }
 
   class Channel {
@@ -23,7 +27,7 @@ package Identity {
     +playlists: Playlist[]
   }
 
-  Whitelabel -down-* Channel
+  Instance -down-* Channel
 
   class User {
     +email
@@ -184,6 +188,7 @@ package Contents {
     +name
     +slug
     +description
+    -exclusive
     ..
     +whitelabel
     +tags

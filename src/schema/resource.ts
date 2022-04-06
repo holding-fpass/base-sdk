@@ -18,6 +18,7 @@ export enum ResourceType {
   FILE = "file",
   FORM = "form",
   IMMERSION = "immersion",
+  INSTACE = "instace",
   INTERACTION = "interaction",
   JWT = "jwt",
   LESSON = "lesson",

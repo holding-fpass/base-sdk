@@ -1,4 +1,5 @@
 import { Contract } from "./contract";
+import { MonthFrequency } from "./plan";
 import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
@@ -54,7 +55,7 @@ export class Subscription extends Resource<SubscriptionStatus> {
   value!: number;
   whitelabel!: Whitelabel;
   contract?: Partial<Contract>;
-  months!: 1 | 12;
+  months!: MonthFrequency;
   // Provider
   providerExtra?: ProviderExtra[];
   // Dates
