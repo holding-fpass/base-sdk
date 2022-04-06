@@ -24,7 +24,7 @@ export const ResourceStatusTransitionMap = new Map<
   [ResourceType.COUPON, new Coupon().transitionMap],
   [ResourceType.COURSE, new Course().transitionMap],
   [ResourceType.FORM, new Form().transitionMap],
-  [ResourceType.INSTACE, new Instance().transitionMap],
+  [ResourceType.INSTANCE, new Instance().transitionMap],
   [ResourceType.MFA, new Mfa().transitionMap],
   [ResourceType.PLAN, new Plan().transitionMap],
   [ResourceType.SUBSCRIPTION, new Subscription().transitionMap],
