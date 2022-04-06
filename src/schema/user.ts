@@ -14,12 +14,15 @@ import { Response } from "./form";
 export enum UserStatus {
   CREATED = "created",
   ACTIVE = "active",
+  UNAVALIABLE = "unavaliable",
   DELETED = "deleted",
 }
 
 export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.CREATED, [UserStatus.ACTIVE, UserStatus.DELETED]],
-  [UserStatus.ACTIVE, [UserStatus.DELETED]],
+  [UserStatus.ACTIVE, [UserStatus.DELETED, UserStatus.UNAVALIABLE]],
+  [UserStatus.UNAVALIABLE, [UserStatus.DELETED]],
+  [UserStatus.DELETED, [UserStatus.CREATED]],
 ]);
 export class User extends Resource<UserStatus> {
   resourceType = ResourceType.USER;
