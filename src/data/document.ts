@@ -25,15 +25,20 @@ export class Document<T> {
   }
 
   async getDocRef() {
-    return getFirestore().doc(
-      `${this.basepath}/${this.whitelabel}/${this.resourceType}/${this?.resourceId}`
-    );
+    const path = `${this.basepath}/${this.whitelabel}/${this.resourceType}/${this?.resourceId}`;
+    console.log('::getDocRef.path::');
+    console.log(path);
+    return getFirestore().doc(path);
   }
 
   async getData() {
-    return (
-      await (await this.getDocRef()).withConverter(firestoreConverter).get()
-    ).data() as unknown as T;
+    const docRef = await this.getDocRef();
+    const data = (
+      await docRef.withConverter(firestoreConverter).get()
+    ).data();
+    console.log('::getData.data::');
+    console.log(data);
+    return data as unknown as T;
   }
 
   async exists(): Promise<boolean> {
@@ -94,6 +99,8 @@ const firestoreConverter = {
   },
   fromFirestore(snapshot: QueryDocumentSnapshot) {
     const data = snapshot.data()!;
+    console.log('::fromFirestore.data::');
+    console.log(data);
     return {
       ...data,
       timestamp: data?.timestamp?.toDate(),
