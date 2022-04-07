@@ -7,14 +7,14 @@ export enum CouponStatus {
   UNAVALIABLE = "unavaliable",
 }
 
-export const CouponTransitionMap = new Map<CouponStatus, CouponStatus[]>([
+export const CouponStatusTransitionMap = new Map<CouponStatus, CouponStatus[]>([
   [CouponStatus.CREATED, [CouponStatus.ACTIVE]],
   [CouponStatus.ACTIVE, [CouponStatus.UNAVALIABLE]],
 ]);
 
 export class Coupon extends Resource<CouponStatus> {
   resourceType = ResourceType.COUPON;
-  transitionMap = CouponTransitionMap;
+  transitionMap = CouponStatusTransitionMap;
   code!: string;
   quantity?: number;
   productId?: string;
