@@ -4,12 +4,16 @@ import { Whitelabel } from "./whitelabel";
 export enum ContractStatus {
   CREATED = "created",
   ACTIVE = "active",
+  UNAVALIABLE = "unavaliable",
 }
 
 export const ContractStatusTransitionMap = new Map<
   ContractStatus,
   ContractStatus[]
->([[ContractStatus.CREATED, [ContractStatus.ACTIVE]]]);
+>([
+  [ContractStatus.CREATED, [ContractStatus.ACTIVE]],
+  [ContractStatus.ACTIVE, [ContractStatus.UNAVALIABLE]],
+]);
 
 export enum ContractItemScopeKey {
   DOMAIN = "domain",

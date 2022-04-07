@@ -6,5 +6,7 @@ hide empty description
 CREATED --> ACTIVE
 CREATED: Criado
 ACTIVE: Disponível e imutável
-ACTIVE --> [*]
+ACTIVE --> UNAVALIABLE
+UNAVALIABLE: Indisponível
+UNAVALIABLE --> [*]
 @enduml
