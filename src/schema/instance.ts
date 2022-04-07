@@ -3,22 +3,22 @@ import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
-export enum InstaceStatus {
+export enum InstanceStatus {
   CREATED = "created",
   PROVIDER_CREATED = "provider.created",
   ACTIVE = "active",
   DELETED = "deleted",
 }
 
-export const InstaceStatusTransitionMap = new Map<InstaceStatus, InstaceStatus[]>([
-  [InstaceStatus.CREATED, [InstaceStatus.PROVIDER_CREATED]],
-  [InstaceStatus.PROVIDER_CREATED, [InstaceStatus.ACTIVE]],
-  [InstaceStatus.ACTIVE, [InstaceStatus.DELETED]],
+export const InstanceStatusTransitionMap = new Map<InstanceStatus, InstanceStatus[]>([
+  [InstanceStatus.CREATED, [InstanceStatus.PROVIDER_CREATED]],
+  [InstanceStatus.PROVIDER_CREATED, [InstanceStatus.ACTIVE]],
+  [InstanceStatus.ACTIVE, [InstanceStatus.DELETED]],
 ]);
 
-export class Instance extends Resource<InstaceStatus> {
+export class Instance extends Resource<InstanceStatus> {
   resourceType = ResourceType.INSTANCE;
-  transitionMap = InstaceStatusTransitionMap;
+  transitionMap = InstanceStatusTransitionMap;
   // 
   name!: Whitelabel;
   description!: string;
