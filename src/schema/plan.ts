@@ -16,7 +16,13 @@ export const PlanStatusTransitionMap = new Map<PlanStatus, PlanStatus[]>([
   [PlanStatus.ACTIVE, [PlanStatus.DELETED]],
 ]);
 
-export type MonthFrequency = 1 | 2 | 3 | 6 | 12; // In months
+export enum MonthFrequency {
+  MONTHLY = 1,
+  BIMONTHLY = 2,
+  QUARTERLY = 3,
+  SEMIANNUAL = 6,
+  ANNUAL = 12,
+}; // In months
 
 export class Plan extends Resource<PlanStatus> {
   resourceType = ResourceType.PLAN;
