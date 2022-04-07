@@ -7,14 +7,17 @@ export enum ChannelStatus {
   ACTIVE = "active",
   PUBLISHED = "published",
   RESTRICTED = "restricted",
+  DELETED = "deleted",
 }
 
 export const ChannelStatusTransitionMap = new Map<
   ChannelStatus,
   ChannelStatus[]
 >([
-  [ChannelStatus.CREATED, [ChannelStatus.ACTIVE]],
+  [ChannelStatus.CREATED, [ChannelStatus.ACTIVE, ChannelStatus.DELETED]],
   [ChannelStatus.ACTIVE, [ChannelStatus.PUBLISHED, ChannelStatus.RESTRICTED]],
+  [ChannelStatus.PUBLISHED, [ChannelStatus.DELETED]],
+  [ChannelStatus.RESTRICTED, [ChannelStatus.DELETED]]
 ]);
 
 export class Channel extends Resource<ChannelStatus> {
