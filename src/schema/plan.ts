@@ -22,7 +22,7 @@ export enum MonthFrequency {
   QUARTERLY = 3,
   SEMIANNUAL = 6,
   ANNUAL = 12,
-}; // In months
+} // In months
 
 export class Plan extends Resource<PlanStatus> {
   resourceType = ResourceType.PLAN;
@@ -32,6 +32,7 @@ export class Plan extends Resource<PlanStatus> {
   productType!: ResourceType.PLATFORM | ResourceType.PLAN;
   name!: string;
   value!: number;
+  image128x128!: string;
   whitelabel!: Whitelabel;
   contract?: Partial<Contract>;
   months!: MonthFrequency;
