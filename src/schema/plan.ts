@@ -29,7 +29,7 @@ export class Plan extends Resource<PlanStatus> {
   transitionMap = PlanStatusTransitionMap;
   // Plan
   productId!: string;
-  productType!: ResourceType.PLATFORM | ResourceType.PLAN;
+  productType!: ResourceType.PLATFORM | ResourceType.CHANNEL;
   name!: string;
   value!: number;
   image128x128!: string;
