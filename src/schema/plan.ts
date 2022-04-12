@@ -31,6 +31,8 @@ export class Plan extends Resource<PlanStatus> {
   productId!: string;
   productType!: ResourceType.PLATFORM | ResourceType.CHANNEL;
   name!: string;
+  h1!: string;
+  h2!: string;
   value!: number;
   image128x128!: string;
   whitelabel!: Whitelabel;
