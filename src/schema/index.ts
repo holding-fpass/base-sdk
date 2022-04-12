@@ -7,6 +7,7 @@ export * from "./device";
 export * from "./events";
 export * from "./form";
 export * from "./instance";
+export * from "./measurement";
 export * from "./metadata";
 export * from "./mfa";
 export * from "./plan";

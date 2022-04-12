@@ -13,6 +13,7 @@ import {
   Transaction,
   User,
 } from "../schema";
+import { Measurement } from "./measurement";
 
 export const ResourceStatusTransitionMap = new Map<
   ResourceType,
@@ -26,6 +27,7 @@ export const ResourceStatusTransitionMap = new Map<
   [ResourceType.FORM, new Form().transitionMap],
   [ResourceType.INSTANCE, new Instance().transitionMap],
   [ResourceType.MFA, new Mfa().transitionMap],
+  [ResourceType.MEASUREMENT, new Measurement().transitionMap],
   [ResourceType.PLAN, new Plan().transitionMap],
   [ResourceType.SUBSCRIPTION, new Subscription().transitionMap],
   [ResourceType.TRANSACTION, new Transaction().transitionMap],
