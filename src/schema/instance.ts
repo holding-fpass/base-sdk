@@ -25,6 +25,7 @@ export class Instance extends Resource<InstanceStatus> {
   //
   name!: Whitelabel;
   description!: string;
+  fqdn!: string;
   // Media
   image256x256?: string;
   image400x400?: string;
