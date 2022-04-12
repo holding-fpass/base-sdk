@@ -10,7 +10,10 @@ export enum InstanceStatus {
   DELETED = "deleted",
 }
 
-export const InstanceStatusTransitionMap = new Map<InstanceStatus, InstanceStatus[]>([
+export const InstanceStatusTransitionMap = new Map<
+  InstanceStatus,
+  InstanceStatus[]
+>([
   [InstanceStatus.CREATED, [InstanceStatus.PROVIDER_CREATED]],
   [InstanceStatus.PROVIDER_CREATED, [InstanceStatus.ACTIVE]],
   [InstanceStatus.ACTIVE, [InstanceStatus.DELETED]],
@@ -19,7 +22,7 @@ export const InstanceStatusTransitionMap = new Map<InstanceStatus, InstanceStatu
 export class Instance extends Resource<InstanceStatus> {
   resourceType = ResourceType.INSTANCE;
   transitionMap = InstanceStatusTransitionMap;
-  // 
+  //
   name!: Whitelabel;
   description!: string;
   // Media
@@ -31,4 +34,12 @@ export class Instance extends Resource<InstanceStatus> {
   features!: Metadata[];
   // Provider
   providerExtra?: ProviderExtra[];
+}
+
+export enum InstanceFeatureFlags {
+  COUPON = "coupon",
+  CALENDAR = "calendar",
+  CERTIFICATE = "certificate",
+  LEARNING_ANALYTICS = "learning.analytics",
+  COMMUNITY = "community",
 }
