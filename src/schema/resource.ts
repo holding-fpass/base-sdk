@@ -1,4 +1,5 @@
 import { Signature } from "./signature";
+import { Whitelabel } from "./whitelabel";
 
 export enum ResourceType {
   APIKEY = "apikey",
@@ -24,6 +25,7 @@ export enum ResourceType {
   LESSON = "lesson",
   LIVE = "live",
   MFA = "mfa",
+  MEASUREMENT = "measurement",
   PAGE_VIEW = "page.view",
   PLAN = "plan",
   PLATFORM = "platform",
@@ -57,6 +59,7 @@ export enum ResourceStatus {
 export class Resource<Status = any> {
   resourceId!: string;
   resourceType?: ResourceType;
+  whitelabel?: Whitelabel;
   // Dates
   timestamp?: string;
   createdAt?: string;
