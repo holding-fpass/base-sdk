@@ -77,6 +77,10 @@ export class DisplayResource extends Resource {
   h3?: string;
   h4?: string;
   percentage?: number;
+  value?: number;
+  cta?: string;
+  ctaUrl?: string;
+  slug?: string;
   imageUrl?: string;
   open?: boolean;
   children?: DisplayResource[];
