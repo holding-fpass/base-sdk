@@ -27,7 +27,7 @@ export interface StateActionReturn<Status> {
 }
 export interface StateAction<Entity, Status> extends Function {
   (
-    to: Status,
+    fsm: StateMachine<Entity, Status>,
     instance: Entity & StateEntity<Status>,
     document: Document<Entity>
   ): Promise<StateActionReturn<Status>>;
@@ -122,7 +122,7 @@ export abstract class StateMachine<Entity, Status> {
     try {
       this.canGo(to);
       const response = await this.actions.get(to)!(
-        to,
+        this,
         this.instance!,
         this.document!
       );
@@ -143,7 +143,7 @@ export abstract class StateMachine<Entity, Status> {
     }
   }
 
-  async goAsync(to: Status): Promise<boolean> {
+  private async goAsync(to: Status): Promise<boolean> {
     await this.document?.update({
       statusTo: to,
     });
@@ -156,7 +156,7 @@ export abstract class StateMachine<Entity, Status> {
     );
   }
 
-  async updateStatus(
+  private async updateStatus(
     to: Status,
     instance: StateEntity<Status> & Entity,
     result: boolean,
