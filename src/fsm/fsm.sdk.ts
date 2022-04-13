@@ -182,13 +182,13 @@ export abstract class StateMachine<Entity, Status> {
       };
       // Fail
     } else {
+      console.error(error);
       statusHistory = {
         ...statusHistory,
         timestamp: FieldValue.serverTimestamp(),
         success: result,
         reason: error?.message,
-        errorData:
-          error?.name == FSMError.name ? (error as FSMError).data : undefined,
+        errorData: error?.name == FSMError.name ? (error as FSMError).data : "",
       };
     }
     // Persist
