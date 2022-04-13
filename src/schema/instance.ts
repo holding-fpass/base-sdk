@@ -109,6 +109,7 @@ export enum InstanceUrlSettings {
   FACEBOOK_URL = "facebook.url",
   YOUTUBE_URL = "youtube.url",
   LINKEDIN_URL = "linkedin.url",
+  TWITTER_URL = "twitter.url",
 }
 
 export enum InstanceParametersSettings {
