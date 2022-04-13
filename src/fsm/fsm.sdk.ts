@@ -19,6 +19,7 @@ export interface StateActionHistory<Status> {
   success: boolean;
   reason?: string;
   errorData?: any;
+  errorStack?: any;
 }
 
 export interface StateActionReturn<Status> {
@@ -188,7 +189,9 @@ export abstract class StateMachine<Entity, Status> {
         timestamp: FieldValue.serverTimestamp(),
         success: result,
         reason: error?.message,
-        errorData: error?.name == FSMError.name ? (error as FSMError).data : "",
+        errorData:
+          error?.name == FSMError.name ? (error as FSMError).data : "No Data",
+        errorStack: error?.stack ?? "No Stack",
       };
     }
     // Persist
