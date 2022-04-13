@@ -129,6 +129,7 @@ export abstract class StateMachine<Entity, Status> {
       if (!response) return false;
       // After
       await this.updateStatus(to, this.instance!, response.result);
+      await this.loadDocument();
       // Next
       if (!response.next) return response.result;
       if (this.sync) {
