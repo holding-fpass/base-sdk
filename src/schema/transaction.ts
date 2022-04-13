@@ -102,5 +102,5 @@ export interface TransactionProduct {
 }
 
 export interface TransactionEvent extends BaseEvent {
-  provider: Provider;
+  provider?: Provider;
 }
