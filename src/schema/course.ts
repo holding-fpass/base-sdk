@@ -52,6 +52,17 @@ export class Content extends Resource<ContentStatus> {
   items?: Partial<ContentItem>[];
 }
 
+// Module
+export class Module extends Resource {
+  resourceType = ResourceType.MODULE;
+  name!: string;
+  description?: string;
+  // Media
+  image256x256?: string;
+  // Related
+  contents?: Partial<Content>[];
+}
+
 // Course
 
 export type Tag = string;
@@ -92,5 +103,6 @@ export class Course extends Resource<CourseStatus> {
   paymentEnd?: string;
   // Related
   contents?: Partial<Content>[];
+  modules?: Partial<Module>[];
   evaluationForm?: Partial<Form>;
 }
