@@ -98,13 +98,17 @@ export enum InstanceThemeSettings {
 }
 
 export enum InstanceUrlSettings {
+  // Apps
   FLABEL_URL = "flabel.url",
   FCERTITIFICATE_URL = "certitificate.url",
   CONTENT_API = "content.api",
   FSTAGE_URL = "stage.url",
+  // About
   PRIVACYPOLICY_URL = "privacypolicy.url",
   TERMSOFUSE_URL = "termsofuse.url",
   CONTACTUS_URL = "contactus.url",
+  LANDINGPAGE_URL = "landingpage.url",
+  // Social
   INSTAGRAM_URL = "instagram.url",
   FACEBOOK_URL = "facebook.url",
   YOUTUBE_URL = "youtube.url",
