@@ -190,7 +190,9 @@ export abstract class StateMachine<Entity, Status> {
         success: result,
         reason: error?.message,
         errorData:
-          error?.name == FSMError.name ? (error as FSMError).data : "No Data",
+          error?.name == FSMError.name
+            ? (error as FSMError).data ?? "No Data"
+            : "No Data",
         errorStack: error?.stack ?? "No Stack",
       };
     }
