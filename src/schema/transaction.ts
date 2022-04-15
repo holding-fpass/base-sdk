@@ -58,7 +58,10 @@ export const TransactionStatusTransitionMap = new Map<
   ],
   [TransactionStatus.PROVIDER_PAYMENT_PAID, [TransactionStatus.PAID]],
   [TransactionStatus.PROVIDER_PAYMENT_FAILED, [TransactionStatus.FAILED]],
-  [TransactionStatus.FAILED, [TransactionStatus.DELETED]],
+  [
+    TransactionStatus.FAILED,
+    [TransactionStatus.CREATED, TransactionStatus.DELETED],
+  ],
   [TransactionStatus.CANCELED, [TransactionStatus.DELETED]],
 ]);
 
