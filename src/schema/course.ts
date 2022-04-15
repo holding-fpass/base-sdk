@@ -49,6 +49,8 @@ export class Content extends Resource<ContentStatus> {
   image1440x720?: string;
   video1920x1080?: string;
   // Related
+  parentId!: string;
+  parentType!: ResourceType;
   items?: Partial<ContentItem>[];
 }
 
