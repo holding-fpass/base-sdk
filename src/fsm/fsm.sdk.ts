@@ -129,7 +129,13 @@ export abstract class StateMachine<Entity, Status> {
       );
       if (!response) return false;
       // After
-      await this.updateStatus(to, this.instance!, response.result);
+      await this.updateStatus(
+        to,
+        this.instance!,
+        response.result,
+        undefined,
+        response?.next
+      );
       await this.loadDocument();
       // Next
       if (!response.next) return response.result;
@@ -162,7 +168,8 @@ export abstract class StateMachine<Entity, Status> {
     to: Status,
     instance: StateEntity<Status> & Entity,
     result: boolean,
-    error?: Error
+    error?: Error,
+    next?: Status
   ): Promise<boolean> {
     // Prepare
     let statusHistory: Partial<StateActionHistory<Status>> = {
@@ -174,7 +181,7 @@ export abstract class StateMachine<Entity, Status> {
       const writeResult = await this.document?.update({
         status: to,
         statusAt: FieldValue.serverTimestamp(),
-        statusTo: FieldValue.delete(),
+        statusTo: next ?? FieldValue.delete(),
       });
       statusHistory = {
         ...statusHistory,

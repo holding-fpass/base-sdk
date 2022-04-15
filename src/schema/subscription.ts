@@ -50,7 +50,7 @@ export class Subscription extends Resource<SubscriptionStatus> {
   transitionMap = SubscriptionStatusTransitionMap;
   // Plan
   productId!: string;
-  productType!: ResourceType.PLATFORM | ResourceType.PLAN;
+  productType!: ResourceType.PLATFORM | ResourceType.CHANNEL;
   name!: string;
   value!: number;
   whitelabel!: Whitelabel;
