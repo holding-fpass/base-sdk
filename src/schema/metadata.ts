@@ -5,12 +5,12 @@ export interface Metadata<T = string> {
 }
 
 export class MetadataMap<T = string> {
-  private metadatas: Metadata<T>[] = [];
-  constructor(metadatas?: Metadata<T>[]) {
-    this.metadatas = metadatas ?? [];
+  private readonly metadata: Metadata<T>[] = [];
+  constructor(metadata?: Metadata<T>[]) {
+    this.metadata = metadata ?? [];
   }
-  get(key: T) {
-    return this.metadatas.find((value) => value.key === key) as unknown as T;
+  get(key: T): Metadata<T> | undefined {
+    return this.metadata.find((value) => value.key === key);
   }
   set(key: T, value: any) {
     // Prepare
@@ -20,16 +20,16 @@ export class MetadataMap<T = string> {
       timestamp: new Date().toISOString(),
     } as Metadata<T>;
     // Search
-    const index = this.metadatas.findIndex((value) => value.key === key);
+    const index = this.metadata.findIndex((value) => value.key === key);
     if (index === -1) {
       // New
-      this.metadatas.push(metadata);
+      this.metadata.push(metadata);
       return;
     }
     // Update
-    this.metadatas[index] = metadata;
+    this.metadata[index] = metadata;
   }
   getAll(): Metadata<T>[] {
-    return this.metadatas;
+    return this.metadata;
   }
 }
