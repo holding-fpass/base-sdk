@@ -85,7 +85,7 @@ export class Course extends Resource<CourseStatus> {
   name!: string;
   description?: string;
   slug?: string;
-  exclusive?: boolean;
+  premium?: boolean;
   //
   whitelabel!: Whitelabel;
   tags?: Tag[];
