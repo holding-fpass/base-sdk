@@ -1,9 +1,13 @@
 import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
+import { User } from "./user";
 
 export enum MeasurementType {
+  PAGEVIEW_LAST = "pageview.last",
   PAGEVIEW_SUM = "pageview.sum",
+  PAGEVIEW_MAX = "pageview.max",
   RESPONSE_AVG = "response.avg",
+  RESPONSE_COUNT = "response.count",
 }
 
 export enum MeasurementStatus {
@@ -30,6 +34,7 @@ export class Measurement extends Resource<MeasurementStatus> {
   //
   type!: MeasurementType;
   reference!: Partial<Resource>;
+  user!: Partial<User>;
   value!: string;
   // Provider
   providerExtra?: ProviderExtra[];
