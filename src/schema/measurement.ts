@@ -3,7 +3,6 @@ import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export enum MeasurementType {
-  PAGEVIEW_LAST = "pageview.last",
   PAGEVIEW_SUM = "pageview.sum",
   PAGEVIEW_MAX = "pageview.max",
   RESPONSE_AVG = "response.avg",
