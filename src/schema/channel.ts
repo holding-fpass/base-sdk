@@ -25,6 +25,7 @@ export class Channel extends Resource<ChannelStatus> {
   transitionMap = ChannelStatusTransitionMap;
   name!: string;
   slug!: string;
+  primaryColor!: string;
   whitelabel!: Whitelabel;
   // Media
   image256x256!: string;
