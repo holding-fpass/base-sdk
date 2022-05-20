@@ -25,6 +25,7 @@ export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.DELETED, [UserStatus.CREATED]],
 ]);
 export class User extends Resource<UserStatus> {
+  id!: string;
   resourceType = ResourceType.USER;
   transitionMap = UserStatusTransitionMap;
   email!: string;
@@ -32,6 +33,7 @@ export class User extends Resource<UserStatus> {
   taxId?: string;
   phone?: string;
   externalId?: string;
+  token?: string;
   providerExtra?: ProviderExtra[];
   // Media
   image128x128?: string;
