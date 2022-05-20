@@ -18,6 +18,15 @@ export enum UserStatus {
   DELETED = "deleted",
 }
 
+export enum UserPermission {
+  STUDENT = 'student',
+  TEACHER = 'teacher',
+  ADMINISTRATOR = 'administrator',
+  PRODUCER = 'producer',
+  MACHINE = 'machine',
+  SYSTEM = 'system',
+}
+
 export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.CREATED, [UserStatus.ACTIVE, UserStatus.DELETED]],
   [UserStatus.ACTIVE, [UserStatus.DELETED, UserStatus.UNAVALIABLE]],
@@ -34,6 +43,7 @@ export class User extends Resource<UserStatus> {
   phone?: string;
   externalId?: string;
   token?: string;
+  permission!: UserPermission;
   providerExtra?: ProviderExtra[];
   // Media
   image128x128?: string;
