@@ -27,6 +27,7 @@ export class Instance extends Resource<InstanceStatus> {
   description!: string;
   fqdn!: string;
   // Media
+  image32x32?: string;
   image256x256?: string;
   image400x400?: string;
   //
