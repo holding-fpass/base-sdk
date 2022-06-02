@@ -36,6 +36,7 @@ export class Instance extends Resource<InstanceStatus> {
   theme!: Metadata[];
   features!: Metadata[];
   parameters!: Metadata[];
+  urlRedirect?: string;
   // Provider
   providerExtra?: ProviderExtra[];
 }
