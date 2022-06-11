@@ -1,5 +1,7 @@
-import { BaseEvent, Publisher, PubSubClient, Subscriber } from "./src";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
+
+import { Publisher, PubSubClient, Subscriber } from "./src/messageBroker";
+import { BaseEvent } from "./src/schema";
 
 // Define Client
 const client = new PubSubClient("app-test", "project-id");
@@ -9,16 +11,12 @@ const subscriber = new Subscriber(client);
 // Configure Subscription
 subscriber.setup(["generic"]);
 // Listen
-Subscriber.listen(
-  "generic",
-  (message, second) => {
+Subscriber.listen("generic", (message) => {
     console.log(message);
     message.ack();
-  },
-  (error) => {
+  }, (error) => {
     console.log(error);
-  }
-);
+});
 
 // Prepare Publisher
 const publisher = new Publisher(client);
@@ -27,7 +25,7 @@ publisher.setup(["generic"]);
 // Create Event
 const event = new BaseEvent({
   eventType: "generic",
-  resourceId: uuidv4(),
+  resourceId: uuid(),
   resourceType: "dataevent",
 });
 // Publish
