@@ -26,6 +26,7 @@ export class Instance extends Resource<InstanceStatus> {
   name!: Whitelabel;
   description!: string;
   fqdn!: string;
+  displayName!: string;
   // Media
   image32x32?: string; // Favicon
   image42x42?: string; // Mobile logo
