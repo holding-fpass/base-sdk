@@ -66,13 +66,17 @@ export class Module extends Resource {
 }
 
 // Course
-
 export type Tag = string;
 
 export enum CourseStatus {
   CREATED = "created",
   ACTIVE = "active",
   UNAVALIABLE = "unavaliable",
+}
+
+interface FAQ {
+  title: string;
+  response: string;
 }
 
 export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
@@ -86,12 +90,13 @@ export class Course extends Resource<CourseStatus> {
   description?: string;
   slug?: string;
   premium?: boolean;
-  //
+  // General
   whitelabel!: Whitelabel;
   tags?: Tag[];
   producer?: User;
   channel?: Channel;
   contract?: Partial<Contract>;
+  faq?: FAQ[];
   // Media
   image400x512?: string;
   image1272x203?: string;
