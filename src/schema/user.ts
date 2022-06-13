@@ -47,6 +47,7 @@ export class User extends Resource<UserStatus> {
   providerExtra?: ProviderExtra[];
   // Media
   imageUrl?: string;
+  image128x128?: string;
   // Permissions
   whitelabel!: Whitelabel;
   devices?: Partial<Device>[];
