@@ -119,6 +119,8 @@ export enum InstanceUrlSettings {
   LINKEDIN_URL = "linkedin.url",
   TWITTER_URL = "twitter.url",
   WHATSAPP_URL = "whatsapp.url",
+  SUPPORT_EMAIL = 'support.email',
+  BANNER_EMAIL_URL = 'banner.email.url',
 }
 
 export enum InstanceParametersSettings {
