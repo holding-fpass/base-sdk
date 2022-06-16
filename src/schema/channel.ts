@@ -28,7 +28,10 @@ export class Channel extends Resource<ChannelStatus> {
   primaryColor!: string;
   whitelabel!: Whitelabel;
   // Media
-  image256x256!: string;
+  image1400x720!: string;
+  image160x40!: string;
+  image416x224!: string;
+  image64x64!: string;
   // Related
   playlists!: Partial<Playlist>[];
 }
