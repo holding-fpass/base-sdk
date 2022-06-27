@@ -42,6 +42,11 @@ export class Instance extends Resource<InstanceStatus> {
   providerExtra?: ProviderExtra[];
 }
 
+export enum InstanceApplications {
+  FLABEL = 'flabel',
+  FMANAGEMENT = 'fmanagement'
+}
+
 export enum InstanceFeatureFlags {
   COUPON = "coupon",
   CALENDAR = "calendar",
