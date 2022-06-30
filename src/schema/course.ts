@@ -79,6 +79,18 @@ interface FAQ {
   response: string;
 }
 
+interface Knowledge {
+  image80x80?: string;
+  title?: string;
+  subtitle?: string;
+  itens?: KnowledgeItens[];
+}
+
+interface KnowledgeItens {
+  id: string;
+  description?: string;
+}
+
 export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
   [CourseStatus.CREATED, [CourseStatus.ACTIVE]],
   [CourseStatus.ACTIVE, [CourseStatus.UNAVALIABLE]],
@@ -93,6 +105,7 @@ export class Course extends Resource<CourseStatus> {
   // General
   whitelabel!: Whitelabel;
   tags?: Tag[];
+  knowledge?: Knowledge[];
   producer?: User;
   channel?: Channel;
   contract?: Partial<Contract>;
