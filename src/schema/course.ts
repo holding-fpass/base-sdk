@@ -83,7 +83,7 @@ interface Knowledge {
   image80x80?: string;
   title?: string;
   subtitle?: string;
-  itens?: KnowledgeItens[];
+  items?: KnowledgeItens[];
 }
 
 interface KnowledgeItens {
