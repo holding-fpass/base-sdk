@@ -7,4 +7,5 @@ export enum Whitelabel {
   PFIZER = "pfizer",
   FRSTFALCONI = "frstfalconi",
   OUROMODERNO = "ouromoderno",
+  INSTITUTOCINEMA = 'institutocinema'
 }
