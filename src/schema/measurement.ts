@@ -36,6 +36,7 @@ export interface MeasurementFilterValues {
 export interface MeasurementFilter {
   userId: string;
   resourceId: string;
+  resourceType: ResourceType;
   resourceValues: MeasurementFilterValues[];
   dateStart: string;
   dateEnd: string;
