@@ -10,6 +10,13 @@ export enum InstanceStatus {
   DELETED = "deleted",
 }
 
+interface EmailConfig {
+  image436x168?: string;
+  senderEmail?: string;
+  senderName?: string;
+  supportEmail?: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -38,6 +45,8 @@ export class Instance extends Resource<InstanceStatus> {
   features!: Metadata[];
   parameters!: Metadata[];
   urlRedirect?: string;
+  // Email
+  emailConfig?: EmailConfig;
   // Provider
   providerExtra?: ProviderExtra[];
 }
