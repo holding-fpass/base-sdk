@@ -1,3 +1,4 @@
+import { WhereFilterOp } from "firebase-admin/firestore";
 import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
@@ -27,12 +28,25 @@ export const MeasurementStatusTransitionMap = new Map<
   [MeasurementStatus.ACTIVE, [MeasurementStatus.DELETED]],
 ]);
 
+export interface MeasurementFilterValues {
+  key: string;
+  operator: WhereFilterOp;
+  value: string;
+}
+export interface MeasurementFilter {
+  userId: string;
+  resourceId: string;
+  resourceValues: MeasurementFilterValues[];
+  dateStart: string;
+  dateEnd: string;
+}
 export class Measurement extends Resource<MeasurementStatus> {
   resourceType = ResourceType.MEASUREMENT;
   transitionMap = MeasurementStatusTransitionMap;
   //
   type!: MeasurementType;
-  reference!: Partial<Resource>;
+  filter!: Partial<MeasurementFilter>;
+  filterHash!: string;
   user!: Partial<User>;
   value!: string;
   // Provider
