@@ -28,18 +28,18 @@ export const MeasurementStatusTransitionMap = new Map<
   [MeasurementStatus.ACTIVE, [MeasurementStatus.DELETED]],
 ]);
 
-export interface MeasurementFilterValues {
-  key: string;
-  operator: WhereFilterOp;
-  value: string;
+export class MeasurementFilterValues {
+  key!: string;
+  operator!: WhereFilterOp;
+  value!: string;
 }
-export interface MeasurementFilter {
-  userId: string;
-  resourceId: string;
-  resourceType: ResourceType;
-  resourceValues: MeasurementFilterValues[];
-  dateStart: string;
-  dateEnd: string;
+export class MeasurementFilter {
+  userId!: string;
+  resourceId!: string;
+  resourceType!: ResourceType;
+  resourceValues!: MeasurementFilterValues[];
+  dateStart!: string;
+  dateEnd!: string;
 }
 export class Measurement extends Resource<MeasurementStatus> {
   resourceType = ResourceType.MEASUREMENT;
