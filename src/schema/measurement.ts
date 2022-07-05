@@ -4,8 +4,15 @@ import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export enum MeasurementType {
-  PAGEVIEW_SUM = "pageview.sum",
-  PAGEVIEW_MAX = "pageview.max",
+  // Page
+  PAGE_VIEW = "pageview",
+  // Course
+  COURSE_CLICK = "course.click",
+  COURSE_OPEN = "course.open",
+  // Content
+  CONTENT_CLICK = "content.open",
+  CONTENT_VIEW = "content.view",
+  // Response
   RESPONSE_AVG = "response.avg",
   RESPONSE_COUNT = "response.count",
 }
