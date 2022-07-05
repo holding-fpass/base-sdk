@@ -51,5 +51,6 @@ export class Measurement extends Resource<MeasurementStatus> {
   user!: Partial<User>;
   value!: string;
   // Provider
+  force!: boolean;
   providerExtra?: ProviderExtra[];
 }
