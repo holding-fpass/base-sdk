@@ -1,5 +1,5 @@
 import { User } from "@sentry/node";
-import { Resource } from "./resource";
+import { Resource, ResourceType } from "./resource";
 
 export enum InteractionType {
   CLICK = "click",
@@ -7,6 +7,8 @@ export enum InteractionType {
   VIEW = "view",
 }
 export class Interaction extends Resource {
+  productId!: string;
+  productType!: ResourceType;
   type!: InteractionType;
   user!: Pick<User, "id">;
   // Media
