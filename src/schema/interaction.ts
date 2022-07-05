@@ -7,6 +7,7 @@ export enum InteractionType {
   VIEW = "view",
 }
 export class Interaction extends Resource {
+  type!: InteractionType;
   user!: Pick<User, "id">;
   // Media
   mediaStart?: number;
