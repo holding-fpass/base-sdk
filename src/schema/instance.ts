@@ -17,6 +17,13 @@ interface EmailConfig {
   supportEmail?: string;
 }
 
+interface FpayProvider {
+  dryRunKey?: string;
+  marketplaceId?: string;
+  privateApiKey?: string;
+  sellerId?: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -48,6 +55,7 @@ export class Instance extends Resource<InstanceStatus> {
   // Email
   emailConfig?: EmailConfig;
   // Provider
+  __fpay?: FpayProvider;
   providerExtra?: ProviderExtra[];
 }
 
