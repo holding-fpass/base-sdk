@@ -83,9 +83,6 @@ export class PubSubClient implements MessageBrokerClient {
     if (!event.whitelabel) event.whitelabel = this.whitelabel ?? "default";
     const eventBuffer = Buffer.from(JSON.stringify(event));
     this.pubsub.topic(topic ?? event.eventType).publish(eventBuffer);
-    this.pubsub
-      .topic(`${EventType.WEBHOOK_OUTGOING_CREATED}--${event.whitelabel}`)
-      .publish(eventBuffer);
     // const formattedTopic = this.publisher.projectTopicPath(
     //   this.projectId,
     //   topic ?? event.eventType
