@@ -71,6 +71,7 @@ export enum InstanceFeatureFlags {
   LEARNING_ANALYTICS = "learning.analytics",
   COMMUNITY = "community",
   WIZARD = "wizard",
+  PREMIUM = "premium",
   CHANNEL = "channel",
 }
 
