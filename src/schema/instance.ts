@@ -72,6 +72,7 @@ export enum InstanceFeatureFlags {
   COMMUNITY = "community",
   WIZARD = "wizard",
   PREMIUM = "premium",
+  CHANNEL = "channel",
 }
 
 export enum InstanceThemeSettings {
