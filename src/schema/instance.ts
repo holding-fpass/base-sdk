@@ -17,6 +17,13 @@ interface EmailConfig {
   supportEmail?: string;
 }
 
+interface FpayProvider {
+  dryRunKey?: string;
+  marketplaceId?: string;
+  privateApiKey?: string;
+  sellerId?: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -48,6 +55,7 @@ export class Instance extends Resource<InstanceStatus> {
   // Email
   emailConfig?: EmailConfig;
   // Provider
+  __fpay?: FpayProvider;
   providerExtra?: ProviderExtra[];
 }
 
@@ -63,56 +71,40 @@ export enum InstanceFeatureFlags {
   LEARNING_ANALYTICS = "learning.analytics",
   COMMUNITY = "community",
   WIZARD = "wizard",
+  PREMIUM = "premium",
+  CHANNEL = "channel",
 }
 
 export enum InstanceThemeSettings {
-  LOGO = "logo",
-  LOGOMARK = "logomark",
-  FAVICON = "favicon",
-  LOGODARK = "logoDark",
-  MOBILELOGO = "mobileLogo",
+  // Base colors
   PRIMARY = "primary",
   SECONDARY = "secondary",
   TERTIARY = "tertiary",
-  GRADIENT = "gradient",
-  ERROR = "error",
-  WARNING = "warning",
-  INFO = "info",
-  SUCCESS = "success",
-  WHITE = "white",
-  GREY = "grey",
-  GRAY = "gray",
-  LIGHTGRAY = "lightGray",
-  LIGHTGRAY2 = "lightGray2",
-  DARKGRAY = "darkGray",
+  // Background colors
   BACKGROUND = "background",
   LIGHTBACKGROUND = "lightBackground",
   DARKBACKGROUND = "darkBackground",
-  THIRD = "third",
-  SPOTLIGHT = "spotlight",
-  DARK = "dark",
-  DARK2 = "dark2",
-  DARK3 = "dark3",
-  DARKGREY = "darkGrey",
-  LIGHTGREY = "lightGrey",
-  LIGHTGREY2 = "lightGrey2",
-  BLACK = "black",
+  // General colors
+  GRAY = "gray",
+  DARKGRAY = "darkGray",
+  LIGHTGRAY = "lightGray",
+  LIGHTGRAY2 = "lightGray2",
+  WHITE = "white",
   WHITE2 = "white2",
-  YELLOW = "yellow",
-  DARKERBLUR = "darkerBlur",
+  BLACK = "black",
+  SUCCESS = "success",
+  WARNING = "warning",
+  ERROR = "error",
+  INFO = "info",
+  SPOTLIGHT = "spotlight",
+  // Blurs
   BLUR = "blur",
-  CARDCAROUSEL = "cardCarousel",
-  CARDCAROUSELBEFORE = "cardCarouselBefore",
-  GRADIENTHEADER = "gradientHeader",
-  OVERLAYDARKERBLUR = "overlayDarkerBlur",
-  OVERLAYLIGHTBLUR = "overlayLightBlur",
-  GREENCHECK = "greenCheck",
-  REDCHECK = "redCheck",
-  SHADOWOVERLAYTOP = "shadowOverlayTop",
-  SHADOWOVERLAYBOTTOM = "shadowOverlayBottom",
-  SHADOWOVERLAYMOBILEBOTTOM = "shadowOverlayMobileBottom",
-  OVERLAYDARKERMIDDLEBLUR = "overlayDarkerMiddleBlur",
-  OVERLAYGRADIENTPLAYER = "overlayGradientPlayer",
+  // Gradients
+  GRADIENT = "gradient",
+  HEADERGRADIENT = "headerGradient",
+  BOTTOMOVERLAYSHADOW = "bottomOverlayShadow",
+  BOTTOMOVERLAYSHADOWMOBILE = "bottomOverlayShadowMobile",
+  MIDDLEOVERLAYSHADOW = "middleOverlayShadow",
 }
 
 export enum InstanceUrlSettings {
