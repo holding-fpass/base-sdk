@@ -1,6 +1,7 @@
 export enum Whitelabel {
   DEFAULT = "default",
   FPASS = "fpass",
+  FPASS_NEXT = "fpass-next",
   ALELO = "alelo",
   DFLIX = "dflix",
   HINODE = "hinode",
