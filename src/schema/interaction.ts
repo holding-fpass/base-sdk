@@ -12,6 +12,12 @@ export enum InteractionType {
   VIEW = "view",
 }
 
+export enum InteractionDataforwardType {
+  WEBHOOK = "webhook",
+  MONGODB = "mongodb",
+  GCP_CLOUD_STORAGE = "gcp-cloud-storage",
+}
+
 export const InteractionStatusTransitionMap = new Map<
   InteractionStatus,
   InteractionStatus[]
