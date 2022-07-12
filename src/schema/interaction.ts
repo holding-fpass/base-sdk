@@ -18,6 +18,12 @@ export enum InteractionDataforwardType {
   GCP_CLOUD_STORAGE = "gcp-cloud-storage",
 }
 
+export interface InteractionDataforward {
+  result: boolean;
+  reason: string;
+  deliveredAt: string;
+}
+
 export const InteractionStatusTransitionMap = new Map<
   InteractionStatus,
   InteractionStatus[]
@@ -32,4 +38,6 @@ export class Interaction extends Resource<InteractionStatus> {
   mediaStart?: number;
   mediaEnd?: number;
   mediaCount?: number;
+  // Dataforward
+  __dataforward?: InteractionDataforward;
 }
