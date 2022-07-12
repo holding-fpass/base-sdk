@@ -2,8 +2,8 @@ import { User } from "@sentry/node";
 import { Resource, ResourceType } from "./resource";
 
 export enum InteractionStatus {
-  CREATED = 'created',
-  ACTIVE = 'active'
+  CREATED = "created",
+  ACTIVE = "active",
 }
 
 export enum InteractionType {
@@ -12,9 +12,10 @@ export enum InteractionType {
   VIEW = "view",
 }
 
-export const InteractionStatusTransitionMap = new Map<InteractionStatus, InteractionStatus[]>(
-  [InteractionStatus.CREATED, [InteractionStatus.ACTIVE]]
-);
+export const InteractionStatusTransitionMap = new Map<
+  InteractionStatus,
+  InteractionStatus[]
+>([[InteractionStatus.CREATED, [InteractionStatus.ACTIVE]]]);
 
 export class Interaction extends Resource<InteractionStatus> {
   productId!: string;
