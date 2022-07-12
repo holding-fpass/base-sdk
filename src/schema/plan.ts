@@ -38,6 +38,7 @@ export class Plan extends Resource<PlanStatus> {
   whitelabel!: Whitelabel;
   contract?: Partial<Contract>;
   months!: MonthFrequency;
+  accessCode?: string;
   // Provider
   providerExtra?: ProviderExtra[];
 }
