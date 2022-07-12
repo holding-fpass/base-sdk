@@ -1,0 +1,22 @@
+@startuml Overview
+
+package FPASSCore {
+  component ContentAPI
+  database Firestore
+  component FLabel
+  component FManagment
+  queue QueueEntityUpdate
+  component TransactionFSMCF
+  component UserFSMCF
+}
+
+FLabel --> ContentAPI
+FManagment --> ContentAPI
+ContentAPI --> QueueEntityUpdate
+ContentAPI --> Firestore
+QueueEntityUpdate --> TransactionFSMCF
+QueueEntityUpdate --> UserFSMCF
+
+TransactionFSMCF -up-> Firestore
+
+@enduml
