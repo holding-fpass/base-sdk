@@ -26,8 +26,18 @@ export const PubSubEvent = <EventType = BaseEvent<any>>(
   return event;
 };
 
-export const PubSubResponse = (payload: unknown, context: unknown) => {
+class GCFResponseMessage {
+  message: string = "Ok";
+  status: number = 200;
+  error?: string;
+}
+
+export const GCFResponse = (
+  payload: unknown,
+  context: unknown,
+  message: GCFResponseMessage
+) => {
   if (process.env.NODE_ENV === "development") {
-    return (context as Response).send({ message: "Ok" });
+    return (context as Response).status(message.status).send(message);
   }
 };
