@@ -14,7 +14,7 @@ export interface DocumentOptions {
 }
 
 export class Document<T> {
-  private static app: App;
+  public static app: App;
   private readonly basepath = "management";
   private whitelabel: Whitelabel;
   private resourceId: string | undefined;
