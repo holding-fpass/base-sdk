@@ -64,6 +64,11 @@ export abstract class StateMachine<Entity, Status> {
     return this;
   }
 
+  clearActions() {
+    this.actions.clear();
+    return this;
+  }
+
   addTransitionMap(transtitionMap: Map<Status, Status[]>) {
     this.transitionMap = transtitionMap;
   }
