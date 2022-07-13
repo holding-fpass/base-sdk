@@ -1,6 +1,5 @@
 import { App } from "firebase-admin/app";
 import {
-  FieldValue,
   getFirestore,
   QueryDocumentSnapshot,
   Timestamp,
@@ -99,11 +98,11 @@ const firestoreConverter = {
     const data = snapshot.data()!;
     return {
       ...data,
-      timestamp: data?.timestamp?.toDate(),
-      createdAt: data?.timestamp?.toDate(),
-      updatedAt: data?.updatedAt?.toDate(),
-      deletedAt: data?.deletedAt?.toDate(),
-      statusAt: data?.statusAt?.toDate(),
+      timestamp: (data?.timestamp as Timestamp)?.toDate(),
+      createdAt: (data?.createdAt as Timestamp)?.toDate(),
+      updatedAt: (data?.updatedAt as Timestamp)?.toDate(),
+      deletedAt: (data?.deletedAt as Timestamp)?.toDate(),
+      statusAt: (data?.statusAt as Timestamp)?.toDate(),
     };
   },
 };
