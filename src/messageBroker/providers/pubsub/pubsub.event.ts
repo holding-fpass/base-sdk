@@ -6,7 +6,7 @@ export const PubSubEvent = <EventType = BaseEvent<any>>(
   logTitle: string = "Event"
 ): EventType => {
   let event: EventType;
-  if (process.env.ENVIRONMENT === "development") {
+  if (process.env.NODE_ENV === "development") {
     event = (payload as Request).json() as unknown as EventType;
   } else {
     event =
