@@ -67,7 +67,7 @@ export class Document<T> {
     return (await this.getDocRef()).update({
       ...data,
       ...statusData,
-      // updatedAt: timestamp,
+      updatedAt: timestamp,
     });
   }
 
