@@ -59,5 +59,6 @@ export class Measurement extends Resource<MeasurementStatus> {
   value!: string;
   // Provider
   force!: boolean;
+  permanent!: boolean;
   providerExtra?: ProviderExtra[];
 }
