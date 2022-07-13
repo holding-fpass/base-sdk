@@ -1,3 +1,4 @@
+import { App } from "firebase-admin/app";
 import {
   FieldValue,
   getFirestore,
@@ -13,6 +14,7 @@ export interface DocumentOptions {
 }
 
 export class Document<T> {
+  private static app: App;
   private readonly basepath = "management";
   private whitelabel: Whitelabel;
   private resourceId: string | undefined;
@@ -25,14 +27,14 @@ export class Document<T> {
   }
 
   async getDocRef() {
-    return getFirestore().doc(`${this.basepath}/${this.whitelabel}/${this.resourceType}/${this?.resourceId}`);
+    return getFirestore(Document.app).doc(
+      `${this.basepath}/${this.whitelabel}/${this.resourceType}/${this?.resourceId}`
+    );
   }
 
   async getData() {
     const docRef = await this.getDocRef();
-    const data = (
-      await docRef.withConverter(firestoreConverter).get()
-    ).data();
+    const data = (await docRef.withConverter(firestoreConverter).get()).data();
     return data as unknown as T;
   }
 
@@ -80,7 +82,7 @@ export class Document<T> {
   }
 
   async findBy<T>(options: { field: string; value: string }) {
-    return getFirestore()
+    return getFirestore(Document.app)
       .collection(`${this.basepath}/${this.whitelabel}/${this.resourceType}`)
       .where(options.field, "==", options.value)
       .withConverter(firestoreConverter)
