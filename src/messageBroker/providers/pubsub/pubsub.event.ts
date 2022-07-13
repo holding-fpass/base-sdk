@@ -1,5 +1,6 @@
 import { PubsubMessage } from "@google-cloud/pubsub/build/src/publisher";
 import { BaseEvent } from "schema";
+import { Response } from "express";
 
 export const PubSubEvent = <EventType = BaseEvent<any>>(
   payload: unknown,
@@ -23,4 +24,10 @@ export const PubSubEvent = <EventType = BaseEvent<any>>(
     }] ResourceID: [${(event as unknown as BaseEvent).resourceId}]`
   );
   return event;
+};
+
+export const PubSubResponse = (payload: unknown, context: unknown) => {
+  if (process.env.NODE_ENV === "development") {
+    return (context as Response).send({ message: "Ok" });
+  }
 };
