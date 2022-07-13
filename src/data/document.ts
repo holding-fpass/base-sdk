@@ -43,38 +43,35 @@ export class Document<T> {
   }
 
   async create(data: any) {
-    const nowDate = new Date();
     return (await this.getDocRef()).create({
       ...data,
       resourceId: data?.resourceId ?? uuid(),
-      timestamp: nowDate,
-      createdAt: nowDate,
-      updatedAt: nowDate,
+      timestamp: FieldValue.serverTimestamp(),
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
       status: ResourceStatus.CREATED,
-      statusAt: nowDate,
+      statusAt: FieldValue.serverTimestamp(),
     });
   }
 
   async update(data: any) {
-    const nowDate = new Date();
     let statusData = {};
     if (data?.status) {
       statusData = {
         status: data?.status,
-        statusAt: nowDate,
+        statusAt: FieldValue.serverTimestamp(),
       };
     }
     return (await this.getDocRef()).update({
       ...data,
       ...statusData,
-      updatedAt: nowDate,
+      updatedAt: FieldValue.serverTimestamp(),
     });
   }
 
   async delete() {
-    const nowDate = new Date();
     return (await this.getDocRef()).update({
-      deletedAt: nowDate,
+      deletedAt: FieldValue.serverTimestamp(),
     });
   }
 
