@@ -7,7 +7,7 @@ export const PubSubEvent = <EventType = BaseEvent<any>>(
 ): EventType => {
   let event: EventType;
   if (process.env.NODE_ENV === "development") {
-    event = (payload as Request).json() as unknown as EventType;
+    event = (payload as Request).body as unknown as EventType;
   } else {
     event =
       JSON.parse(
