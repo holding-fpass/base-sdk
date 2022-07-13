@@ -3,6 +3,7 @@ import {
   FieldValue,
   getFirestore,
   QueryDocumentSnapshot,
+  Timestamp,
 } from "firebase-admin/firestore";
 import { v4 as uuid } from "uuid";
 import { Resource, ResourceStatus, ResourceType, Whitelabel } from "../schema";
@@ -46,11 +47,11 @@ export class Document<T> {
     return (await this.getDocRef()).create({
       ...data,
       resourceId: data?.resourceId ?? uuid(),
-      timestamp: FieldValue.serverTimestamp(),
-      createdAt: FieldValue.serverTimestamp(),
-      updatedAt: FieldValue.serverTimestamp(),
+      timestamp: Timestamp.now(),
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now(),
       status: ResourceStatus.CREATED,
-      statusAt: FieldValue.serverTimestamp(),
+      statusAt: Timestamp.now(),
     });
   }
 
@@ -59,19 +60,19 @@ export class Document<T> {
     if (data?.status) {
       statusData = {
         status: data?.status,
-        statusAt: FieldValue.serverTimestamp(),
+        statusAt: Timestamp.now(),
       };
     }
     return (await this.getDocRef()).update({
       ...data,
       ...statusData,
-      updatedAt: FieldValue.serverTimestamp(),
+      updatedAt: Timestamp.now(),
     });
   }
 
   async delete() {
     return (await this.getDocRef()).update({
-      deletedAt: FieldValue.serverTimestamp(),
+      deletedAt: Timestamp.now(),
     });
   }
 
