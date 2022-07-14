@@ -36,14 +36,14 @@ export interface StateAction<Entity, Status> extends Function {
 
 export abstract class StateMachine<Entity, Status> {
   //
-  public sync: boolean = false;
+  public sync: boolean = true;
   public publisher?: Publisher;
   // Instance
   public document?: Document<Entity>;
   public instance?: Entity & StateEntity<Status>;
   // Actions
   public actions!: Map<Status, StateAction<Entity, Status>>;
-  public actionRequired: boolean = false;
+  public actionRequired: boolean = true;
   public transitionMap: Map<Status, Status[]> | undefined;
 
   async setDocument(document: Document<Entity>) {
