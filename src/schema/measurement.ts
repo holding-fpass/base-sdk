@@ -1,12 +1,30 @@
+import { WhereFilterOp } from "firebase-admin/firestore";
 import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export enum MeasurementType {
-  PAGEVIEW_SUM = "pageview.sum",
-  PAGEVIEW_MAX = "pageview.max",
+  // Entity
+  ENTITY_COUNT = "entity.count",
+  // Page
+  PAGE_CLICK = "page.click",
+  PAGE_OPEN = "page.open",
+  // Course
+  COURSE_CLICK = "course.click",
+  COURSE_OPEN = "course.open",
+  COURSE_VIEW = "course.view",
+  // Content
+  CONTENT_CLICK = "content.click",
+  CONTENT_OPEN = "content.open",
+  CONTENT_VIEW = "content.view",
+  // Response
   RESPONSE_AVG = "response.avg",
   RESPONSE_COUNT = "response.count",
+  RESPONSE_COUNT_1 = "response.count.1",
+  RESPONSE_COUNT_2 = "response.count.2",
+  RESPONSE_COUNT_3 = "response.count.3",
+  RESPONSE_COUNT_4 = "response.count.4",
+  RESPONSE_COUNT_5 = "response.count.5",
 }
 
 export enum MeasurementStatus {
@@ -27,14 +45,30 @@ export const MeasurementStatusTransitionMap = new Map<
   [MeasurementStatus.ACTIVE, [MeasurementStatus.DELETED]],
 ]);
 
+export class MeasurementFilterValues {
+  key!: string;
+  operator!: WhereFilterOp;
+  value!: string;
+}
+export class MeasurementFilter {
+  userId!: string;
+  resourceId!: string;
+  resourceType!: ResourceType;
+  resourceValues!: MeasurementFilterValues[];
+  dateStart!: string;
+  dateEnd!: string;
+}
 export class Measurement extends Resource<MeasurementStatus> {
   resourceType = ResourceType.MEASUREMENT;
   transitionMap = MeasurementStatusTransitionMap;
   //
   type!: MeasurementType;
-  reference!: Partial<Resource>;
+  filter!: Partial<MeasurementFilter>;
+  filterHash!: string;
   user!: Partial<User>;
   value!: string;
   // Provider
+  force!: boolean;
+  permanent!: boolean;
   providerExtra?: ProviderExtra[];
 }

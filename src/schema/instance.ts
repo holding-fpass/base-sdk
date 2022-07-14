@@ -1,3 +1,4 @@
+import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
@@ -8,6 +9,28 @@ export enum InstanceStatus {
   PROVIDER_CREATED = "provider.created",
   ACTIVE = "active",
   DELETED = "deleted",
+}
+
+interface EmailConfig {
+  image436x168?: string;
+  senderEmail?: string;
+  senderName?: string;
+  supportEmail?: string;
+}
+
+interface FpayProvider {
+  dryRunKey?: string;
+  marketplaceId?: string;
+  privateApiKey?: string;
+  sellerId?: string;
+}
+
+interface DataForwardConfig {
+  type: InteractionDataforwardType;
+  url?: string;
+  apiKey?: string;
+  mongodbUri?: string;
+  gcpStorageBucket?: string;
 }
 
 export const InstanceStatusTransitionMap = new Map<
@@ -38,13 +61,17 @@ export class Instance extends Resource<InstanceStatus> {
   features!: Metadata[];
   parameters!: Metadata[];
   urlRedirect?: string;
+  // Email
+  emailConfig?: EmailConfig;
   // Provider
+  __fpay?: FpayProvider;
+  __dataforward?: DataForwardConfig;
   providerExtra?: ProviderExtra[];
 }
 
 export enum InstanceApplications {
-  FLABEL = 'flabel',
-  FMANAGEMENT = 'fmanagement'
+  FLABEL = "flabel",
+  FMANAGEMENT = "fmanagement",
 }
 
 export enum InstanceFeatureFlags {
@@ -54,56 +81,40 @@ export enum InstanceFeatureFlags {
   LEARNING_ANALYTICS = "learning.analytics",
   COMMUNITY = "community",
   WIZARD = "wizard",
+  PREMIUM = "premium",
+  CHANNEL = "channel",
 }
 
 export enum InstanceThemeSettings {
-  LOGO = "logo",
-  LOGOMARK = "logomark",
-  FAVICON = "favicon",
-  LOGODARK = "logoDark",
-  MOBILELOGO = "mobileLogo",
+  // Base colors
   PRIMARY = "primary",
   SECONDARY = "secondary",
   TERTIARY = "tertiary",
-  GRADIENT = "gradient",
-  ERROR = "error",
-  WARNING = "warning",
-  INFO = "info",
-  SUCCESS = "success",
-  WHITE = "white",
-  GREY = "grey",
-  GRAY = "gray",
-  LIGHTGRAY = "lightGray",
-  LIGHTGRAY2 = "lightGray2",
-  DARKGRAY = "darkGray",
+  // Background colors
   BACKGROUND = "background",
   LIGHTBACKGROUND = "lightBackground",
   DARKBACKGROUND = "darkBackground",
-  THIRD = "third",
-  SPOTLIGHT = "spotlight",
-  DARK = "dark",
-  DARK2 = "dark2",
-  DARK3 = "dark3",
-  DARKGREY = "darkGrey",
-  LIGHTGREY = "lightGrey",
-  LIGHTGREY2 = "lightGrey2",
-  BLACK = "black",
+  // General colors
+  GRAY = "gray",
+  DARKGRAY = "darkGray",
+  LIGHTGRAY = "lightGray",
+  LIGHTGRAY2 = "lightGray2",
+  WHITE = "white",
   WHITE2 = "white2",
-  YELLOW = "yellow",
-  DARKERBLUR = "darkerBlur",
+  BLACK = "black",
+  SUCCESS = "success",
+  WARNING = "warning",
+  ERROR = "error",
+  INFO = "info",
+  SPOTLIGHT = "spotlight",
+  // Blurs
   BLUR = "blur",
-  CARDCAROUSEL = "cardCarousel",
-  CARDCAROUSELBEFORE = "cardCarouselBefore",
-  GRADIENTHEADER = "gradientHeader",
-  OVERLAYDARKERBLUR = "overlayDarkerBlur",
-  OVERLAYLIGHTBLUR = "overlayLightBlur",
-  GREENCHECK = "greenCheck",
-  REDCHECK = "redCheck",
-  SHADOWOVERLAYTOP = "shadowOverlayTop",
-  SHADOWOVERLAYBOTTOM = "shadowOverlayBottom",
-  SHADOWOVERLAYMOBILEBOTTOM = "shadowOverlayMobileBottom",
-  OVERLAYDARKERMIDDLEBLUR = "overlayDarkerMiddleBlur",
-  OVERLAYGRADIENTPLAYER = "overlayGradientPlayer",
+  // Gradients
+  GRADIENT = "gradient",
+  HEADERGRADIENT = "headerGradient",
+  BOTTOMOVERLAYSHADOW = "bottomOverlayShadow",
+  BOTTOMOVERLAYSHADOWMOBILE = "bottomOverlayShadowMobile",
+  MIDDLEOVERLAYSHADOW = "middleOverlayShadow",
 }
 
 export enum InstanceUrlSettings {
@@ -124,8 +135,8 @@ export enum InstanceUrlSettings {
   LINKEDIN_URL = "linkedin.url",
   TWITTER_URL = "twitter.url",
   WHATSAPP_URL = "whatsapp.url",
-  SUPPORT_EMAIL = 'support.email',
-  BANNER_EMAIL_URL = 'banner.email.url',
+  SUPPORT_EMAIL = "support.email",
+  BANNER_EMAIL_URL = "banner.email.url",
 }
 
 export enum InstanceParametersSettings {
