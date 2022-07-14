@@ -102,6 +102,7 @@ export class Course extends Resource<CourseStatus> {
   description?: string;
   slug?: string;
   premium?: boolean;
+  hide?: boolean;
   // General
   whitelabel!: Whitelabel;
   tags?: Tag[];
