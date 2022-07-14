@@ -4,6 +4,8 @@ import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export enum MeasurementType {
+  // Entity
+  ENTITY_COUNT = "entity.count",
   // Page
   PAGE_CLICK = "page.click",
   PAGE_OPEN = "page.open",
