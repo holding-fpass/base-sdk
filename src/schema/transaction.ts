@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/firestore";
 import { BaseEvent } from "./events";
 import { Metadata } from "./metadata";
 import { Provider, ProviderExtra } from "./provider";
@@ -36,7 +37,7 @@ export interface UTMInterface {
   campaign: string;
   product?: string;
   targeting?: string;
-  createdAt?: string;
+  createdAt?: string | Timestamp;
 }
 
 export const TransactionStatusTransitionMap = new Map<
