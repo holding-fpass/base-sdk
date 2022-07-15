@@ -1,4 +1,5 @@
 import { User } from "@sentry/node";
+import { Timestamp } from "firebase-admin/firestore";
 import { Resource, ResourceType } from "./resource";
 
 export enum InteractionStatus {
@@ -21,7 +22,7 @@ export enum InteractionDataforwardType {
 export interface InteractionDataforward {
   result: boolean;
   reason: string;
-  deliveredAt: string;
+  deliveredAt: string | Timestamp;
 }
 
 export const InteractionStatusTransitionMap = new Map<
