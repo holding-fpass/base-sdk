@@ -1,8 +1,16 @@
+import { Metadata } from "./metadata";
 import { Resource, ResourceType } from "./resource";
+import { UserPermission } from "./user";
 
 export enum MfaType {
   EMAIL = "email",
   PHONE = "phone",
+}
+
+export class MfaExtra {
+  fields?: Metadata[];
+
+  permission?: UserPermission;
 }
 
 export enum MfaStatus {
@@ -20,6 +28,7 @@ export class Mfa extends Resource<MfaStatus> {
   type!: MfaType;
   value!: string;
   code!: string;
+  extra?: MfaExtra;
   fingerprint?: string;
   // Dates
   dateEnd?: string;
