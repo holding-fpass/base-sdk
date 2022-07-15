@@ -14,10 +14,10 @@ export enum InteractionType {
 }
 
 export enum InteractionDataforwardType {
+  NONE = "",
   WEBHOOK = "webhook",
   MONGODB = "mongodb",
   GCP_CLOUD_STORAGE = "gcp-cloud-storage",
-  NONE = "none",
 }
 
 export interface InteractionDataforward {
