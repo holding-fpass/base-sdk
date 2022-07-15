@@ -25,7 +25,7 @@ interface FpayProvider {
   sellerId?: string;
 }
 
-interface DataForwardConfig {
+export interface DataForwardConfig {
   type: InteractionDataforwardType;
   url?: string;
   apiKey?: string;
@@ -33,13 +33,13 @@ interface DataForwardConfig {
   gcpStorageBucket?: string;
 }
 
-interface KycField {
+export interface KycField {
   name: string;
   usageDescription?: string;
   label?: string;
   regex?: string;
 }
-interface KyCConfig {
+export interface KyCConfig {
   termsOfUseFile?: string;
   privacyPolicyFile?: string;
   fields?: KycField[];
