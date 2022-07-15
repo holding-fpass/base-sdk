@@ -33,6 +33,18 @@ interface DataForwardConfig {
   gcpStorageBucket?: string;
 }
 
+interface KycField {
+  name: string;
+  usageDescription?: string;
+  label?: string;
+  regex?: string;
+}
+interface KyCConfig {
+  termsOfUseFile?: string;
+  privacyPolicyFile?: string;
+  fields?: KycField[];
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -65,7 +77,11 @@ export class Instance extends Resource<InstanceStatus> {
   emailConfig?: EmailConfig;
   // Provider
   __fpay?: FpayProvider;
+  // Data Forward
   __dataforward?: DataForwardConfig;
+  // KyC
+  kyc?: KyCConfig;
+  // Provider Extra
   providerExtra?: ProviderExtra[];
 }
 
