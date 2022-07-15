@@ -29,6 +29,16 @@ export enum TransactionStatus {
   DELETED = "deleted",
 }
 
+export interface UTMInterface {
+  id: string;
+  source: string;
+  medium: string;
+  campaign: string;
+  product?: string;
+  targeting?: string;
+  createdAt?: string;
+}
+
 export const TransactionStatusTransitionMap = new Map<
   TransactionStatus,
   TransactionStatus[]
@@ -89,6 +99,8 @@ export class Transaction extends Resource<TransactionStatus> {
   //
   product?: TransactionProduct;
   productExtra?: Metadata[];
+  // Affiliate
+  utm?: UTMInterface;
   //
   dryRun?: boolean;
 }
