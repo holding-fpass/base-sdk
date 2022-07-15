@@ -1,3 +1,4 @@
+import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
@@ -22,6 +23,26 @@ interface FpayProvider {
   marketplaceId?: string;
   privateApiKey?: string;
   sellerId?: string;
+}
+
+export interface DataForwardConfig {
+  type: InteractionDataforwardType;
+  url?: string;
+  apiKey?: string;
+  mongodbUri?: string;
+  gcpStorageBucket?: string;
+}
+
+export interface KycField {
+  name: string;
+  usageDescription?: string;
+  label?: string;
+  regex?: string;
+}
+export interface KyCConfig {
+  termsOfUseFile?: string;
+  privacyPolicyFile?: string;
+  fields?: KycField[];
 }
 
 export const InstanceStatusTransitionMap = new Map<
@@ -56,12 +77,17 @@ export class Instance extends Resource<InstanceStatus> {
   emailConfig?: EmailConfig;
   // Provider
   __fpay?: FpayProvider;
+  // Data Forward
+  __dataforward?: DataForwardConfig;
+  // KyC
+  kyc?: KyCConfig;
+  // Provider Extra
   providerExtra?: ProviderExtra[];
 }
 
 export enum InstanceApplications {
-  FLABEL = 'flabel',
-  FMANAGEMENT = 'fmanagement'
+  FLABEL = "flabel",
+  FMANAGEMENT = "fmanagement",
 }
 
 export enum InstanceFeatureFlags {
@@ -125,8 +151,8 @@ export enum InstanceUrlSettings {
   LINKEDIN_URL = "linkedin.url",
   TWITTER_URL = "twitter.url",
   WHATSAPP_URL = "whatsapp.url",
-  SUPPORT_EMAIL = 'support.email',
-  BANNER_EMAIL_URL = 'banner.email.url',
+  SUPPORT_EMAIL = "support.email",
+  BANNER_EMAIL_URL = "banner.email.url",
 }
 
 export enum InstanceParametersSettings {

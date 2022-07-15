@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/firestore";
 import { Signature } from "./signature";
 import { Whitelabel } from "./whitelabel";
 
@@ -63,13 +64,13 @@ export class Resource<Status = any> {
   resourceType?: ResourceType;
   whitelabel?: Whitelabel;
   // Dates
-  timestamp?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  deletedAt?: string;
+  timestamp?: string | Timestamp;
+  createdAt?: string | Timestamp;
+  updatedAt?: string | Timestamp;
+  deletedAt?: string | Timestamp;
   // Status
   status?: Status;
-  statusAt?: string;
+  statusAt?: string | Timestamp;
   statusTo?: Status;
   transitionMap?: Map<Status, Status[]>;
   // Approval

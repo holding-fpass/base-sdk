@@ -32,4 +32,10 @@ export class MetadataMap<T = string> {
   getAll(): Metadata<T>[] {
     return this.metadata;
   }
+  toObject(): Record<string, unknown> {
+    return this.metadata.reduce((obj, metadata) => {
+      obj[metadata.key as unknown as string] = metadata.value;
+      return obj;
+    }, {} as Record<string, unknown>);
+  }
 }

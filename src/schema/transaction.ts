@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/firestore";
 import { BaseEvent } from "./events";
 import { Metadata } from "./metadata";
 import { Provider, ProviderExtra } from "./provider";
@@ -27,6 +28,16 @@ export enum TransactionStatus {
   PAID = "paid",
   FAILED = "failed",
   DELETED = "deleted",
+}
+
+export interface UTMInterface {
+  id: string;
+  source: string;
+  medium: string;
+  campaign: string;
+  product?: string;
+  targeting?: string;
+  createdAt?: string | Timestamp;
 }
 
 export const TransactionStatusTransitionMap = new Map<
@@ -89,6 +100,8 @@ export class Transaction extends Resource<TransactionStatus> {
   //
   product?: TransactionProduct;
   productExtra?: Metadata[];
+  // Affiliate
+  utm?: UTMInterface;
   //
   dryRun?: boolean;
 }

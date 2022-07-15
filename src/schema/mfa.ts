@@ -1,9 +1,16 @@
-import { Device } from "./device";
+import { Metadata } from "./metadata";
 import { Resource, ResourceType } from "./resource";
+import { UserPermission } from "./user";
 
-export enum MfaKey {
+export enum MfaType {
   EMAIL = "email",
   PHONE = "phone",
+}
+
+export class MfaExtra {
+  fields?: Metadata[];
+
+  permission?: UserPermission;
 }
 
 export enum MfaStatus {
@@ -18,12 +25,13 @@ export const MfaStatusTransitionMap = new Map<MfaStatus, MfaStatus[]>([
 export class Mfa extends Resource<MfaStatus> {
   resourceType = ResourceType.MFA;
   transitionMap = MfaStatusTransitionMap;
-  key!: MfaKey;
+  type!: MfaType;
   value!: string;
   code!: string;
+  extra?: MfaExtra;
   fingerprint?: string;
   // Dates
-  dateEnd!: string;
+  dateEnd?: string;
   // Related
-  device!: Device;
+  machineId!: string;
 }

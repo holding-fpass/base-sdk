@@ -11,20 +11,38 @@ import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
 import { Response } from "./form";
 
+export enum UserPermission {
+  STUDENT = "student",
+  TEACHER = "teacher",
+  ADMINISTRATOR = "administrator",
+  PRODUCER = "producer",
+  MACHINE = "machine",
+  SYSTEM = "system",
+}
+
+export enum UserData {
+  TAX_ID = "taxId",
+  NAME = "name",
+  EMAIL = "email",
+  PHONE = "phone",
+  EXTERNAL_ID = "externalId",
+  CUSTOM_001 = "custom_001",
+  CUSTOM_002 = "custom_002",
+  CUSTOM_003 = "custom_003",
+  CUSTOM_004 = "custom_004",
+  CUSTOM_005 = "custom_005",
+  CUSTOM_006 = "custom_006",
+  CUSTOM_007 = "custom_007",
+  CUSTOM_008 = "custom_008",
+  CUSTOM_009 = "custom_009",
+  CUSTOM_010 = "custom_010",
+}
+
 export enum UserStatus {
   CREATED = "created",
   ACTIVE = "active",
   UNAVALIABLE = "unavaliable",
   DELETED = "deleted",
-}
-
-export enum UserPermission {
-  STUDENT = 'student',
-  TEACHER = 'teacher',
-  ADMINISTRATOR = 'administrator',
-  PRODUCER = 'producer',
-  MACHINE = 'machine',
-  SYSTEM = 'system',
 }
 
 export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
@@ -45,6 +63,8 @@ export class User extends Resource<UserStatus> {
   token?: string;
   permission!: UserPermission;
   providerExtra?: ProviderExtra[];
+  // Data
+  data?: Record<UserData, string>;
   // Media
   imageUrl?: string;
   image128x128?: string;

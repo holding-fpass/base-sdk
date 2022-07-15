@@ -1,7 +1,8 @@
+import { App } from "firebase-admin/app";
 import {
-  FieldValue,
   getFirestore,
   QueryDocumentSnapshot,
+  Timestamp,
 } from "firebase-admin/firestore";
 import { v4 as uuid } from "uuid";
 import { Resource, ResourceStatus, ResourceType, Whitelabel } from "../schema";
@@ -13,6 +14,7 @@ export interface DocumentOptions {
 }
 
 export class Document<T> {
+  public static app: App;
   private readonly basepath = "management";
   private whitelabel: Whitelabel;
   private resourceId: string | undefined;
@@ -25,14 +27,14 @@ export class Document<T> {
   }
 
   async getDocRef() {
-    return getFirestore().doc(`${this.basepath}/${this.whitelabel}/${this.resourceType}/${this?.resourceId}`);
+    return getFirestore(Document.app).doc(
+      `${this.basepath}/${this.whitelabel}/${this.resourceType}/${this?.resourceId}`
+    );
   }
 
   async getData() {
     const docRef = await this.getDocRef();
-    const data = (
-      await docRef.withConverter(firestoreConverter).get()
-    ).data();
+    const data = (await docRef.withConverter(firestoreConverter).get()).data();
     return data as unknown as T;
   }
 
@@ -41,35 +43,37 @@ export class Document<T> {
   }
 
   async create(data: any) {
+    const timestamp = Timestamp.now();
     return (await this.getDocRef()).create({
       ...data,
       resourceId: data?.resourceId ?? uuid(),
-      timestamp: FieldValue.serverTimestamp(),
-      createdAt: FieldValue.serverTimestamp(),
-      updatedAt: FieldValue.serverTimestamp(),
+      timestamp,
+      createdAt: timestamp,
+      updatedAt: timestamp,
       status: ResourceStatus.CREATED,
-      statusAt: FieldValue.serverTimestamp(),
+      statusAt: timestamp,
     });
   }
 
   async update(data: any) {
+    const timestamp = Timestamp.now();
     let statusData = {};
     if (data?.status) {
       statusData = {
         status: data?.status,
-        statusAt: FieldValue.serverTimestamp(),
+        statusAt: timestamp,
       };
     }
     return (await this.getDocRef()).update({
       ...data,
       ...statusData,
-      updatedAt: FieldValue.serverTimestamp(),
+      updatedAt: timestamp,
     });
   }
 
   async delete() {
     return (await this.getDocRef()).update({
-      deletedAt: FieldValue.serverTimestamp(),
+      deletedAt: Timestamp.now(),
     });
   }
 
@@ -80,7 +84,7 @@ export class Document<T> {
   }
 
   async findBy<T>(options: { field: string; value: string }) {
-    return getFirestore()
+    return getFirestore(Document.app)
       .collection(`${this.basepath}/${this.whitelabel}/${this.resourceType}`)
       .where(options.field, "==", options.value)
       .withConverter(firestoreConverter)
@@ -96,11 +100,11 @@ const firestoreConverter = {
     const data = snapshot.data()!;
     return {
       ...data,
-      timestamp: data?.timestamp?.toDate(),
-      createdAt: data?.timestamp?.toDate(),
-      updatedAt: data?.updatedAt?.toDate(),
-      deletedAt: data?.deletedAt?.toDate(),
-      statusAt: data?.statusAt?.toDate(),
+      timestamp: (data?.timestamp as Timestamp)?.toDate(),
+      createdAt: (data?.createdAt as Timestamp)?.toDate(),
+      updatedAt: (data?.updatedAt as Timestamp)?.toDate(),
+      deletedAt: (data?.deletedAt as Timestamp)?.toDate(),
+      statusAt: (data?.statusAt as Timestamp)?.toDate(),
     };
   },
 };
