@@ -43,6 +43,7 @@ export enum ResourceType {
   STORIES_STORY_IMAGE = "stories.story.image",
   STORIES_STORY_VIDEO = "stories.story.video",
   SUBSCRIPTION = "subscription",
+  TAG = "tag",
   THREAD = "thread",
   TRANSACTION = "transaction",
   USER = "user",
