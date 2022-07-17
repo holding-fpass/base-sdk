@@ -19,6 +19,7 @@ export * from "./resource";
 export * from "./scope";
 export * from "./signature";
 export * from "./subscription";
+export * from "./tag";
 export * from "./transaction";
 export * from "./user";
 export * from "./video";

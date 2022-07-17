@@ -10,6 +10,7 @@ import { Subscription } from "./subscription";
 import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
 import { Response } from "./form";
+import { Tag } from "./tag";
 
 export enum UserPermission {
   STUDENT = "student",
@@ -77,6 +78,7 @@ export class User extends Resource<UserStatus> {
   certificates?: Partial<Certificate>[];
   // Extras
   contentExtra?: Metadata[];
+  tags?: Partial<Tag>[];
   // Purchases
   subscriptions?: Partial<Subscription>[];
   courses?: Partial<Course>[];

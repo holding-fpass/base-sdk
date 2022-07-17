@@ -2,6 +2,7 @@ import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
 import { Resource, ResourceType } from "./resource";
+import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
@@ -66,7 +67,6 @@ export class Module extends Resource {
 }
 
 // Course
-export type Tag = string;
 
 export enum CourseStatus {
   CREATED = "created",
