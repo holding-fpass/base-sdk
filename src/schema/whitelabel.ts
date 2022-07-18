@@ -11,4 +11,5 @@ export enum Whitelabel {
   INSTITUTOCINEMA = "institutocinema",
   EVENTPLAY = "eventplay",
   ITAU_ION = "itau-ion",
+  EMBRACLASS = "embraclass",
 }
