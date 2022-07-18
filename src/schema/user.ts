@@ -73,6 +73,7 @@ export class User extends Resource<UserStatus> {
   whitelabel!: Whitelabel;
   devices?: Partial<Device>[];
   scopes?: Scope[];
+  restricted?: boolean;
   // Assessements
   wizard?: Partial<Response>[];
   certificates?: Partial<Certificate>[];
