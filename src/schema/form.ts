@@ -44,6 +44,7 @@ export class Form extends Resource<FormStatus> {
   name!: string;
   description?: string;
   questions?: Partial<FormQuestion>[];
+  resultRanges?: Partial<FormResultRange>[];
   // Related
   userTags?: Partial<Tag>[];
 }
