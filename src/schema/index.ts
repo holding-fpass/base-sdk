@@ -6,6 +6,7 @@ export * from "./course";
 export * from "./device";
 export * from "./events";
 export * from "./form";
+export * from "./hash";
 export * from "./instance";
 export * from "./interaction";
 export * from "./measurement";
