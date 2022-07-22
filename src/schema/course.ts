@@ -22,6 +22,11 @@ export class ContentItem extends Resource {
   image50x50?: string;
 }
 
+export class ContentForms {
+  contentEndForm?: Partial<Form>;
+  userTestForm?: Partial<Form>;
+}
+
 export enum ContentType {
   VIDEO = "video",
   MEET = "meet",
@@ -49,6 +54,8 @@ export class Content extends Resource<ContentStatus> {
   image144x80?: string;
   image1440x720?: string;
   video1920x1080?: string;
+  // Forms
+  forms?: Partial<ContentForms>;
   // Related
   parentId!: string;
   parentType!: ResourceType;
