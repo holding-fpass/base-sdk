@@ -71,4 +71,6 @@ export class FormResponse extends Resource<FormResponseStatus> {
   userResponses!: FormUserResponse[];
   // Related
   user!: Pick<User, "resourceId" | "name" | "email">;
+  // Process
+  value!: number;
 }
