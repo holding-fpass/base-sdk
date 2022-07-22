@@ -49,16 +49,21 @@ export class Form extends Resource<FormStatus> {
   userTags?: Partial<Tag>[];
 }
 
-export enum FormResponseStatus {
-  CREATED = "created",
-  ACTIVE = "active",
-}
-
 export class FormUserResponse {
   question!: Partial<FormQuestion>;
   questionHash!: string;
   value!: string;
 }
+
+export enum FormResponseStatus {
+  CREATED = "created",
+  ACTIVE = "active",
+}
+
+export const FormResponseStatusTransitionMap = new Map<
+  FormResponseStatus,
+  FormResponseStatus[]
+>([[FormResponseStatus.CREATED, [FormResponseStatus.ACTIVE]]]);
 
 export class FormResponse extends Resource<FormResponseStatus> {
   resourceType = ResourceType.FORM_RESPONSE;
