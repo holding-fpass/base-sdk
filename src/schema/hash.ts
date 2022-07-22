@@ -15,8 +15,8 @@ export class Hash {
   }
 
   static questionOption(
-    formQuestion: FormQuestion,
-    formQuestionOption: FormQuestionOption
+    formQuestion: Pick<FormQuestion, "name">,
+    formQuestionOption: Pick<FormQuestionOption, "name">
   ) {
     return hash({
       formName: formQuestion.name,
