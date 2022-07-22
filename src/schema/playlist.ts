@@ -1,6 +1,6 @@
-import { Tags } from "yaml";
 import { Course } from "./course";
 import { Resource, ResourceType } from "./resource";
+import { Tag } from "./tag";
 
 export class Playlist extends Resource {
   resourceType = ResourceType.PLAYLIST;
@@ -9,5 +9,5 @@ export class Playlist extends Resource {
   image256x256?: string;
   // Related
   courses?: Partial<Course>[];
-  userTags?: Partial<Tags>[];
+  userTags?: Partial<Tag>[];
 }

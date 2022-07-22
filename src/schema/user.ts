@@ -9,7 +9,7 @@ import { Scope } from "./scope";
 import { Subscription } from "./subscription";
 import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
-import { Response } from "./form";
+import { FormResponse } from "./form";
 import { Tag } from "./tag";
 
 export enum UserPermission {
@@ -75,7 +75,7 @@ export class User extends Resource<UserStatus> {
   scopes?: Scope[];
   restricted?: boolean;
   // Assessements
-  wizard?: Partial<Response>[];
+  formResponses?: Partial<FormResponse>[];
   certificates?: Partial<Certificate>[];
   // Extras
   contentExtra?: Metadata[];

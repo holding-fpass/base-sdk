@@ -1,12 +1,32 @@
+import { Playlist } from "./playlist";
 import { Resource, ResourceType } from "./resource";
+import { Tag } from "./tag";
 import { User } from "./user";
 
-export class Question extends Resource {
-  resourceType = ResourceType.QUESTION;
+export class FormQuestionOption {
+  name!: string;
+  value!: number;
+  image600x400?: string;
+}
+
+export class FormQuestion {
   name!: string;
   description?: string;
-  // Media
-  image600x400?: string;
+  options?: Partial<FormQuestionOption>[];
+  hash!: string;
+}
+
+export class FormResultRangeRecommendPlaylistAction {
+  text!: string;
+  playlists!: Partial<Playlist>[];
+}
+
+export class FormResultRange {
+  name!: string;
+  text!: string;
+  valueStart!: number;
+  valueEnd!: number;
+  recommendPlaylistAction?: FormResultRangeRecommendPlaylistAction;
 }
 
 export enum FormStatus {
@@ -23,14 +43,26 @@ export class Form extends Resource<FormStatus> {
   transitionMap = FormStatusTransitionMap;
   name!: string;
   description?: string;
-  questions?: Partial<Question>[];
+  questions?: Partial<FormQuestion>[];
+  // Related
+  userTags?: Partial<Tag>[];
 }
 
-export class Response extends Resource {
-  resourceType = ResourceType.RESPONSE;
-  question!: Partial<Question>;
+export enum FormResponseStatus {
+  CREATED = "created",
+  ACTIVE = "active",
+}
+
+export class FormUserResponse {
+  question!: Partial<FormQuestion>;
+  questionHash!: string;
   value!: string;
+}
+
+export class FormResponse extends Resource<FormResponseStatus> {
+  resourceType = ResourceType.FORM_RESPONSE;
+  form!: Pick<Form, "resourceId" | "name">;
+  userResponses!: FormUserResponse[];
   // Related
-  user!: Partial<User>;
-  reactions?: Partial<Response>[];
+  user!: Pick<User, "resourceId" | "name" | "email">;
 }
