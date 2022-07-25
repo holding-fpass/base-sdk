@@ -2,6 +2,7 @@ import { Playlist } from "./playlist";
 import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
 import { User } from "./user";
+import { Whitelabel } from "./whitelabel";
 
 export class FormQuestionOption {
   name!: string;
@@ -73,4 +74,17 @@ export class FormResponse extends Resource<FormResponseStatus> {
   user!: Pick<User, "resourceId" | "name" | "email">;
   // Process
   value!: number;
+}
+
+export interface FormResponseActiveActionEvent {
+  eventId: string;
+  type: string;
+  payload: {
+    value: number;
+    resultRange: FormResultRange;
+    maxValue: number;
+  };
+  whitelabel: Whitelabel;
+  resourceType: ResourceType;
+  resourceId: string;
 }
