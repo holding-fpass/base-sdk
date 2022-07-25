@@ -81,7 +81,7 @@ export interface FormResponseActiveActionEvent {
   type: string;
   payload: {
     value: number;
-    resultRange: FormResultRange;
+    resultRange?: FormResultRange;
     maxValue: number;
   };
   whitelabel: Whitelabel;
