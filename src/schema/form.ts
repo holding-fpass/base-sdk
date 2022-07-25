@@ -77,7 +77,7 @@ export class FormResponse extends Resource<FormResponseStatus> {
 }
 
 export interface FormResponseActiveActionEvent {
-  eventId: string;
+  eventId?: string;
   type: string;
   payload: {
     value: number;
