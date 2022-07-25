@@ -37,6 +37,7 @@ export enum FormStatus {
 
 export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
   [FormStatus.CREATED, [FormStatus.ACTIVE]],
+  [FormStatus.ACTIVE, [FormStatus.CREATED]],
 ]);
 
 export class Form extends Resource<FormStatus> {
