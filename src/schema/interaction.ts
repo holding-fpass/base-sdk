@@ -32,6 +32,8 @@ export const InteractionStatusTransitionMap = new Map<
 >([[InteractionStatus.CREATED, [InteractionStatus.ACTIVE]]]);
 
 export class Interaction extends Resource<InteractionStatus> {
+  resourceType = ResourceType.INTERACTION;
+  transitionMap = InteractionStatusTransitionMap;
   productId!: string;
   productType!: ResourceType;
   type!: InteractionType;

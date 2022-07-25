@@ -9,7 +9,8 @@ import { Scope } from "./scope";
 import { Subscription } from "./subscription";
 import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
-import { Response } from "./form";
+import { FormResponse } from "./form";
+import { Tag } from "./tag";
 
 export enum UserPermission {
   STUDENT = "student",
@@ -72,11 +73,13 @@ export class User extends Resource<UserStatus> {
   whitelabel!: Whitelabel;
   devices?: Partial<Device>[];
   scopes?: Scope[];
+  restricted?: boolean;
   // Assessements
-  wizard?: Partial<Response>[];
+  formResponses?: Partial<FormResponse>[];
   certificates?: Partial<Certificate>[];
   // Extras
   contentExtra?: Metadata[];
+  tags?: Partial<Tag>[];
   // Purchases
   subscriptions?: Partial<Subscription>[];
   courses?: Partial<Course>[];

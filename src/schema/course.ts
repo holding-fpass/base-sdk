@@ -2,6 +2,7 @@ import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
 import { Resource, ResourceType } from "./resource";
+import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
@@ -19,6 +20,11 @@ export class ContentItem extends Resource {
   // Media
   resourceUrl!: string;
   image50x50?: string;
+}
+
+export class ContentForms {
+  contentEndForm?: Partial<Form>;
+  userTestForm?: Partial<Form>;
 }
 
 export enum ContentType {
@@ -48,6 +54,8 @@ export class Content extends Resource<ContentStatus> {
   image144x80?: string;
   image1440x720?: string;
   video1920x1080?: string;
+  // Forms
+  forms?: Partial<ContentForms>;
   // Related
   parentId!: string;
   parentType!: ResourceType;
@@ -66,7 +74,6 @@ export class Module extends Resource {
 }
 
 // Course
-export type Tag = string;
 
 export enum CourseStatus {
   CREATED = "created",
