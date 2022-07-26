@@ -80,6 +80,7 @@ export class User extends Resource<UserStatus> {
   // Extras
   contentExtra?: Metadata[];
   tags?: Partial<Tag>[];
+  _systemTags?: Partial<Tag>[];
   // Purchases
   subscriptions?: Partial<Subscription>[];
   courses?: Partial<Course>[];
