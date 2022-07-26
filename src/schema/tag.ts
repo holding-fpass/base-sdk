@@ -10,8 +10,8 @@ export enum TagType {
   USER = "user",
 }
 
-export enum TagDefault {
-  USERS_ALL = "tag.default.users.all",
+export enum SystemTag {
+  USER_ALL = "system.tag.user.all",
 }
 
 export const TagStatusTransitionMap = new Map<TagStatus, TagStatus[]>([
