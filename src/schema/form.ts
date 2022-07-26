@@ -57,6 +57,11 @@ export class FormUserResponse {
   value!: string;
 }
 
+export enum FormTrigger {
+  MACHINE_LOGIN = "form.trigger.machine.login",
+  USER_LOGIN = "form.trigger.user.login",
+}
+
 export enum FormResponseStatus {
   CREATED = "created",
   ACTIVE = "active",
