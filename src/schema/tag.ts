@@ -10,10 +10,13 @@ export enum TagType {
   USER = "user",
 }
 
-export const TagStatusTransitionMap = new Map<
-  TagStatus,
-  TagStatus[]
->([[TagStatus.CREATED, [TagStatus.ACTIVE]]]);
+export enum TagDefault {
+  USERS_ALL = "tag.default.users.all",
+}
+
+export const TagStatusTransitionMap = new Map<TagStatus, TagStatus[]>([
+  [TagStatus.CREATED, [TagStatus.ACTIVE]],
+]);
 
 export class Tag extends Resource<TagStatus> {
   resourceType = ResourceType.TAG;
