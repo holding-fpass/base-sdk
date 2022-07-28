@@ -19,7 +19,7 @@ export class FormQuestion {
 
 export class FormResultRangeRecommendPlaylistAction {
   text!: string;
-  playlists!: Partial<Playlist>[];
+  playlist!: Partial<Playlist>;
 }
 
 export class FormResultRange {
