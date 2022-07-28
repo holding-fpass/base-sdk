@@ -20,6 +20,7 @@ export enum StoryTrigger {
 export class Story extends Resource<StoryStatus> {
   resourceType = ResourceType.STORY;
   name!: string;
+  trigger?: StoryTrigger;
   // Media
   items?: StoryItem[];
   // Related
