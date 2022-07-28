@@ -68,11 +68,11 @@ export class Instance extends Resource<InstanceStatus> {
   image130x40?: string;
   image400x400?: string;
   //
-  urls!: Metadata[];
-  theme!: Metadata[];
+  urls!: Metadata<InstanceUrlSettings>[];
+  theme!: Metadata<InstanceThemeSettings>[];
   features_provider?: Pick<Instance, "resourceId" | "fqdn">;
-  features!: Metadata[];
-  parameters!: Metadata[];
+  features!: Metadata<InstanceFeatureFlags>[];
+  parameters!: Metadata<InstanceParametersSettings>[];
   urlRedirect?: string;
   // Email
   emailConfig?: EmailConfig;
