@@ -39,6 +39,7 @@ export enum ResourceType {
   STAGE_CALENDAR_GROUP = "stage.calendar.group",
   STAGE_CALENDAR_ITEM = "stage.calendar.item",
   STAGE_PARTICIPANT = "stage.participant",
+  STORY = "story",
   STORIES_STORY_IMAGE = "stories.story.image",
   STORIES_STORY_VIDEO = "stories.story.video",
   SUBSCRIPTION = "subscription",
