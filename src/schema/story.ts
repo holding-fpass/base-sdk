@@ -13,6 +13,10 @@ export enum StoryStatus {
   ACTIVE = "active",
 }
 
+export declare enum StoryTrigger {
+  APP_OPEN = "story.trigger.app.open",
+}
+
 export class Story extends Resource<StoryStatus> {
   resourceType = ResourceType.STORY;
   name!: string;
