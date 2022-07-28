@@ -68,10 +68,11 @@ export class Instance extends Resource<InstanceStatus> {
   image130x40?: string;
   image400x400?: string;
   //
-  urls!: Metadata[];
-  theme!: Metadata[];
-  features!: Metadata[];
-  parameters!: Metadata[];
+  urls!: Metadata<InstanceUrlSettings>[];
+  theme!: Metadata<InstanceThemeSettings>[];
+  features_provider?: Pick<Instance, "resourceId" | "fqdn">;
+  features!: Metadata<InstanceFeatureFlags>[];
+  parameters!: Metadata<InstanceParametersSettings>[];
   urlRedirect?: string;
   // Email
   emailConfig?: EmailConfig;
@@ -91,14 +92,15 @@ export enum InstanceApplications {
 }
 
 export enum InstanceFeatureFlags {
-  COUPON = "coupon",
   CALENDAR = "calendar",
   CERTIFICATE = "certificate",
-  LEARNING_ANALYTICS = "learning.analytics",
-  COMMUNITY = "community",
-  WIZARD = "wizard",
-  PREMIUM = "premium",
   CHANNEL = "channel",
+  COMMUNITY = "community",
+  COUPON = "coupon",
+  LEARNING_ANALYTICS = "learning.analytics",
+  PREMIUM = "premium",
+  STORY = "story",
+  WIZARD = "wizard",
 }
 
 export enum InstanceThemeSettings {

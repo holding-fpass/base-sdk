@@ -98,6 +98,11 @@ interface KnowledgeItens {
   description?: string;
 }
 
+export class CourseForms {
+  courseEndForm?: Partial<Form>;
+  userTestForm?: Partial<Form>;
+}
+
 export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
   [CourseStatus.CREATED, [CourseStatus.ACTIVE]],
   [CourseStatus.ACTIVE, [CourseStatus.UNAVALIABLE]],
@@ -132,5 +137,5 @@ export class Course extends Resource<CourseStatus> {
   // Related
   contents?: Partial<Content>[];
   modules?: Partial<Module>[];
-  evaluationForm?: Partial<Form>;
+  forms?: CourseForms;
 }

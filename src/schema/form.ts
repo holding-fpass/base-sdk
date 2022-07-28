@@ -37,6 +37,7 @@ export enum FormStatus {
 
 export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
   [FormStatus.CREATED, [FormStatus.ACTIVE]],
+  [FormStatus.ACTIVE, [FormStatus.CREATED]],
 ]);
 
 export class Form extends Resource<FormStatus> {
@@ -54,6 +55,11 @@ export class FormUserResponse {
   question!: Partial<FormQuestion>;
   questionHash!: string;
   value!: string;
+}
+
+export enum FormTrigger {
+  MACHINE_LOGIN = "form.trigger.machine.login",
+  USER_LOGIN = "form.trigger.user.login",
 }
 
 export enum FormResponseStatus {
