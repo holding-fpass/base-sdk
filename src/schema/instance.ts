@@ -92,14 +92,15 @@ export enum InstanceApplications {
 }
 
 export enum InstanceFeatureFlags {
-  COUPON = "coupon",
   CALENDAR = "calendar",
   CERTIFICATE = "certificate",
-  LEARNING_ANALYTICS = "learning.analytics",
-  COMMUNITY = "community",
-  WIZARD = "wizard",
-  PREMIUM = "premium",
   CHANNEL = "channel",
+  COMMUNITY = "community",
+  COUPON = "coupon",
+  LEARNING_ANALYTICS = "learning.analytics",
+  PREMIUM = "premium",
+  STORY = "story",
+  WIZARD = "wizard",
 }
 
 export enum InstanceThemeSettings {
