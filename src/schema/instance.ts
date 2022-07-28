@@ -70,6 +70,7 @@ export class Instance extends Resource<InstanceStatus> {
   //
   urls!: Metadata[];
   theme!: Metadata[];
+  features_fqdn?: string;
   features!: Metadata[];
   parameters!: Metadata[];
   urlRedirect?: string;
