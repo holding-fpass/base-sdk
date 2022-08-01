@@ -10,6 +10,7 @@ export enum InteractionStatus {
 export enum InteractionType {
   CLICK = "click",
   OPEN = "open",
+  LEAVE = "leave",
   VIEW = "view",
 }
 
