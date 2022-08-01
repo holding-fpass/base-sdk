@@ -60,6 +60,8 @@ export class Content extends Resource<ContentStatus> {
   dateEnd?: string;
   // Forms
   forms?: Partial<ContentForms>;
+  // Payment
+  paymentFree?: boolean;
   // Related
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
   parentId!: string;
