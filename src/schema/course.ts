@@ -57,6 +57,7 @@ export class Content extends Resource<ContentStatus> {
   // Forms
   forms?: Partial<ContentForms>;
   // Related
+  mentors?: Pick<User, "resourceId" | "name" | "email">[];
   parentId!: string;
   parentType!: ResourceType;
   items?: Partial<ContentItem>[];
