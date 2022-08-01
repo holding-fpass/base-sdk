@@ -1,5 +1,6 @@
 import hash from "object-hash";
 import { Form, FormQuestion, FormQuestionOption } from "./form";
+import { MeasurementFilter, MeasurementType } from "./measurement";
 
 export class Hash {
   static formQuestion(form: Form, formQuestion: FormQuestion) {
@@ -21,6 +22,13 @@ export class Hash {
     return hash({
       formName: formQuestion.name,
       formQuestionOptionName: formQuestionOption.name,
+    });
+  }
+
+  static measurementFilter(type: MeasurementType, filter: MeasurementFilter) {
+    return hash({
+      type,
+      filter,
     });
   }
 }
