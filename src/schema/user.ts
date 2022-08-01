@@ -11,6 +11,7 @@ import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
 import { FormResponse } from "./form";
 import { Tag } from "./tag";
+import { Interaction } from "./interaction";
 
 export enum UserPermission {
   STUDENT = "student",
@@ -81,6 +82,8 @@ export class User extends Resource<UserStatus> {
   contentExtra?: Metadata[];
   tags?: Partial<Tag>[];
   _systemTags?: Partial<Tag>[];
+  // Interactions
+  interactionsLeave?: Interaction[];
   // Purchases
   subscriptions?: Partial<Subscription>[];
   courses?: Partial<Course>[];
