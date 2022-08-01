@@ -25,7 +25,10 @@ export class Hash {
     });
   }
 
-  static measurementFilter(type: MeasurementType, filter: MeasurementFilter) {
+  static measurementFilter(
+    type: MeasurementType,
+    filter: Partial<MeasurementFilter>
+  ) {
     return hash({
       type,
       filter,
