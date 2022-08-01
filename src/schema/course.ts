@@ -55,6 +55,9 @@ export class Content extends Resource<ContentStatus> {
   image1440x720?: string;
   video1920x1080?: string;
   video1920x1080_duration?: number;
+  // Date
+  dateStart?: string;
+  dateEnd?: string;
   // Forms
   forms?: Partial<ContentForms>;
   // Related
