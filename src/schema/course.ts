@@ -61,7 +61,7 @@ export class Content extends Resource<ContentStatus> {
   // Forms
   forms?: Partial<ContentForms>;
   // Payment
-  paymentFree?: boolean;
+  free?: boolean;
   // Related
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
   parentId!: string;
