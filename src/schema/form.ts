@@ -22,12 +22,17 @@ export class FormResultRangeRecommendPlaylistAction {
   playlist!: Partial<Playlist>;
 }
 
+export class FormResultIncludeUserTagsAction {
+  userTags!: Partial<Tag>[];
+}
+
 export class FormResultRange {
   name!: string;
   text!: string;
   valueStart!: number;
   valueEnd!: number;
   recommendPlaylistAction?: FormResultRangeRecommendPlaylistAction;
+  includeUserTagsAction?: FormResultIncludeUserTagsAction;
 }
 
 export enum FormStatus {
