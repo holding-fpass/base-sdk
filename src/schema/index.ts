@@ -1,3 +1,4 @@
+export * from "./campaign";
 export * from "./certificate";
 export * from "./channel";
 export * from "./contract";
