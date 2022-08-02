@@ -22,6 +22,7 @@ export * from "./signature";
 export * from "./story";
 export * from "./subscription";
 export * from "./tag";
+export * from "./thread";
 export * from "./transaction";
 export * from "./user";
 export * from "./video";
