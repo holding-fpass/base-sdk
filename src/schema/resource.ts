@@ -4,6 +4,7 @@ import { Whitelabel } from "./whitelabel";
 
 export enum ResourceType {
   APIKEY = "apikey",
+  CAMPAIGN = "campaign",
   CERTIFICATE = "certificate",
   CHANNEL = "channel",
   CHANNEL_IMAGE_AVATAR = "channel.image.avatar",
