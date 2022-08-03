@@ -1,3 +1,4 @@
+import { Story, Form } from "schema";
 import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
 
@@ -17,13 +18,11 @@ export class CampaignEmailNotificationAction {
 }
 
 export class CampaignStoriesAction {
-  resourceId!: string;
-  name!: string;
+  story!: Pick<Story, "resourceId" | "name">;
 }
 
 export class CampaignFormsAction {
-  resourceId!: string;
-  name!: string;
+  form!: Pick<Form, "resourceId" | "name">;
 }
 
 export enum CampaignStatus {
