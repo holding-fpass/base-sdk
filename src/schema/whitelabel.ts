@@ -12,4 +12,5 @@ export enum Whitelabel {
   EVENTPLAY = "eventplay",
   ITAU_ION = "itau-ion",
   EMBRACLASS = "embraclass",
+  GRUPOHDP = "grupohdp",
 }
