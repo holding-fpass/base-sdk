@@ -54,6 +54,9 @@ export class Content extends Resource<ContentStatus> {
   image1440x720?: string;
   video1920x1080?: string;
   video1920x1080_duration?: number;
+  // Transmission
+  rtmpUrl?: string;
+  meetUrl?: string;
   // Date
   dateStart?: string;
   dateEnd?: string;
