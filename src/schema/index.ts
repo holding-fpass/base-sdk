@@ -13,6 +13,7 @@ export * from "./interaction";
 export * from "./measurement";
 export * from "./metadata";
 export * from "./mfa";
+export * from "./notification";
 export * from "./plan";
 export * from "./player";
 export * from "./playlist";
