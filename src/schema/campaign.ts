@@ -1,25 +1,12 @@
-import { Story, Form } from "schema";
+import { Story, Form, NotificationMessage } from "schema";
 import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
 
-export class CampaignTextNotificationAction {
-  header!: string;
-  body!: string;
-  cta?: string;
-  ctaUrl?: string;
-}
+export class CampaignTextNotificationAction extends NotificationMessage {}
 
-export class CampaignPushNotificationAction {
-  header!: string;
-  body!: string;
-  cta?: string;
-  ctaUrl?: string;
-}
+export class CampaignPushNotificationAction extends NotificationMessage {}
 
-export class CampaignEmailNotificationAction {
-  header!: string;
-  body!: string;
-}
+export class CampaignEmailNotificationAction extends NotificationMessage {}
 
 export class CampaignStoriesAction {
   story!: Pick<Story, "resourceId" | "name">;
