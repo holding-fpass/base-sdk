@@ -30,6 +30,7 @@ export enum ResourceType {
   MEASUREMENT = "measurement",
   MFA = "mfa",
   MODULE = "module",
+  NOTIFICATION = "notification",
   PAGE = "page",
   PAGE_VIEW = "page.view",
   PLAN = "plan",

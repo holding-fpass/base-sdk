@@ -5,11 +5,15 @@ import { Tag } from "./tag";
 export class CampaignTextNotificationAction {
   header!: string;
   body!: string;
+  cta?: string;
+  ctaUrl?: string;
 }
 
 export class CampaignPushNotificationAction {
   header!: string;
   body!: string;
+  cta?: string;
+  ctaUrl?: string;
 }
 
 export class CampaignEmailNotificationAction {
@@ -31,6 +35,7 @@ export enum CampaignStatus {
   PROVIDER_PUSHNOTIFICATION_CREATED = "provider.pushNotification.created",
   ACTIVE = "active",
   CANCELED = "canceled",
+  FAILED = "failed",
 }
 
 export const CampaignStatusTransitionMap = new Map<
@@ -49,7 +54,7 @@ export const CampaignStatusTransitionMap = new Map<
 ]);
 
 export class Campaign extends Resource {
-  resourceType = ResourceType.PLAYLIST;
+  resourceType = ResourceType.CAMPAIGN;
   name!: string;
   // Actions
   textNotificationAction?: CampaignTextNotificationAction;
