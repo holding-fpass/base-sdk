@@ -15,11 +15,10 @@ export enum ContentItemType {
 export class ContentItem extends Resource {
   resourceType = ResourceType.CONTENT_ITEM;
   type!: ContentItemType;
-  name!: string;
-  description?: string;
+  name?: string;
   // Media
-  resourceUrl!: string;
-  image50x50?: string;
+  resourceUrl?: string;
+  fileUrl?: string;
 }
 
 export class ContentForms {
@@ -55,6 +54,9 @@ export class Content extends Resource<ContentStatus> {
   image1440x720?: string;
   video1920x1080?: string;
   video1920x1080_duration?: number;
+  // Transmission
+  rtmpUrl?: string;
+  meetUrl?: string;
   // Date
   dateStart?: string;
   dateEnd?: string;
