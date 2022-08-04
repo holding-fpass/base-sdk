@@ -25,6 +25,7 @@ export const CampaignStatusTransitionMap = new Map<
     CampaignStatus.PROVIDER_PUSHNOTIFICATION_CREATED,
     [CampaignStatus.ACTIVE, CampaignStatus.CANCELED],
   ],
+  [CampaignStatus.ACTIVE, [CampaignStatus.CREATED]],
 ]);
 
 export class Campaign extends Resource {
