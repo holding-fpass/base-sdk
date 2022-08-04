@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/firestore";
 import { Story, Form, NotificationMessage } from "../schema";
 import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
@@ -40,7 +41,7 @@ export class Campaign extends Resource {
     form?: Pick<Form, "resourceId" | "name">;
   };
   // Date
-  dateStart?: string;
+  dateStart?: string | Timestamp;
   cronExpression?: string;
   // Related
   userTags?: Partial<Tag>[];

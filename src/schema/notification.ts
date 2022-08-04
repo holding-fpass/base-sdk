@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/firestore";
 import { Campaign } from "schema";
 import { Form } from "./form";
 import { Resource, ResourceType } from "./resource";
@@ -48,8 +49,8 @@ export class Notification extends Resource<NotificationStatus> {
   story?: Pick<Story, "resourceId" | "name">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
   // Schedule
-  notBeforeAt?: string;
-  deliveredAt?: string;
+  notBeforeAt?: string | Timestamp;
+  deliveredAt?: string | Timestamp;
   // Usage
-  readedAt?: string;
+  readedAt?: string | Timestamp;
 }
