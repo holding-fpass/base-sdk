@@ -75,6 +75,7 @@ export class Resource<Status = any> {
   status?: Status;
   statusAt?: string | Timestamp;
   statusTo?: Status;
+  statusToError?: string;
   transitionMap?: Map<Status, Status[]>;
   // Approval
   approvals?: Signature[];

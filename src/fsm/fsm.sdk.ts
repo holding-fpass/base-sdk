@@ -187,6 +187,7 @@ export abstract class StateMachine<Entity, Status> {
         status: to,
         statusAt: FieldValue.serverTimestamp(),
         statusTo: next ?? FieldValue.delete(),
+        statusToError: FieldValue.delete(),
       });
       statusHistory = {
         ...statusHistory,
@@ -195,7 +196,9 @@ export abstract class StateMachine<Entity, Status> {
       };
       // Fail
     } else {
-      console.error(error);
+      await this.document?.update({
+        statusToError: error?.message,
+      });
       statusHistory = {
         ...statusHistory,
         timestamp: FieldValue.serverTimestamp(),
