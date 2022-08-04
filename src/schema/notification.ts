@@ -14,6 +14,7 @@ export class NotificationMessage {
 export enum NotificationStatus {
   CREATED = "created",
   ACTIVE = "active",
+  DELETED = "deleted",
 }
 
 export enum NotificationType {
@@ -27,7 +28,12 @@ export enum NotificationType {
 export const NotificationStatusTransitionMap = new Map<
   NotificationStatus,
   NotificationStatus[]
->([[NotificationStatus.CREATED, [NotificationStatus.ACTIVE]]]);
+>([
+  [
+    NotificationStatus.CREATED,
+    [NotificationStatus.ACTIVE, NotificationStatus.DELETED],
+  ],
+]);
 
 export class Notification extends Resource<NotificationStatus> {
   resourceType = ResourceType.NOTIFICATION;
