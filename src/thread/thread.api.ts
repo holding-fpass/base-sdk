@@ -18,6 +18,7 @@ export class ThreadAPI {
     const timestamp = Timestamp.now();
     const eventDocData = {
       ...event,
+      type: event.eventType,
       timestamp,
     };
     // Persist
