@@ -1,25 +1,23 @@
 import { getFirestore, Timestamp } from "firebase-admin/firestore";
 import { Document } from "../data";
-import { ResourceType } from "../schema";
+import { BaseEvent, ResourceType } from "../schema";
 import { v4 as uuid } from "uuid";
 
 export class ThreadAPI {
-  static async createInteraction(
+  static async createEvent(
     thread: {
       whitelabel: string;
       threadId: string;
       threadType: ResourceType;
     },
-    payload: any
+    event: BaseEvent
   ) {
     // Create Resource Thread
-    const eventId = uuid();
-    const eventDocPath = `management/${thread.whitelabel}/thread/${thread.threadId}-${thread.threadType}/interactions/${eventId}`;
+    event.eventId = event?.eventId ?? uuid();
+    const eventDocPath = `management/${thread.whitelabel}/thread/${thread.threadId}-${thread.threadType}/interactions/${event.eventId}`;
     const timestamp = Timestamp.now();
     const eventDocData = {
-      eventId,
-      ...thread,
-      payload,
+      ...event,
       timestamp,
     };
     // Persist
@@ -28,7 +26,7 @@ export class ThreadAPI {
       .create(eventDocData);
     // Return
     return {
-      id: eventId,
+      id: event.eventId,
       date: doc.writeTime.toDate(),
     };
   }
