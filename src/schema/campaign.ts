@@ -2,20 +2,6 @@ import { Story, Form, NotificationMessage } from "../schema";
 import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
 
-export class CampaignTextNotificationAction extends NotificationMessage {}
-
-export class CampaignPushNotificationAction extends NotificationMessage {}
-
-export class CampaignEmailNotificationAction extends NotificationMessage {}
-
-export class CampaignStoriesAction {
-  story!: Pick<Story, "resourceId" | "name">;
-}
-
-export class CampaignFormsAction {
-  form!: Pick<Form, "resourceId" | "name">;
-}
-
 export enum CampaignStatus {
   CREATED = "created",
   APPROVED = "approved",
@@ -44,11 +30,15 @@ export class Campaign extends Resource {
   resourceType = ResourceType.CAMPAIGN;
   name!: string;
   // Actions
-  textNotificationAction?: CampaignTextNotificationAction;
-  pushNotificationAction?: CampaignPushNotificationAction;
-  emailNotificationAction?: CampaignEmailNotificationAction;
-  storiesAction?: CampaignStoriesAction;
-  formsAction?: CampaignFormsAction;
+  textNotificationAction?: NotificationMessage;
+  pushNotificationAction?: NotificationMessage;
+  emailNotificationAction?: NotificationMessage;
+  storiesAction?: {
+    story?: Pick<Story, "resourceId" | "name">;
+  };
+  formsAction?: {
+    form?: Pick<Form, "resourceId" | "name">;
+  };
   // Date
   dateStart?: string;
   cronExpression?: string;

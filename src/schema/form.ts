@@ -47,7 +47,6 @@ export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
 
 export class Form extends Resource<FormStatus> {
   resourceType = ResourceType.FORM;
-  transitionMap = FormStatusTransitionMap;
   name!: string;
   description?: string;
   questions?: Partial<FormQuestion>[];

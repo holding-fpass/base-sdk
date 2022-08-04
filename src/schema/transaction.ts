@@ -82,7 +82,6 @@ export enum Asset {
 }
 export class Transaction extends Resource<TransactionStatus> {
   resourceType = ResourceType.TRANSACTION;
-  transitionMap = TransactionStatusTransitionMap;
   type!: TransactionType;
   description!: string;
   asset!: Asset;

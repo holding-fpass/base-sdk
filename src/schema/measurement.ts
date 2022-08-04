@@ -60,7 +60,6 @@ export class MeasurementFilter {
 }
 export class Measurement extends Resource<MeasurementStatus> {
   resourceType = ResourceType.MEASUREMENT;
-  transitionMap = MeasurementStatusTransitionMap;
   //
   type!: MeasurementType;
   filter!: Partial<MeasurementFilter>;
