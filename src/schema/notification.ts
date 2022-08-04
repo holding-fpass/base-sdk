@@ -1,3 +1,4 @@
+import { Campaign } from "schema";
 import { Form } from "./form";
 import { Resource, ResourceType } from "./resource";
 import { Story } from "./story";
@@ -39,6 +40,7 @@ export class Notification extends Resource<NotificationStatus> {
   // Related
   form?: Pick<Form, "resourceId" | "name">;
   story?: Pick<Story, "resourceId" | "name">;
+  campaign?: Pick<Campaign, "resourceId" | "name">;
   // Schedule
   notBeforeAt?: string;
   deliveredAt?: string;
