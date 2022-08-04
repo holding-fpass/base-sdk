@@ -1,4 +1,4 @@
-import { Story, Form, NotificationMessage } from "schema";
+import { Story, Form, NotificationMessage } from "../schema";
 import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
 
