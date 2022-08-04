@@ -4,7 +4,7 @@ import { ResourceType } from "schema";
 import { v4 as uuid } from "uuid";
 
 export class ThreadAPI {
-  static async create(
+  static async createInteraction(
     thread: {
       whitelabel: string;
       threadId: string;
