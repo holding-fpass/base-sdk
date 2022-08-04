@@ -1,5 +1,6 @@
 import { Document } from "data";
 import { getFirestore, Timestamp } from "firebase-admin/firestore";
+import { ResourceType } from "schema";
 import { v4 as uuid } from "uuid";
 
 export class ThreadAPI {
@@ -7,7 +8,7 @@ export class ThreadAPI {
     thread: {
       whitelabel: string;
       threadId: string;
-      threadType: string;
+      threadType: ResourceType;
     },
     payload: any
   ) {
