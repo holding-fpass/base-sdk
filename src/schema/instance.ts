@@ -161,6 +161,7 @@ export enum InstanceParametersSettings {
   GOOGLE_GTM_ID = "google.gtm.id",
   GOOGLE_GA_ID = "google.ga.id",
   ONESIGNAL_APP_ID = "onesignal.app.id",
+  ONESIGNAL_API_KEY = "onesignal.api.key",
   FPASS_PLAYER_PAGEVIEW_INTERVAL = "fpass.player.pageview.interval",
   FPASS_COPYRIGHT = "fpass.copyright",
 }
