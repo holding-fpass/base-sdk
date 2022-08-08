@@ -23,6 +23,7 @@ export * from "./scope";
 export * from "./signature";
 export * from "./story";
 export * from "./subscription";
+export * from "./subtitle";
 export * from "./tag";
 export * from "./thread";
 export * from "./transaction";
