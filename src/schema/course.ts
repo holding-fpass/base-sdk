@@ -2,6 +2,7 @@ import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
 import { Resource, ResourceType } from "./resource";
+import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
@@ -54,6 +55,7 @@ export class Content extends Resource<ContentStatus> {
   image1440x720?: string;
   video1920x1080?: string;
   video1920x1080_duration?: number;
+  video1920x1080_subtitles?: Subtitle[];
   // Transmission
   rtmpUrl?: string;
   meetUrl?: string;
