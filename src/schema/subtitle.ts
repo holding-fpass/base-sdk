@@ -8,6 +8,7 @@ export class Sentence {
   end!: string | number | Long | null | undefined;
   content!: string;
   lastOfFull!: boolean;
+  speakerTag?: number;
 }
 
 export enum SubtitleStatus {
