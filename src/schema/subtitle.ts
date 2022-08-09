@@ -39,6 +39,10 @@ export const SubtitleStatusTransitionMap = new Map<
     [SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED],
   ],
   [
+    SubtitleStatus.PROVIDER_SENTENCES_EXTRACTED,
+    [SubtitleStatus.FILE_GENERATED],
+  ],
+  [
     SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED,
     [SubtitleStatus.FILE_GENERATED],
   ],
