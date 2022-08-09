@@ -119,13 +119,14 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
   [CourseStatus.ACTIVE, [CourseStatus.UNAVALIABLE]],
 ]);
 export class Course extends Resource<CourseStatus> {
-  resourceType = ResourceType.COURSE;
-  transitionMap = CourseStatusTransitionMap;
+  resourceId!: string;
+  resourceType!: ResourceType;
   name!: string;
   description?: string;
   slug?: string;
   premium?: boolean;
   hide?: boolean;
+  spotlight?: boolean;
   // General
   whitelabel!: Whitelabel;
   tags?: Tag[];
@@ -135,9 +136,10 @@ export class Course extends Resource<CourseStatus> {
   contract?: Partial<Contract>;
   faq?: FAQ[];
   // Media
-  image400x512?: string;
   image1272x203?: string;
+  image128x128?: string;
   image1400x720?: string;
+  image400x512?: string;
   // Dates
   dateStart?: string;
   dateEnd?: string;
