@@ -13,4 +13,5 @@ export enum Whitelabel {
   ITAU_ION = "itau-ion",
   EMBRACLASS = "embraclass",
   GRUPOHDP = "grupohdp",
+  AIA = "aia",
 }
