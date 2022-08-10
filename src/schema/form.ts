@@ -10,10 +10,34 @@ export class FormQuestionOption {
   image600x400?: string;
 }
 
+export class FormQuestionText {
+  description?: string;
+  value!: number;
+}
+
+export enum FormQuestionScaleType {
+  STARS = "stars",
+}
+export class FormQuestionScale<Type> {
+  type!: Type;
+  value!: number;
+}
+
+export enum FormQuestionType {
+  OPTIONS = "options",
+  TEXT = "text",
+  STARS = "stars",
+}
+
 export class FormQuestion {
   name!: string;
   description?: string;
+  type?: FormQuestionType;
+  // Types
   options?: Partial<FormQuestionOption>[];
+  text?: FormQuestionText;
+  stars?: FormQuestionScale<FormQuestionScaleType.STARS>[];
+  // Hash
   hash!: string;
 }
 
