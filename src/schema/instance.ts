@@ -105,6 +105,7 @@ export enum InstanceFeatureFlags {
   PUSH_NOTIFICATIONS = "push.notifications",
   STORY = "story",
   WIZARD = "wizard",
+  SUBSCRIPTION_PLATFORM = "subscription.platform",
 }
 
 export enum InstanceThemeSettings {
