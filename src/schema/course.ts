@@ -119,8 +119,9 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
   [CourseStatus.ACTIVE, [CourseStatus.UNAVALIABLE]],
 ]);
 export class Course extends Resource<CourseStatus> {
+  resourceType = ResourceType.COURSE;
+  transitionMap = CourseStatusTransitionMap;
   resourceId!: string;
-  resourceType!: ResourceType;
   name!: string;
   description?: string;
   slug?: string;
