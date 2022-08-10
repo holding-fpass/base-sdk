@@ -73,6 +73,7 @@ export class Instance extends Resource<InstanceStatus> {
   features_provider?: Pick<Instance, "resourceId" | "fqdn">;
   features!: Metadata<InstanceFeatureFlags>[];
   parameters!: Metadata<InstanceParametersSettings>[];
+  i18n_ptBr!: Metadata<string>[];
   urlRedirect?: string;
   // Email
   emailConfig?: EmailConfig;
