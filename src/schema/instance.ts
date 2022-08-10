@@ -99,11 +99,12 @@ export enum InstanceFeatureFlags {
   CHANNEL = "channel",
   COMMUNITY = "community",
   COUPON = "coupon",
+  COURSE_SHARE_LINK = "course.share.link",
   LEARNING_ANALYTICS = "learning.analytics",
   PREMIUM = "premium",
+  PUSH_NOTIFICATIONS = "push.notifications",
   STORY = "story",
   WIZARD = "wizard",
-  PUSH_NOTIFICATIONS = "push.notifications",
 }
 
 export enum InstanceThemeSettings {
