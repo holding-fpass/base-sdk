@@ -20,6 +20,7 @@ export enum FormQuestionScaleType {
 }
 export class FormQuestionScale<Type> {
   type!: Type;
+  description?: string;
   value!: number;
 }
 
