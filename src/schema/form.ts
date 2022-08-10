@@ -59,6 +59,11 @@ export class FormResultRange {
   includeUserTagsAction?: FormResultIncludeUserTagsAction;
 }
 
+export enum FormLayout {
+  SLIDES = "slides",
+  PAGE = "page",
+}
+
 export enum FormStatus {
   CREATED = "created",
   ACTIVE = "active",
@@ -73,6 +78,7 @@ export class Form extends Resource<FormStatus> {
   resourceType = ResourceType.FORM;
   name!: string;
   description?: string;
+  layout!: FormLayout;
   questions?: Partial<FormQuestion>[];
   resultRanges?: Partial<FormResultRange>[];
   // Related
