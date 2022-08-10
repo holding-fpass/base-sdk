@@ -93,6 +93,7 @@ export enum InstanceApplications {
 }
 
 export enum InstanceFeatureFlags {
+  AFFILIATE = "affiliate",
   CALENDAR = "calendar",
   CERTIFICATE = "certificate",
   CHANNEL = "channel",
