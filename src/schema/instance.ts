@@ -63,9 +63,25 @@ export class Instance extends Resource<InstanceStatus> {
   fqdn!: string;
   displayName!: string;
   // Media
-  image32x32?: string; // Favicon
-  image42x42?: string; // Mobile logo
+  /**
+   * Favicon
+   */
+  image32x32?: string;
+  /**
+   * Logo Mobile
+   */
+  image42x42?: string;
+  /**
+   * Channel By
+   */
+  image98x42?: string;
+  /**
+   * Logo
+   */
   image130x40?: string;
+  /**
+   * Passport
+   */
   image400x400?: string;
   //
   urls!: Metadata<InstanceUrlSettings>[];
