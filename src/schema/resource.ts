@@ -53,6 +53,7 @@ export enum ResourceType {
   USER_CONSENT = "user.consent",
   USER_IMAGE_AVATAR = "user.image.avatar",
   USER_IMAGE_WEBCAM = "user.image.webcam",
+  VIDEO = "video",
   WALLET = "wallet",
   WALLET_FIAT = "wallet.fiat",
   WALLET_TOKEN = "wallet.token",
