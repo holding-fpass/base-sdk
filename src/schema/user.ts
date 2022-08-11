@@ -20,7 +20,6 @@ export enum UserPermission {
   PRODUCER = "producer",
   STUDENT = "student",
   SYSTEM = "system",
-  TEACHER = "teacher",
 }
 
 export enum UserData {
