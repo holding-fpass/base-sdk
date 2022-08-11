@@ -61,6 +61,16 @@ export enum ResourceType {
 
 export enum ResourceStatus {
   CREATED = "created",
+  ACTIVE = "active",
+  APPROVED = "approved",
+  CANCELED = "canceled",
+  FAILED = "failed",
+  PUBLISHED = "published",
+  RESTRICTED = "restricted",
+  DELETED = "deleted",
+  UNAVALIABLE = "unavaliable",
+  PROVIDER_CREATED = "provider.created",
+  PROVIDER_EXECUTED = "provider.executed",
 }
 
 export class Resource<Status = any> {
