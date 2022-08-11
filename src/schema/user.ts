@@ -14,12 +14,13 @@ import { Tag } from "./tag";
 import { Interaction } from "./interaction";
 
 export enum UserPermission {
-  STUDENT = "student",
-  TEACHER = "teacher",
   ADMINISTRATOR = "administrator",
-  PRODUCER = "producer",
   MACHINE = "machine",
+  MENTOR = "mentor",
+  PRODUCER = "producer",
+  STUDENT = "student",
   SYSTEM = "system",
+  TEACHER = "teacher",
 }
 
 export enum UserData {
