@@ -74,6 +74,7 @@ export class Instance extends Resource<InstanceStatus> {
   features!: Metadata<InstanceFeatureFlags>[];
   parameters!: Metadata<InstanceParametersSettings>[];
   i18n_ptBr!: Metadata<string>[];
+  disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
   // Email
   emailConfig?: EmailConfig;
@@ -170,4 +171,9 @@ export enum InstanceParametersSettings {
   ONESIGNAL_API_KEY = "onesignal.api.key",
   FPASS_PLAYER_PAGEVIEW_INTERVAL = "fpass.player.pageview.interval",
   FPASS_COPYRIGHT = "fpass.copyright",
+}
+
+export enum InstanceDisclaimers {
+  COPYRIGHT = "copyright",
+  USER_COMMENTS = "user.comments",
 }
