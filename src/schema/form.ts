@@ -16,7 +16,7 @@ export class FormQuestionText {
 }
 
 export enum FormQuestionScaleType {
-  STARS = "stars",
+  STAR = "star",
 }
 export class FormQuestionScale<Type> {
   type!: Type;
@@ -27,7 +27,7 @@ export class FormQuestionScale<Type> {
 export enum FormQuestionType {
   OPTIONS = "options",
   TEXT = "text",
-  STARS = "stars",
+  SCALE = "scale",
 }
 
 export class FormQuestion {
@@ -37,7 +37,7 @@ export class FormQuestion {
   // Types
   options?: Partial<FormQuestionOption>[];
   text?: FormQuestionText;
-  stars?: FormQuestionScale<FormQuestionScaleType.STARS>[];
+  scale?: FormQuestionScale<FormQuestionScaleType>[];
   // Hash
   hash!: string;
 }
