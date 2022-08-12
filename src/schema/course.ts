@@ -112,6 +112,7 @@ interface KnowledgeItens {
 export class CourseForms {
   courseEndForm?: Partial<Form>;
   userTestForm?: Partial<Form>;
+  courseRatingForm?: Partial<Form>;
 }
 
 export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
