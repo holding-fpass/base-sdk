@@ -104,6 +104,7 @@ export class DisplayResource extends Resource {
   ctaUrl?: string;
   slug?: string;
   imageUrl?: string;
+  resourceUrl?: string;
   open?: boolean;
   children?: DisplayResource[];
   parent?: DisplayResource;
