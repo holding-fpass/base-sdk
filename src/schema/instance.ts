@@ -25,6 +25,11 @@ interface FpayProvider {
   sellerId?: string;
 }
 
+interface ElasticSearchProvider {
+  privateKey: string;
+  searchKey: string;
+}
+
 export interface DataForwardConfig {
   type: InteractionDataforwardType;
   url?: string;
@@ -96,6 +101,7 @@ export class Instance extends Resource<InstanceStatus> {
   emailConfig?: EmailConfig;
   // Provider
   __fpay?: FpayProvider;
+  __elascticSearch?: ElasticSearchProvider;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
