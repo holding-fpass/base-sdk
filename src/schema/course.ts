@@ -107,12 +107,12 @@ interface Knowledge {
 interface KnowledgeItens {
   id: string;
   description?: string;
-}
+} 
 
 export class CourseForms {
-  courseEndForm?: Partial<Form>;
-  userTestForm?: Partial<Form>;
-  courseRatingForm?: Partial<Form>;
+  feedbackForm?: Partial<Form>;
+  certificateForm?: Partial<Form>;
+  publicRatingForm?: Partial<Form>;
 }
 
 export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
