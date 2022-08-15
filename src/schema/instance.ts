@@ -26,6 +26,7 @@ interface FpayProvider {
 }
 
 interface ElasticSearchProvider {
+  endpointUrl: string;
   privateKey: string;
   searchKey: string;
 }
