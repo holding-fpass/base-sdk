@@ -107,10 +107,10 @@ interface Knowledge {
 interface KnowledgeItens {
   id: string;
   description?: string;
-}
+} 
 
 export class CourseForms {
-  feedBackForm?: Partial<Form>;
+  feedbackForm?: Partial<Form>;
   certificateForm?: Partial<Form>;
   publicRatingForm?: Partial<Form>;
 }
