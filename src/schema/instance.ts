@@ -31,6 +31,13 @@ interface ElasticSearchProvider {
   searchKey: string;
 }
 
+interface ActiveCampaignProvider {
+  accountName: string;
+  dateLoginField: string;
+  planField: string;
+  productIdField: string;
+}
+
 export interface DataForwardConfig {
   type: InteractionDataforwardType;
   url?: string;
@@ -103,6 +110,7 @@ export class Instance extends Resource<InstanceStatus> {
   // Provider
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;
+  activeCampaign?: ActiveCampaignProvider;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
