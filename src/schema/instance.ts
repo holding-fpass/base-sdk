@@ -51,6 +51,11 @@ export interface KyCConfig {
   fields?: KycField[];
 }
 
+export interface InstanceIconTextItem {
+  icon: string;
+  text: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -90,6 +95,12 @@ export class Instance extends Resource<InstanceStatus> {
    */
   image400x400?: string;
   //
+  pagesDefault?: {
+    premium?: {
+      image1400x720?: string;
+      benefits?: InstanceIconTextItem[];
+    };
+  };
   urls!: Metadata<InstanceUrlSettings>[];
   theme!: Metadata<InstanceThemeSettings>[];
   features_provider?: Pick<Instance, "resourceId" | "fqdn">;
