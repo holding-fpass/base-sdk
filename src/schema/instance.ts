@@ -131,6 +131,7 @@ export enum InstanceFeatureFlags {
   WIZARD = "wizard",
   SUBSCRIPTION_PLATFORM = "subscription.platform",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
+  RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
 }
 
 export enum InstanceThemeSettings {
