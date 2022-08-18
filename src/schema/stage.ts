@@ -20,13 +20,13 @@ export class StageScheduleContent {
   description?: string;
   speakers?: Pick<User, "resourceId" | "name" | "image128x128">;
   duration?: string;
+  image96x96?: string;
 }
 
 export class StageScheduleTimeBox {
   name?: string;
   timeStart?: string;
   timeEnd?: string;
-  image96x96?: string;
   contents?: StageScheduleContent[];
 }
 
