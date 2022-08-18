@@ -151,6 +151,7 @@ export enum InstanceFeatureFlags {
   PREMIUM = "premium",
   PUSH_NOTIFICATIONS = "push.notifications",
   STORY = "story",
+  STAGE = "instance.feature-flag.stage",
   WIZARD = "wizard",
   SUBSCRIPTION_PLATFORM = "subscription.platform",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
