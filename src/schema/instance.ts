@@ -100,6 +100,9 @@ export class Instance extends Resource<InstanceStatus> {
       image1400x720?: string;
       benefits?: InstanceIconTextItem[];
     };
+    channels?: {
+      image1400x720?: string;
+    };
   };
   urls!: Metadata<InstanceUrlSettings>[];
   theme!: Metadata<InstanceThemeSettings>[];
