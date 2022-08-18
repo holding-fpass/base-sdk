@@ -56,6 +56,11 @@ export interface InstanceIconTextItem {
   text: string;
 }
 
+export interface InstanceHomeUrl {
+  name: string;
+  url: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -96,6 +101,10 @@ export class Instance extends Resource<InstanceStatus> {
   image400x400?: string;
   //
   pagesDefault?: {
+    home?: {
+      urlsHeader?: InstanceHomeUrl[];
+      urlsFooter?: InstanceHomeUrl[];
+    };
     premium?: {
       image1400x720?: string;
       benefits?: InstanceIconTextItem[];
