@@ -26,6 +26,7 @@ export class StageScheduleTimeBox {
   name?: string;
   timeStart?: string;
   timeEnd?: string;
+  image96x96?: string;
   contents?: StageScheduleContent[];
 }
 
