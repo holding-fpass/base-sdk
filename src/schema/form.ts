@@ -114,7 +114,7 @@ export class FormResponse extends Resource<FormResponseStatus> {
   product?: Pick<Resource, "resourceId" | "resourceType"> & { name: string };
   userResponses!: FormUserResponse[];
   // Related
-  user!: Pick<User, "resourceId" | "name" | "email">;
+  user!: Pick<User, "resourceId" | "name" | "email" | "image128x128">;
   // Process
   value!: number;
 }
