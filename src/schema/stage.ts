@@ -18,7 +18,7 @@ export enum StageFeatureFlags {
 export class StageScheduleContent {
   name?: string;
   description?: string;
-  speakers?: Pick<User, "resourceId" | "name" | "image128x128">;
+  speakers?: Pick<User, "resourceId" | "name" | "image128x128">[];
   duration?: string;
   image96x96?: string;
 }
