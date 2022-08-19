@@ -38,6 +38,7 @@ export class FormQuestion {
   options?: Partial<FormQuestionOption>[];
   text?: FormQuestionText;
   scale?: FormQuestionScale<FormQuestionScaleType>[];
+  public?: boolean;
   // Hash
   hash!: string;
 }
