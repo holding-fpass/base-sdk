@@ -5,7 +5,10 @@ export type MessageBrokerHandleFunction = (...args: any[]) => void;
 export interface MessageBrokerClient {
   setupDestination(eventType: EventType | string): any;
   setupSource(eventType: EventType | string): any;
-  publish(event?: BaseEvent): Promise<boolean>;
+  publish<PublishAt = string>(
+    event?: BaseEvent,
+    publishAt?: PublishAt
+  ): Promise<boolean>;
   publishForWhitelabel(event?: BaseEvent): Promise<boolean>;
   onMessage(
     eventType: EventType | string,

@@ -22,8 +22,11 @@ export class Publisher {
     return Publisher.client.setOwnerExternalId(ownerExternalId);
   }
 
-  static publish(event: BaseEvent) {
-    return Publisher.client.publish(event);
+  static publish<DelayTopic = string>(
+    event: BaseEvent,
+    delayTopic?: DelayTopic
+  ) {
+    return Publisher.client.publish(event, delayTopic);
   }
 
   static publishForWhitelabel(event: BaseEvent) {

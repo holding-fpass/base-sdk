@@ -1,4 +1,6 @@
 import { PubSub, v1 } from "@google-cloud/pubsub";
+import { getFirestore } from "firebase-admin/firestore";
+import { Document } from "../../../data";
 import {
   MessageBrokerClient,
   MessageBrokerHandleFunction,
@@ -83,39 +85,25 @@ export class PubSubClient implements MessageBrokerClient {
     if (!event.whitelabel) event.whitelabel = this.whitelabel ?? "default";
     const eventBuffer = Buffer.from(JSON.stringify(event));
     this.pubsub.topic(topic ?? event.eventType).publish(eventBuffer);
-    // const formattedTopic = this.publisher.projectTopicPath(
-    //   this.projectId,
-    //   topic ?? event.eventType
-    // );
-    // const messages = [
-    //   {
-    //     data: eventBuffer,
-    //   },
-    // ];
-    // this.publisher.publish(
-    //   {
-    //     topic: formattedTopic,
-    //     messages,
-    //   },
-    //   { retry: PubSubClient.retrySettings }
-    // );
-    // Webhook Event Prepare
-    // const formattedTopicWebhook = this.publisher.projectTopicPath(
-    //   this.projectId,
-    //   `${EventType.WEBHOOK_OUTGOING_CREATED}--${event.whitelabel}`
-    // );
-    // this.publisher.publish(
-    //   {
-    //     topic: formattedTopicWebhook,
-    //     messages,
-    //   },
-    //   { retry: PubSubClient.retrySettings }
-    // );
     return true;
   }
 
-  async publish(event: BaseEvent): Promise<boolean> {
-    return this._publish(event);
+  private async _publishAt<PublishAt>(
+    event: BaseEvent,
+    publishAt?: PublishAt
+  ): Promise<boolean> {
+    getFirestore(Document.app)
+      .collection(`publishment/${publishAt}/events`)
+      .add(event);
+    return true;
+  }
+
+  async publish<PublishAt = string>(
+    event: BaseEvent,
+    publishAt?: PublishAt
+  ): Promise<boolean> {
+    if (!publishAt) return this._publish(event);
+    return this._publishAt<PublishAt>(event, publishAt);
   }
 
   async publishForWhitelabel(event: BaseEvent): Promise<boolean> {
