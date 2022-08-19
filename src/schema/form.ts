@@ -110,6 +110,7 @@ export const FormResponseStatusTransitionMap = new Map<
 export class FormResponse extends Resource<FormResponseStatus> {
   resourceType = ResourceType.FORM_RESPONSE;
   form!: Pick<Form, "resourceId" | "name">;
+  product?: Pick<Resource, "resourceId" | "resourceType"> & { name: string };
   userResponses!: FormUserResponse[];
   // Related
   user!: Pick<User, "resourceId" | "name" | "email">;
