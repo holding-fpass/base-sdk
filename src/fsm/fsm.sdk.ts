@@ -183,11 +183,12 @@ export abstract class StateMachine<Entity, Status> {
     };
     // Success
     if (result) {
+      const fieldValueDelete = FieldValue.delete();
       const writeResult = await this.document?.update({
         status: to,
         statusAt: FieldValue.serverTimestamp(),
-        statusTo: next ?? FieldValue.delete(),
-        statusToError: FieldValue.delete(),
+        statusTo: next ?? fieldValueDelete,
+        statusToError: fieldValueDelete,
       });
       statusHistory = {
         ...statusHistory,
