@@ -94,7 +94,7 @@ export class PubSubClient implements MessageBrokerClient {
   ): Promise<boolean> {
     getFirestore(Document.app)
       .collection(`publishment/${publishAt}/events`)
-      .add(event);
+      .add(JSON.parse(JSON.stringify(event)));
     return true;
   }
 
