@@ -68,7 +68,7 @@ export class Content extends Resource<ContentStatus> {
   // Payment
   free?: boolean;
   // Related
-  stage?: Pick<Stage, "resourceId" | "name">;
+  stage?: Pick<Stage, "resourceId" | "name" | 'slug'>;
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
   parentId!: string;
   parentType!: ResourceType;
