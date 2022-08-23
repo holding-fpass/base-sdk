@@ -157,6 +157,7 @@ export enum InstanceFeatureFlags {
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
   RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
+  MODULE_CUSTOM_NAME = "instance.feature-flag.module.custom.name",
 }
 
 export enum InstanceThemeSettings {
