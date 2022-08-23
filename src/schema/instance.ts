@@ -106,7 +106,7 @@ export class Instance extends Resource<InstanceStatus> {
       urlsFooter?: InstanceHomeUrl[];
     };
     premium?: {
-      image1400x720?: string;
+      image1440x440?: string;
       benefits?: InstanceIconTextItem[];
     };
     channels?: {
