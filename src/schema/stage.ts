@@ -1,5 +1,5 @@
 import { Timestamp } from "firebase-admin/firestore";
-import { Course } from "./course";
+import { ContentItem, Course } from "./course";
 import { Form } from "./form";
 import { Metadata } from "./metadata";
 import { Plan } from "./plan";
@@ -71,6 +71,7 @@ export class Stage extends Resource<StageStatus> {
   image968x168?: string;
   // Content
   schedule?: StageSchedule;
+  items?: Partial<ContentItem>[];
   forms?: Pick<Form, "resourceId" | "name">[];
   // Stands
   partnerboxes?: StagePartnerBox[];
