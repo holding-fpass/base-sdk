@@ -14,4 +14,5 @@ export enum Whitelabel {
   EMBRACLASS = "embraclass",
   GRUPOHDP = "grupohdp",
   AIA = "aia",
+  VOOMP = "voomp",
 }
