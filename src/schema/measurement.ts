@@ -25,6 +25,8 @@ export enum MeasurementType {
   RESPONSE_COUNT_3 = "response.count.3",
   RESPONSE_COUNT_4 = "response.count.4",
   RESPONSE_COUNT_5 = "response.count.5",
+  // Transaction
+  TRANSACTIONS_TOTAL_VALUE = 'transactions.total.value'
 }
 
 export enum MeasurementStatus {
