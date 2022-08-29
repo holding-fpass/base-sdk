@@ -2,6 +2,7 @@ import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
 import { Resource, ResourceType } from "./resource";
+import { Stage } from "./stage";
 import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
 import { User } from "./user";
@@ -67,6 +68,7 @@ export class Content extends Resource<ContentStatus> {
   // Payment
   free?: boolean;
   // Related
+  stage?: Pick<Stage, "resourceId" | "name" | 'slug'>;
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
   parentId!: string;
   parentType!: ResourceType;
@@ -107,7 +109,7 @@ interface Knowledge {
 interface KnowledgeItens {
   id: string;
   description?: string;
-} 
+}
 
 export class CourseForms {
   feedbackForm?: Partial<Form>;

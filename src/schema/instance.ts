@@ -106,7 +106,7 @@ export class Instance extends Resource<InstanceStatus> {
       urlsFooter?: InstanceHomeUrl[];
     };
     premium?: {
-      image1400x720?: string;
+      image1440x440?: string;
       benefits?: InstanceIconTextItem[];
     };
     channels?: {
@@ -156,6 +156,9 @@ export enum InstanceFeatureFlags {
   SUBSCRIPTION_PLATFORM = "subscription.platform",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
   RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
+  HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
+  MODULE_CUSTOM_NAME = "instance.feature-flag.module.custom.name",
+  MODULE_CONTENT_ORDER_HIDE = "instance.feature-flag.module.content.order.hide",
 }
 
 export enum InstanceThemeSettings {
