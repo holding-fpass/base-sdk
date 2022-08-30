@@ -19,6 +19,7 @@ export enum InteractionDataforwardType {
   WEBHOOK = "webhook",
   MONGODB = "mongodb",
   GCP_CLOUD_STORAGE = "gcp-cloud-storage",
+  GOOGLE_SPREADSHEET = "google-spreadsheet"
 }
 
 export interface InteractionDataforward {

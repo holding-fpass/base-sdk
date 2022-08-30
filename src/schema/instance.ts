@@ -37,6 +37,7 @@ export interface DataForwardConfig {
   apiKey?: string;
   mongodbUri?: string;
   gcpStorageBucket?: string;
+  googleSpreadsheet?: string;
 }
 
 export interface KycField {
