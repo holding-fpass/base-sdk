@@ -38,6 +38,8 @@ export class Interaction extends Resource<InteractionStatus> {
   transitionMap = InteractionStatusTransitionMap;
   productId!: string;
   productType!: ResourceType;
+  parentId!: string;
+  parentType!: ResourceType;
   type!: InteractionType;
   user!: Pick<User, "id">;
   // Media
