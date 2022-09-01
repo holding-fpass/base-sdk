@@ -1,7 +1,12 @@
 import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
 
+export enum StoryItemType {
+  IMAGE = "story-item.type.image",
+  VIDEO = "story-item.type.video",
+}
 export class StoryItem {
+  type?: StoryItemType;
   image1080x1920?: string;
   image1080x1920_alt?: string;
   video1080X1920?: string;
