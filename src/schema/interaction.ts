@@ -46,6 +46,7 @@ export class Interaction extends Resource<InteractionStatus> {
   mediaStart?: number;
   mediaEnd?: number;
   mediaCount?: number;
+  mediaSpeed?: number;
   // Dataforward
   __dataforward?: InteractionDataforward;
 }
