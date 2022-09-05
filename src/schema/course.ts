@@ -70,6 +70,7 @@ export class Content extends Resource<ContentStatus> {
   // Related
   stage?: Pick<Stage, "resourceId" | "name" | 'slug'>;
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
+  tags?: Tag[];
   parentId!: string;
   parentType!: ResourceType;
   items?: Partial<ContentItem>[];
