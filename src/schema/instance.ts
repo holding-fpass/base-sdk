@@ -62,6 +62,11 @@ export interface InstanceHomeUrl {
   url: string;
 }
 
+interface InstancePagePlaylists {
+  resourceId: string;
+  name: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -105,6 +110,7 @@ export class Instance extends Resource<InstanceStatus> {
     home?: {
       urlsHeader?: InstanceHomeUrl[];
       urlsFooter?: InstanceHomeUrl[];
+      playlists?: InstancePagePlaylists[];
     };
     premium?: {
       image1440x440?: string;
