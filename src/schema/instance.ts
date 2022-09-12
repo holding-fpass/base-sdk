@@ -115,6 +115,7 @@ export class Instance extends Resource<InstanceStatus> {
     premium?: {
       image1440x440?: string;
       benefits?: InstanceIconTextItem[];
+      playlists?: InstancePagePlaylists[];
     };
     channels?: {
       image1400x720?: string;
