@@ -63,6 +63,8 @@ export class Content extends Resource<ContentStatus> {
   // Date
   dateStart?: string;
   dateEnd?: string;
+  meetDateStart?: string;
+  meetDateEnd?: string;
   // Forms
   forms?: Partial<ContentForms>;
   // Payment
