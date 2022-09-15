@@ -33,6 +33,7 @@ export enum MeasurementType {
   TRANSACTIONS_TOTAL_VALUE = 'transactions.total.value',
   // User
   USERS_TOTAL_COUNT = 'users.total.count',
+  DEVICES_TOTAL_COUNT = 'devices.total.count',
   USERS_ACTIVE_COUNT = 'users.active.count',
 }
 
