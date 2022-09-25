@@ -47,6 +47,7 @@ export const SubtitleStatusTransitionMap = new Map<
     [SubtitleStatus.FILE_GENERATED],
   ],
   [SubtitleStatus.FILE_GENERATED, [SubtitleStatus.ACTIVE]],
+  [SubtitleStatus.ACTIVE, [SubtitleStatus.FILE_GENERATED]]
 ]);
 
 export class Subtitle extends Resource<SubtitleStatus> {
