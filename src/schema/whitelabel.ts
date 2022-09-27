@@ -15,4 +15,6 @@ export enum Whitelabel {
   GRUPOHDP = "grupohdp",
   AIA = "aia",
   VOOMP = "voomp",
+  CALIFORNIA_TV = "california-tv",
+  ORBE = "orbe",
 }
