@@ -57,6 +57,8 @@ export class Subtitle extends Resource<SubtitleStatus> {
   content!: Pick<Content, "resourceId" | "name">;
   speakers?: Pick<User, "resourceId" | "name">[];
   parent?: Pick<Subtitle, "resourceId" | "name">;
+  parentId!: string;
+  parentType!: ResourceType;
   // Process
   language!: string;
   videoUrl!: string;
