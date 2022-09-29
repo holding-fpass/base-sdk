@@ -18,6 +18,11 @@ interface EmailConfig {
   supportEmail?: string;
 }
 
+interface ActiveCampaign {
+  accountUrl?: string;
+  accountKey?: string;
+}
+
 interface FpayProvider {
   dryRunKey?: string;
   marketplaceId?: string;
@@ -132,6 +137,7 @@ export class Instance extends Resource<InstanceStatus> {
   // Email
   emailConfig?: EmailConfig;
   // Provider
+  __activeCampaign?: ActiveCampaign;
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;
   // Data Forward
@@ -162,7 +168,7 @@ export enum InstanceFeatureFlags {
   STAGE = "instance.feature-flag.stage",
   WIZARD = "wizard",
   SUBSCRIPTION_PLATFORM = "subscription.platform",
-  ONLY_EXTERNAL_SALES = 'only.external.sales',
+  ONLY_EXTERNAL_SALES = "only.external.sales",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
   RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
