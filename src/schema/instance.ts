@@ -18,6 +18,11 @@ interface EmailConfig {
   supportEmail?: string;
 }
 
+interface ActiveCampaign {
+  accountUrl?: string;
+  accountKey?: string;
+}
+
 interface FpayProvider {
   dryRunKey?: string;
   marketplaceId?: string;
@@ -132,6 +137,7 @@ export class Instance extends Resource<InstanceStatus> {
   // Email
   emailConfig?: EmailConfig;
   // Provider
+  __activeCampaign?: ActiveCampaign;
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;
   // Data Forward
