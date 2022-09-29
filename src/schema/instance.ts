@@ -162,7 +162,7 @@ export enum InstanceFeatureFlags {
   STAGE = "instance.feature-flag.stage",
   WIZARD = "wizard",
   SUBSCRIPTION_PLATFORM = "subscription.platform",
-  ONLY_EXTERNAL_SALES = 'only.external.sales',
+  ONLY_EXTERNAL_SALES = "only.external.sales",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
   RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
