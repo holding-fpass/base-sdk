@@ -123,7 +123,7 @@ export class Instance extends Resource<InstanceStatus> {
       playlists?: InstancePagePlaylists[];
     };
     channels?: {
-      image1400x720?: string;
+      image1440x440?: string;
     };
   };
   urls!: Metadata<InstanceUrlSettings>[];
