@@ -25,11 +25,16 @@ export enum ContractItemScopeKey {
   CUSTOM = "custom",
 }
 
+export enum ContractItemType {
+  PERCENTAGE = 'percentage',
+  FIXED = 'fixed',
+}
+
 export interface ContractItem {
   scopeKey: ContractItemScopeKey;
   scopeValue: string;
   // Purchase
-  percentage: number;
+  type: ContractItemType;
   value: number;
   //
   children?: ContractItem[];
