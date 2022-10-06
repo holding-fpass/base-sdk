@@ -94,6 +94,7 @@ export class User extends Resource<UserStatus> {
   // Interactions
   interactionsLeave?: Interaction[];
   // Purchases
+  balance?: number;
   subscriptions?: Partial<Subscription>[];
   courses?: Partial<Course>[];
   transactions?: Partial<Transaction>[];
