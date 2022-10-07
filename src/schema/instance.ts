@@ -126,6 +126,7 @@ export class Instance extends Resource<InstanceStatus> {
       image1440x440?: string;
     };
   };
+  pagesPath?: Metadata<InstancePagePath>[];
   urls!: Metadata<InstanceUrlSettings>[];
   theme!: Metadata<InstanceThemeSettings>[];
   features_provider?: Pick<Instance, "resourceId" | "fqdn">;
@@ -228,6 +229,20 @@ export enum InstanceUrlSettings {
   WHATSAPP_URL = "whatsapp.url",
   SUPPORT_EMAIL = "support.email",
   BANNER_EMAIL_URL = "banner.email.url",
+}
+
+export enum InstancePagePath {
+  CHANNEL_HOME = "/channel",
+  CHANNEL = "/channel/:channelId",
+  CHANNEL_COURSE = "/channel/:channelId/course/:courseId",
+  CHANNEL_PLAYER = "/channel/:channelId/player/:contentId",
+  PREMIUM_HOME = "/premium",
+  PREMIUM_COURSE = "/premium/:courseId",
+  COURSE = "/course/:courseId",
+  COURSE_CERTIFICATE = "/course/:id/certificate",
+  PLAYER = "/player/:contentId",
+  STAGE = "/stage/:slug",
+  LIBRARY = "/library",
 }
 
 export enum InstanceParametersSettings {
