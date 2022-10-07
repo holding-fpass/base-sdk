@@ -4,7 +4,7 @@ import { Whitelabel } from "./whitelabel";
 export enum ContractStatus {
   CREATED = "created",
   ACTIVE = "active",
-  UNAVALIABLE = "unavaliable",
+  UNAVAILABLE = "unavailable",
 }
 
 export const ContractStatusTransitionMap = new Map<
@@ -12,7 +12,7 @@ export const ContractStatusTransitionMap = new Map<
   ContractStatus[]
 >([
   [ContractStatus.CREATED, [ContractStatus.ACTIVE]],
-  [ContractStatus.ACTIVE, [ContractStatus.UNAVALIABLE]],
+  [ContractStatus.ACTIVE, [ContractStatus.UNAVAILABLE]],
 ]);
 
 export enum ContractItemScopeKey {
@@ -21,14 +21,20 @@ export enum ContractItemScopeKey {
   PRODUCER = "producer",
   MENTOR = "mentor",
   AFFILIATE = "affiliate",
+  PRODUCT_PER_MINUTE = 'producer.per.minute',
   CUSTOM = "custom",
+}
+
+export enum ContractItemType {
+  PERCENTAGE = 'percentage',
+  FIXED = 'fixed',
 }
 
 export interface ContractItem {
   scopeKey: ContractItemScopeKey;
   scopeValue: string;
   // Purchase
-  percentage: number;
+  type: ContractItemType;
   value: number;
   //
   children?: ContractItem[];

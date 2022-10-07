@@ -27,7 +27,7 @@ export enum TransactionStatus {
   PROVIDER_PAYMENT_FAILED = "provider.payment.failed",
   PAID = "paid",
   FAILED = "failed",
-  DELETED = "deleted",
+  DELETED = "deleted"
 }
 
 export interface UTMInterface {
