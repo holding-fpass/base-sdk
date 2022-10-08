@@ -21,7 +21,7 @@ export enum ContractItemScopeKey {
   PRODUCER = "producer",
   MENTOR = "mentor",
   AFFILIATE = "affiliate",
-  PRODUCT_PER_MINUTE = 'producer.per.minute',
+  PRODUCER_PER_MINUTE = 'producer.per.minute',
   CUSTOM = "custom",
 }
 
