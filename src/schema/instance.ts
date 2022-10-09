@@ -16,6 +16,7 @@ interface EmailConfig {
   senderEmail?: string;
   senderName?: string;
   supportEmail?: string;
+  financeEmail?: string;
 }
 
 interface SplitConfig {
