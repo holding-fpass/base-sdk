@@ -16,7 +16,6 @@ export const ContractStatusTransitionMap = new Map<
 ]);
 
 export enum ContractItemScopeKey {
-  DOMAIN = "domain",
   WHITELABEL = "whitelabel",
   PRODUCER = "producer",
   MENTOR = "mentor",
