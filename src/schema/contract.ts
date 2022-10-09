@@ -35,8 +35,6 @@ export interface ContractItem {
   // Purchase
   type: ContractItemType;
   value: number;
-  //
-  children?: ContractItem[];
 }
 
 export class Contract extends Resource<ContractStatus> {
