@@ -18,6 +18,11 @@ interface EmailConfig {
   supportEmail?: string;
 }
 
+interface SplitConfig {
+  email: string;
+  value: number;
+}
+
 interface ActiveCampaign {
   accountUrl?: string;
   accountKey?: string;
@@ -135,8 +140,9 @@ export class Instance extends Resource<InstanceStatus> {
   i18n_ptBr!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
-  // Email
+  // Configurations
   emailConfig?: EmailConfig;
+  splitConfig?: SplitConfig;
   // Provider
   __activeCampaign?: ActiveCampaign;
   __fpay?: FpayProvider;
