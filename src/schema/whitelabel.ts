@@ -17,4 +17,6 @@ export enum Whitelabel {
   VOOMP = "voomp",
   CALIFORNIA_TV = "california-tv",
   ORBE = "orbe",
+  OPENREVOLUTION = "open-revolution",
+  SMARTCONTENT = "smartcontent",
 }
