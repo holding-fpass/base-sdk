@@ -2,15 +2,15 @@ import { firestore } from 'firebase-admin';
 import { Timestamp } from 'firebase-admin/firestore';
 import { ResourceType, Whitelabel } from '../../../schema';
 import * as CommonEntityType from '../../../schema/commom.schema';
-import * as FirestoreHooks from '../../firestore/hooks';
-import { ICommonRepository, ICommonRepositoryFindAllParams } from '../types/ICommonRepository';
+import * as FirestoreHooks from '../hooks';
+import { ICommonRepository, ICommonRepositoryFindAllParams } from '../../repositories/ICommonRepository';
 
 export interface ICommonFirestoreRepositoryConstructorParams {
   entity: ResourceType;
   whitelabel: Whitelabel;
 }
 
-export class CommonFirestoreRepository implements ICommonRepository {
+export class CommonFirestoreRepository<T = unknown> implements ICommonRepository<T> {
   protected readonly entity: ResourceType;
   protected readonly firestore: firestore.Firestore;
   protected whitelabel: Whitelabel;
@@ -23,26 +23,26 @@ export class CommonFirestoreRepository implements ICommonRepository {
     this.firestore = FirestoreHooks.useFirestore();
   }
 
-  public async findAll<T = unknown>(params: ICommonRepositoryFindAllParams): Promise<T[]> {
+  public async findAll(params: ICommonRepositoryFindAllParams): Promise<T[]> {
     throw new Error('Method not implemented');
   }
 
-  public async findById<T = unknown>(id: string): Promise<T> {
+  public async findById(id: string): Promise<T | undefined> {
     const document = await this.firestore.collection(this.baseCollectionPath).doc(id).get();
 
-    return document.data() as T;
+    return document.data() as T | undefined;
   }
 
-  public async create<T = unknown>(id: string, params: T): Promise<T> {
+  public async create(id: string, params: T): Promise<T> {
     await this.firestore.collection(this.baseCollectionPath).doc(id).create(params);
 
-    return this.findById(id);
+    return this.findById(id) as Promise<T>;
   }
 
-  public async update<T = unknown>(id: string, entityData: T): Promise<T> {
+  public async update(id: string, entityData: Partial<T>): Promise<T> {
     await this.firestore.collection(this.baseCollectionPath).doc(id).update(entityData);
 
-    return this.findById(id);
+    return this.findById(id) as Promise<T>;
   }
 
   public async delete(id: string): Promise<void> {
