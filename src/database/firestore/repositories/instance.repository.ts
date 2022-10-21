@@ -1,10 +1,10 @@
 import { Instance, ResourceType } from '../../../schema';
-import { InstanceRepositoryInterface, IInstanceRepositoryFindByNameParams } from '../../repositories/InstanceRepository.interface';
+import { IInstanceRepository, IInstanceRepositoryFindByNameParams } from '../../repositories/instanceRepository.interface';
 import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
 
 interface IInstanceFirestoreRepositoryConstructorParams extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {}
 
-export class InstanceFirestoreRepository extends CommonFirestoreRepository<Instance> implements InstanceRepositoryInterface {
+export class InstanceFirestoreRepository extends CommonFirestoreRepository<Instance> implements IInstanceRepository {
   public constructor(params: IInstanceFirestoreRepositoryConstructorParams) {
     const superParams: ICommonFirestoreRepositoryConstructorParams = {
       whitelabel: params.whitelabel,

@@ -3,7 +3,7 @@ export interface ICommonRepositoryFindAllParams {
   offset?: number;
 }
 
-export interface CommonRepositoryInterface<T> {
+export interface ICommonRepository<T> {
   findAll(params: ICommonRepositoryFindAllParams): Promise<T[]>;
   findById(id: string): Promise<T | undefined>;
   create(id: string, params: T): Promise<T>;

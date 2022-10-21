@@ -1,12 +1,12 @@
 import { ResourceType, User } from '../../../schema';
-import { UserRepositoryInterface } from '../../repositories/UserRepository.interface';
+import { IUserRepository } from '../../repositories/userRepository.interface';
 import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
 
 interface IUserFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {
 }
 
-export class UserFirestoreRepository extends CommonFirestoreRepository<User> implements UserRepositoryInterface {
+export class UserFirestoreRepository extends CommonFirestoreRepository<User> implements IUserRepository {
   public constructor(params: IUserFirestoreRepositoryConstructorParams) {
     const superParams: ICommonFirestoreRepositoryConstructorParams = {
       whitelabel: params.whitelabel,

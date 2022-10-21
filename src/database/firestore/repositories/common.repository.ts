@@ -3,14 +3,14 @@ import { Timestamp } from 'firebase-admin/firestore';
 import { ResourceType, Whitelabel } from '../../../schema';
 import * as CommonEntityType from '../../../schema/commom.schema';
 import * as FirestoreHooks from '../hooks';
-import { CommonRepositoryInterface, ICommonRepositoryFindAllParams } from '../../repositories/CommonRepository.interface';
+import { ICommonRepository, ICommonRepositoryFindAllParams } from '../../repositories/commonRepository.interface';
 
 export interface ICommonFirestoreRepositoryConstructorParams {
   entity: ResourceType;
   whitelabel: Whitelabel;
 }
 
-export class CommonFirestoreRepository<T = unknown> implements CommonRepositoryInterface<T> {
+export class CommonFirestoreRepository<T = unknown> implements ICommonRepository<T> {
   protected readonly entity: ResourceType;
   protected readonly firestore: firestore.Firestore;
   protected whitelabel: Whitelabel;
