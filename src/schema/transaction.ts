@@ -92,7 +92,7 @@ export class Transaction extends Resource<TransactionStatus> {
   userTo!: Partial<User>;
   //
   parent?: Partial<Transaction>;
-  parents?: Partial<Transaction>;
+  parents?: Partial<Transaction>[];
   // Provider
   provider!: Provider;
   providerExtra?: ProviderExtra[];
