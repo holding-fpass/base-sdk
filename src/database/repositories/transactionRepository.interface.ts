@@ -2,8 +2,8 @@ import { Transaction } from '../../schema';
 import { ICommonRepository } from './commonRepository.interface';
 
 export interface ITransactionRepositoryFindForSubscriptionSplitParams {
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
 }
 
 export interface ITransactionRepository extends ICommonRepository<Transaction> {
