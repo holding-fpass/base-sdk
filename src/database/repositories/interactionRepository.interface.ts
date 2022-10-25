@@ -7,5 +7,5 @@ export interface IInteractionRepositoryFindByContentView {
 }
 
 export interface IInteractionRepository extends ICommonRepository<Interaction> {
-  findByContentView(params: IInteractionRepositoryFindByContentView): Promise<Interaction[]>;
+  findForSubscriptionSplit(params: IInteractionRepositoryFindByContentView): Promise<Interaction[]>;
 }

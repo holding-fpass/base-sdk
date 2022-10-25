@@ -20,7 +20,7 @@ export class InteractionFirestoreRepository extends CommonFirestoreRepository<In
     super(superParams);
   }
 
-  public async findByContentView(params: IInteractionRepositoryFindByContentView): Promise<Interaction[]> {
+  public async findForSubscriptionSplit(params: IInteractionRepositoryFindByContentView): Promise<Interaction[]> {
     const { startDate, endDate } = params;
 
     const snapshot = await this.firestore

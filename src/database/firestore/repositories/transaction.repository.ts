@@ -1,9 +1,16 @@
-import { ResourceType, Transaction } from '../../../schema';
+import { ProductType, ResourceType, Transaction, TransactionStatus } from '../../../schema';
+import {
+  ITransactionRepository,
+  ITransactionRepositoryFindForSubscriptionSplitParams,
+} from '../../repositories/transactionRepository.interface';
 import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
 
-interface ITransactionFirestoreRepositoryConstructorParams extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {}
+interface ITransactionFirestoreRepositoryConstructorParams
+  extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {
+}
 
-export class TransactionFirestoreRepository extends CommonFirestoreRepository<Transaction> {
+export class TransactionFirestoreRepository extends CommonFirestoreRepository<Transaction>
+  implements ITransactionRepository {
   public constructor(params: ITransactionFirestoreRepositoryConstructorParams) {
     const superParams: ICommonFirestoreRepositoryConstructorParams = {
       whitelabel: params.whitelabel,
@@ -11,5 +18,18 @@ export class TransactionFirestoreRepository extends CommonFirestoreRepository<Tr
     };
 
     super(superParams);
+  }
+
+  public async findForSubscriptionSplit(params: ITransactionRepositoryFindForSubscriptionSplitParams): Promise<Transaction[]> {
+    const { startDate, endDate } = params;
+
+    const snapshot = await this.firestore.collection(this.baseCollectionPath)
+      .where('timestamp', '>', startDate)
+      .where('timestamp', '<', endDate)
+      .where('product.productType', 'in', [ProductType.PLATAFORM_SUBSCRIPTION, ProductType.CHANNEL_SUBSCRIPTION])
+      .where('status', '==', TransactionStatus.PAID)
+      .get();
+
+    return snapshot.docs.map((document) => document.data()) as unknown as Transaction[];
   }
 }
