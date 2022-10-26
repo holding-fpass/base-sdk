@@ -16,12 +16,13 @@ export const ContractStatusTransitionMap = new Map<
 ]);
 
 export enum ContractItemScopeKey {
-  WHITELABEL = "whitelabel",
-  PRODUCER = "producer",
-  MENTOR = "mentor",
   AFFILIATE = "affiliate",
-  PRODUCER_PER_MINUTE = 'producer.per.minute',
   CUSTOM = "custom",
+  MENTOR = "mentor",
+  PRODUCER = "producer",
+  PRODUCER_PER_MINUTE = 'producer.per.minute',
+  TAXES = 'taxes',
+  WHITELABEL = "whitelabel",
 }
 
 export enum ContractItemType {
