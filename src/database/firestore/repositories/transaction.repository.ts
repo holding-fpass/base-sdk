@@ -1,4 +1,4 @@
-import { ProductType, ResourceType, Transaction, TransactionStatus } from '../../../schema';
+import { ProductType, ResourceType, Transaction, TransactionStatus, TransactionType } from '../../../schema';
 import {
   ITransactionRepository,
   ITransactionRepositoryFindForSubscriptionSplitParams,
@@ -28,6 +28,7 @@ export class TransactionFirestoreRepository extends CommonFirestoreRepository<Tr
       .where('timestamp', '<', endDate)
       .where('product.productType', 'in', [ProductType.PLATAFORM_SUBSCRIPTION, ProductType.CHANNEL_SUBSCRIPTION])
       .where('status', '==', TransactionStatus.PAID)
+      .where('type', '==', TransactionType.PURCHASE)
       .where('dryRun', '!=', true)
       .get();
 
