@@ -29,7 +29,6 @@ export class TransactionFirestoreRepository extends CommonFirestoreRepository<Tr
       .where('product.productType', 'in', [ProductType.PLATAFORM_SUBSCRIPTION, ProductType.CHANNEL_SUBSCRIPTION])
       .where('status', '==', TransactionStatus.PAID)
       .where('type', '==', TransactionType.PURCHASE)
-      .where('dryRun', '!=', true)
       .get();
 
     return snapshot.docs.map((document) => document.data()) as unknown as Transaction[];
