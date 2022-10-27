@@ -1,5 +1,5 @@
 import { Metadata, MetadataMap } from "../schema";
-import * as Handlebars from "handlebars/runtime";
+import * as Mustache from "mustache";
 
 export class I18nDictionary {
   private metadataMap: MetadataMap<string>;
@@ -11,7 +11,6 @@ export class I18nDictionary {
   get(string: string, context?: { [key: string]: string }) {
     const text = this.metadataMap.get(string)?.value ?? string;
     if (!context) return text;
-    const template = Handlebars.compile(text);
-    return template(context);
+    return Mustache.render(text, context);
   }
 }
