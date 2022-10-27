@@ -1,5 +1,5 @@
 import { Metadata, MetadataMap } from "../schema";
-import * as handlebars from "handlebars";
+import * as Handlebars from "handlebars/runtime";
 
 export class I18nDictionary {
   private metadataMap: MetadataMap<string>;
@@ -11,7 +11,7 @@ export class I18nDictionary {
   get(string: string, context?: { [key: string]: string }) {
     const text = this.metadataMap.get(string)?.value ?? string;
     if (!context) return text;
-    const template = handlebars.compile(text);
+    const template = Handlebars.compile(text);
     return template(context);
   }
 }
