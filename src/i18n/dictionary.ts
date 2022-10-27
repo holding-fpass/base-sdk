@@ -8,7 +8,7 @@ export class I18nDictionary {
     this.metadataMap = new MetadataMap(instanceI18nMetadata);
   }
 
-  get(string: string, context?: string[]) {
+  get(string: string, context?: { [key: string]: string }) {
     const text = this.metadataMap.get(string)?.value ?? string;
     if (!context) return text;
     const template = handlebars.compile(text);
