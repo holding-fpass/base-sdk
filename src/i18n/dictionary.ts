@@ -1,5 +1,5 @@
 import { Metadata, MetadataMap } from "../schema";
-import { handlebars } from "hbs";
+import handlebars from "handlebars";
 
 export class I18nDictionary {
   private metadataMap: MetadataMap<string>;
