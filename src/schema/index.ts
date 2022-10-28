@@ -14,6 +14,7 @@ export * from "./measurement";
 export * from "./metadata";
 export * from "./mfa";
 export * from "./notification";
+export * from "./pages";
 export * from "./plan";
 export * from "./player";
 export * from "./playlist";
@@ -31,6 +32,6 @@ export * from "./transaction";
 export * from "./user";
 export * from "./video";
 export * from "./whitelabel";
-export * from './email';
+export * from "./email";
 // After all
 export * from "./transition.maps";
