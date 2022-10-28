@@ -18,7 +18,6 @@ export class Page extends Resource {
   url!: string;
   // Date
   dateStart?: string | Timestamp;
-  dateEnd?: string | Timestamp;
   // Related
   playlists!: Partial<Playlist>[];
   userTags?: Partial<Tag>[];
