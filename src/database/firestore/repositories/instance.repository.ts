@@ -1,4 +1,4 @@
-import { Instance, ResourceType } from '../../../schema';
+import { Instance, ResourceType, Whitelabel } from '../../../schema';
 import { IInstanceRepository, IInstanceRepositoryFindByNameParams } from '../../repositories/instanceRepository.interface';
 import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
 
@@ -17,7 +17,7 @@ export class InstanceFirestoreRepository extends CommonFirestoreRepository<Insta
   public async findByName(params: IInstanceRepositoryFindByNameParams): Promise<Instance | undefined> {
     const { name, application } = params;
 
-    const snapshot = await this.firestore.collection(this.baseCollectionPath).where('name', '==', name).where('application', '==', application).get();
+    const snapshot = await this.firestore.collection(`management/${Whitelabel.DEFAULT}/${this.entity}`).where('name', '==', name).where('application', '==', application).get();
 
     if (snapshot.size === 0) {
       return undefined;
