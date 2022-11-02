@@ -24,9 +24,13 @@ interface SplitConfig {
   value: number;
 }
 
-interface ActiveCampaign {
+interface ActiveCampaignProvider {
   accountUrl?: string;
   accountKey?: string;
+}
+
+interface RDStationProvider {
+  token: string;
 }
 
 interface FpayProvider {
@@ -145,9 +149,10 @@ export class Instance extends Resource<InstanceStatus> {
   emailConfig?: EmailConfig;
   splitConfig?: SplitConfig;
   // Provider
-  __activeCampaign?: ActiveCampaign;
+  __activeCampaign?: ActiveCampaignProvider;
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;
+  __rdstation?: RDStationProvider;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
