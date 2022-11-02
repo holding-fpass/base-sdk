@@ -30,6 +30,7 @@
     "hbs": "^4.2.0",
     "mustache": "^4.2.0",
     "object-hash": "^3.0.0",
+    "rdstation-node-client": "^1.2.0",
     "ts-custom-error": "^3.2.0",
     "uuid": "^8.3.2",
     "yaml": "^2.1.1"
