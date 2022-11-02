@@ -260,6 +260,7 @@ export enum InstanceParametersSettings {
   GOOGLE_GTM_ID = "google.gtm.id",
   ONESIGNAL_API_KEY = "onesignal.api.key",
   ONESIGNAL_APP_ID = "onesignal.app.id",
+  RD_STATION_TOKEN = 'rdstation.token'
 }
 
 export enum InstanceDisclaimers {
