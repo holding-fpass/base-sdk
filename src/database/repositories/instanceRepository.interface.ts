@@ -6,6 +6,6 @@ export interface IInstanceRepositoryFindByNameParams {
   application: InstanceApplications;
 }
 
-export interface IInstanceRepository extends  ICommonRepository<Instance> {
+export interface IInstanceRepository extends ICommonRepository<Instance> {
   findByName(params: IInstanceRepositoryFindByNameParams): Promise<Instance | undefined>;
 }
