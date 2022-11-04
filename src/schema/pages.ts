@@ -16,8 +16,6 @@ export class Page extends Resource {
   resourceType = ResourceType.PAGE;
   name!: string;
   url!: string;
-  // Date
-  dateStart?: string | Timestamp;
   // Related
   playlists!: Partial<Playlist>[];
   userTags?: Partial<Tag>[];
