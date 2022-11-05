@@ -1,9 +1,11 @@
-import { firestore } from 'firebase-admin';
 import { Timestamp } from 'firebase-admin/firestore';
-import { ResourceType, Whitelabel } from '../../../schema';
+import { firestore } from 'firebase-admin';
+
 import * as CommonEntityType from '../../../schema/commom.schema';
 import * as FirestoreHooks from '../hooks';
+import { FirestoreSDK } from '../FirestoreSDK';
 import { ICommonRepository, ICommonRepositoryFindAllParams } from '../../repositories/commonRepository.interface';
+import { ResourceType, Whitelabel } from '../../../schema';
 
 export interface ICommonFirestoreRepositoryConstructorParams {
   entity: ResourceType;
@@ -28,7 +30,7 @@ export class CommonFirestoreRepository<T = unknown> implements ICommonRepository
   }
 
   public async findById(id: string): Promise<T | undefined> {
-    const document = await this.firestore.collection(this.baseCollectionPath).doc(id).get();
+    const document = await this.firestore.collection(this.baseCollectionPath).doc(id).withConverter(FirestoreSDK.withConverter).get();
 
     return document.data() as T | undefined;
   }

@@ -1,7 +1,7 @@
-import { Mfa, ResourceType } from '../../../schema';
-import { IMFARepository, IMFARepositoryFindByCodeParams } from '../../repositories/mfaRepository.interface';
-import { FirestoreSDK } from '../FirestoreSDK';
 import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
+import { FirestoreSDK } from '../FirestoreSDK';
+import { IMFARepository, IMFARepositoryFindByCodeParams } from '../../repositories/mfaRepository.interface';
+import { Mfa, ResourceType } from '../../../schema';
 
 interface IMFAFirestoreRepositoryConstructorParams extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {}
 

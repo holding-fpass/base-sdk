@@ -1,6 +1,7 @@
-import { Instance, ResourceType, Whitelabel } from '../../../schema';
-import { IInstanceRepository, IInstanceRepositoryFindByNameParams } from '../../repositories/instanceRepository.interface';
 import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
+import { FirestoreSDK } from '../FirestoreSDK';
+import { IInstanceRepository, IInstanceRepositoryFindByNameParams } from '../../repositories/instanceRepository.interface';
+import { Instance, ResourceType, Whitelabel } from '../../../schema';
 
 interface IInstanceFirestoreRepositoryConstructorParams extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {}
 
@@ -17,7 +18,11 @@ export class InstanceFirestoreRepository extends CommonFirestoreRepository<Insta
   public async findByName(params: IInstanceRepositoryFindByNameParams): Promise<Instance | undefined> {
     const { name, application } = params;
 
-    const snapshot = await this.firestore.collection(`management/${Whitelabel.DEFAULT}/${this.entity}`).where('name', '==', name).where('application', '==', application).get();
+    const snapshot = await this.firestore.collection(`management/${Whitelabel.DEFAULT}/${this.entity}`)
+      .withConverter(FirestoreSDK.withConverter)
+      .where('name', '==', name)
+      .where('application', '==', application)
+      .get();
 
     if (snapshot.size === 0) {
       return undefined;
@@ -25,6 +30,6 @@ export class InstanceFirestoreRepository extends CommonFirestoreRepository<Insta
 
     const document = snapshot.docs[0];
 
-    return document.data() as Instance;
+    return document.data() as unknown as Instance;
   }
 }

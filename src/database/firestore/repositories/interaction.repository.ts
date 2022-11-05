@@ -1,9 +1,10 @@
+import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
+import { FirestoreSDK } from '../FirestoreSDK';
 import { Interaction, InteractionType, ResourceType } from '../../../schema';
 import {
   IInteractionRepository,
   IInteractionRepositoryFindByContentView,
 } from '../../repositories/interactionRepository.interface';
-import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
 
 interface IInteractionFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {
@@ -25,6 +26,7 @@ export class InteractionFirestoreRepository extends CommonFirestoreRepository<In
 
     const snapshot = await this.firestore
       .collection(this.baseCollectionPath)
+      .withConverter(FirestoreSDK.withConverter)
       .where('timestamp', '>', startDate)
       .where('timestamp', '<', endDate)
       .where('productType', '==', ResourceType.CONTENT)

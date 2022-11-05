@@ -1,9 +1,10 @@
+import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
+import { FirestoreSDK } from '../FirestoreSDK';
 import { ProductType, ResourceType, Transaction, TransactionStatus, TransactionType } from '../../../schema';
 import {
   ITransactionRepository,
   ITransactionRepositoryFindForSubscriptionSplitParams,
 } from '../../repositories/transactionRepository.interface';
-import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
 
 interface ITransactionFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {
@@ -24,6 +25,7 @@ export class TransactionFirestoreRepository extends CommonFirestoreRepository<Tr
     const { startDate, endDate } = params;
 
     const snapshot = await this.firestore.collection(this.baseCollectionPath)
+      .withConverter(FirestoreSDK.withConverter)
       .where('timestamp', '>', startDate)
       .where('timestamp', '<', endDate)
       .where('product.productType', 'in', [ProductType.PLATAFORM_SUBSCRIPTION, ProductType.CHANNEL_SUBSCRIPTION])
