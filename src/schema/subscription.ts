@@ -56,6 +56,7 @@ export class Subscription extends Resource<SubscriptionStatus> {
   whitelabel!: Whitelabel;
   contract?: Partial<Contract>;
   months!: MonthFrequency;
+  reason?: string;
   // Provider
   providerExtra?: ProviderExtra[];
   // Dates
