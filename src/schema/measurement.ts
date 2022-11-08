@@ -45,6 +45,10 @@ export enum MeasurementStatus {
   DELETED = "deleted",
 }
 
+export enum MeasurementGroup {
+  COURSE_STUDENTS_PROGRESS = "course.students.progress"
+}
+
 export const MeasurementStatusTransitionMap = new Map<
   MeasurementStatus,
   MeasurementStatus[]
@@ -72,6 +76,7 @@ export class Measurement extends Resource<MeasurementStatus> {
   resourceType = ResourceType.MEASUREMENT;
   //
   type!: MeasurementType;
+  group?: MeasurementGroup;
   filter!: Partial<MeasurementFilter>;
   filterHash!: string;
   user!: Partial<User>;
