@@ -6,7 +6,5 @@ export function useFirestore() {
     throw new Error('Document App not initialized');
   }
 
-  return getFirestore(Document.app).settings({
-    ignoreUndefinedProperties: true,
-  });
+  return getFirestore(Document.app);
 }

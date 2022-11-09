@@ -23,6 +23,9 @@ export class CommonFirestoreRepository<T = unknown> implements ICommonRepository
     this.whitelabel = params.whitelabel;
     this.baseCollectionPath = `management/${this.whitelabel}/${this.entity}`;
     this.firestore = FirestoreHooks.useFirestore();
+    this.firestore.settings({
+      ignoreUndefinedProperties: true,
+    });
   }
 
   public async findAll(params: ICommonRepositoryFindAllParams): Promise<T[]> {
