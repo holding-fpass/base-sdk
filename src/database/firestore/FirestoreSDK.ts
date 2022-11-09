@@ -1,6 +1,5 @@
 import { QueryDocumentSnapshot } from '@google-cloud/firestore';
-import { AppOptions, initializeApp } from 'firebase-admin';
-import { App } from 'firebase-admin/app';
+import { App, initializeApp, AppOptions } from 'firebase-admin/app';
 import { Document } from '../../data';
 import { useFirestore } from './hooks';
 
