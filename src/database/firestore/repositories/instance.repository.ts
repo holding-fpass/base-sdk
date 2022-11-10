@@ -50,15 +50,4 @@ export class InstanceFirestoreRepository
 
     return document.data() as unknown as Instance;
   }
-
-  public async findByFqdn(fqdn: string): Promise<Instance | undefined> {
-    const snapshot = await this.firestore
-      .collection(`management/${Whitelabel.DEFAULT}/${this.entity}`)
-      .withConverter(FirestoreSDK.withConverter)
-      .where("fqdn", "==", fqdn)
-      .where("application", "==", InstanceApplications.FLABEL)
-      .get();
-    if (snapshot.size === 0) return undefined;
-    return snapshot.docs[0].data() as unknown as Instance;
-  }
 }

@@ -10,5 +10,4 @@ export interface IInstanceRepository extends ICommonRepository<Instance> {
   findByName(
     params: IInstanceRepositoryFindByNameParams
   ): Promise<Instance | undefined>;
-  findByFqdn(fqdn: string): Promise<Instance | undefined>;
 }
