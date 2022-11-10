@@ -193,6 +193,7 @@ export enum InstanceFeatureFlags {
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
   MODULE_CUSTOM_NAME = "instance.feature-flag.module.custom.name",
   MODULE_CONTENT_ORDER_HIDE = "instance.feature-flag.module.content.order.hide",
+  WALLET = "instance.feature-flag.wallet",
 }
 
 export enum InstanceThemeSettings {
