@@ -82,6 +82,11 @@ interface InstancePagePlaylists {
   name: string;
 }
 
+interface InstanceJwt {
+  iss: string;
+  secret: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -153,6 +158,7 @@ export class Instance extends Resource<InstanceStatus> {
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;
   __rdstation?: RDStationProvider;
+  __jwt?: InstanceJwt;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
@@ -265,7 +271,7 @@ export enum InstanceParametersSettings {
   GOOGLE_GTM_ID = "google.gtm.id",
   ONESIGNAL_API_KEY = "onesignal.api.key",
   ONESIGNAL_APP_ID = "onesignal.app.id",
-  RD_STATION_TOKEN = 'rdstation.token'
+  RD_STATION_TOKEN = "rdstation.token",
 }
 
 export enum InstanceDisclaimers {
