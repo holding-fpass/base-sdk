@@ -7,7 +7,12 @@ import {
   IInstanceRepository,
   IInstanceRepositoryFindByNameParams,
 } from "../../repositories/instanceRepository.interface";
-import { Instance, ResourceType, Whitelabel } from "../../../schema";
+import {
+  Instance,
+  InstanceApplications,
+  ResourceType,
+  Whitelabel,
+} from "../../../schema";
 
 interface IInstanceFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
@@ -51,6 +56,7 @@ export class InstanceFirestoreRepository
       .collection(`management/${Whitelabel.DEFAULT}/${this.entity}`)
       .withConverter(FirestoreSDK.withConverter)
       .where("fqdn", "==", fqdn)
+      .where("application", "==", InstanceApplications.FLABEL)
       .get();
     if (snapshot.size === 0) return undefined;
     return snapshot.docs[0].data() as unknown as Instance;
