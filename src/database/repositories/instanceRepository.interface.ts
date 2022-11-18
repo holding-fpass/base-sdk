@@ -1,5 +1,5 @@
-import { Instance, InstanceApplications, Whitelabel } from '../../schema';
-import { ICommonRepository } from './commonRepository.interface';
+import { Instance, InstanceApplications, Whitelabel } from "../../schema";
+import { ICommonRepository } from "./commonRepository.interface";
 
 export interface IInstanceRepositoryFindByNameParams {
   name: Whitelabel;
@@ -7,5 +7,7 @@ export interface IInstanceRepositoryFindByNameParams {
 }
 
 export interface IInstanceRepository extends ICommonRepository<Instance> {
-  findByName(params: IInstanceRepositoryFindByNameParams): Promise<Instance | undefined>;
+  findByName(
+    params: IInstanceRepositoryFindByNameParams
+  ): Promise<Instance | undefined>;
 }

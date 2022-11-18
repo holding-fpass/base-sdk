@@ -1,11 +1,26 @@
-import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
-import { FirestoreSDK } from '../FirestoreSDK';
-import { IInstanceRepository, IInstanceRepositoryFindByNameParams } from '../../repositories/instanceRepository.interface';
-import { Instance, ResourceType, Whitelabel } from '../../../schema';
+import {
+  CommonFirestoreRepository,
+  ICommonFirestoreRepositoryConstructorParams,
+} from "./common.repository";
+import { FirestoreSDK } from "../FirestoreSDK";
+import {
+  IInstanceRepository,
+  IInstanceRepositoryFindByNameParams,
+} from "../../repositories/instanceRepository.interface";
+import {
+  Instance,
+  InstanceApplications,
+  ResourceType,
+  Whitelabel,
+} from "../../../schema";
 
-interface IInstanceFirestoreRepositoryConstructorParams extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {}
+interface IInstanceFirestoreRepositoryConstructorParams
+  extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
 
-export class InstanceFirestoreRepository extends CommonFirestoreRepository<Instance> implements IInstanceRepository {
+export class InstanceFirestoreRepository
+  extends CommonFirestoreRepository<Instance>
+  implements IInstanceRepository
+{
   public constructor(params: IInstanceFirestoreRepositoryConstructorParams) {
     const superParams: ICommonFirestoreRepositoryConstructorParams = {
       whitelabel: params.whitelabel,
@@ -15,13 +30,16 @@ export class InstanceFirestoreRepository extends CommonFirestoreRepository<Insta
     super(superParams);
   }
 
-  public async findByName(params: IInstanceRepositoryFindByNameParams): Promise<Instance | undefined> {
+  public async findByName(
+    params: IInstanceRepositoryFindByNameParams
+  ): Promise<Instance | undefined> {
     const { name, application } = params;
 
-    const snapshot = await this.firestore.collection(`management/${Whitelabel.DEFAULT}/${this.entity}`)
+    const snapshot = await this.firestore
+      .collection(`management/${Whitelabel.DEFAULT}/${this.entity}`)
       .withConverter(FirestoreSDK.withConverter)
-      .where('name', '==', name)
-      .where('application', '==', application)
+      .where("name", "==", name)
+      .where("application", "==", application)
       .get();
 
     if (snapshot.size === 0) {

@@ -92,19 +92,26 @@ export class Document<T> {
   }
 }
 
+interface FirebaseDateField {
+  [key: string]: {
+    toDate(): string;
+  };
+}
+
 const firestoreConverter = {
-  toFirestore(entity: any) {
+  toFirestore<Type>(entity: Type) {
     return entity;
   },
-  fromFirestore(snapshot: QueryDocumentSnapshot) {
-    const data = snapshot.data()!;
+  fromFirestore<Type>(snapshot: QueryDocumentSnapshot<Type>) {
+    const data = snapshot.data() as Type & FirebaseDateField;
     return {
       ...data,
-      timestamp: (data?.timestamp as Timestamp)?.toDate(),
-      createdAt: (data?.createdAt as Timestamp)?.toDate(),
-      updatedAt: (data?.updatedAt as Timestamp)?.toDate(),
-      deletedAt: (data?.deletedAt as Timestamp)?.toDate(),
-      statusAt: (data?.statusAt as Timestamp)?.toDate(),
+      timestamp: data?.timestamp?.toDate ? data.timestamp.toDate() : data.timestamp,
+      createdAt: data?.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt,
+      updatedAt: data?.updatedAt?.toDate ? data.updatedAt.toDate() : data.updatedAt,
+      statusAt: data?.statusAt?.toDate ? data.statusAt.toDate() : data.statusAt,
+      deletedAt: data?.deletedAt?.toDate ? data.deletedAt.toDate() : data.deletedAt,
+      archivedAt: data?.archivedAt?.toDate ? data.archivedAt.toDate() : data.archivedAt,
     };
   },
 };
