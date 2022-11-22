@@ -9,6 +9,8 @@ export enum Provider {
   RECEBAFACIL = "recebafacil",
   BLITZPAY = "blitzpay",
   COGNA = "cogna",
+  // Auth
+  HINODE = "hinode",
 }
 
 export interface ProviderExtra<T = string> extends Metadata<T> {
