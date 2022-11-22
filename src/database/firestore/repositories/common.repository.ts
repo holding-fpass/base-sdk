@@ -127,7 +127,7 @@ export class CommonFirestoreRepository<T = unknown>
       .doc(docId)
       .set(
         {
-          [arrayFieldName]: FieldValue.arrayRemove(arrayValues),
+          [arrayFieldName]: FieldValue.arrayRemove(...arrayValues),
         },
         {
           merge: true,
