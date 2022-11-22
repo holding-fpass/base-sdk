@@ -74,7 +74,7 @@ export class CommonFirestoreRepository<T = unknown>
       .doc(docId)
       .set(
         {
-          [arrayFieldName]: FieldValue.arrayUnion(arrayValues),
+          [arrayFieldName]: FieldValue.arrayUnion(...arrayValues),
         },
         {
           merge: true,
