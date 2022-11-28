@@ -19,4 +19,6 @@ export enum Whitelabel {
   ORBE = "orbe",
   OPENREVOLUTION = "open-revolution",
   SMARTCONTENT = "smartcontent",
+  DRONAK = "dronak",
+  TEMPEST = "tempest",
 }
