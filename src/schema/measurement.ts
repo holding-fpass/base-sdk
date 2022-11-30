@@ -17,6 +17,7 @@ export enum MeasurementType {
   COURSE_REACTION_COUNT = "course.reaction.count",
   COURSE_COMPLETION_RATE = "course.completion.rate",
   COURSE_CONTENT_WITH_HIGHER_DROPOUT = 'course.content.with.higher.dropout',
+  COURSE_SPEED_AVERAGE = "course.speed.average",
   // Content
   CONTENT_CLICK = "content.click",
   CONTENT_OPEN = "content.open",
