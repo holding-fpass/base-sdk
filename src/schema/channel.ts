@@ -17,7 +17,7 @@ export const ChannelStatusTransitionMap = new Map<
   [ChannelStatus.CREATED, [ChannelStatus.ACTIVE, ChannelStatus.DELETED]],
   [ChannelStatus.ACTIVE, [ChannelStatus.PUBLISHED, ChannelStatus.RESTRICTED]],
   [ChannelStatus.PUBLISHED, [ChannelStatus.DELETED]],
-  [ChannelStatus.RESTRICTED, [ChannelStatus.DELETED]]
+  [ChannelStatus.RESTRICTED, [ChannelStatus.DELETED]],
 ]);
 
 export class Channel extends Resource<ChannelStatus> {
@@ -26,6 +26,7 @@ export class Channel extends Resource<ChannelStatus> {
   name!: string;
   slug!: string;
   primaryColor!: string;
+  resourceUrl!: string;
   whitelabel!: Whitelabel;
   // Media
   image1400x720!: string;
