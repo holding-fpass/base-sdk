@@ -26,7 +26,7 @@ export class Channel extends Resource<ChannelStatus> {
   name!: string;
   slug!: string;
   primaryColor!: string;
-  externalUrl!: string;
+  resourceUrl!: string;
   whitelabel!: Whitelabel;
   // Media
   image1400x720!: string;
