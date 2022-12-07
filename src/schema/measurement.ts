@@ -25,6 +25,7 @@ export enum MeasurementType {
   CONTENT_REACTION_COUNT = "content.reaction.count",
   CONTENT_SPEED_AVERAGE = "content.speed.average",
   CONTENT_WATCHERS_COUNT = "content.watchers.count",
+  CONTENT_COMPLETION_RATE = "content.completion.rate",
   // Response
   RESPONSE_AVG = "response.avg",
   RESPONSE_COUNT = "response.count",
