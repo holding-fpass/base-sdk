@@ -51,7 +51,8 @@ export enum MeasurementStatus {
 }
 
 export enum MeasurementGroup {
-  COURSE_STUDENTS_PROGRESS = "course.students.progress"
+  COURSE_STUDENTS_PROGRESS = "course.students.progress",
+  CONTENT_STUDENTS_PROGRESS = "course.students.progress",
 }
 
 export const MeasurementStatusTransitionMap = new Map<
