@@ -26,6 +26,7 @@ export enum MeasurementType {
   CONTENT_SPEED_AVERAGE = "content.speed.average",
   CONTENT_WATCHERS_COUNT = "content.watchers.count",
   CONTENT_COMPLETION_RATE = "content.completion.rate",
+  CONTENT_COMPLETION_COUNT = "content.completion.count",
   CONTENT_TIME_WITH_HIGHER_DROPOUT = "content.time.with.higher.dropout",
   // Response
   RESPONSE_AVG = "response.avg",
