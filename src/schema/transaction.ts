@@ -17,6 +17,12 @@ export enum TransactionType {
   DEPOSIT = "deposit",
 }
 
+export enum TransactionPaymentMethod {
+  CREDIT = 'credit',
+  BOLETO = 'boleto',
+  PIX = 'pix',
+}
+
 export enum TransactionStatus {
   CREATED = "created",
   CANCELED = "canceled",
@@ -83,6 +89,7 @@ export enum Asset {
 export class Transaction extends Resource<TransactionStatus> {
   resourceType = ResourceType.TRANSACTION;
   type!: TransactionType;
+  paymentMethod!: `${TransactionPaymentMethod}`;
   description!: string;
   asset!: Asset;
   value!: number;
