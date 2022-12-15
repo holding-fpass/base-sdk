@@ -28,6 +28,7 @@ export enum MeasurementType {
   CONTENT_COMPLETION_RATE = "content.completion.rate",
   CONTENT_COMPLETION_COUNT = "content.completion.count",
   CONTENT_TIME_WITH_HIGHER_DROPOUT = "content.time.with.higher.dropout",
+  CONTENT_FORM_RESPONSE_AVERAGE = "content.form.response.average",
   // Response
   RESPONSE_AVG = "response.avg",
   RESPONSE_COUNT = "response.count",
