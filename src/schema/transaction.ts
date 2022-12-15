@@ -21,6 +21,7 @@ export enum TransactionPaymentMethod {
   CREDIT = 'credit',
   BOLETO = 'boleto',
   PIX = 'pix',
+  WALLET = 'wallet',
 }
 
 export enum TransactionStatus {
