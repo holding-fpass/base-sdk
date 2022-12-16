@@ -1,5 +1,5 @@
 import { Contract } from "./contract";
-import { MonthFrequency } from "./plan";
+import { MonthFrequency, Plan } from './plan';
 import { ProviderExtra } from "./provider";
 import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
@@ -64,4 +64,5 @@ export class Subscription extends Resource<SubscriptionStatus> {
   dateEnd?: string;
   // Related
   user!: Partial<User>;
+  plan!: Pick<Plan, 'resourceId' | 'resourceType'>;
 }
