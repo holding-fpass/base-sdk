@@ -148,6 +148,8 @@ export class Instance extends Resource<InstanceStatus> {
   features!: Metadata<InstanceFeatureFlags>[];
   parameters!: Metadata<InstanceParametersSettings>[];
   i18n_ptBr!: Metadata<string>[];
+  i18n_enUs!: Metadata<string>[];
+  i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
   // Configurations
