@@ -11,6 +11,8 @@ export enum SubscriptionStatus {
   ACTIVE = "active",
   PROVIDER_SUBSCRIPTION_CANCELED = "provider.subscription.canceled",
   CANCELED = "canceled",
+  PROVIDER_SUBSCRIPTION_SUSPENDED = 'provider.subscription.suspended',
+  SUSPENDED = 'suspended',
   DELETED = "deleted",
 }
 
@@ -31,12 +33,20 @@ export const SubscriptionStatusTransitionMap = new Map<
   ],
   [
     SubscriptionStatus.ACTIVE,
-    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED],
+    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED, SubscriptionStatus.PROVIDER_SUBSCRIPTION_SUSPENDED],
   ],
   [
     SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED,
     [SubscriptionStatus.CANCELED],
   ],
+  [
+    SubscriptionStatus.PROVIDER_SUBSCRIPTION_SUSPENDED,
+    [SubscriptionStatus.SUSPENDED],
+  ],
+  [
+    SubscriptionStatus.SUSPENDED,
+    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED],
+  ]
 ]);
 
 export enum ProductType {
