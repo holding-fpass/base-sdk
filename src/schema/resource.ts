@@ -95,7 +95,7 @@ export class Resource<Status = any> {
 }
 
 export interface SearchableResource {
-  asDisplayResource(): DisplayResource;
+  asDisplayResource(resource: any): DisplayResource;
 }
 
 export class DisplayResource extends Resource {

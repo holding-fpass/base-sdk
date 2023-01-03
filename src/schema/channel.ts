@@ -44,11 +44,11 @@ export class Channel
   // Related
   playlists!: Partial<Playlist>[];
   // SearchableResource implementation
-  asDisplayResource(): DisplayResource {
+  asDisplayResource(resource: any): DisplayResource {
     return {
       resourceType: ResourceType.CHANNEL,
-      resourceId: this.resourceId,
-      h1: this.name,
+      resourceId: resource.resourceId,
+      h1: resource.name,
     };
   }
 }

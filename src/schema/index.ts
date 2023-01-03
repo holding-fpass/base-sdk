@@ -35,3 +35,4 @@ export * from "./whitelabel";
 export * from "./email";
 // After all
 export * from "./transition.maps";
+export * from "./display-resource.map";
