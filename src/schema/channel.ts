@@ -45,10 +45,11 @@ export class Channel
   playlists!: Partial<Playlist>[];
   // SearchableResource implementation
   asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Channel;
     return {
       resourceType: ResourceType.CHANNEL,
-      resourceId: resource.resourceId,
-      h1: resource.name,
+      resourceId: data.resourceId,
+      h1: data.name,
     };
   }
 }
