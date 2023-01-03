@@ -85,6 +85,7 @@ export class Stage extends Resource<StageStatus> {
       resourceType: ResourceType.STAGE,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

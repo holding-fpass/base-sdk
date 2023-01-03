@@ -1,5 +1,5 @@
 import { Metadata } from "./metadata";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { UserPermission } from "./user";
 
 export enum MfaType {
@@ -34,4 +34,14 @@ export class Mfa extends Resource<MfaStatus> {
   dateEnd?: string;
   // Related
   machineId!: string;
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Mfa;
+    return {
+      resourceType: ResourceType.CONTRACT,
+      resourceId: data.resourceId,
+      h1: data.code,
+      status: data.status,
+    };
+  }
 }

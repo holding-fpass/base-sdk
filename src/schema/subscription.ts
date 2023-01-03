@@ -82,6 +82,7 @@ export class Subscription extends Resource<SubscriptionStatus> {
       resourceType: ResourceType.SUBSCRIPTION,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

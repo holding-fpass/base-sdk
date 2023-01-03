@@ -40,6 +40,7 @@ export class Story extends Resource<StoryStatus> {
       resourceType: ResourceType.STORY,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

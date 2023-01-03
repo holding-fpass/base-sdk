@@ -92,6 +92,7 @@ export class Content extends Resource<ContentStatus> {
       resourceType: ResourceType.CONTENT,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }
@@ -192,6 +193,7 @@ export class Course extends Resource<CourseStatus> {
       resourceType: ResourceType.COURSE,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

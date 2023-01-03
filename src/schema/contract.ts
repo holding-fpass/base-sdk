@@ -51,6 +51,7 @@ export class Contract extends Resource<ContractStatus> {
       resourceType: ResourceType.CONTRACT,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

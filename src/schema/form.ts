@@ -92,6 +92,7 @@ export class Form extends Resource<FormStatus> {
       resourceType: ResourceType.FORM,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

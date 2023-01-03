@@ -1,7 +1,7 @@
 import { BaseEvent } from "../schema";
 
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 
 export enum VideoStatus {
   CREATED = "created",
@@ -27,6 +27,16 @@ export class Video extends Resource<VideoStatus> {
   externalId?: string;
   providerUrl?: string;
   providerExtra?: ProviderExtra[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Video;
+    return {
+      resourceType: ResourceType.VIDEO,
+      resourceId: data.resourceId,
+      h1: data.resourceUrl,
+      status: data.status
+    };
+  }
 }
 
 /**

@@ -50,6 +50,7 @@ export class Channel
       resourceType: ResourceType.CHANNEL,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

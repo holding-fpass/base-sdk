@@ -1,4 +1,4 @@
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Transaction } from "./transaction";
 
 export enum CouponStatus {
@@ -25,4 +25,14 @@ export class Coupon extends Resource<CouponStatus> {
   transactions?: Partial<Transaction>[];
   value?: number;
   percentage?: number;
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Coupon;
+    return {
+      resourceType: ResourceType.CONTRACT,
+      resourceId: data.resourceId,
+      h1: data.code,
+      status: data.status,
+    };
+  }
 }

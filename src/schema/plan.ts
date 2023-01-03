@@ -48,6 +48,7 @@ export class Plan extends Resource<PlanStatus> {
       resourceType: ResourceType.PLAN,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

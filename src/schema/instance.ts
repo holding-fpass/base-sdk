@@ -174,6 +174,7 @@ export class Instance extends Resource<InstanceStatus> {
       resourceType: ResourceType.INSTANCE,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status,
     };
   }
 }

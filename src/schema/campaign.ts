@@ -54,6 +54,7 @@ export class Campaign extends Resource {
       resourceType: ResourceType.CAMPAIGN,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }

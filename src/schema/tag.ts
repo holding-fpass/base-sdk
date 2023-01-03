@@ -26,13 +26,4 @@ export class Tag extends Resource<TagStatus> {
   //
   h1!: string;
   type!: TagStatus;
-  // SearchableResource implementation
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Tag;
-    return {
-      resourceType: ResourceType.TAG,
-      resourceId: data.resourceId,
-      h1: data.h1,
-    };
-  }
 }

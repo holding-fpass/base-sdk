@@ -74,6 +74,7 @@ export class Subtitle extends Resource<SubtitleStatus> {
       resourceType: ResourceType.SUBTITLE,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status
     };
   }
 }
