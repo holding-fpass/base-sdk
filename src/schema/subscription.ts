@@ -1,7 +1,7 @@
 import { Contract } from "./contract";
 import { MonthFrequency, Plan } from './plan';
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
@@ -74,5 +74,14 @@ export class Subscription extends Resource<SubscriptionStatus> {
   dateEnd?: string;
   // Related
   user!: Partial<User>;
-  plan!: Pick<Plan, 'resourceId' | 'resourceType'>;
+  plan!: Pick<Plan, "resourceId" | "resourceType">;
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Subscription;
+    return {
+      resourceType: ResourceType.SUBSCRIPTION,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

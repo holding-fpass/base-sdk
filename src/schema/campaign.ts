@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase-admin/firestore";
 import { Story, Form, NotificationMessage } from "../schema";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Tag } from "./tag";
 
 export enum CampaignStatus {
@@ -47,4 +47,13 @@ export class Campaign extends Resource {
   // Related
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Campaign;
+    return {
+      resourceType: ResourceType.CAMPAIGN,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

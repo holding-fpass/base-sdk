@@ -1,4 +1,4 @@
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Tag } from "./tag";
 
 export enum StoryItemType {
@@ -33,4 +33,13 @@ export class Story extends Resource<StoryStatus> {
   // Related
   _systemTags?: Partial<Tag>[];
   userTags?: Partial<Tag>[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Story;
+    return {
+      resourceType: ResourceType.STORY,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

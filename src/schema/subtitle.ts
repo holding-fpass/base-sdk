@@ -1,5 +1,5 @@
 import { Content } from "./course";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { User } from "./user";
 
 export class Sentence {
@@ -67,4 +67,13 @@ export class Subtitle extends Resource<SubtitleStatus> {
   // Data
   fullSentences?: Sentence[];
   partSentences?: Sentence[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Subtitle;
+    return {
+      resourceType: ResourceType.SUBTITLE,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

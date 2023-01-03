@@ -1,7 +1,7 @@
 import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Stage } from "./stage";
 import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
@@ -21,6 +21,15 @@ export class ContentItem extends Resource {
   // Media
   resourceUrl?: string;
   fileUrl?: string;
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as ContentItem;
+    return {
+      resourceType: ResourceType.CONTENT_ITEM,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }
 
 export class ContentForms {
@@ -70,12 +79,21 @@ export class Content extends Resource<ContentStatus> {
   // Payment
   free?: boolean;
   // Related
-  stage?: Pick<Stage, "resourceId" | "name" | 'slug'>;
+  stage?: Pick<Stage, "resourceId" | "name" | "slug">;
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
   tags?: Tag[];
   parentId!: string;
   parentType!: ResourceType;
   items?: Partial<ContentItem>[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Content;
+    return {
+      resourceType: ResourceType.CONTENT,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }
 
 // Module
@@ -87,6 +105,15 @@ export class Module extends Resource {
   image256x256?: string;
   // Related
   contents?: Partial<Content>[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Module;
+    return {
+      resourceType: ResourceType.MODULE,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }
 
 // Course
@@ -158,4 +185,13 @@ export class Course extends Resource<CourseStatus> {
   contents?: Partial<Content>[];
   modules?: Partial<Module>[];
   forms?: CourseForms;
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Course;
+    return {
+      resourceType: ResourceType.COURSE,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

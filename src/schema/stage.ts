@@ -3,7 +3,7 @@ import { ContentItem, Course } from "./course";
 import { Form } from "./form";
 import { Metadata } from "./metadata";
 import { Plan } from "./plan";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { User } from "./user";
 
 export enum StageStatus {
@@ -78,4 +78,13 @@ export class Stage extends Resource<StageStatus> {
   // Finance
   payment?: StagePayment;
   features!: Metadata<StageFeatureFlags>[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Stage;
+    return {
+      resourceType: ResourceType.STAGE,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

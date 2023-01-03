@@ -4,7 +4,7 @@ import { Device } from "./device";
 import { Metadata } from "./metadata";
 import { Playlist } from "./playlist";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Scope } from "./scope";
 import { Subscription } from "./subscription";
 import { Transaction } from "./transaction";
@@ -101,4 +101,13 @@ export class User extends Resource<UserStatus> {
   // Playlist
   favoritePlaylist?: Partial<Playlist>;
   suggestPlaylist?: Partial<Playlist>;
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as User;
+    return {
+      resourceType: ResourceType.USER,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

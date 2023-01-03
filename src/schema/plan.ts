@@ -1,6 +1,6 @@
 import { Contract } from "./contract";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum PlanStatus {
@@ -41,4 +41,13 @@ export class Plan extends Resource<PlanStatus> {
   utmId?: string;
   // Provider
   providerExtra?: ProviderExtra[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Plan;
+    return {
+      resourceType: ResourceType.PLAN,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

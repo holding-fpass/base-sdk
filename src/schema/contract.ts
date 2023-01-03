@@ -1,4 +1,4 @@
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum ContractStatus {
@@ -44,4 +44,13 @@ export class Contract extends Resource<ContractStatus> {
   name!: string;
   whitelabel!: Whitelabel;
   items!: ContractItem[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Contract;
+    return {
+      resourceType: ResourceType.CONTRACT,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

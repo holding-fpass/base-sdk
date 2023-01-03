@@ -1,5 +1,5 @@
 import { Playlist } from "./playlist";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
@@ -85,6 +85,15 @@ export class Form extends Resource<FormStatus> {
   resultRanges?: Partial<FormResultRange>[];
   // Related
   userTags?: Partial<Tag>[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Form;
+    return {
+      resourceType: ResourceType.FORM,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }
 
 export class FormUserResponse {

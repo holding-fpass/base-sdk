@@ -1,5 +1,5 @@
 import { Course } from "./course";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Tag } from "./tag";
 
 export class Playlist extends Resource {
@@ -10,4 +10,13 @@ export class Playlist extends Resource {
   // Related
   courses?: Partial<Course>[];
   userTags?: Partial<Tag>[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Playlist;
+    return {
+      resourceType: ResourceType.PLAYLIST,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }

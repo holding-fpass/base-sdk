@@ -1,7 +1,7 @@
 import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum InstanceStatus {
@@ -167,6 +167,15 @@ export class Instance extends Resource<InstanceStatus> {
   kyc?: KyCConfig;
   // Provider Extra
   providerExtra?: ProviderExtra[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Instance;
+    return {
+      resourceType: ResourceType.INSTANCE,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }
 
 export enum InstanceApplications {

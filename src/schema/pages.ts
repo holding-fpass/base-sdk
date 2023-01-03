@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase-admin/firestore";
 import { Playlist } from "./playlist";
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 import { Tag } from "./tag";
 
 export enum PageStatus {
@@ -20,4 +20,13 @@ export class Page extends Resource {
   playlists!: Partial<Playlist>[];
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
+  // SearchableResource implementation
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Page;
+    return {
+      resourceType: ResourceType.PAGE,
+      resourceId: data.resourceId,
+      h1: data.name,
+    };
+  }
 }
