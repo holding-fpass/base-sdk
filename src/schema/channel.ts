@@ -1,5 +1,10 @@
 import { Playlist } from "./playlist";
-import { Resource, ResourceType } from "./resource";
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum ChannelStatus {
@@ -20,7 +25,10 @@ export const ChannelStatusTransitionMap = new Map<
   [ChannelStatus.RESTRICTED, [ChannelStatus.DELETED]],
 ]);
 
-export class Channel extends Resource<ChannelStatus> {
+export class Channel
+  extends Resource<ChannelStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.CHANNEL;
   transitionMap = ChannelStatusTransitionMap;
   name!: string;
@@ -35,4 +43,12 @@ export class Channel extends Resource<ChannelStatus> {
   image64x64!: string;
   // Related
   playlists!: Partial<Playlist>[];
+  // SearchableResource implementation
+  asDisplayResource(): DisplayResource {
+    return {
+      resourceType: ResourceType.CHANNEL,
+      resourceId: this.resourceId,
+      h1: this.name,
+    };
+  }
 }

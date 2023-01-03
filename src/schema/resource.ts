@@ -18,7 +18,7 @@ export enum ResourceType {
   COUPON = "coupon",
   COURSE = "course",
   DEVICE = "device",
-  EMAIL = 'email',
+  EMAIL = "email",
   FILE = "file",
   FORM = "form",
   FORM_RESPONSE = "form.response",
@@ -92,6 +92,10 @@ export class Resource<Status = any> {
   transitionMap?: Map<Status, Status[]>;
   // Approval
   approvals?: Signature[];
+}
+
+export interface SearchableResource {
+  asDisplayResource(): DisplayResource;
 }
 
 export class DisplayResource extends Resource {
