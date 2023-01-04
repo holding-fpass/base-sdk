@@ -1,7 +1,12 @@
 import { Contract } from "./contract";
-import { MonthFrequency, Plan } from './plan';
+import { MonthFrequency, Plan } from "./plan";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType, DisplayResource } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
@@ -11,8 +16,8 @@ export enum SubscriptionStatus {
   ACTIVE = "active",
   PROVIDER_SUBSCRIPTION_CANCELED = "provider.subscription.canceled",
   CANCELED = "canceled",
-  PROVIDER_SUBSCRIPTION_SUSPENDED = 'provider.subscription.suspended',
-  SUSPENDED = 'suspended',
+  PROVIDER_SUBSCRIPTION_SUSPENDED = "provider.subscription.suspended",
+  SUSPENDED = "suspended",
   DELETED = "deleted",
 }
 
@@ -33,7 +38,10 @@ export const SubscriptionStatusTransitionMap = new Map<
   ],
   [
     SubscriptionStatus.ACTIVE,
-    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED, SubscriptionStatus.PROVIDER_SUBSCRIPTION_SUSPENDED],
+    [
+      SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED,
+      SubscriptionStatus.PROVIDER_SUBSCRIPTION_SUSPENDED,
+    ],
   ],
   [
     SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED,
@@ -46,7 +54,7 @@ export const SubscriptionStatusTransitionMap = new Map<
   [
     SubscriptionStatus.SUSPENDED,
     [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED],
-  ]
+  ],
 ]);
 
 export enum ProductType {
@@ -55,7 +63,10 @@ export enum ProductType {
   COURSE_PURCHASE = "course.purchase",
 }
 
-export class Subscription extends Resource<SubscriptionStatus> {
+export class Subscription
+  extends Resource<SubscriptionStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.SUBSCRIPTION;
   transitionMap = SubscriptionStatusTransitionMap;
   // Plan
@@ -76,13 +87,14 @@ export class Subscription extends Resource<SubscriptionStatus> {
   user!: Partial<User>;
   plan!: Pick<Plan, "resourceId" | "resourceType">;
   // SearchableResource implementation
+  isPublic = false;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as Subscription;
     return {
       resourceType: ResourceType.SUBSCRIPTION,
       resourceId: data.resourceId,
       h1: data.name,
-      status: data.status
+      status: data.status,
     };
   }
 }

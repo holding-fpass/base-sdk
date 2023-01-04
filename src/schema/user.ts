@@ -4,7 +4,12 @@ import { Device } from "./device";
 import { Metadata } from "./metadata";
 import { Playlist } from "./playlist";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType, DisplayResource } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { Scope } from "./scope";
 import { Subscription } from "./subscription";
 import { Transaction } from "./transaction";
@@ -62,7 +67,7 @@ export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.UNAVALIABLE, [UserStatus.DELETED]],
   [UserStatus.DELETED, [UserStatus.CREATED]],
 ]);
-export class User extends Resource<UserStatus> {
+export class User extends Resource<UserStatus> implements SearchableResource {
   id!: string;
   resourceType = ResourceType.USER;
   transitionMap = UserStatusTransitionMap;
@@ -102,6 +107,7 @@ export class User extends Resource<UserStatus> {
   favoritePlaylist?: Partial<Playlist>;
   suggestPlaylist?: Partial<Playlist>;
   // SearchableResource implementation
+  isPublic = false;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as User;
     return {

@@ -1,7 +1,12 @@
 import { BaseEvent } from "../schema";
 
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType, DisplayResource } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 
 export enum VideoStatus {
   CREATED = "created",
@@ -16,7 +21,7 @@ export const VideoStatusTransitionMap = new Map<VideoStatus, VideoStatus[]>([
   [VideoStatus.PROVIDER_CREATED, [VideoStatus.ACTIVE]],
 ]);
 
-export class Video extends Resource<VideoStatus> {
+export class Video extends Resource<VideoStatus> implements SearchableResource {
   resourceType = ResourceType.VIDEO;
   // Product
   productId!: string;
@@ -28,13 +33,14 @@ export class Video extends Resource<VideoStatus> {
   providerUrl?: string;
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
+  isPublic = false;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as Video;
     return {
       resourceType: ResourceType.VIDEO,
       resourceId: data.resourceId,
       h1: data.resourceUrl,
-      status: data.status
+      status: data.status,
     };
   }
 }

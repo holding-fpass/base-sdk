@@ -1,11 +1,17 @@
-import { Resource, ResourceType, DisplayResource } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { User } from "./user";
 
-export class Signature extends Resource {
+export class Signature extends Resource implements SearchableResource {
   resourceType = ResourceType.SIGNATURE;
   user!: Partial<User>;
   footprint!: string;
   // SearchableResource implementation
+  isPublic = false;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as Signature;
     return {

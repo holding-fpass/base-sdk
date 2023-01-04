@@ -1,7 +1,12 @@
 import { Timestamp } from "firebase-admin/firestore";
 import { Campaign } from "schema";
 import { Form } from "./form";
-import { Resource, ResourceType, DisplayResource } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { Story } from "./story";
 import { User } from "./user";
 
@@ -36,7 +41,10 @@ export const NotificationStatusTransitionMap = new Map<
   ],
 ]);
 
-export class Notification extends Resource<NotificationStatus> {
+export class Notification
+  extends Resource<NotificationStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.NOTIFICATION;
   type!: NotificationType;
   // User
@@ -54,6 +62,7 @@ export class Notification extends Resource<NotificationStatus> {
   // Usage
   readedAt?: string | Timestamp;
   // SearchableResource implementation
+  isPublic = false;
   asDisplayResource(resource: any): DisplayResource {
     // NO "name" RELATIVE STRING FIELD
     const data = resource as Notification;

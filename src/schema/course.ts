@@ -1,7 +1,12 @@
 import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
-import { Resource, ResourceType, DisplayResource } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { Stage } from "./stage";
 import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
@@ -53,7 +58,10 @@ export const ContentStatusTransitionMap = new Map<
   ContentStatus[]
 >([[ContentStatus.CREATED, [ContentStatus.ACTIVE]]]);
 
-export class Content extends Resource<ContentStatus> {
+export class Content
+  extends Resource<ContentStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.CONTENT;
   transitionMap = ContentStatusTransitionMap;
   type!: ContentType;
@@ -86,13 +94,14 @@ export class Content extends Resource<ContentStatus> {
   parentType!: ResourceType;
   items?: Partial<ContentItem>[];
   // SearchableResource implementation
+  isPublic = true;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as Content;
     return {
       resourceType: ResourceType.CONTENT,
       resourceId: data.resourceId,
       h1: data.name,
-      status: data.status
+      status: data.status,
     };
   }
 }
@@ -193,7 +202,7 @@ export class Course extends Resource<CourseStatus> {
       resourceType: ResourceType.COURSE,
       resourceId: data.resourceId,
       h1: data.name,
-      status: data.status
+      status: data.status,
     };
   }
 }
