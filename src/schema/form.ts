@@ -1,5 +1,10 @@
 import { Playlist } from "./playlist";
-import { Resource, ResourceType } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
@@ -76,7 +81,7 @@ export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
   [FormStatus.ACTIVE, [FormStatus.CREATED]],
 ]);
 
-export class Form extends Resource<FormStatus> {
+export class Form extends Resource<FormStatus> implements SearchableResource {
   resourceType = ResourceType.FORM;
   name!: string;
   description?: string;
@@ -85,6 +90,17 @@ export class Form extends Resource<FormStatus> {
   resultRanges?: Partial<FormResultRange>[];
   // Related
   userTags?: Partial<Tag>[];
+  // SearchableResource implementation
+  isPublic = false;
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Form;
+    return {
+      resourceType: ResourceType.FORM,
+      resourceId: data.resourceId,
+      h1: data.name,
+      status: data.status,
+    };
+  }
 }
 
 export class FormUserResponse {

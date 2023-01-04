@@ -44,12 +44,14 @@ export class Channel
   // Related
   playlists!: Partial<Playlist>[];
   // SearchableResource implementation
+  isPublic = true;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as Channel;
     return {
       resourceType: ResourceType.CHANNEL,
       resourceId: data.resourceId,
       h1: data.name,
+      status: data.status,
     };
   }
 }

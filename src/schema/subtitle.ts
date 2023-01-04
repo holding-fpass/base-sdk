@@ -1,5 +1,10 @@
 import { Content } from "./course";
-import { Resource, ResourceType } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { User } from "./user";
 
 export class Sentence {
@@ -47,10 +52,13 @@ export const SubtitleStatusTransitionMap = new Map<
     [SubtitleStatus.FILE_GENERATED],
   ],
   [SubtitleStatus.FILE_GENERATED, [SubtitleStatus.ACTIVE]],
-  [SubtitleStatus.ACTIVE, [SubtitleStatus.FILE_GENERATED]]
+  [SubtitleStatus.ACTIVE, [SubtitleStatus.FILE_GENERATED]],
 ]);
 
-export class Subtitle extends Resource<SubtitleStatus> {
+export class Subtitle
+  extends Resource<SubtitleStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.SUBTITLE;
   name!: string;
   // Related
@@ -67,4 +75,15 @@ export class Subtitle extends Resource<SubtitleStatus> {
   // Data
   fullSentences?: Sentence[];
   partSentences?: Sentence[];
+  // SearchableResource implementation
+  isPublic = false;
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Subtitle;
+    return {
+      resourceType: ResourceType.SUBTITLE,
+      resourceId: data.resourceId,
+      h1: data.name,
+      status: data.status,
+    };
+  }
 }

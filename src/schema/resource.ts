@@ -95,6 +95,9 @@ export class Resource<Status = any> {
 }
 
 export interface SearchableResource {
+  // If the resource should be filter to appear on Frontend Apps
+  isPublic: boolean;
+  // Base tranformation to all resource be storage on search service
   asDisplayResource(resource: any): DisplayResource;
 }
 

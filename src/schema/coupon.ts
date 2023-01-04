@@ -1,4 +1,9 @@
-import { Resource, ResourceType } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { Transaction } from "./transaction";
 
 export enum CouponStatus {
@@ -12,7 +17,10 @@ export const CouponStatusTransitionMap = new Map<CouponStatus, CouponStatus[]>([
   [CouponStatus.ACTIVE, [CouponStatus.UNAVALIABLE]],
 ]);
 
-export class Coupon extends Resource<CouponStatus> {
+export class Coupon
+  extends Resource<CouponStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.COUPON;
   transitionMap = CouponStatusTransitionMap;
   code!: string;
@@ -25,4 +33,15 @@ export class Coupon extends Resource<CouponStatus> {
   transactions?: Partial<Transaction>[];
   value?: number;
   percentage?: number;
+  // SearchableResource implementation
+  isPublic = false;
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Coupon;
+    return {
+      resourceType: ResourceType.CONTRACT,
+      resourceId: data.resourceId,
+      h1: data.code,
+      status: data.status,
+    };
+  }
 }

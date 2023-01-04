@@ -1,7 +1,12 @@
 import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  DisplayResource,
+  SearchableResource,
+} from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum InstanceStatus {
@@ -96,7 +101,10 @@ export const InstanceStatusTransitionMap = new Map<
   [InstanceStatus.ACTIVE, [InstanceStatus.DELETED]],
 ]);
 
-export class Instance extends Resource<InstanceStatus> {
+export class Instance
+  extends Resource<InstanceStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.INSTANCE;
   transitionMap = InstanceStatusTransitionMap;
   //
@@ -167,6 +175,17 @@ export class Instance extends Resource<InstanceStatus> {
   kyc?: KyCConfig;
   // Provider Extra
   providerExtra?: ProviderExtra[];
+  // SearchableResource implementation
+  isPublic = false;
+  asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Instance;
+    return {
+      resourceType: ResourceType.INSTANCE,
+      resourceId: data.resourceId,
+      h1: data.name,
+      status: data.status,
+    };
+  }
 }
 
 export enum InstanceApplications {
