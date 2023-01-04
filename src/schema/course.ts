@@ -104,6 +104,7 @@ export class Content
       h1: data.name,
       status: data.status,
       isPublic: data.isPublic,
+      imageUrl: data.image144x80,
     };
   }
 }
@@ -163,9 +164,9 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
   [CourseStatus.CREATED, [CourseStatus.ACTIVE]],
   [CourseStatus.ACTIVE, [CourseStatus.UNAVALIABLE]],
 ]);
-export class Course 
-  extends Resource<CourseStatus> 
-  implements SearchableResource 
+export class Course
+  extends Resource<CourseStatus>
+  implements SearchableResource
 {
   resourceType = ResourceType.COURSE;
   transitionMap = CourseStatusTransitionMap;
@@ -210,6 +211,7 @@ export class Course
       h1: data.name,
       status: data.status,
       isPublic: data.isPublic,
+      imageUrl: data.image400x512,
     };
   }
 }
