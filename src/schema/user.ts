@@ -1,22 +1,23 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Certificate } from "./certificate";
 import { Course } from "./course";
 import { Device } from "./device";
+import { FormResponse } from "./form";
+import { Interaction } from "./interaction";
 import { Metadata } from "./metadata";
 import { Playlist } from "./playlist";
 import { ProviderExtra } from "./provider";
-import {
-  Resource,
-  ResourceType,
-  DisplayResource,
-  SearchableResource,
-} from "./resource";
 import { Scope } from "./scope";
 import { Subscription } from "./subscription";
+import { Tag } from "./tag";
 import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
-import { FormResponse } from "./form";
-import { Tag } from "./tag";
-import { Interaction } from "./interaction";
 
 export enum UserPermission {
   ADMINISTRATOR = "administrator",
@@ -114,6 +115,7 @@ export class User extends Resource<UserStatus> implements SearchableResource {
       resourceType: ResourceType.USER,
       resourceId: data.resourceId,
       h1: data.name,
+      isPublic: data.isPublic,
     };
   }
 }

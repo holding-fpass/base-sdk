@@ -1,10 +1,11 @@
-import { Course } from "./course";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
+import { Course } from "./course";
 import { Tag } from "./tag";
 
 export class Playlist extends Resource implements SearchableResource {
@@ -23,6 +24,7 @@ export class Playlist extends Resource implements SearchableResource {
       resourceType: ResourceType.PLAYLIST,
       resourceId: data.resourceId,
       h1: data.name,
+      isPublic: data.isPublic,
     };
   }
 }

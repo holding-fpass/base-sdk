@@ -1,10 +1,11 @@
-import { Metadata } from "./metadata";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
+import { Metadata } from "./metadata";
 import { UserPermission } from "./user";
 
 export enum MfaType {
@@ -48,6 +49,7 @@ export class Mfa extends Resource<MfaStatus> implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.code,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

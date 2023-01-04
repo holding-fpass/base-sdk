@@ -1,12 +1,13 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
-import {
-  Resource,
-  ResourceType,
-  DisplayResource,
-  SearchableResource,
-} from "./resource";
 import { Stage } from "./stage";
 import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
@@ -102,6 +103,7 @@ export class Content
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }
@@ -161,7 +163,10 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
   [CourseStatus.CREATED, [CourseStatus.ACTIVE]],
   [CourseStatus.ACTIVE, [CourseStatus.UNAVALIABLE]],
 ]);
-export class Course extends Resource<CourseStatus> {
+export class Course 
+  extends Resource<CourseStatus> 
+  implements SearchableResource 
+{
   resourceType = ResourceType.COURSE;
   transitionMap = CourseStatusTransitionMap;
   resourceId!: string;
@@ -196,6 +201,7 @@ export class Course extends Resource<CourseStatus> {
   modules?: Partial<Module>[];
   forms?: CourseForms;
   // SearchableResource implementation
+  isPublic = false;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as Course;
     return {
@@ -203,6 +209,7 @@ export class Course extends Resource<CourseStatus> {
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

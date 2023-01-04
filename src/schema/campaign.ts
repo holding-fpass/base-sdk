@@ -1,12 +1,13 @@
-import { Timestamp } from "firebase-admin/firestore";
-import { Story, Form, NotificationMessage } from "../schema";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+import { Form, NotificationMessage, Story } from "../schema";
+
 import { Tag } from "./tag";
+import { Timestamp } from "firebase-admin/firestore";
 
 export enum CampaignStatus {
   CREATED = "created",
@@ -61,6 +62,7 @@ export class Campaign extends Resource implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

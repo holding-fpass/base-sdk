@@ -1,9 +1,10 @@
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
 import { Transaction } from "./transaction";
 
 export enum CouponStatus {
@@ -42,6 +43,7 @@ export class Coupon
       resourceId: data.resourceId,
       h1: data.code,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

@@ -1,12 +1,13 @@
-import { Contract } from "./contract";
-import { MonthFrequency, Plan } from "./plan";
-import { ProviderExtra } from "./provider";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+import { MonthFrequency, Plan } from "./plan";
+
+import { Contract } from "./contract";
+import { ProviderExtra } from "./provider";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
@@ -95,6 +96,7 @@ export class Subscription
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }
