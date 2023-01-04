@@ -104,7 +104,7 @@ export class Content
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
-      isPublic: data.isPublic,
+      isPublic: true,
       imageUrl: ImageUtils.imageOptimized(data.image144x80 as string, "144x80"),
     };
   }
@@ -203,7 +203,7 @@ export class Course
   modules?: Partial<Module>[];
   forms?: CourseForms;
   // SearchableResource implementation
-  isPublic = false;
+  isPublic = true;
   asDisplayResource(resource: any): DisplayResource {
     const data = resource as Course;
     return {
@@ -211,7 +211,7 @@ export class Course
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
-      isPublic: data.isPublic,
+      isPublic: true,
       imageUrl: ImageUtils.imageOptimized(
         data.image400x512 as string,
         "400x512"
