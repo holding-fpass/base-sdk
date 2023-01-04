@@ -13,6 +13,7 @@ import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
+import { ImageUtils } from "media";
 
 // Content
 
@@ -104,7 +105,7 @@ export class Content
       h1: data.name,
       status: data.status,
       isPublic: data.isPublic,
-      imageUrl: data.image144x80,
+      imageUrl: ImageUtils.imageOptimized(data.image144x80 as string, "144x80"),
     };
   }
 }
@@ -211,7 +212,10 @@ export class Course
       h1: data.name,
       status: data.status,
       isPublic: data.isPublic,
-      imageUrl: data.image400x512,
+      imageUrl: ImageUtils.imageOptimized(
+        data.image400x512 as string,
+        "400x512"
+      ),
     };
   }
 }
