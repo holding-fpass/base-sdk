@@ -1,9 +1,10 @@
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
 import { User } from "./user";
 
 export class Device extends Resource implements SearchableResource {
@@ -19,6 +20,7 @@ export class Device extends Resource implements SearchableResource {
       resourceType: ResourceType.DEVICE,
       resourceId: data.resourceId,
       h1: data.name,
+      isPublic: data.isPublic,
     };
   }
 }

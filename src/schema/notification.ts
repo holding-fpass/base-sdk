@@ -1,13 +1,14 @@
-import { Timestamp } from "firebase-admin/firestore";
-import { Campaign } from "schema";
-import { Form } from "./form";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
+import { Campaign } from "schema";
+import { Form } from "./form";
 import { Story } from "./story";
+import { Timestamp } from "firebase-admin/firestore";
 import { User } from "./user";
 
 export class NotificationMessage {
@@ -70,6 +71,7 @@ export class Notification
       resourceType: ResourceType.NOTIFICATION,
       resourceId: data.resourceId,
       h1: data.message?.body,
+      isPublic: data.isPublic,
     };
   }
 }

@@ -1,10 +1,11 @@
-import { Playlist } from "./playlist";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
+import { Playlist } from "./playlist";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
@@ -99,6 +100,7 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

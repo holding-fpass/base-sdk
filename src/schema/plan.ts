@@ -1,11 +1,12 @@
-import { Contract } from "./contract";
-import { ProviderExtra } from "./provider";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
+import { Contract } from "./contract";
+import { ProviderExtra } from "./provider";
 import { Whitelabel } from "./whitelabel";
 
 export enum PlanStatus {
@@ -55,6 +56,7 @@ export class Plan extends Resource<PlanStatus> implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

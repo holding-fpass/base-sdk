@@ -1,12 +1,13 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
-import {
-  Resource,
-  ResourceType,
-  DisplayResource,
-  SearchableResource,
-} from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum InstanceStatus {
@@ -184,6 +185,7 @@ export class Instance
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

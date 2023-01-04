@@ -1,5 +1,5 @@
-import { Timestamp } from "firebase-admin/firestore";
 import { Signature } from "./signature";
+import { Timestamp } from "firebase-admin/firestore";
 import { Whitelabel } from "./whitelabel";
 
 export enum ResourceType {
@@ -120,4 +120,5 @@ export class DisplayResource extends Resource {
   parentType?: ResourceType;
   dateStart?: string;
   dateEnd?: string;
+  isPublic?: boolean;
 }

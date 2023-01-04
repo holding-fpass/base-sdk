@@ -34,6 +34,7 @@ export class Page extends Resource implements SearchableResource {
       resourceType: ResourceType.PAGE,
       resourceId: data.resourceId,
       h1: data.name,
+      isPublic: data.isPublic,
     };
   }
 }

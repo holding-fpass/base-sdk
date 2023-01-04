@@ -1,9 +1,10 @@
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
 import { Tag } from "./tag";
 
 export enum StoryItemType {
@@ -47,6 +48,7 @@ export class Story extends Resource<StoryStatus> implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

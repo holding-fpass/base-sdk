@@ -1,10 +1,11 @@
-import { Playlist } from "./playlist";
 import {
   DisplayResource,
   Resource,
   ResourceType,
   SearchableResource,
 } from "./resource";
+
+import { Playlist } from "./playlist";
 import { Whitelabel } from "./whitelabel";
 
 export enum ChannelStatus {
@@ -52,6 +53,7 @@ export class Channel
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

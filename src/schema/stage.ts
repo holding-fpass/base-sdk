@@ -1,14 +1,15 @@
-import { Timestamp } from "firebase-admin/firestore";
 import { ContentItem, Course } from "./course";
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Form } from "./form";
 import { Metadata } from "./metadata";
 import { Plan } from "./plan";
-import {
-  Resource,
-  ResourceType,
-  DisplayResource,
-  SearchableResource,
-} from "./resource";
+import { Timestamp } from "firebase-admin/firestore";
 import { User } from "./user";
 
 export enum StageStatus {
@@ -92,6 +93,7 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

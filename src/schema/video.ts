@@ -1,12 +1,12 @@
-import { BaseEvent } from "../schema";
-
-import { ProviderExtra } from "./provider";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
+import { BaseEvent } from "../schema";
+import { ProviderExtra } from "./provider";
 
 export enum VideoStatus {
   CREATED = "created",
@@ -41,6 +41,7 @@ export class Video extends Resource<VideoStatus> implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.resourceUrl,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

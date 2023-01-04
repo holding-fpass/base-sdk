@@ -1,9 +1,10 @@
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
 import { Whitelabel } from "./whitelabel";
 
 export enum ContractStatus {
@@ -61,6 +62,7 @@ export class Contract
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }

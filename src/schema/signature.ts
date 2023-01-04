@@ -1,9 +1,10 @@
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
 import { User } from "./user";
 
 export class Signature extends Resource implements SearchableResource {
@@ -18,6 +19,7 @@ export class Signature extends Resource implements SearchableResource {
       resourceType: ResourceType.SIGNATURE,
       resourceId: data.resourceId,
       h1: data.footprint,
+      isPublic: data.isPublic,
     };
   }
 }

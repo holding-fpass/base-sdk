@@ -1,10 +1,11 @@
-import { Content } from "./course";
 import {
+  DisplayResource,
   Resource,
   ResourceType,
-  DisplayResource,
   SearchableResource,
 } from "./resource";
+
+import { Content } from "./course";
 import { User } from "./user";
 
 export class Sentence {
@@ -84,6 +85,7 @@ export class Subtitle
       resourceId: data.resourceId,
       h1: data.name,
       status: data.status,
+      isPublic: data.isPublic,
     };
   }
 }
