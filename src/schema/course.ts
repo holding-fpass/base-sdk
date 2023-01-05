@@ -62,7 +62,7 @@ export const ContentStatusTransitionMap = new Map<
 
 export class Content
   extends Resource<ContentStatus>
-  implements SearchableResource
+  implements SearchableResource<Content>
 {
   resourceType = ResourceType.CONTENT;
   transitionMap = ContentStatusTransitionMap;
@@ -97,15 +97,18 @@ export class Content
   items?: Partial<ContentItem>[];
   // SearchableResource implementation
   isPublic = true;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Content;
+  asDisplayResource(resource: Content): DisplayResource<ContentType> {
     return {
       resourceType: ResourceType.CONTENT,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
       isPublic: true,
-      imageUrl: ImageUtils.imageOptimized(data.image144x80 as string, "144x80"),
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image144x80 as string,
+        "144x80"
+      ),
+      type: resource.type,
     };
   }
 }

@@ -94,18 +94,19 @@ export class Resource<Status = any> {
   approvals?: Signature[];
 }
 
-export interface SearchableResource {
+export interface SearchableResource<Entity = any> {
   // If the resource should be filter to appear on Frontend Apps
   isPublic: boolean;
   // Base tranformation to all resource be storage on search service
-  asDisplayResource(resource: any): DisplayResource;
+  asDisplayResource(resource: Entity): DisplayResource;
 }
 
-export class DisplayResource extends Resource {
+export class DisplayResource<Type = any> extends Resource {
   h1?: string;
   h2?: string;
   h3?: string;
   h4?: string;
+  type?: Type;
   percentage?: number;
   value?: number;
   cta?: string;
