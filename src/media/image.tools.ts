@@ -8,4 +8,7 @@ export class ImageUtils {
     const sizes = size.split("x");
     return url.concat(`?width=${sizes[0]}&height=${sizes[1]}`);
   }
+  static imagePlaceholder(size: string, text?: string) {
+    return `https://via.placeholder.com/${size}/?text=${text}`;
+  }
 }
