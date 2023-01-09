@@ -76,13 +76,13 @@ export const ContentStatusTransitionMap = new Map<
   [ContentStatus.CREATED, [ContentStatus.PROVIDER_TRANSCODE_JOB_CREATED]],
   [
     ContentStatus.PROVIDER_TRANSCODE_JOB_CREATED,
-    [ContentStatus.PROVIDER_TRANSCODE_JOB_SUCCEEDED],
-  ],
-  [
-    ContentStatus.PROVIDER_TRANSCODE_JOB_CREATED,
-    [ContentStatus.PROVIDER_TRANSCODE_JOB_FAILED],
+    [
+      ContentStatus.PROVIDER_TRANSCODE_JOB_SUCCEEDED,
+      ContentStatus.PROVIDER_TRANSCODE_JOB_FAILED,
+    ],
   ],
   [ContentStatus.PROVIDER_TRANSCODE_JOB_SUCCEEDED, [ContentStatus.ACTIVE]],
+  [ContentStatus.PROVIDER_TRANSCODE_JOB_FAILED, [ContentStatus.CREATED]],
 ]);
 
 export class Content
