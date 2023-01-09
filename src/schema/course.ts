@@ -14,6 +14,7 @@ import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 import { ImageUtils } from "../media";
+import { ProviderExtra } from "./provider";
 
 // Content
 
@@ -48,6 +49,7 @@ export enum ContentType {
   VIDEO = "video",
   MEET = "meet",
   LIVE = "live",
+  LINK = "link",
 }
 
 export enum ContentStatus {
@@ -56,6 +58,10 @@ export enum ContentStatus {
   PROVIDER_TRANSCODE_JOB_SUCCEEDED = "provider.transcode.job.succeeded",
   PROVIDER_TRANSCODE_JOB_FAILED = "provider.transcoder.job.failed",
   ACTIVE = "active",
+}
+
+export enum ContentProviderTranscodeMetadata {
+  JOB_ID = "content.provider.transcode.metadata.job.id",
 }
 
 export const ContentStatusTransitionMap = new Map<
@@ -84,6 +90,7 @@ export class Content
   name!: string;
   slug?: string;
   description?: string;
+  providerExtra?: ProviderExtra<ContentProviderTranscodeMetadata>[];
   // Media
   image144x80?: string;
   image1440x720?: string;
