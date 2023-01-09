@@ -56,7 +56,7 @@ export enum ContentStatus {
   CREATED = "created",
   PROVIDER_TRANSCODE_JOB_CREATED = "provider.transcode.job.created",
   PROVIDER_TRANSCODE_JOB_SUCCEEDED = "provider.transcode.job.succeeded",
-  PROVIDER_TRANSCODE_JOB_FAILED = "provider.transcoder.job.failed",
+  PROVIDER_TRANSCODE_JOB_FAILED = "provider.transcode.job.failed",
   ACTIVE = "active",
 }
 
