@@ -62,6 +62,11 @@ export enum ContentStatus {
 
 export enum ContentProviderTranscodeMetadata {
   JOB_ID = "content.provider.transcode.metadata.job.id",
+  STATUS = "content.provider.transcode.metadata.status",
+  CREATE_TIME = "content.provider.transcode.metadata.create.time",
+  START_TIME = "content.provider.transcode.metadata.start.time",
+  END_TIME = "content.provider.transcode.metadata.end.time",
+  ERROR = "content.provider.transcode.metadata.error",
 }
 
 export const ContentStatusTransitionMap = new Map<
