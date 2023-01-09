@@ -52,13 +52,27 @@ export enum ContentType {
 
 export enum ContentStatus {
   CREATED = "created",
+  PROVIDER_TRANSCODE_JOB_CREATED = "provider.transcode.job.created",
+  PROVIDER_TRANSCODE_JOB_SUCCEEDED = "provider.transcode.job.succeeded",
+  PROVIDER_TRANSCODE_JOB_FAILED = "provider.transcoder.job.failed",
   ACTIVE = "active",
 }
 
 export const ContentStatusTransitionMap = new Map<
   ContentStatus,
   ContentStatus[]
->([[ContentStatus.CREATED, [ContentStatus.ACTIVE]]]);
+>([
+  [ContentStatus.CREATED, [ContentStatus.PROVIDER_TRANSCODE_JOB_CREATED]],
+  [
+    ContentStatus.PROVIDER_TRANSCODE_JOB_CREATED,
+    [ContentStatus.PROVIDER_TRANSCODE_JOB_SUCCEEDED],
+  ],
+  [
+    ContentStatus.PROVIDER_TRANSCODE_JOB_CREATED,
+    [ContentStatus.PROVIDER_TRANSCODE_JOB_FAILED],
+  ],
+  [ContentStatus.PROVIDER_TRANSCODE_JOB_SUCCEEDED, [ContentStatus.ACTIVE]],
+]);
 
 export class Content
   extends Resource<ContentStatus>
@@ -73,9 +87,14 @@ export class Content
   // Media
   image144x80?: string;
   image1440x720?: string;
+  // Videos
   video1920x1080?: string;
   video1920x1080_duration?: number;
   video1920x1080_subtitles?: Subtitle[];
+  // Transcoded
+  audio?: string;
+  video640x360?: string;
+  video1280x720?: string;
   // Transmission
   rtmpUrl?: string;
   meetUrl?: string;
