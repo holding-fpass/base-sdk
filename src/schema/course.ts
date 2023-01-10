@@ -1,3 +1,4 @@
+import hash from "object-hash";
 import {
   DisplayResource,
   Resource,
@@ -140,6 +141,13 @@ export class Content
         "144x80"
       ),
       type: resource.type,
+      children: [
+        {
+          resourceId: hash({ mentors: resource?.mentors }),
+          h1: resource?.mentors?.join(", "),
+          resourceType: ResourceType.USER,
+        },
+      ],
     };
   }
 }
