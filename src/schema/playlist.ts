@@ -24,7 +24,7 @@ export class Playlist extends Resource implements SearchableResource {
       resourceType: ResourceType.PLAYLIST,
       resourceId: data.resourceId,
       h1: data.name,
-      isPublic: data.isPublic,
+      isPublic: true,
     };
   }
 }

@@ -115,7 +115,7 @@ export class User extends Resource<UserStatus> implements SearchableResource {
       resourceType: ResourceType.USER,
       resourceId: data.resourceId,
       h1: data.name,
-      isPublic: data.isPublic,
+      isPublic: false,
     };
   }
 }
