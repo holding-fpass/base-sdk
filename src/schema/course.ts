@@ -97,6 +97,7 @@ export class Content
   slug?: string;
   description?: string;
   providerExtra?: ProviderExtra<ContentProviderTranscodeMetadata>[];
+  providerTranscoderExternalId?: string;
   // Media
   image144x80?: string;
   image1440x720?: string;
