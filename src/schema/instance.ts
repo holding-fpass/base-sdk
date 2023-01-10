@@ -219,6 +219,7 @@ export enum InstanceFeatureFlags {
   WALLET = "instance.feature-flag.wallet",
   USER_CREATION_RESTRICT = "instance.feature-flag.user.creation",
   USER_SAMPLE = "instance.feature-flag.user.sample",
+  SEARCH = "instance.feature-flag.search",
 }
 
 export enum InstanceThemeSettings {
