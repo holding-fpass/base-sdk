@@ -134,6 +134,10 @@ export class Instance
    * Passport
    */
   image400x400?: string;
+  /**
+   * Certificate background
+   */
+  image824x556?: string;
   //
   pagesDefault?: {
     home?: {
