@@ -137,7 +137,7 @@ export class Content
       resourceType: ResourceType.CONTENT,
       resourceId: resource.resourceId,
       h1: resource.name,
-      h2: resource?.mentors?.join(", "),
+      h2: resource?.mentors?.map((mentor) => mentor.name)?.join(", "),
       status: resource.status,
       imageUrl: ImageUtils.imageOptimized(
         resource.image144x80 as string,
