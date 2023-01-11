@@ -109,6 +109,8 @@ export class Content
   audio?: string;
   video640x360?: string;
   video1280x720?: string;
+  // For download files of ContentType.LINK
+  fileUrl?: string;
   // Transmission
   rtmpUrl?: string;
   meetUrl?: string;
