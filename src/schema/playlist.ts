@@ -8,7 +8,7 @@ import {
 import { Course } from "./course";
 import { Tag } from "./tag";
 
-export class Playlist extends Resource implements SearchableResource {
+export class Playlist extends Resource implements SearchableResource<Playlist> {
   resourceType = ResourceType.PLAYLIST;
   name!: string;
   // Media
@@ -18,13 +18,13 @@ export class Playlist extends Resource implements SearchableResource {
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
   isPublic = true;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Playlist;
+  asDisplayResource(resource: Playlist): DisplayResource {
     return {
       resourceType: ResourceType.PLAYLIST,
-      resourceId: data.resourceId,
-      h1: data.name,
+      resourceId: resource.resourceId,
+      h1: resource.name,
       isPublic: true,
+      isSearchable: resource?.isSearchable,
     };
   }
 }

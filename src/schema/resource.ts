@@ -90,6 +90,8 @@ export class Resource<Status = any> {
   statusTo?: Status;
   statusToError?: string;
   transitionMap?: Map<Status, Status[]>;
+  // Searchablility
+  isSearchable?: boolean;
   // Approval
   approvals?: Signature[];
 }

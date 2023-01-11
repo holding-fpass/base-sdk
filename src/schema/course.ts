@@ -135,20 +135,15 @@ export class Content
       resourceType: ResourceType.CONTENT,
       resourceId: resource.resourceId,
       h1: resource.name,
+      h2: resource?.mentors?.join(", "),
       status: resource.status,
-      isPublic: true,
       imageUrl: ImageUtils.imageOptimized(
         resource.image144x80 as string,
         "144x80"
       ),
       type: resource.type,
-      children: [
-        {
-          resourceId: hash({ mentors: resource?.mentors }),
-          h1: resource?.mentors?.join(", "),
-          resourceType: ResourceType.USER,
-        },
-      ],
+      isPublic: true,
+      isSearchable: resource?.isSearchable,
     };
   }
 }
@@ -210,7 +205,7 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
 ]);
 export class Course
   extends Resource<CourseStatus>
-  implements SearchableResource
+  implements SearchableResource<Course>
 {
   resourceType = ResourceType.COURSE;
   transitionMap = CourseStatusTransitionMap;
@@ -247,18 +242,19 @@ export class Course
   forms?: CourseForms;
   // SearchableResource implementation
   isPublic = true;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Course;
+  asDisplayResource(resource: Course): DisplayResource {
     return {
       resourceType: ResourceType.COURSE,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: true,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      h2: resource?.producer?.name,
+      status: resource.status,
       imageUrl: ImageUtils.imageOptimized(
-        data.image400x512 as string,
+        resource.image400x512 as string,
         "400x512"
       ),
+      isPublic: true,
+      isSearchable: resource?.isSearchable,
     };
   }
 }
