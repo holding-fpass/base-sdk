@@ -41,14 +41,13 @@ export class Story extends Resource<StoryStatus> implements SearchableResource {
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Story;
+  public static asDisplayResource(resource: Story): DisplayResource {
     return {
       resourceType: ResourceType.STORY,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }

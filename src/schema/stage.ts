@@ -86,14 +86,13 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
   features!: Metadata<StageFeatureFlags>[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Stage;
+  public static asDisplayResource(resource: Stage): DisplayResource {
     return {
       resourceType: ResourceType.STAGE,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }

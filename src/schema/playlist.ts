@@ -8,7 +8,7 @@ import {
 import { Course } from "./course";
 import { Tag } from "./tag";
 
-export class Playlist extends Resource implements SearchableResource<Playlist> {
+export class Playlist extends Resource implements SearchableResource {
   resourceType = ResourceType.PLAYLIST;
   name!: string;
   // Media
@@ -18,7 +18,7 @@ export class Playlist extends Resource implements SearchableResource<Playlist> {
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
   isPublic = true;
-  asDisplayResource(resource: Playlist): DisplayResource {
+  public static asDisplayResource(resource: Playlist): DisplayResource {
     return {
       resourceType: ResourceType.PLAYLIST,
       resourceId: resource.resourceId,

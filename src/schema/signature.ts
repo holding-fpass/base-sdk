@@ -13,13 +13,12 @@ export class Signature extends Resource implements SearchableResource {
   footprint!: string;
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Signature;
+  public static asDisplayResource(resource: Signature): DisplayResource {
     return {
       resourceType: ResourceType.SIGNATURE,
-      resourceId: data.resourceId,
-      h1: data.footprint,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.footprint,
+      isPublic: resource.isPublic,
     };
   }
 }

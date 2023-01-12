@@ -55,14 +55,13 @@ export class Campaign extends Resource implements SearchableResource {
   userTags_idx?: string[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Campaign;
+  public static asDisplayResource(resource: Campaign): DisplayResource {
     return {
       resourceType: ResourceType.CAMPAIGN,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }

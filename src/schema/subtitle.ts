@@ -78,14 +78,13 @@ export class Subtitle
   partSentences?: Sentence[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Subtitle;
+  public static asDisplayResource(resource: Subtitle): DisplayResource {
     return {
       resourceType: ResourceType.SUBTITLE,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }

@@ -91,7 +91,7 @@ export class Subscription
   plan!: Pick<Plan, "resourceId" | "resourceType">;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: any): DisplayResource {
+  public static asDisplayResource(resource: Subscription): DisplayResource {
     const data = resource as Subscription;
     return {
       resourceType: ResourceType.SUBSCRIPTION,
