@@ -1,5 +1,8 @@
 import { ResourceType, Subscription } from '../../../schema';
-import { ISubscriptionRepository } from '../../repositories/subscriptionRepository.interface';
+import {
+  ISubscriptionRepository,
+  ISubscriptionRepositoryFindSubscriptionByPlanIdAndUserId,
+} from '../../repositories/subscriptionRepository.interface';
 import { FirestoreSDK } from '../FirestoreSDK';
 import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
 
@@ -15,10 +18,13 @@ export class SubscriptionFirestoreRepository extends CommonFirestoreRepository<S
     super(superParams);
   }
 
-  public async findSubscriptionByPlanId(planId: string): Promise<Subscription | undefined> {
+  public async findSubscriptionByPlanIdAndUserId(params: ISubscriptionRepositoryFindSubscriptionByPlanIdAndUserId): Promise<Subscription | undefined> {
+    const { planId, userId } = params;
+
     const snapshot = await this.firestore.collection(this.baseCollectionPath)
       .withConverter(FirestoreSDK.withConverter)
       .where('plan.resourceId', '==', planId)
+      .where('user.resourceId', '==', userId)
       .get();
 
     if (snapshot.size === 0) {
