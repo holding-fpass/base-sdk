@@ -235,6 +235,7 @@ export class Course
   dateStart?: string;
   dateEnd?: string;
   // Purchase
+  isFree?: boolean;
   value?: number;
   paymentStart?: string;
   paymentEnd?: string;
