@@ -182,14 +182,13 @@ export class Instance
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Instance;
+  public static asDisplayResource(resource: Instance): DisplayResource {
     return {
       resourceType: ResourceType.INSTANCE,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }

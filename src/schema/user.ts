@@ -109,12 +109,11 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   suggestPlaylist?: Partial<Playlist>;
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as User;
+  public static asDisplayResource(resource: User): DisplayResource {
     return {
       resourceType: ResourceType.USER,
-      resourceId: data.resourceId,
-      h1: data.name,
+      resourceId: resource.resourceId,
+      h1: resource.name,
       isPublic: false,
     };
   }

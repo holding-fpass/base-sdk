@@ -96,11 +96,13 @@ export class Resource<Status = any> {
   approvals?: Signature[];
 }
 
-export interface SearchableResource<Entity = any> {
+export abstract class SearchableResource {
   // If the resource should be filter to appear on Frontend Apps
-  isPublic: boolean;
+  public isPublic!: boolean;
   // Base tranformation to all resource be storage on search service
-  asDisplayResource(resource: Entity): DisplayResource;
+  public static asDisplayResource<T>(resource: T): DisplayResource {
+    throw new Error('Method not implemented.')
+  };
 }
 
 export class DisplayResource<Type = any> extends Resource {

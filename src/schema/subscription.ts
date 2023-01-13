@@ -12,14 +12,16 @@ import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
 export enum SubscriptionStatus {
-  CREATED = "created",
-  PROVIDER_SUBSCRIPTION_CREATED = "provider.subscription.created",
   ACTIVE = "active",
-  PROVIDER_SUBSCRIPTION_CANCELED = "provider.subscription.canceled",
   CANCELED = "canceled",
-  PROVIDER_SUBSCRIPTION_SUSPENDED = "provider.subscription.suspended",
-  SUSPENDED = "suspended",
+  CREATED = "created",
   DELETED = "deleted",
+  REACTIVATED = 'reactivated',
+  SUSPENDED = "suspended",
+  PROVIDER_SUBSCRIPTION_CANCELED = "provider.subscription.canceled",
+  PROVIDER_SUBSCRIPTION_CREATED = "provider.subscription.created",
+  PROVIDER_SUBSCRIPTION_REACTIVATED = 'provider.subscription.reactivated',
+  PROVIDER_SUBSCRIPTION_SUSPENDED = "provider.subscription.suspended",
 }
 
 export const SubscriptionStatusTransitionMap = new Map<
@@ -54,8 +56,10 @@ export const SubscriptionStatusTransitionMap = new Map<
   ],
   [
     SubscriptionStatus.SUSPENDED,
-    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED],
+    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED, SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED],
   ],
+  [SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED, [SubscriptionStatus.REACTIVATED]],
+  [SubscriptionStatus.REACTIVATED, [SubscriptionStatus.ACTIVE]],
 ]);
 
 export enum ProductType {
@@ -89,7 +93,7 @@ export class Subscription
   plan!: Pick<Plan, "resourceId" | "resourceType">;
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
+  public static asDisplayResource(resource: Subscription): DisplayResource {
     const data = resource as Subscription;
     return {
       resourceType: ResourceType.SUBSCRIPTION,

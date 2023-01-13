@@ -42,14 +42,13 @@ export class Mfa extends Resource<MfaStatus> implements SearchableResource {
   machineId!: string;
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Mfa;
+  public static asDisplayResource(resource: Mfa): DisplayResource {
     return {
       resourceType: ResourceType.CONTRACT,
-      resourceId: data.resourceId,
-      h1: data.code,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.code,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }

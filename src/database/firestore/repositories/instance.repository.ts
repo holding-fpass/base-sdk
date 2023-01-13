@@ -9,7 +9,6 @@ import {
 } from "../../repositories/instanceRepository.interface";
 import {
   Instance,
-  InstanceApplications,
   ResourceType,
   Whitelabel,
 } from "../../../schema";
@@ -43,7 +42,7 @@ export class InstanceFirestoreRepository
       .get();
 
     if (snapshot.size === 0) {
-      return undefined;
+      return;
     }
 
     const document = snapshot.docs[0];

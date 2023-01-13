@@ -28,7 +28,7 @@ export const ChannelStatusTransitionMap = new Map<
 
 export class Channel
   extends Resource<ChannelStatus>
-  implements SearchableResource<Channel>
+  implements SearchableResource
 {
   resourceType = ResourceType.CHANNEL;
   transitionMap = ChannelStatusTransitionMap;
@@ -46,7 +46,7 @@ export class Channel
   playlists!: Partial<Playlist>[];
   // SearchableResource implementation
   isPublic = true;
-  asDisplayResource(resource: Channel): DisplayResource {
+  public static asDisplayResource(resource: Channel): DisplayResource {
     return {
       resourceType: ResourceType.CHANNEL,
       resourceId: resource.resourceId,

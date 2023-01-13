@@ -5,7 +5,7 @@ import {
   SearchableResource,
 } from "./resource";
 
-import { BaseEvent } from "../schema";
+import { BaseEvent } from './events';
 import { ProviderExtra } from "./provider";
 
 export enum VideoStatus {
@@ -34,14 +34,13 @@ export class Video extends Resource<VideoStatus> implements SearchableResource {
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Video;
+  asDisplayResource(resource: Video): DisplayResource {
     return {
       resourceType: ResourceType.VIDEO,
-      resourceId: data.resourceId,
-      h1: data.resourceUrl,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.resourceUrl,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }
