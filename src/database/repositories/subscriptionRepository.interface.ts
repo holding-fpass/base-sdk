@@ -6,6 +6,4 @@ export interface ISubscriptionRepositoryFindSubscriptionByPlanIdAndUserId {
   planId: string;
 }
 
-export interface ISubscriptionRepository extends ICommonRepository<Subscription> {
-  findSubscriptionByPlanIdAndUserId(params: ISubscriptionRepositoryFindSubscriptionByPlanIdAndUserId): Promise<Subscription | undefined>;
-}
+export interface ISubscriptionRepository extends ICommonRepository<Subscription> {}
