@@ -56,8 +56,9 @@ export const SubscriptionStatusTransitionMap = new Map<
   ],
   [
     SubscriptionStatus.SUSPENDED,
-    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED],
+    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED, SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED],
   ],
+  [SubscriptionStatus.REACTIVATED, [SubscriptionStatus.ACTIVE]],
 ]);
 
 export enum ProductType {
