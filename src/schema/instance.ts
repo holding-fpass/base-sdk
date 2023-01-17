@@ -223,6 +223,7 @@ export enum InstanceFeatureFlags {
   USER_CREATION_RESTRICT = "instance.feature-flag.user.creation",
   USER_SAMPLE = "instance.feature-flag.user.sample",
   SEARCH = "instance.feature-flag.search",
+  CATALOG_USER_LOGGED = "instance.feature-flag.catalog.user.logged",
 }
 
 export enum InstanceThemeSettings {
