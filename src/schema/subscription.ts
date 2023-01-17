@@ -78,6 +78,7 @@ export class Subscription
   productId!: string;
   productType!: ResourceType.PLATFORM | ResourceType.CHANNEL;
   name!: string;
+  image128x128!: string;
   value!: number;
   whitelabel!: Whitelabel;
   contract?: Partial<Contract>;
