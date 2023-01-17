@@ -138,6 +138,10 @@ export class Instance
    * Certificate background
    */
   image824x556?: string;
+  /**
+   * Overlay background: InstanceFeatureFlags.CATALOG_USER_LOGGED = true
+   */
+  image1920x1080?: string;
   //
   pagesDefault?: {
     home?: {
