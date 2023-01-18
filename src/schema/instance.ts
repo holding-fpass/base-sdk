@@ -228,6 +228,7 @@ export enum InstanceFeatureFlags {
   USER_SAMPLE = "instance.feature-flag.user.sample",
   SEARCH = "instance.feature-flag.search",
   CATALOG_USER_LOGGED = "instance.feature-flag.catalog.user.logged",
+  EMAIL_TEMPLATE_MFA_TEXT = "instance.feature-flag.email.template.mfa.text",
 }
 
 export enum InstanceThemeSettings {
