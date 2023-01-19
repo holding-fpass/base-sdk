@@ -1,17 +1,27 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+import { MonthFrequency, Plan } from "./plan";
+
 import { Contract } from "./contract";
-import { MonthFrequency } from "./plan";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
 export enum SubscriptionStatus {
-  CREATED = "created",
-  PROVIDER_SUBSCRIPTION_CREATED = "provider.subscription.created",
   ACTIVE = "active",
-  PROVIDER_SUBSCRIPTION_CANCELED = "provider.subscription.canceled",
   CANCELED = "canceled",
+  CREATED = "created",
   DELETED = "deleted",
+  REACTIVATED = 'reactivated',
+  SUSPENDED = "suspended",
+  PROVIDER_SUBSCRIPTION_CANCELED = "provider.subscription.canceled",
+  PROVIDER_SUBSCRIPTION_CREATED = "provider.subscription.created",
+  PROVIDER_SUBSCRIPTION_REACTIVATED = 'provider.subscription.reactivated',
+  PROVIDER_SUBSCRIPTION_SUSPENDED = "provider.subscription.suspended",
 }
 
 export const SubscriptionStatusTransitionMap = new Map<
@@ -31,12 +41,25 @@ export const SubscriptionStatusTransitionMap = new Map<
   ],
   [
     SubscriptionStatus.ACTIVE,
-    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED],
+    [
+      SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED,
+      SubscriptionStatus.PROVIDER_SUBSCRIPTION_SUSPENDED,
+    ],
   ],
   [
     SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED,
     [SubscriptionStatus.CANCELED],
   ],
+  [
+    SubscriptionStatus.PROVIDER_SUBSCRIPTION_SUSPENDED,
+    [SubscriptionStatus.SUSPENDED],
+  ],
+  [
+    SubscriptionStatus.SUSPENDED,
+    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED, SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED],
+  ],
+  [SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED, [SubscriptionStatus.REACTIVATED]],
+  [SubscriptionStatus.REACTIVATED, [SubscriptionStatus.ACTIVE]],
 ]);
 
 export enum ProductType {
@@ -45,13 +68,17 @@ export enum ProductType {
   COURSE_PURCHASE = "course.purchase",
 }
 
-export class Subscription extends Resource<SubscriptionStatus> {
+export class Subscription
+  extends Resource<SubscriptionStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.SUBSCRIPTION;
   transitionMap = SubscriptionStatusTransitionMap;
   // Plan
   productId!: string;
   productType!: ResourceType.PLATFORM | ResourceType.CHANNEL;
   name!: string;
+  image128x128!: string;
   value!: number;
   whitelabel!: Whitelabel;
   contract?: Partial<Contract>;
@@ -64,4 +91,17 @@ export class Subscription extends Resource<SubscriptionStatus> {
   dateEnd?: string;
   // Related
   user!: Partial<User>;
+  plan!: Pick<Plan, "resourceId" | "resourceType">;
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: Subscription): DisplayResource {
+    const data = resource as Subscription;
+    return {
+      resourceType: ResourceType.SUBSCRIPTION,
+      resourceId: data.resourceId,
+      h1: data.name,
+      status: data.status,
+      isPublic: data.isPublic,
+    };
+  }
 }

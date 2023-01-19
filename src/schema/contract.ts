@@ -1,4 +1,10 @@
-import { Resource, ResourceType } from "./resource";
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Whitelabel } from "./whitelabel";
 
 export enum ContractStatus {
@@ -20,14 +26,14 @@ export enum ContractItemScopeKey {
   CUSTOM = "custom",
   MENTOR = "mentor",
   PRODUCER = "producer",
-  PRODUCER_PER_MINUTE = 'producer.per.minute',
-  TAXES = 'taxes',
+  PRODUCER_PER_MINUTE = "producer.per.minute",
+  TAXES = "taxes",
   WHITELABEL = "whitelabel",
 }
 
 export enum ContractItemType {
-  PERCENTAGE = 'percentage',
-  FIXED = 'fixed',
+  PERCENTAGE = "percentage",
+  FIXED = "fixed",
 }
 
 export interface ContractItem {
@@ -38,10 +44,24 @@ export interface ContractItem {
   value: number;
 }
 
-export class Contract extends Resource<ContractStatus> {
+export class Contract
+  extends Resource<ContractStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.CONTRACT;
   transitionMap = ContractStatusTransitionMap;
   name!: string;
   whitelabel!: Whitelabel;
   items!: ContractItem[];
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: Contract): DisplayResource {
+    return {
+      resourceType: ResourceType.CONTRACT,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
+    };
+  }
 }

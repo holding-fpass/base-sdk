@@ -1,5 +1,11 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Content } from "./course";
-import { Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export class Sentence {
@@ -36,21 +42,23 @@ export const SubtitleStatusTransitionMap = new Map<
   ],
   [
     SubtitleStatus.PROVIDER_SENTENCES_EXTRACTED,
-    [SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED],
-  ],
-  [
-    SubtitleStatus.PROVIDER_SENTENCES_EXTRACTED,
-    [SubtitleStatus.FILE_GENERATED],
+    [
+      SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED,
+      SubtitleStatus.FILE_GENERATED,
+    ],
   ],
   [
     SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED,
     [SubtitleStatus.FILE_GENERATED],
   ],
   [SubtitleStatus.FILE_GENERATED, [SubtitleStatus.ACTIVE]],
-  [SubtitleStatus.ACTIVE, [SubtitleStatus.FILE_GENERATED]]
+  [SubtitleStatus.ACTIVE, [SubtitleStatus.FILE_GENERATED]],
 ]);
 
-export class Subtitle extends Resource<SubtitleStatus> {
+export class Subtitle
+  extends Resource<SubtitleStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.SUBTITLE;
   name!: string;
   // Related
@@ -67,4 +75,20 @@ export class Subtitle extends Resource<SubtitleStatus> {
   // Data
   fullSentences?: Sentence[];
   partSentences?: Sentence[];
+  // Translations
+  fullSentences_es?: Sentence[];
+  partSentences_es?: Sentence[];
+  fullSentences_enUs?: Sentence[];
+  partSentences_enUs?: Sentence[];
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: Subtitle): DisplayResource {
+    return {
+      resourceType: ResourceType.SUBTITLE,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
+    };
+  }
 }

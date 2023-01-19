@@ -1,17 +1,23 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Certificate } from "./certificate";
 import { Course } from "./course";
 import { Device } from "./device";
+import { FormResponse } from "./form";
+import { Interaction } from "./interaction";
 import { Metadata } from "./metadata";
 import { Playlist } from "./playlist";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
 import { Scope } from "./scope";
 import { Subscription } from "./subscription";
+import { Tag } from "./tag";
 import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
-import { FormResponse } from "./form";
-import { Tag } from "./tag";
-import { Interaction } from "./interaction";
 
 export enum UserPermission {
   ADMINISTRATOR = "administrator",
@@ -62,7 +68,7 @@ export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.UNAVALIABLE, [UserStatus.DELETED]],
   [UserStatus.DELETED, [UserStatus.CREATED]],
 ]);
-export class User extends Resource<UserStatus> {
+export class User extends Resource<UserStatus> implements SearchableResource {
   id!: string;
   resourceType = ResourceType.USER;
   transitionMap = UserStatusTransitionMap;
@@ -101,4 +107,14 @@ export class User extends Resource<UserStatus> {
   // Playlist
   favoritePlaylist?: Partial<Playlist>;
   suggestPlaylist?: Partial<Playlist>;
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: User): DisplayResource {
+    return {
+      resourceType: ResourceType.USER,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      isPublic: false,
+    };
+  }
 }

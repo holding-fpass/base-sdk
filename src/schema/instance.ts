@@ -1,7 +1,13 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum InstanceStatus {
@@ -96,7 +102,10 @@ export const InstanceStatusTransitionMap = new Map<
   [InstanceStatus.ACTIVE, [InstanceStatus.DELETED]],
 ]);
 
-export class Instance extends Resource<InstanceStatus> {
+export class Instance
+  extends Resource<InstanceStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.INSTANCE;
   transitionMap = InstanceStatusTransitionMap;
   //
@@ -125,6 +134,14 @@ export class Instance extends Resource<InstanceStatus> {
    * Passport
    */
   image400x400?: string;
+  /**
+   * Certificate background
+   */
+  image824x556?: string;
+  /**
+   * Overlay background: InstanceFeatureFlags.CATALOG_USER_LOGGED = true
+   */
+  image1920x1080?: string;
   //
   pagesDefault?: {
     home?: {
@@ -148,6 +165,8 @@ export class Instance extends Resource<InstanceStatus> {
   features!: Metadata<InstanceFeatureFlags>[];
   parameters!: Metadata<InstanceParametersSettings>[];
   i18n_ptBr!: Metadata<string>[];
+  i18n_enUs!: Metadata<string>[];
+  i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
   // Configurations
@@ -165,6 +184,17 @@ export class Instance extends Resource<InstanceStatus> {
   kyc?: KyCConfig;
   // Provider Extra
   providerExtra?: ProviderExtra[];
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: Instance): DisplayResource {
+    return {
+      resourceType: ResourceType.INSTANCE,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
+    };
+  }
 }
 
 export enum InstanceApplications {
@@ -189,11 +219,16 @@ export enum InstanceFeatureFlags {
   SUBSCRIPTION_PLATFORM = "subscription.platform",
   ONLY_EXTERNAL_SALES = "only.external.sales",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
+  EMAIL_TEMPLATE_MFA_TEXT = 'email.template.mfa.text',
   RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
   MODULE_CUSTOM_NAME = "instance.feature-flag.module.custom.name",
   MODULE_CONTENT_ORDER_HIDE = "instance.feature-flag.module.content.order.hide",
   WALLET = "instance.feature-flag.wallet",
+  USER_CREATION_RESTRICT = "instance.feature-flag.user.creation",
+  USER_SAMPLE = "instance.feature-flag.user.sample",
+  SEARCH = "instance.feature-flag.search",
+  CATALOG_USER_LOGGED = "instance.feature-flag.catalog.user.logged",
 }
 
 export enum InstanceThemeSettings {

@@ -21,4 +21,5 @@ export enum Whitelabel {
   SMARTCONTENT = "smartcontent",
   DRONAK = "dronak",
   TEMPEST = "tempest",
+  ACTY = "acty",
 }

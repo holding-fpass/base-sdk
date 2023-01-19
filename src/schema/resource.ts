@@ -1,5 +1,5 @@
-import { Timestamp } from "firebase-admin/firestore";
 import { Signature } from "./signature";
+import { Timestamp } from "firebase-admin/firestore";
 import { Whitelabel } from "./whitelabel";
 
 export enum ResourceType {
@@ -18,7 +18,7 @@ export enum ResourceType {
   COUPON = "coupon",
   COURSE = "course",
   DEVICE = "device",
-  EMAIL = 'email',
+  EMAIL = "email",
   FILE = "file",
   FORM = "form",
   FORM_RESPONSE = "form.response",
@@ -90,15 +90,27 @@ export class Resource<Status = any> {
   statusTo?: Status;
   statusToError?: string;
   transitionMap?: Map<Status, Status[]>;
+  // Searchablility
+  isSearchable?: boolean;
   // Approval
   approvals?: Signature[];
 }
 
-export class DisplayResource extends Resource {
+export abstract class SearchableResource {
+  // If the resource should be filter to appear on Frontend Apps
+  public isPublic!: boolean;
+  // Base tranformation to all resource be storage on search service
+  public static asDisplayResource<T>(resource: T): DisplayResource {
+    throw new Error('Method not implemented.')
+  };
+}
+
+export class DisplayResource<Type = any> extends Resource {
   h1?: string;
   h2?: string;
   h3?: string;
   h4?: string;
+  type?: Type;
   percentage?: number;
   value?: number;
   cta?: string;
@@ -113,4 +125,5 @@ export class DisplayResource extends Resource {
   parentType?: ResourceType;
   dateStart?: string;
   dateEnd?: string;
+  isPublic?: boolean;
 }
