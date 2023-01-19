@@ -6,7 +6,8 @@ import {
   TransactionStatusTransitionMap,
   FormResponseStatusTransitionMap,
   SubtitleStatusTransitionMap,
-} from "../schema";
+  PlanStatusTransitionMap,
+} from '../schema';
 
 export const ResourceStatusTransitionMap = new Map<
   ResourceType,
@@ -17,5 +18,6 @@ export const ResourceStatusTransitionMap = new Map<
   [ResourceType.MEASUREMENT, MeasurementStatusTransitionMap],
   [ResourceType.TRANSACTION, TransactionStatusTransitionMap],
   [ResourceType.FORM_RESPONSE, FormResponseStatusTransitionMap],
-  [ResourceType.SUBTITLE, SubtitleStatusTransitionMap]
+  [ResourceType.SUBTITLE, SubtitleStatusTransitionMap],
+  [ResourceType.PLAN, PlanStatusTransitionMap],
 ]);
