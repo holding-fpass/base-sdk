@@ -130,7 +130,9 @@ export class Content
   items?: Partial<ContentItem>[];
   // SearchableResource implementation
   isPublic = true;
-  public static asDisplayResource(resource: Content): DisplayResource<ContentType> {
+  public static asDisplayResource(
+    resource: Content
+  ): DisplayResource<ContentType> {
     return {
       resourceType: ResourceType.CONTENT,
       resourceId: resource.resourceId,
@@ -192,6 +194,14 @@ interface KnowledgeItens {
   description?: string;
 }
 
+export enum CourseType {
+  FREE = "course.free",
+  LIVE = "course.live",
+  IMERSION = "course.immersion",
+  HYBRID = "course.hybrid",
+  CATALOG = "course.catalog",
+}
+
 export class CourseForms {
   feedbackForm?: Partial<Form>;
   certificateForm?: Partial<Form>;
@@ -210,6 +220,7 @@ export class Course
   transitionMap = CourseStatusTransitionMap;
   resourceId!: string;
   name!: string;
+  type?: CourseType;
   description?: string;
   slug?: string;
   premium?: boolean;
