@@ -219,7 +219,6 @@ export enum InstanceFeatureFlags {
   SUBSCRIPTION_PLATFORM = "subscription.platform",
   ONLY_EXTERNAL_SALES = "only.external.sales",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
-  EMAIL_TEMPLATE_MFA_TEXT = 'email.template.mfa.text',
   RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
   MODULE_CUSTOM_NAME = "instance.feature-flag.module.custom.name",
