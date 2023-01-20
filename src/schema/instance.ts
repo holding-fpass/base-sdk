@@ -229,7 +229,7 @@ export enum InstanceFeatureFlags {
   SEARCH = "instance.feature-flag.search",
   CATALOG_USER_LOGGED = "instance.feature-flag.catalog.user.logged",
   EMAIL_TEMPLATE_MFA_TEXT = "instance.feature-flag.email.template.mfa.text",
-  USER_PROFILE = "instance.feature-flag.user.profile",
+  USER_PROFILE_HIDE = "instance.feature-flag.user.profile.hide",
   PLAYLIST_CARD_TAG_HIDE = "instance.feature-flag.playlist.card.tag.hide",
 }
 
