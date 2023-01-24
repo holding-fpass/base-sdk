@@ -1,7 +1,7 @@
 export enum VideoFileFormat {
-  SD = "video-sd.mp4",
-  HD = "video-hd.mp4",
-  AUDIO = "audio-only.mp4",
+  SD = "video-sd",
+  HD = "video-hd",
+  AUDIO = "audio-only",
 }
 
 export class VideoUtils {
