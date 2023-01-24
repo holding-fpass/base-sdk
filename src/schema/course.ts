@@ -17,8 +17,8 @@ import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 import hash from "object-hash";
 
-interface CertificateGeneration {
-  minimum_watch_time: number;
+interface CourseCertificateSettings {
+  minimumWatchTime: number;
 }
 
 // Content
@@ -221,7 +221,7 @@ export class Course
   hide?: boolean;
   spotlight?: boolean;
   // Certificate Generation
-  certificate?: CertificateGeneration;
+  certificate?: CourseCertificateSettings;
   // General
   whitelabel!: Whitelabel;
   tags?: Tag[];

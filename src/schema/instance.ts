@@ -25,8 +25,8 @@ interface EmailConfig {
   financeEmail?: string;
 }
 
-interface CertificateGeneration {
-  minimum_watch_time: number;
+interface InstanceCertificateSettings {
+  minimumWatchTime: number;
 }
 
 interface SplitConfig {
@@ -170,7 +170,7 @@ export class Instance
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
   // Instance Certificate
-  certificate?: CertificateGeneration;
+  certificate?: InstanceCertificateSettings;
   // Configurations
   emailConfig?: EmailConfig;
   splitConfig?: SplitConfig;
