@@ -42,11 +42,10 @@ export const SubtitleStatusTransitionMap = new Map<
   ],
   [
     SubtitleStatus.PROVIDER_SENTENCES_EXTRACTED,
-    [SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED],
-  ],
-  [
-    SubtitleStatus.PROVIDER_SENTENCES_EXTRACTED,
-    [SubtitleStatus.FILE_GENERATED],
+    [
+      SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED,
+      SubtitleStatus.FILE_GENERATED,
+    ],
   ],
   [
     SubtitleStatus.PROVIDER_SENTENCES_TRANSLATED,
@@ -76,16 +75,20 @@ export class Subtitle
   // Data
   fullSentences?: Sentence[];
   partSentences?: Sentence[];
+  // Translations
+  fullSentences_es?: Sentence[];
+  partSentences_es?: Sentence[];
+  fullSentences_enUs?: Sentence[];
+  partSentences_enUs?: Sentence[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Subtitle;
+  public static asDisplayResource(resource: Subtitle): DisplayResource {
     return {
       resourceType: ResourceType.SUBTITLE,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }

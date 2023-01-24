@@ -64,14 +64,13 @@ export class Notification
   readedAt?: string | Timestamp;
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
+  public static asDisplayResource(resource: Notification): DisplayResource {
     // NO "name" RELATIVE STRING FIELD
-    const data = resource as Notification;
     return {
       resourceType: ResourceType.NOTIFICATION,
-      resourceId: data.resourceId,
-      h1: data.message?.body,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.message?.body,
+      isPublic: resource.isPublic,
     };
   }
 }

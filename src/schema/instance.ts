@@ -142,6 +142,10 @@ export class Instance
    * Certificate background
    */
   image824x556?: string;
+  /**
+   * Overlay background: InstanceFeatureFlags.CATALOG_USER_LOGGED = true
+   */
+  image1920x1080?: string;
   //
   pagesDefault?: {
     home?: {
@@ -188,14 +192,13 @@ export class Instance
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Instance;
+  public static asDisplayResource(resource: Instance): DisplayResource {
     return {
       resourceType: ResourceType.INSTANCE,
-      resourceId: data.resourceId,
-      h1: data.name,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }
@@ -230,6 +233,10 @@ export enum InstanceFeatureFlags {
   USER_CREATION_RESTRICT = "instance.feature-flag.user.creation",
   USER_SAMPLE = "instance.feature-flag.user.sample",
   SEARCH = "instance.feature-flag.search",
+  CATALOG_USER_LOGGED = "instance.feature-flag.catalog.user.logged",
+  EMAIL_TEMPLATE_MFA_TEXT = "instance.feature-flag.email.template.mfa.text",
+  USER_PROFILE_HIDE = "instance.feature-flag.user.profile.hide",
+  PLAYLIST_CARD_TAG_HIDE = "instance.feature-flag.playlist.card.tag.hide",
 }
 
 export enum InstanceThemeSettings {

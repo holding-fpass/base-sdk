@@ -35,12 +35,11 @@ export class ContentItem extends Resource {
   resourceUrl?: string;
   fileUrl?: string;
   // SearchableResource implementation
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as ContentItem;
+  public static asDisplayResource(resource: ContentItem): DisplayResource {
     return {
       resourceType: ResourceType.CONTENT_ITEM,
-      resourceId: data.resourceId,
-      h1: data.name,
+      resourceId: resource.resourceId,
+      h1: resource.name,
     };
   }
 }
@@ -92,7 +91,7 @@ export const ContentStatusTransitionMap = new Map<
 
 export class Content
   extends Resource<ContentStatus>
-  implements SearchableResource<Content>
+  implements SearchableResource
 {
   resourceType = ResourceType.CONTENT;
   transitionMap = ContentStatusTransitionMap;
@@ -113,6 +112,8 @@ export class Content
   audio?: string;
   video640x360?: string;
   video1280x720?: string;
+  // For download files of ContentType.LINK
+  fileUrl?: string;
   // Transmission
   rtmpUrl?: string;
   meetUrl?: string;
@@ -134,12 +135,14 @@ export class Content
   items?: Partial<ContentItem>[];
   // SearchableResource implementation
   isPublic = true;
-  asDisplayResource(resource: Content): DisplayResource<ContentType> {
+  public static asDisplayResource(
+    resource: Content
+  ): DisplayResource<ContentType> {
     return {
       resourceType: ResourceType.CONTENT,
       resourceId: resource.resourceId,
       h1: resource.name,
-      h2: resource?.mentors?.join(", "),
+      h2: resource?.mentors?.map((mentor) => mentor.name)?.join(", "),
       status: resource.status,
       imageUrl: ImageUtils.imageOptimized(
         resource.image144x80 as string,
@@ -162,12 +165,11 @@ export class Module extends Resource {
   // Related
   contents?: Partial<Content>[];
   // SearchableResource implementation
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Module;
+  public static asDisplayResource(resource: Module): DisplayResource {
     return {
       resourceType: ResourceType.MODULE,
-      resourceId: data.resourceId,
-      h1: data.name,
+      resourceId: resource.resourceId,
+      h1: resource.name,
     };
   }
 }
@@ -197,6 +199,14 @@ interface KnowledgeItens {
   description?: string;
 }
 
+export enum CourseType {
+  FREE = "course.free",
+  LIVE = "course.live",
+  IMERSION = "course.immersion",
+  HYBRID = "course.hybrid",
+  CATALOG = "course.catalog",
+}
+
 export class CourseForms {
   feedbackForm?: Partial<Form>;
   certificateForm?: Partial<Form>;
@@ -209,12 +219,13 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
 ]);
 export class Course
   extends Resource<CourseStatus>
-  implements SearchableResource<Course>
+  implements SearchableResource
 {
   resourceType = ResourceType.COURSE;
   transitionMap = CourseStatusTransitionMap;
   resourceId!: string;
   name!: string;
+  type?: CourseType;
   description?: string;
   slug?: string;
   premium?: boolean;
@@ -239,6 +250,7 @@ export class Course
   dateStart?: string;
   dateEnd?: string;
   // Purchase
+  isFree?: boolean;
   value?: number;
   paymentStart?: string;
   paymentEnd?: string;
@@ -248,7 +260,7 @@ export class Course
   forms?: CourseForms;
   // SearchableResource implementation
   isPublic = true;
-  asDisplayResource(resource: Course): DisplayResource {
+  public static asDisplayResource(resource: Course): DisplayResource {
     return {
       resourceType: ResourceType.COURSE,
       resourceId: resource.resourceId,

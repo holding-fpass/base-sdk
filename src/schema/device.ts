@@ -14,13 +14,12 @@ export class Device extends Resource implements SearchableResource {
   user?: Partial<User>;
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Device;
+  public static asDisplayResource(resource: Device): DisplayResource {
     return {
       resourceType: ResourceType.DEVICE,
-      resourceId: data.resourceId,
-      h1: data.name,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      isPublic: resource.isPublic,
     };
   }
 }

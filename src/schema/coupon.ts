@@ -36,14 +36,13 @@ export class Coupon
   percentage?: number;
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
-    const data = resource as Coupon;
+  public static asDisplayResource(resource: Coupon): DisplayResource {
     return {
       resourceType: ResourceType.CONTRACT,
-      resourceId: data.resourceId,
-      h1: data.code,
-      status: data.status,
-      isPublic: data.isPublic,
+      resourceId: resource.resourceId,
+      h1: resource.code,
+      status: resource.status,
+      isPublic: resource.isPublic,
     };
   }
 }
