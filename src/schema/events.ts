@@ -36,13 +36,13 @@ export interface SlimEvent {
   date: string;
 }
 
-export interface BaseEventOptions {
+export interface BaseEventOptions<T = any> {
   eventType: EventType | string;
   resourceId?: string;
   resourceType?: ResourceType | string;
   parentId?: string;
   parentType?: ResourceType | string;
-  data?: any;
+  data?: T;
   ownerId?: string;
   ownerExternalId?: string;
   whitelabel?: string;
@@ -61,7 +61,7 @@ export class BaseEvent<Data = any> {
   public ownerExternalId?: string;
   public whitelabel?: string;
 
-  constructor(options: BaseEventOptions) {
+  constructor(options: BaseEventOptions<Data>) {
     this.eventType = options.eventType ?? undefined;
     this.resourceId = options.resourceId ?? undefined;
     this.resourceType = options.resourceType ?? undefined;
