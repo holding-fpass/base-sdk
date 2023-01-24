@@ -1,4 +1,3 @@
-import hash from "object-hash";
 import {
   DisplayResource,
   Resource,
@@ -9,13 +8,18 @@ import {
 import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
+import { ImageUtils } from "../media";
+import { ProviderExtra } from "./provider";
 import { Stage } from "./stage";
 import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
-import { ImageUtils } from "../media";
-import { ProviderExtra } from "./provider";
+import hash from "object-hash";
+
+interface CertificateGeneration {
+  minimum_watch_time: number;
+}
 
 // Content
 
@@ -216,6 +220,8 @@ export class Course
   premium?: boolean;
   hide?: boolean;
   spotlight?: boolean;
+  // Certificate Generation
+  certificate?: CertificateGeneration;
   // General
   whitelabel!: Whitelabel;
   tags?: Tag[];

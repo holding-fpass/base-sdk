@@ -25,6 +25,10 @@ interface EmailConfig {
   financeEmail?: string;
 }
 
+interface CertificateGeneration {
+  minimum_watch_time: number;
+}
+
 interface SplitConfig {
   email: string;
   value: number;
@@ -165,6 +169,8 @@ export class Instance
   i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
+  // Instance Certificate
+  certificate?: CertificateGeneration;
   // Configurations
   emailConfig?: EmailConfig;
   splitConfig?: SplitConfig;
