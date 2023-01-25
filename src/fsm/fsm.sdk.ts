@@ -1,8 +1,9 @@
+import { v4 as uuid } from "uuid";
 import { FSMError } from "../error";
-import { FieldValue, QueryDocumentSnapshot } from "firebase-admin/firestore";
+import { FieldValue, Timestamp, getFirestore } from "firebase-admin/firestore";
 import { Document } from "../data";
 import { Publisher } from "../messageBroker";
-import { BaseEvent, ResourceType } from "../schema";
+import { BaseEvent, ResourceType, SlimEvent } from "../schema";
 import { BypassStateAction } from "./bypass.action";
 
 export interface StateEntity<Status = any> {
@@ -219,20 +220,31 @@ export abstract class StateMachine<Entity, Status> {
     // Return
     return result;
   }
-}
 
-const firestoreConverter = {
-  toFirestore(entity: any) {
-    return entity;
-  },
-  fromFirestore(snapshot: QueryDocumentSnapshot) {
-    const data = snapshot.data()!;
+  public async threadPublish(
+    thread: {
+      whitelabel: string;
+      threadId: string;
+      threadType: ResourceType;
+    },
+    event: BaseEvent
+  ): Promise<SlimEvent> {
+    // Create Resource Thread
+    event.eventId = event?.eventId ?? uuid();
+    // Persist
+    const doc = await getFirestore(Document.app)
+      .doc(
+        `management/${thread.whitelabel}/thread/${thread.threadId}-${thread.threadType}/interactions/${event.eventId}`
+      )
+      .create({
+        ...event,
+        type: event.eventType,
+        timestamp: Timestamp.now(),
+      });
+    // Return
     return {
-      ...data,
-      updatedAt: data?.updatedAt?.toDate(),
-      deletedAt: data?.deletedAt?.toDate(),
-      statusAt: data?.statusAt?.toDate(),
-      timestamp: data?.timestamp?.toDate(),
+      id: event.eventId,
+      date: doc.writeTime.toDate().toString(),
     };
-  },
-};
+  }
+}
