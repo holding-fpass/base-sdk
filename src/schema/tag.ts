@@ -1,4 +1,4 @@
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceType, DisplayResource } from "./resource";
 
 export enum TagStatus {
   CREATED = "created",

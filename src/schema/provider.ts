@@ -9,6 +9,10 @@ export enum Provider {
   RECEBAFACIL = "recebafacil",
   BLITZPAY = "blitzpay",
   COGNA = "cogna",
+  // Auth
+  HINODE = "hinode",
+  // Cloud
+  GCP_TRANSCODER_API = "gcp.transcoder.api",
 }
 
 export interface ProviderExtra<T = string> extends Metadata<T> {

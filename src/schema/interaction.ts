@@ -19,7 +19,7 @@ export enum InteractionDataforwardType {
   WEBHOOK = "webhook",
   MONGODB = "mongodb",
   GCP_CLOUD_STORAGE = "gcp-cloud-storage",
-  GOOGLE_SPREADSHEET = "google-spreadsheet"
+  GOOGLE_SPREADSHEET = "google-spreadsheet",
 }
 
 export interface InteractionDataforward {
@@ -38,12 +38,16 @@ export class Interaction extends Resource<InteractionStatus> {
   transitionMap = InteractionStatusTransitionMap;
   productId!: string;
   productType!: ResourceType;
+  parentId!: string;
+  parentType!: ResourceType;
   type!: InteractionType;
   user!: Pick<User, "id">;
   // Media
   mediaStart?: number;
   mediaEnd?: number;
   mediaCount?: number;
+  mediaSpeed?: number;
+  mediaResolution?: string;
   // Dataforward
   __dataforward?: InteractionDataforward;
 }

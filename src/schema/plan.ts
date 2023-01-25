@@ -1,6 +1,12 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Contract } from "./contract";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum PlanStatus {
@@ -24,7 +30,7 @@ export enum MonthFrequency {
   ANNUAL = 12,
 } // In months
 
-export class Plan extends Resource<PlanStatus> {
+export class Plan extends Resource<PlanStatus> implements SearchableResource {
   resourceType = ResourceType.PLAN;
   transitionMap = PlanStatusTransitionMap;
   // Plan
@@ -41,4 +47,16 @@ export class Plan extends Resource<PlanStatus> {
   utmId?: string;
   // Provider
   providerExtra?: ProviderExtra[];
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: any): DisplayResource {
+    const data = resource as Plan;
+    return {
+      resourceType: ResourceType.PLAN,
+      resourceId: data.resourceId,
+      h1: data.name,
+      status: data.status,
+      isPublic: data.isPublic,
+    };
+  }
 }

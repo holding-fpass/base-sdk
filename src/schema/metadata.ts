@@ -1,7 +1,7 @@
 export interface Metadata<T = string> {
   key: T;
   value: any;
-  timestamp: string;
+  timestamp?: string;
 }
 
 export class MetadataMap<T = string> {

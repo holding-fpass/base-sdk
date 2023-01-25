@@ -17,6 +17,13 @@ export enum TransactionType {
   DEPOSIT = "deposit",
 }
 
+export enum TransactionPaymentMethod {
+  CREDIT = 'credit',
+  BOLETO = 'boleto',
+  PIX = 'pix',
+  WALLET = 'wallet',
+}
+
 export enum TransactionStatus {
   CREATED = "created",
   CANCELED = "canceled",
@@ -27,7 +34,7 @@ export enum TransactionStatus {
   PROVIDER_PAYMENT_FAILED = "provider.payment.failed",
   PAID = "paid",
   FAILED = "failed",
-  DELETED = "deleted",
+  DELETED = "deleted"
 }
 
 export interface UTMInterface {
@@ -83,6 +90,7 @@ export enum Asset {
 export class Transaction extends Resource<TransactionStatus> {
   resourceType = ResourceType.TRANSACTION;
   type!: TransactionType;
+  paymentMethod!: `${TransactionPaymentMethod}`;
   description!: string;
   asset!: Asset;
   value!: number;
@@ -92,6 +100,7 @@ export class Transaction extends Resource<TransactionStatus> {
   userTo!: Partial<User>;
   //
   parent?: Partial<Transaction>;
+  parents?: Partial<Transaction>[];
   // Provider
   provider!: Provider;
   providerExtra?: ProviderExtra[];

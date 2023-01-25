@@ -1,5 +1,11 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Playlist } from "./playlist";
-import { Resource, ResourceType } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum ChannelStatus {
@@ -17,15 +23,19 @@ export const ChannelStatusTransitionMap = new Map<
   [ChannelStatus.CREATED, [ChannelStatus.ACTIVE, ChannelStatus.DELETED]],
   [ChannelStatus.ACTIVE, [ChannelStatus.PUBLISHED, ChannelStatus.RESTRICTED]],
   [ChannelStatus.PUBLISHED, [ChannelStatus.DELETED]],
-  [ChannelStatus.RESTRICTED, [ChannelStatus.DELETED]]
+  [ChannelStatus.RESTRICTED, [ChannelStatus.DELETED]],
 ]);
 
-export class Channel extends Resource<ChannelStatus> {
+export class Channel
+  extends Resource<ChannelStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.CHANNEL;
   transitionMap = ChannelStatusTransitionMap;
   name!: string;
   slug!: string;
   primaryColor!: string;
+  resourceUrl!: string;
   whitelabel!: Whitelabel;
   // Media
   image1400x720!: string;
@@ -34,4 +44,16 @@ export class Channel extends Resource<ChannelStatus> {
   image64x64!: string;
   // Related
   playlists!: Partial<Playlist>[];
+  // SearchableResource implementation
+  isPublic = true;
+  public static asDisplayResource(resource: Channel): DisplayResource {
+    return {
+      resourceType: ResourceType.CHANNEL,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: true,
+      isSearchable: resource?.isSearchable,
+    };
+  }
 }

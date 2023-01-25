@@ -1,7 +1,13 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
 import { Whitelabel } from "./whitelabel";
 
 export enum InstanceStatus {
@@ -16,6 +22,21 @@ interface EmailConfig {
   senderEmail?: string;
   senderName?: string;
   supportEmail?: string;
+  financeEmail?: string;
+}
+
+interface SplitConfig {
+  email: string;
+  value: number;
+}
+
+interface ActiveCampaignProvider {
+  accountUrl?: string;
+  accountKey?: string;
+}
+
+interface RDStationProvider {
+  token: string;
 }
 
 interface FpayProvider {
@@ -62,6 +83,16 @@ export interface InstanceHomeUrl {
   url: string;
 }
 
+interface InstancePagePlaylists {
+  resourceId: string;
+  name: string;
+}
+
+interface InstanceJwt {
+  iss: string;
+  secret: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -71,7 +102,10 @@ export const InstanceStatusTransitionMap = new Map<
   [InstanceStatus.ACTIVE, [InstanceStatus.DELETED]],
 ]);
 
-export class Instance extends Resource<InstanceStatus> {
+export class Instance
+  extends Resource<InstanceStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.INSTANCE;
   transitionMap = InstanceStatusTransitionMap;
   //
@@ -100,39 +134,67 @@ export class Instance extends Resource<InstanceStatus> {
    * Passport
    */
   image400x400?: string;
+  /**
+   * Certificate background
+   */
+  image824x556?: string;
+  /**
+   * Overlay background: InstanceFeatureFlags.CATALOG_USER_LOGGED = true
+   */
+  image1920x1080?: string;
   //
   pagesDefault?: {
     home?: {
       urlsHeader?: InstanceHomeUrl[];
       urlsFooter?: InstanceHomeUrl[];
+      playlists?: InstancePagePlaylists[];
     };
     premium?: {
       image1440x440?: string;
       benefits?: InstanceIconTextItem[];
+      playlists?: InstancePagePlaylists[];
     };
     channels?: {
-      image1400x720?: string;
+      image1440x440?: string;
     };
   };
+  pagesPath?: Metadata<InstancePagePath>[];
   urls!: Metadata<InstanceUrlSettings>[];
   theme!: Metadata<InstanceThemeSettings>[];
   features_provider?: Pick<Instance, "resourceId" | "fqdn">;
   features!: Metadata<InstanceFeatureFlags>[];
   parameters!: Metadata<InstanceParametersSettings>[];
   i18n_ptBr!: Metadata<string>[];
+  i18n_enUs!: Metadata<string>[];
+  i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
-  // Email
+  // Configurations
   emailConfig?: EmailConfig;
+  splitConfig?: SplitConfig;
   // Provider
+  __activeCampaign?: ActiveCampaignProvider;
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;
+  __rdstation?: RDStationProvider;
+  __jwt?: InstanceJwt;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
   kyc?: KyCConfig;
   // Provider Extra
   providerExtra?: ProviderExtra[];
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: Instance): DisplayResource {
+    return {
+      resourceType: ResourceType.INSTANCE,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
+    };
+  }
 }
 
 export enum InstanceApplications {
@@ -155,11 +217,20 @@ export enum InstanceFeatureFlags {
   STAGE = "instance.feature-flag.stage",
   WIZARD = "wizard",
   SUBSCRIPTION_PLATFORM = "subscription.platform",
+  ONLY_EXTERNAL_SALES = "only.external.sales",
   PLAYER_VIDEO_USER_LOGGED = "player.video.user.logged",
   RATING_COURSE_USER_LOGGED = "rating.course.user.logged",
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
   MODULE_CUSTOM_NAME = "instance.feature-flag.module.custom.name",
   MODULE_CONTENT_ORDER_HIDE = "instance.feature-flag.module.content.order.hide",
+  WALLET = "instance.feature-flag.wallet",
+  USER_CREATION_RESTRICT = "instance.feature-flag.user.creation",
+  USER_SAMPLE = "instance.feature-flag.user.sample",
+  SEARCH = "instance.feature-flag.search",
+  CATALOG_USER_LOGGED = "instance.feature-flag.catalog.user.logged",
+  EMAIL_TEMPLATE_MFA_TEXT = "instance.feature-flag.email.template.mfa.text",
+  USER_PROFILE_HIDE = "instance.feature-flag.user.profile.hide",
+  PLAYLIST_CARD_TAG_HIDE = "instance.feature-flag.playlist.card.tag.hide",
 }
 
 export enum InstanceThemeSettings {
@@ -216,13 +287,29 @@ export enum InstanceUrlSettings {
   BANNER_EMAIL_URL = "banner.email.url",
 }
 
+export enum InstancePagePath {
+  CHANNEL_HOME = "/channel",
+  CHANNEL = "/channel/:channelId",
+  CHANNEL_COURSE = "/channel/:channelId/course/:courseId",
+  CHANNEL_PLAYER = "/channel/:channelId/player/:contentId",
+  PREMIUM_HOME = "/premium",
+  PREMIUM_COURSE = "/premium/:courseId",
+  COURSE = "/course/:courseId",
+  COURSE_CERTIFICATE = "/course/:id/certificate",
+  PLAYER = "/player/:contentId",
+  STAGE = "/stage/:slug",
+  LIBRARY = "/library",
+}
+
 export enum InstanceParametersSettings {
-  GOOGLE_GTM_ID = "google.gtm.id",
-  GOOGLE_GA_ID = "google.ga.id",
-  ONESIGNAL_APP_ID = "onesignal.app.id",
-  ONESIGNAL_API_KEY = "onesignal.api.key",
-  FPASS_PLAYER_PAGEVIEW_INTERVAL = "fpass.player.pageview.interval",
   FPASS_COPYRIGHT = "fpass.copyright",
+  FPASS_PLAYER_PAGEVIEW_INTERVAL = "fpass.player.pageview.interval",
+  GOOGLE_CAST_ID = "google.cast.id",
+  GOOGLE_GA_ID = "google.ga.id",
+  GOOGLE_GTM_ID = "google.gtm.id",
+  ONESIGNAL_API_KEY = "onesignal.api.key",
+  ONESIGNAL_APP_ID = "onesignal.app.id",
+  RD_STATION_TOKEN = "rdstation.token",
 }
 
 export enum InstanceDisclaimers {

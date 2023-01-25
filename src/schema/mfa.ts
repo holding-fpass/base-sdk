@@ -1,5 +1,11 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Metadata } from "./metadata";
-import { Resource, ResourceType } from "./resource";
 import { UserPermission } from "./user";
 
 export enum MfaType {
@@ -22,7 +28,7 @@ export const MfaStatusTransitionMap = new Map<MfaStatus, MfaStatus[]>([
   [MfaStatus.CREATED, [MfaStatus.ACTIVE]],
 ]);
 
-export class Mfa extends Resource<MfaStatus> {
+export class Mfa extends Resource<MfaStatus> implements SearchableResource {
   resourceType = ResourceType.MFA;
   transitionMap = MfaStatusTransitionMap;
   type!: MfaType;
@@ -34,4 +40,15 @@ export class Mfa extends Resource<MfaStatus> {
   dateEnd?: string;
   // Related
   machineId!: string;
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: Mfa): DisplayResource {
+    return {
+      resourceType: ResourceType.CONTRACT,
+      resourceId: resource.resourceId,
+      h1: resource.code,
+      status: resource.status,
+      isPublic: resource.isPublic,
+    };
+  }
 }

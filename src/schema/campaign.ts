@@ -1,7 +1,13 @@
-import { Timestamp } from "firebase-admin/firestore";
-import { Story, Form, NotificationMessage } from "../schema";
-import { Resource, ResourceType } from "./resource";
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+import { Form, NotificationMessage, Story } from "../schema";
+
 import { Tag } from "./tag";
+import { Timestamp } from "firebase-admin/firestore";
 
 export enum CampaignStatus {
   CREATED = "created",
@@ -28,7 +34,7 @@ export const CampaignStatusTransitionMap = new Map<
   [CampaignStatus.ACTIVE, [CampaignStatus.CREATED]],
 ]);
 
-export class Campaign extends Resource {
+export class Campaign extends Resource implements SearchableResource {
   resourceType = ResourceType.CAMPAIGN;
   name!: string;
   // Actions
@@ -47,4 +53,15 @@ export class Campaign extends Resource {
   // Related
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
+  // SearchableResource implementation
+  isPublic = false;
+  public static asDisplayResource(resource: Campaign): DisplayResource {
+    return {
+      resourceType: ResourceType.CAMPAIGN,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      status: resource.status,
+      isPublic: resource.isPublic,
+    };
+  }
 }

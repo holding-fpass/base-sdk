@@ -1,8 +1,14 @@
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from "./resource";
+
 import { Course } from "./course";
-import { Resource, ResourceType } from "./resource";
 import { Tag } from "./tag";
 
-export class Playlist extends Resource {
+export class Playlist extends Resource implements SearchableResource {
   resourceType = ResourceType.PLAYLIST;
   name!: string;
   // Media
@@ -10,4 +16,15 @@ export class Playlist extends Resource {
   // Related
   courses?: Partial<Course>[];
   userTags?: Partial<Tag>[];
+  // SearchableResource implementation
+  isPublic = true;
+  public static asDisplayResource(resource: Playlist): DisplayResource {
+    return {
+      resourceType: ResourceType.PLAYLIST,
+      resourceId: resource.resourceId,
+      h1: resource.name,
+      isPublic: true,
+      isSearchable: resource?.isSearchable,
+    };
+  }
 }
