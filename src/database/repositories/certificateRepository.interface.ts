@@ -1,4 +1,4 @@
-import { Certificate, Whitelabel } from "../../schema";
+import { Certificate } from "../../schema";
 import { ICommonRepository } from "./commonRepository.interface";
 
 export interface ICertificateRepositoryFindByCourseParams {

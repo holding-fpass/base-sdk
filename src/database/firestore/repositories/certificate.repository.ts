@@ -1,7 +1,7 @@
 import {
   ICertificateRepository,
   ICertificateRepositoryFindByCourseParams,
-} from "database/repositories/certificateRepository.interface";
+} from "../../repositories/certificateRepository.interface";
 import { Certificate, ResourceType } from "../../../schema";
 import { FirestoreSDK } from "../FirestoreSDK";
 import {
