@@ -27,6 +27,8 @@ interface EmailConfig {
 
 interface InstanceCertificateSettings {
   minimumWatchTime: number;
+  primaryTextColor: string;
+  platformDisplayName: string;
 }
 
 interface SplitConfig {
