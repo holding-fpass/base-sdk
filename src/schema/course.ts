@@ -19,8 +19,6 @@ import hash from "object-hash";
 
 interface CourseCertificateSettings {
   minimumWatchTime: number;
-  primaryTextColor: string;
-  platformDisplayName: string;
 }
 
 // Content
