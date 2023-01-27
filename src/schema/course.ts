@@ -21,6 +21,10 @@ interface CourseCertificateSettings {
   minimumWatchTime: number;
   primaryTextColor: string;
   platformDisplayName: string;
+  /**
+   * Certificate background
+   */
+  image824x556?: string;
 }
 
 // Content

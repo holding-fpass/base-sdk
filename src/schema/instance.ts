@@ -29,6 +29,10 @@ interface InstanceCertificateSettings {
   minimumWatchTime: number;
   primaryTextColor: string;
   platformDisplayName: string;
+    /**
+   * Certificate background
+   */
+  image824x556?: string;
 }
 
 interface SplitConfig {
@@ -140,10 +144,6 @@ export class Instance
    * Passport
    */
   image400x400?: string;
-  /**
-   * Certificate background
-   */
-  image824x556?: string;
   /**
    * Overlay background: InstanceFeatureFlags.CATALOG_USER_LOGGED = true
    */
