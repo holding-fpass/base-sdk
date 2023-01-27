@@ -211,7 +211,7 @@ export enum InstanceApplications {
 export enum InstanceFeatureFlags {
   AFFILIATE = "affiliate",
   CALENDAR = "calendar",
-  CERTIFICATE = "certificate",
+  CERTIFICATE = "instance.feature-flag.certificate",
   CHANNEL = "channel",
   COMMUNITY = "community",
   COUPON = "coupon",
