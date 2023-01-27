@@ -84,6 +84,7 @@ export class Subscription
   contract?: Partial<Contract>;
   months!: MonthFrequency;
   reason?: string;
+  dryRun?: boolean;
   // Provider
   providerExtra?: ProviderExtra[];
   // Dates
