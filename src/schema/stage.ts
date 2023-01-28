@@ -72,6 +72,7 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
   description?: string;
   // Transmission
   rtmpUrl?: string;
+  rtmpUrl_es?: string;
   isRunning?: boolean;
   // Media
   image968x168?: string;
