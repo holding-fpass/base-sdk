@@ -7,7 +7,6 @@ import {
 
 import { Playlist } from "./playlist";
 import { Tag } from "./tag";
-import { Timestamp } from "firebase-admin/firestore";
 
 export enum PageStatus {
   CREATED = "created",
@@ -23,7 +22,7 @@ export class Page extends Resource implements SearchableResource {
   name!: string;
   url!: string;
   // Related
-  playlists!: Partial<Playlist>[];
+  playlists!: Pick<Playlist, "resourceId" | "name">[];
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
   // SearchableResource implementation

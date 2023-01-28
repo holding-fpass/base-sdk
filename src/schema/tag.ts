@@ -12,8 +12,8 @@ export enum TagType {
 
 export enum SystemTag {
   USER_ALL = "system.tag.user.all",
-  USER_SUBSCRIBER = "system.tag.user.subscriber",
-  USER_NOT = "system.tag.user.not",
+  USER_AUTHENTICATED = "system.tag.user.authenticaded",
+  USER_MACHINE = "system.tag.user.machine",
 }
 
 export const TagStatusTransitionMap = new Map<TagStatus, TagStatus[]>([
