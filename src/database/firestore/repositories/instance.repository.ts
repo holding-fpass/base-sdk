@@ -7,11 +7,7 @@ import {
   IInstanceRepository,
   IInstanceRepositoryFindByNameParams,
 } from "../../repositories/instanceRepository.interface";
-import {
-  Instance,
-  ResourceType,
-  Whitelabel,
-} from "../../../schema";
+import { Instance, ResourceType, Whitelabel } from "../../../schema";
 
 interface IInstanceFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
@@ -41,12 +37,6 @@ export class InstanceFirestoreRepository
       .where("application", "==", application)
       .get();
 
-    if (snapshot.size === 0) {
-      return;
-    }
-
-    const document = snapshot.docs[0];
-
-    return document.data() as unknown as Instance;
+    return this.snapshotGetFirst(snapshot);
   }
 }

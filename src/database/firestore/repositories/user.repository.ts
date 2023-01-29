@@ -28,14 +28,7 @@ export class UserFirestoreRepository
       .withConverter(FirestoreSDK.withConverter)
       .where("email", "==", email)
       .get();
-
-    if (snapshot.size === 0) {
-      return undefined;
-    }
-
-    const document = snapshot.docs[0];
-
-    return document.data() as unknown as User;
+    return this.snapshotGetFirst(snapshot);
   }
 
   public async findByExternalId(externalId: string): Promise<User | undefined> {
@@ -44,7 +37,6 @@ export class UserFirestoreRepository
       .withConverter(FirestoreSDK.withConverter)
       .where("externalId", "==", externalId)
       .get();
-    if (snapshot.size === 0) return undefined;
-    return snapshot.docs[0].data() as unknown as User;
+    return this.snapshotGetFirst(snapshot);
   }
 }

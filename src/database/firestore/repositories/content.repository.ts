@@ -1,12 +1,22 @@
-import { CommonFirestoreRepository, ICommonFirestoreRepositoryConstructorParams } from './common.repository';
-import { Content, ResourceType } from '../../../schema';
-import { IContentRepository, IContentRepositoryFindByCourseParams } from 'database/repositories/contentRepository.interface';
+import {
+  CommonFirestoreRepository,
+  ICommonFirestoreRepositoryConstructorParams,
+} from "./common.repository";
+import { Content, ResourceType } from "../../../schema";
+import {
+  IContentRepository,
+  IContentRepositoryFindByCourseParams,
+} from "database/repositories/contentRepository.interface";
 
 import { FirestoreSDK } from "../FirestoreSDK";
 
-interface IContentFirestoreRepositoryConstructorParams extends Omit<ICommonFirestoreRepositoryConstructorParams, 'entity'> {}
+interface IContentFirestoreRepositoryConstructorParams
+  extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
 
-export class ContentFirestoreRepository extends CommonFirestoreRepository<Content> implements IContentRepository {
+export class ContentFirestoreRepository
+  extends CommonFirestoreRepository<Content>
+  implements IContentRepository
+{
   public constructor(params: IContentFirestoreRepositoryConstructorParams) {
     const superParams: ICommonFirestoreRepositoryConstructorParams = {
       whitelabel: params.whitelabel,
@@ -27,12 +37,6 @@ export class ContentFirestoreRepository extends CommonFirestoreRepository<Conten
       .where("parentId", "==", courseId)
       .get();
 
-    if (snapshot.size === 0) {
-      return;
-    }
-
-    return snapshot.docs.map((document) =>
-      document.data()
-    ) as unknown as Content[];
+    return this.snapshotGetAll(snapshot);
   }
 }

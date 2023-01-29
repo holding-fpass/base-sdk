@@ -156,4 +156,15 @@ export class CommonFirestoreRepository<T = unknown>
       deletedAt: Timestamp.now(),
     });
   }
+
+  protected snapshotGetFirst(snapshot: FirebaseFirestore.QuerySnapshot) {
+    if (snapshot.size === 0) return;
+    const document = snapshot.docs[0];
+    return document.data() as unknown as T;
+  }
+
+  protected snapshotGetAll(snapshot: FirebaseFirestore.QuerySnapshot) {
+    if (snapshot.size === 0) return;
+    return snapshot.docs.map((document) => document.data()) as unknown as T[];
+  }
 }
