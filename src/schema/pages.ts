@@ -64,14 +64,14 @@ export enum FLabelAppPagePath {
   METAVERSO = "/metaverso",
 }
 
-export function PageUrl<T = string>(pagePath: T, args?: any) {
+export function PageUrl(pagePath: string, args?: any) {
   if (!args) return pagePath;
   const keys = Object.keys(args);
   let url = "";
   for (const key of keys) {
     url = !!url
       ? url.replace(`:${key}`, args[key])
-      : (pagePath as string).replace(`:${key}`, args[key]);
+      : pagePath.replace(`:${key}`, args[key]);
   }
   return url;
 }
