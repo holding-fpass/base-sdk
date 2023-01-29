@@ -37,3 +37,41 @@ export class Page extends Resource implements SearchableResource {
     };
   }
 }
+
+export enum FLabelAppPagePath {
+  HOME = "/",
+  SEARCH = "/search",
+  SEARCH_RESULTS = "/search/:text",
+  CHANNEL_HOME = "/channel",
+  CHANNEL = "/channel/:channelId",
+  CHANNEL_COURSE = "/channel/:channelId/course/:courseId",
+  CHANNEL_PLAYER = "/channel/:channelId/player/:contentId",
+  PREMIUM_HOME = "/premium",
+  PREMIUM_COURSE = "/premium/:courseId",
+  COURSE = "/course/:courseId",
+  COURSE_CERTIFICATE = "/course/:courseId/certificate/:certificateId",
+  PLAYER = "/player/:contentId",
+  STAGE = "/stage/:slug",
+  LIBRARY = "/library",
+  PROFILE = "/profile",
+  WALLET = "/wallet",
+  WAITING_ROOM = "/waiting-room",
+  OPEN_REVOLUTION = "/open-revolution",
+  ABOUT_US = "/about-us",
+  COMPANIES = "/companies",
+  FLABEL = "/flabel",
+  DEVELOPERS = "/developers",
+  METAVERSO = "/metaverso",
+}
+
+export function PageUrl<T = string>(pagePath: T, args?: any) {
+  if (!args) return pagePath;
+  const keys = Object.keys(args);
+  let url = "";
+  for (const key of keys) {
+    url = !!url
+      ? url.replace(`:${key}`, args[key])
+      : (pagePath as string).replace(`:${key}`, args[key]);
+  }
+  return url;
+}
