@@ -21,4 +21,5 @@ export * from "./tag.repository";
 export * from "./thread.repository";
 export * from "./transaction.repository";
 export * from "./user.repository";
+export * from './user.notification.repository';
 export * from "./page.repository";
