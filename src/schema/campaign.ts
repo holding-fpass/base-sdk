@@ -42,13 +42,14 @@ export class Campaign extends Resource implements SearchableResource {
   pushNotificationAction?: NotificationMessage;
   emailNotificationAction?: NotificationMessage;
   storiesAction?: {
-    story?: Pick<Story, "resourceId" | "name">;
+    story?: Pick<Story, "resourceId" | "name" | "trigger">;
   };
   formsAction?: {
     form?: Pick<Form, "resourceId" | "name">;
   };
   // Date
   dateStart?: string | Timestamp;
+  expiresAt?: string | Timestamp;
   cronExpression?: string;
   // Related
   userTags?: Partial<Tag>[];

@@ -13,6 +13,8 @@ import { ResourceType, Whitelabel } from "../../../schema";
 export interface ICommonFirestoreRepositoryConstructorParams {
   entity: ResourceType;
   whitelabel: Whitelabel;
+  baseEntity?: string;
+  baseEntityResourceId?: string;
 }
 
 export class CommonFirestoreRepository<T = unknown>
@@ -26,7 +28,11 @@ export class CommonFirestoreRepository<T = unknown>
   public constructor(params: ICommonFirestoreRepositoryConstructorParams) {
     this.entity = params.entity;
     this.whitelabel = params.whitelabel;
-    this.baseCollectionPath = `management/${this.whitelabel}/${this.entity}`;
+    if (params.baseEntity && params.baseEntityResourceId) {
+      this.baseCollectionPath = `management/${this.whitelabel}/${params.baseEntity}/${params.baseEntityResourceId}/${this.entity}`;
+    } else {
+      this.baseCollectionPath = `management/${this.whitelabel}/${this.entity}`;
+    }
     this.firestore = FirestoreHooks.useFirestore();
   }
 

@@ -27,6 +27,7 @@ export enum StoryStatus {
 }
 
 export enum StoryTrigger {
+  NONE = "story.trigger.none",
   APP_OPEN = "story.trigger.app.open",
 }
 

@@ -55,11 +55,12 @@ export class Notification
   message?: NotificationMessage;
   // Related
   form?: Pick<Form, "resourceId" | "name">;
-  story?: Pick<Story, "resourceId" | "name">;
+  story?: Pick<Story, "resourceId" | "name" | "trigger">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
   // Schedule
   notBeforeAt?: string | Timestamp;
   deliveredAt?: string | Timestamp;
+  expiresAt?: string | Timestamp;
   // Usage
   readedAt?: string | Timestamp;
   // SearchableResource implementation
