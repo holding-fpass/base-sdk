@@ -96,7 +96,6 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   // Extras
   contentExtra?: Metadata[];
   tags?: Partial<Tag>[];
-  _systemTags?: Partial<Tag>[];
   // Interactions
   interactionsLeave?: Interaction[];
   // Purchases
