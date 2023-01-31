@@ -55,7 +55,7 @@ export class Notification
   message?: NotificationMessage;
   // Related
   form?: Pick<Form, "resourceId" | "name">;
-  story?: Pick<Story, "resourceId" | "name" | "trigger">;
+  story?: Pick<Story, "resourceId" | "name" | "trigger" | "items">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
   // Schedule
   notBeforeAt?: string | Timestamp;
