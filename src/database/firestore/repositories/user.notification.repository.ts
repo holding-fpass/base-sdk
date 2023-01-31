@@ -1,5 +1,10 @@
-import { Timestamp, FieldValue } from "firebase-admin/firestore";
-import { Notification, NotificationType, ResourceType } from "../../../schema";
+import { FieldValue, Timestamp } from "firebase-admin/firestore";
+import {
+  Notification,
+  NotificationType,
+  ResourceType,
+  StoryTrigger,
+} from "../../../schema";
 import {
   CommonFirestoreRepository,
   ICommonFirestoreRepositoryConstructorParams,
@@ -15,7 +20,7 @@ interface ICommonFirestoreRepositoryWithSubRepositoryConstructorParams
 
 export class UserNotificationFirestoreRepository extends CommonFirestoreRepository<Notification> {
   public constructor(
-    params: ICommonFirestoreRepositoryWithSubRepositoryConstructorParams
+    params: ICommonFirestoreRepositoryWithSubRepositoryConstructorParams,
   ) {
     const superParams: ICommonFirestoreRepositoryConstructorParams = {
       whitelabel: params.whitelabel,
@@ -47,13 +52,26 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
   }
 
   public async findApplicable(
-    type: NotificationType
+    type: NotificationType,
   ): Promise<Notification[] | undefined> {
     const snapshot = await this.firestore
       .collection(this.baseCollectionPath)
       .where("type", "==", type)
       .where("expiresAt", ">", Timestamp.now())
-      .where("readedAt", "==", "")
+      .get();
+    return this.snapshotGetAll(snapshot);
+  }
+
+  public async findApplicableByTrigger(
+    type: NotificationType,
+    trigger: StoryTrigger,
+  ): Promise<Notification[] | undefined> {
+    const snapshot = await this.firestore
+      .collection(this.baseCollectionPath)
+      .where("type", "==", type)
+      .where("story.trigger", "==", trigger)
+      .where("expiresAt", ">", Timestamp.now())
+      .where("readedAt", "==", null)
       .get();
     return this.snapshotGetAll(snapshot);
   }
