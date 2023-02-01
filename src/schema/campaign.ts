@@ -6,7 +6,7 @@ import {
 } from "./resource";
 import { Form, NotificationMessage, Story } from "../schema";
 
-import { Tag } from "./tag";
+import { SystemTag, Tag } from "./tag";
 import { Timestamp } from "firebase-admin/firestore";
 
 export enum CampaignStatus {
@@ -54,6 +54,7 @@ export class Campaign extends Resource implements SearchableResource {
   // Related
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
+  _systemTags?: SystemTag;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Campaign): DisplayResource {
