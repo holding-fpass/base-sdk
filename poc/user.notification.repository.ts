@@ -1,33 +1,48 @@
-import { initializeApp } from 'firebase-admin/app'
-import { getFirestore } from 'firebase-admin/firestore'
-import { Document } from '../src/data'
-import { UserNotificationFirestoreRepository } from '../src/database/firestore/repositories'
-import { NotificationType, StoryTrigger, Whitelabel } from '../src/schema'
+import { initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { Document } from "../src/data";
+import {
+  StoryFirestoreRepository,
+  UserNotificationFirestoreRepository,
+} from "../src/database/firestore/repositories";
+import { NotificationType, StoryTrigger, Whitelabel } from "../src/schema";
 
 // Initialize firebaseApp
-Document.app = initializeApp()
+Document.app = initializeApp();
 getFirestore(Document.app).settings({
   ignoreUndefinedProperties: true,
-})
+});
 
 const userNotificationFirestoreRepository =
   new UserNotificationFirestoreRepository({
     whitelabel: Whitelabel.DEFAULT,
-    baseEntityResourceId: '',
-  })
+    baseEntityResourceId: "",
+  });
+
+const storyFirestoreRepository = new StoryFirestoreRepository({
+  whitelabel: Whitelabel.DEFAULT,
+});
 
 const bootstrap = async () => {
-  const storieByTrigger =
+  const notifications =
     await userNotificationFirestoreRepository.findApplicableByTrigger(
       NotificationType.STORY,
       StoryTrigger.APP_OPEN,
-    )
+    );
 
-  const stories =
-    await userNotificationFirestoreRepository.findApplicableByTrigger(
-      NotificationType.STORY,
-      StoryTrigger.APP_OPEN,
-    )
-}
+  return notifications?.map(({ story }) => {
+    storyFirestoreRepository
+      .findById(story?.resourceId!)
+      .then((res) => {
+        const storyWithImage = res?.items?.map((item) => item?.image1080x1920);
 
-bootstrap()
+        return {
+          resourceId: story?.resourceId,
+          imageUrl: storyWithImage,
+        };
+      })
+      .catch((err) => console.log(err));
+  });
+};
+
+bootstrap();
