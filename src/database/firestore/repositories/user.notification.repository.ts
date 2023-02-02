@@ -1,14 +1,14 @@
-import { FieldValue, Timestamp } from "firebase-admin/firestore";
+import { Timestamp } from "firebase-admin/firestore";
 import {
   Notification,
   NotificationStatus,
   NotificationType,
   ResourceType,
-  StoryTrigger,
+  StoryTrigger
 } from "../../../schema";
 import {
   CommonFirestoreRepository,
-  ICommonFirestoreRepositoryConstructorParams,
+  ICommonFirestoreRepositoryConstructorParams
 } from "./common.repository";
 
 interface ICommonFirestoreRepositoryWithSubRepositoryConstructorParams
@@ -52,7 +52,7 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
       .where("type", "==", type)
       .where("story.trigger", "==", trigger)
       .where("expiresAt", ">", Timestamp.now())
-      .where("readedAt", "==", null)
+      .where("readedAt", "==", "")
       .get();
     return this.snapshotGetAll(snapshot);
   }
@@ -72,7 +72,7 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
       .collection(this.baseCollectionPath)
       .doc(id)
       .update({
-        readedAt: FieldValue.delete(),
+        readedAt: "",
       } as Pick<Notification, "readedAt">);
     return this.findById(id) as Promise<Notification>;
   }
