@@ -63,8 +63,6 @@ export class Notification
   expiresAt?: string | Timestamp;
   // Usage
   readedAt?: string | Timestamp;
-  deletedAt?: string | Timestamp;
-  status?: NotificationStatus;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Notification): DisplayResource {
