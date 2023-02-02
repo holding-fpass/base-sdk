@@ -54,7 +54,7 @@ export class Campaign extends Resource implements SearchableResource {
   // Related
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
-  __systemTags?: SystemTag;
+  __systemTag?: SystemTag;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Campaign): DisplayResource {
