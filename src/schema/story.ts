@@ -37,9 +37,6 @@ export class Story extends Resource<StoryStatus> implements SearchableResource {
   trigger?: StoryTrigger;
   // Media
   items?: StoryItem[];
-  // Related
-  _systemTags?: Partial<Tag>[];
-  userTags?: Partial<Tag>[];
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Story): DisplayResource {
