@@ -1,6 +1,7 @@
 import { FieldValue, Timestamp } from "firebase-admin/firestore";
 import {
   Notification,
+  NotificationStatus,
   NotificationType,
   ResourceType,
   StoryTrigger,
@@ -31,26 +32,6 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
     super(superParams);
   }
 
-  public async setReadedAt(id: string): Promise<Notification | undefined> {
-    await this.firestore
-      .collection(this.baseCollectionPath)
-      .doc(id)
-      .update({
-        readedAt: Timestamp.now(),
-      } as Pick<Notification, "readedAt">);
-    return this.findById(id) as Promise<Notification>;
-  }
-
-  public async unsetReadedAt(id: string): Promise<Notification | undefined> {
-    await this.firestore
-      .collection(this.baseCollectionPath)
-      .doc(id)
-      .update({
-        readedAt: FieldValue.delete(),
-      } as Pick<Notification, "readedAt">);
-    return this.findById(id) as Promise<Notification>;
-  }
-
   public async findApplicable(
     type: NotificationType,
   ): Promise<Notification[] | undefined> {
@@ -74,5 +55,36 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
       .where("readedAt", "==", null)
       .get();
     return this.snapshotGetAll(snapshot);
+  }
+
+  public async setReadedAt(id: string): Promise<Notification | undefined> {
+    await this.firestore
+      .collection(this.baseCollectionPath)
+      .doc(id)
+      .update({
+        readedAt: Timestamp.now(),
+      } as Pick<Notification, "readedAt">);
+    return this.findById(id) as Promise<Notification>;
+  }
+
+  public async unsetReadedAt(id: string): Promise<Notification | undefined> {
+    await this.firestore
+      .collection(this.baseCollectionPath)
+      .doc(id)
+      .update({
+        readedAt: FieldValue.delete(),
+      } as Pick<Notification, "readedAt">);
+    return this.findById(id) as Promise<Notification>;
+  }
+
+  public async remove(id: string): Promise<Notification | undefined> {
+    await this.firestore
+      .collection(this.baseCollectionPath)
+      .doc(id)
+      .update({
+        deletedAt: Timestamp.now(),
+        status: NotificationStatus.DELETED,
+      } as Pick<Notification, "deletedAt">);
+    return this.findById(id) as Promise<Notification>;
   }
 }
