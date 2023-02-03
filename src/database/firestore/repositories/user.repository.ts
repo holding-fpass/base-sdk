@@ -4,7 +4,7 @@ import {
 } from "./common.repository";
 import { FirestoreSDK } from "../FirestoreSDK";
 import { IUserRepository } from "../../repositories/userRepository.interface";
-import { ResourceType, User } from "../../../schema";
+import { ResourceType, SystemTag, User, UserPermission } from "../../../schema";
 
 interface IUserFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
@@ -38,5 +38,41 @@ export class UserFirestoreRepository
       .where("externalId", "==", externalId)
       .get();
     return this.snapshotGetFirst(snapshot);
+  }
+
+  public async findByTags(
+    type: string,
+    tags: string[] | SystemTag
+  ): Promise<User[] | undefined> {
+    let snapshot: any = this.firestore.collection(this.baseCollectionPath);
+
+    if (type === "systemTag") {
+      switch (tags) {
+        case SystemTag.USER_AUTHENTICATED:
+          snapshot = snapshot
+            .where("permission", "==", UserPermission.STUDENT)
+            .get();
+          break;
+        case SystemTag.USER_MACHINE:
+          snapshot = snapshot
+            .where("permission", "==", UserPermission.MACHINE)
+            .get();
+          break;
+        case SystemTag.USER_ALL:
+          snapshot = snapshot
+            .where("permission", "in", [
+              UserPermission.MACHINE,
+              UserPermission.STUDENT,
+            ])
+            .get();
+          break;
+      }
+    } else {
+      snapshot = snapshot
+        .where("userTags_idx", "array-contains-any", tags)
+        .get();
+    }
+
+    return this.snapshotGetAll(snapshot);
   }
 }
