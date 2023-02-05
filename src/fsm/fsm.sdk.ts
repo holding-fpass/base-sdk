@@ -12,8 +12,8 @@ import {
   Whitelabel,
 } from "../schema";
 import { BypassStateAction } from "./bypass.action";
-import { ThreadFirestoreRepository } from "database/firestore/repositories";
-import { ThreadInteractionFirestoreRepository } from "database/firestore/repositories/thread.interaction.repository";
+import { ThreadFirestoreRepository } from "../database/firestore/repositories";
+import { ThreadInteractionFirestoreRepository } from "../database/firestore/repositories/thread.interaction.repository";
 
 export interface StateEntity<Status = any> {
   resourceId: string;
