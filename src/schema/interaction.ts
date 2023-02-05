@@ -12,6 +12,7 @@ export enum InteractionType {
   OPEN = "open",
   LEAVE = "leave",
   VIEW = "view",
+  UPDATE = "update",
 }
 
 export enum InteractionDataforwardType {
@@ -35,19 +36,21 @@ export const InteractionStatusTransitionMap = new Map<
 
 export class Interaction extends Resource<InteractionStatus> {
   resourceType = ResourceType.INTERACTION;
-  transitionMap = InteractionStatusTransitionMap;
+  transitionMap? = InteractionStatusTransitionMap;
   productId!: string;
   productType!: ResourceType;
-  parentId!: string;
-  parentType!: ResourceType;
+  parentId?: string;
+  parentType?: ResourceType;
   type!: InteractionType;
-  user!: Pick<User, "id">;
+  user?: Pick<User, "id">;
   // Media
   mediaStart?: number;
   mediaEnd?: number;
   mediaCount?: number;
   mediaSpeed?: number;
   mediaResolution?: string;
+  //
+  ownerId!: string;
   // Dataforward
   __dataforward?: InteractionDataforward;
 }

@@ -7,6 +7,7 @@ export enum ThreadType {
   USER = "user",
   REACTION = "reaction",
   NOTIFICATION = "notification",
+  CONTENT = "content",
 }
 
 export class Thread extends Resource {

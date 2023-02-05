@@ -3,8 +3,17 @@ import { FSMError } from "../error";
 import { FieldValue, Timestamp, getFirestore } from "firebase-admin/firestore";
 import { Document } from "../data";
 import { Publisher } from "../messageBroker";
-import { BaseEvent, ResourceType, SlimEvent } from "../schema";
+import {
+  BaseEvent,
+  InteractionType,
+  ResourceType,
+  SlimEvent,
+  ThreadType,
+  Whitelabel,
+} from "../schema";
 import { BypassStateAction } from "./bypass.action";
+import { ThreadFirestoreRepository } from "database/firestore/repositories";
+import { ThreadInteractionFirestoreRepository } from "database/firestore/repositories/thread.interaction.repository";
 
 export interface StateEntity<Status = any> {
   resourceId: string;
@@ -229,22 +238,46 @@ export abstract class StateMachine<Entity, Status> {
     },
     event: BaseEvent
   ): Promise<SlimEvent> {
-    // Create Resource Thread
-    event.eventId = event?.eventId ?? uuid();
-    // Persist
-    const doc = await getFirestore(Document.app)
-      .doc(
-        `management/${thread.whitelabel}/thread/${thread.threadId}-${thread.threadType}/interactions/${event.eventId}`
-      )
-      .create({
-        ...event,
-        type: event.eventType,
+    // Prepare Thread
+    const threadId = `${thread.threadId}-${thread.threadType}`;
+    const threadFirestoreRepository = new ThreadFirestoreRepository({
+      whitelabel: thread.whitelabel as Whitelabel,
+      baseEntityResourceId: thread.threadId,
+    });
+    let threadInstance = await threadFirestoreRepository.findById(threadId);
+    if (!threadInstance)
+      threadInstance = await threadFirestoreRepository.create(threadId, {
+        resourceId: thread.threadId,
+        resourceType: thread.threadType,
         timestamp: Timestamp.now(),
+        type: thread.threadType as unknown as ThreadType,
       });
+    // Create Thread Interaction
+    event.eventId = event?.eventId ?? uuid();
+    const threadInteractionFirestoreRepository =
+      new ThreadInteractionFirestoreRepository({
+        whitelabel: thread.whitelabel as Whitelabel,
+        baseEntityResourceId: threadId,
+      });
+    // Persist
+    const threadInteraction = await threadInteractionFirestoreRepository.create(
+      event.eventId,
+      {
+        ...event,
+        resourceId: event.resourceId as string,
+        resourceType: event.resourceType as unknown as ResourceType,
+        type: event.eventType as unknown as InteractionType,
+        productId: event.resourceId as string,
+        productType: event.resourceType as unknown as ResourceType,
+        parentType: event.parentType as unknown as ResourceType,
+        timestamp: Timestamp.now(),
+        whitelabel: event.whitelabel as Whitelabel,
+      }
+    );
     // Return
     return {
       id: event.eventId,
-      date: doc.writeTime.toDate().toString(),
+      date: threadInteraction.timestamp as string,
     };
   }
 }
