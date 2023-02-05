@@ -20,7 +20,7 @@ export class ThreadInteractionFirestoreRepository extends CommonFirestoreReposit
       whitelabel: params.whitelabel,
       baseEntity: ResourceType.THREAD,
       baseEntityResourceId: params.baseEntityResourceId,
-      entity: (ResourceType.INTERACTION + `s`) as ResourceType,
+      entity: ResourceType.INTERACTION as ResourceType,
     };
     super(superParams);
   }
