@@ -110,6 +110,7 @@ export class Content
   video1920x1080_subtitles?: Subtitle[];
   // Transcoded
   audio?: string;
+  audioCodec?: "mp3" | "mp4";
   video640x360?: string;
   video1280x720?: string;
   // For download files of ContentType.LINK
