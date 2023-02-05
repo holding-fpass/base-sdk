@@ -156,11 +156,25 @@ export class CommonFirestoreRepository<T = unknown>
     return this.findById(docId) as Promise<T>;
   }
 
+  /**
+   * Soft delete
+   * It updates deletedAt field with a timestamp value
+   * @param id
+   */
   public async delete(id: string): Promise<void> {
     await this.firestore.collection(this.baseCollectionPath).doc(id).update({
       status: CommonEntityType.CommonEntityStatus.DELETED,
       deletedAt: Timestamp.now(),
     });
+  }
+
+  /**
+   * Hard delete [DANGER]
+   * It removes the document from database with no restore option after this
+   * @param id
+   */
+  public async hardDelete(id: string): Promise<void> {
+    await this.firestore.collection(this.baseCollectionPath).doc(id).delete();
   }
 
   protected snapshotGetFirst(snapshot: FirebaseFirestore.QuerySnapshot) {
