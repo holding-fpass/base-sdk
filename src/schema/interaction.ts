@@ -50,7 +50,7 @@ export class Interaction extends Resource<InteractionStatus> {
   mediaSpeed?: number;
   mediaResolution?: string;
   //
-  ownerId!: string;
+  // ownerId!: string;
   // Dataforward
   __dataforward?: InteractionDataforward;
 }

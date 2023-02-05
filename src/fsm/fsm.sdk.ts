@@ -271,7 +271,7 @@ export abstract class StateMachine<Entity, Status> {
         productType: event.resourceType as unknown as ResourceType,
         parentType: event.parentType as unknown as ResourceType,
         timestamp: Timestamp.now(),
-        whitelabel: event.whitelabel as Whitelabel,
+        whitelabel: event.whitelabel as unknown as Whitelabel,
       }
     );
     // Return
