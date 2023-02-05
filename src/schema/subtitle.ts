@@ -71,6 +71,7 @@ export class Subtitle
   language!: string;
   videoUrl!: string;
   audioUrl?: string;
+  audioCodec?: "mp3" | "mp4";
   subtitleUrl?: string;
   // Data
   fullSentences?: Sentence[];
