@@ -44,7 +44,9 @@ export class UserFirestoreRepository
     type: string,
     tags: string[] | SystemTag
   ): Promise<User[] | undefined> {
-    let snapshot: any = this.firestore.collection(this.baseCollectionPath);
+    let snapshot: any = this.firestore
+      .collection(this.baseCollectionPath)
+      .withConverter(FirestoreSDK.withConverter);
 
     if (type === "systemTag") {
       switch (tags) {
