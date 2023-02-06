@@ -71,7 +71,7 @@ export class UserFirestoreRepository
       }
     } else {
       snapshot = await snapshot
-        .where("userTags_idx", "array-contains-any", tags)
+        .where("tags_idx", "array-contains-any", tags)
         .get();
     }
 
