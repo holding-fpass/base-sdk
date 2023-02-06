@@ -8,6 +8,7 @@ export enum TagStatus {
 export enum TagType {
   COURSE = "course",
   USER = "user",
+  SYSTEM = "system",
 }
 
 export enum SystemTag {

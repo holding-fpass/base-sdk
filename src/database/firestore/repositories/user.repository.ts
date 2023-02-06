@@ -4,7 +4,13 @@ import {
 } from "./common.repository";
 import { FirestoreSDK } from "../FirestoreSDK";
 import { IUserRepository } from "../../repositories/userRepository.interface";
-import { ResourceType, SystemTag, User, UserPermission } from "../../../schema";
+import {
+  ResourceType,
+  SystemTag,
+  TagType,
+  User,
+  UserPermission,
+} from "../../../schema";
 
 interface IUserFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
@@ -40,41 +46,33 @@ export class UserFirestoreRepository
     return this.snapshotGetFirst(snapshot);
   }
 
-  public async findByTags(
-    type: string,
+  public findByTags(
+    type: TagType,
     tags: string[] | SystemTag
-  ): Promise<User[] | undefined> {
-    let snapshot: any = this.firestore
+  ): NodeJS.ReadableStream {
+    let snapshot = this.firestore
       .collection(this.baseCollectionPath)
       .withConverter(FirestoreSDK.withConverter);
-
-    if (type === "systemTag") {
+    //
+    if (type === TagType.SYSTEM) {
       switch (tags) {
         case SystemTag.USER_AUTHENTICATED:
-          snapshot = await snapshot
-            .where("permission", "==", UserPermission.STUDENT)
-            .get();
+          snapshot.where("permission", "==", UserPermission.STUDENT);
           break;
         case SystemTag.USER_MACHINE:
-          snapshot = await snapshot
-            .where("permission", "==", UserPermission.MACHINE)
-            .get();
+          snapshot.where("permission", "==", UserPermission.MACHINE);
           break;
         case SystemTag.USER_ALL:
-          snapshot = await snapshot
-            .where("permission", "in", [
-              UserPermission.MACHINE,
-              UserPermission.STUDENT,
-            ])
-            .get();
+          snapshot.where("permission", "in", [
+            UserPermission.MACHINE,
+            UserPermission.STUDENT,
+          ]);
           break;
       }
     } else {
-      snapshot = await snapshot
-        .where("tags_idx", "array-contains-any", tags)
-        .get();
+      snapshot.where("tags_idx", "array-contains-any", tags);
     }
-
-    return this.snapshotGetAll(snapshot);
+    // Return
+    return snapshot.stream();
   }
 }
