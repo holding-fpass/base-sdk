@@ -22,4 +22,7 @@ export enum Whitelabel {
   DRONAK = "dronak",
   TEMPEST = "tempest",
   ACTY = "acty",
+  FUTURUM_TGP = "futurum-tgp",
+  APRENDEJUNTO = "aprendejunto",
+  PLANNTOGO = "planntogo",
 }
