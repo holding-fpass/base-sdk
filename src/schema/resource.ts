@@ -119,6 +119,7 @@ export class DisplayResource<Type = any> extends Resource {
   imageUrl?: string;
   resourceUrl?: string;
   open?: boolean;
+  readed?: boolean;
   children?: DisplayResource[];
   parent?: DisplayResource;
   parentId?: string;
