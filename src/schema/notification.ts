@@ -62,7 +62,7 @@ export class Notification
   notBeforeAt?: string | Timestamp;
   deliveredAt?: string | Timestamp;
   // Usage
-  readedAt?: string | Timestamp;
+  readed?: boolean;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Notification): DisplayResource {

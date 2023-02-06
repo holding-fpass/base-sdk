@@ -52,7 +52,7 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
       .where("type", "==", type)
       .where("story.trigger", "==", trigger)
       .where("deletedAt", ">", Timestamp.now())
-      .where("readedAt", "==", "")
+      .where("readed", "==", false)
       .get();
     return this.snapshotGetAll(snapshot);
   }
@@ -62,8 +62,8 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
       .collection(this.baseCollectionPath)
       .doc(id)
       .update({
-        readedAt: Timestamp.now(),
-      } as Pick<Notification, "readedAt">);
+        readed: true,
+      } as Pick<Notification, "readed">);
     return this.findById(id) as Promise<Notification>;
   }
 
@@ -72,8 +72,8 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
       .collection(this.baseCollectionPath)
       .doc(id)
       .update({
-        readedAt: "",
-      } as Pick<Notification, "readedAt">);
+        readed: false,
+      } as Pick<Notification, "readed">);
     return this.findById(id) as Promise<Notification>;
   }
 
