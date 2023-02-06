@@ -60,7 +60,6 @@ export class Notification
   // Schedule
   notBeforeAt?: string | Timestamp;
   deliveredAt?: string | Timestamp;
-  expiresAt?: string | Timestamp;
   // Usage
   readedAt?: string | Timestamp;
   // SearchableResource implementation
