@@ -4,11 +4,11 @@ import {
   NotificationStatus,
   NotificationType,
   ResourceType,
-  StoryTrigger
+  StoryTrigger,
 } from "../../../schema";
 import {
   CommonFirestoreRepository,
-  ICommonFirestoreRepositoryConstructorParams
+  ICommonFirestoreRepositoryConstructorParams,
 } from "./common.repository";
 
 interface ICommonFirestoreRepositoryWithSubRepositoryConstructorParams
@@ -21,7 +21,7 @@ interface ICommonFirestoreRepositoryWithSubRepositoryConstructorParams
 
 export class UserNotificationFirestoreRepository extends CommonFirestoreRepository<Notification> {
   public constructor(
-    params: ICommonFirestoreRepositoryWithSubRepositoryConstructorParams,
+    params: ICommonFirestoreRepositoryWithSubRepositoryConstructorParams
   ) {
     const superParams: ICommonFirestoreRepositoryConstructorParams = {
       whitelabel: params.whitelabel,
@@ -33,19 +33,20 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
   }
 
   public async findApplicable(
-    type: NotificationType,
+    type: NotificationType
   ): Promise<Notification[] | undefined> {
     const snapshot = await this.firestore
       .collection(this.baseCollectionPath)
       .where("type", "==", type)
       .where("expiresAt", ">", Timestamp.now())
+      .where("deletedAt", ">", Timestamp.now())
       .get();
     return this.snapshotGetAll(snapshot);
   }
 
   public async findApplicableByTrigger(
     type: NotificationType,
-    trigger: StoryTrigger,
+    trigger: StoryTrigger
   ): Promise<Notification[] | undefined> {
     const snapshot = await this.firestore
       .collection(this.baseCollectionPath)
