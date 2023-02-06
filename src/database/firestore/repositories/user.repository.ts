@@ -46,33 +46,35 @@ export class UserFirestoreRepository
     return this.snapshotGetFirst(snapshot);
   }
 
-  public findByTags(
-    type: TagType,
-    tags: string[] | SystemTag
-  ): NodeJS.ReadableStream {
-    let snapshot = this.firestore
-      .collection(this.baseCollectionPath)
-      .withConverter(FirestoreSDK.withConverter);
-    //
-    if (type === TagType.SYSTEM) {
-      switch (tags) {
-        case SystemTag.USER_AUTHENTICATED:
-          snapshot.where("permission", "==", UserPermission.STUDENT);
-          break;
-        case SystemTag.USER_MACHINE:
-          snapshot.where("permission", "==", UserPermission.MACHINE);
-          break;
-        case SystemTag.USER_ALL:
-          snapshot.where("permission", "in", [
+  public findByTags(tags: string[] | SystemTag): NodeJS.ReadableStream {
+    switch (tags) {
+      case SystemTag.USER_AUTHENTICATED:
+        return this.firestore
+          .collection(this.baseCollectionPath)
+          .withConverter(FirestoreSDK.withConverter)
+          .where("permission", "==", UserPermission.STUDENT)
+          .stream();
+      case SystemTag.USER_MACHINE:
+        return this.firestore
+          .collection(this.baseCollectionPath)
+          .withConverter(FirestoreSDK.withConverter)
+          .where("permission", "==", UserPermission.MACHINE)
+          .stream();
+      case SystemTag.USER_ALL:
+        return this.firestore
+          .collection(this.baseCollectionPath)
+          .withConverter(FirestoreSDK.withConverter)
+          .where("permission", "in", [
             UserPermission.MACHINE,
             UserPermission.STUDENT,
-          ]);
-          break;
-      }
-    } else {
-      snapshot.where("tags_idx", "array-contains-any", tags);
+          ])
+          .stream();
+      default:
+        return this.firestore
+          .collection(this.baseCollectionPath)
+          .withConverter(FirestoreSDK.withConverter)
+          .where("tags_idx", "array-contains-any", tags)
+          .stream();
     }
-    // Return
-    return snapshot.stream();
   }
 }

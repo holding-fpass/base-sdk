@@ -3,5 +3,5 @@ import { ICommonRepository } from "./commonRepository.interface";
 
 export interface IUserRepository extends ICommonRepository<User> {
   findByEmail(email: string): Promise<User | undefined>;
-  findByTags(type: string, tags: string[] | SystemTag): NodeJS.ReadableStream;
+  findByTags(tags: string[] | SystemTag): NodeJS.ReadableStream;
 }
