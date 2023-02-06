@@ -51,17 +51,17 @@ export class UserFirestoreRepository
     if (type === "systemTag") {
       switch (tags) {
         case SystemTag.USER_AUTHENTICATED:
-          snapshot = snapshot
+          snapshot = await snapshot
             .where("permission", "==", UserPermission.STUDENT)
             .get();
           break;
         case SystemTag.USER_MACHINE:
-          snapshot = snapshot
+          snapshot = await snapshot
             .where("permission", "==", UserPermission.MACHINE)
             .get();
           break;
         case SystemTag.USER_ALL:
-          snapshot = snapshot
+          snapshot = await snapshot
             .where("permission", "in", [
               UserPermission.MACHINE,
               UserPermission.STUDENT,
@@ -70,7 +70,7 @@ export class UserFirestoreRepository
           break;
       }
     } else {
-      snapshot = snapshot
+      snapshot = await snapshot
         .where("userTags_idx", "array-contains-any", tags)
         .get();
     }
