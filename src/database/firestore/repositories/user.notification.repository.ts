@@ -35,11 +35,12 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
   public async findApplicable(
     type: NotificationType
   ): Promise<Notification[] | undefined> {
+    const timestamp = Timestamp.now();
     const snapshot = await this.firestore
       .collection(this.baseCollectionPath)
       .where("type", "==", type)
-      .where("expiresAt", ">", Timestamp.now())
-      .where("deletedAt", ">", Timestamp.now())
+      .where("expiresAt", ">=", timestamp)
+      .where("deletedAt", ">=", timestamp)
       .get();
     return this.snapshotGetAll(snapshot);
   }
