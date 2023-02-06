@@ -57,6 +57,7 @@ export class Notification
   form?: Pick<Form, "resourceId" | "name">;
   story?: Pick<Story, "resourceId" | "name" | "trigger">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
+  expiresAt?: Pick<Campaign, "expiresAt">;
   // Schedule
   notBeforeAt?: string | Timestamp;
   deliveredAt?: string | Timestamp;
