@@ -204,6 +204,22 @@
     protobufjs "^6.10.0"
     yargs "^16.2.0"
 
+"@holding-fpass/base-sdk@^5.36.25":
+  version "5.36.25"
+  resolved "https://npm.pkg.github.com/download/@holding-fpass/base-sdk/5.36.25/2322cffd30d98aab5b75fdf87e09dd8d15d098b1#2322cffd30d98aab5b75fdf87e09dd8d15d098b1"
+  integrity sha512-xSSaAsqQWZqaSUhSTdCVlEmIGT6fJlmsIsMV8sq81Nkj94q2TZNml8ANtBn6nuIH2GH3BK6a0cvRWeflcLsNGw==
+  dependencies:
+    "@google-cloud/pubsub" "2.12.0"
+    "@sentry/node" "^6.19.2"
+    firebase-admin "^11.0.0"
+    hbs "^4.2.0"
+    mustache "^4.2.0"
+    object-hash "^3.0.0"
+    rdstation-node-client "^1.2.0"
+    ts-custom-error "^3.2.0"
+    uuid "^8.3.2"
+    yaml "^2.1.1"
+
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.1.0.tgz#2203b118c157721addfe69d47b70465463066d78"

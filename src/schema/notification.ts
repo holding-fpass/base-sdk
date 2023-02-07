@@ -18,6 +18,11 @@ export class NotificationMessage {
   ctaUrl?: string;
 }
 
+export enum NotificationTrigger {
+  NONE = "notification.trigger.none",
+  APP_OPEN = "notification.trigger.app.open",
+}
+
 export enum NotificationStatus {
   CREATED = "created",
   ACTIVE = "active",
@@ -54,13 +59,14 @@ export class Notification
   // Message
   message?: NotificationMessage;
   // Related
-  form?: Pick<Form, "resourceId" | "name">;
+  form?: Pick<Form, "resourceId" | "name" | "trigger">;
   story?: Pick<Story, "resourceId" | "name" | "trigger">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
   deletedAt?: string | Timestamp;
   // Schedule
   notBeforeAt?: string | Timestamp;
   deliveredAt?: string | Timestamp;
+  trigger?: NotificationTrigger;
   // Usage
   readed?: boolean;
   // SearchableResource implementation

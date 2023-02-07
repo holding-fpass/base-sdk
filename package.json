@@ -25,6 +25,7 @@
   "homepage": "https://github.com/holding-fpass/base-sdk#readme",
   "dependencies": {
     "@google-cloud/pubsub": "2.12.0",
+    "@holding-fpass/base-sdk": "^5.36.25",
     "@sentry/node": "^6.19.2",
     "firebase-admin": "^11.0.0",
     "hbs": "^4.2.0",

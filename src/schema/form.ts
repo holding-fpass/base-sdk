@@ -82,6 +82,12 @@ export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
   [FormStatus.ACTIVE, [FormStatus.CREATED]],
 ]);
 
+export enum FormTrigger {
+  MACHINE_LOGIN = "form.trigger.machine.login",
+  USER_LOGIN = "form.trigger.user.login",
+  APP_OPEN = "form.trigger.app.open",
+}
+
 export class Form extends Resource<FormStatus> implements SearchableResource {
   resourceType = ResourceType.FORM;
   name!: string;
@@ -89,6 +95,7 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   layout!: FormLayout;
   questions?: Partial<FormQuestion>[];
   resultRanges?: Partial<FormResultRange>[];
+  trigger?: FormTrigger;
   // Related
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
@@ -108,11 +115,6 @@ export class FormUserResponse {
   question!: Partial<FormQuestion>;
   questionHash!: string;
   value!: string;
-}
-
-export enum FormTrigger {
-  MACHINE_LOGIN = "form.trigger.machine.login",
-  USER_LOGIN = "form.trigger.user.login",
 }
 
 export enum FormResponseStatus {
