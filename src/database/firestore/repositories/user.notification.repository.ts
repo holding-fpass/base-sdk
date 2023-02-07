@@ -1,7 +1,9 @@
 import { Timestamp } from "firebase-admin/firestore";
 import {
+  FormTrigger,
   Notification,
   NotificationStatus,
+  NotificationTrigger,
   NotificationType,
   ResourceType,
   StoryTrigger,
@@ -45,16 +47,31 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
 
   public async findApplicableByTrigger(
     type: NotificationType,
-    trigger: StoryTrigger
+    trigger: StoryTrigger | NotificationTrigger | FormTrigger
   ): Promise<Notification[] | undefined> {
-    const snapshot = await this.firestore
+    let snapshot = this.firestore
       .collection(this.baseCollectionPath)
       .where("type", "==", type)
-      .where("story.trigger", "==", trigger)
-      .where("deletedAt", ">", Timestamp.now())
-      .where("readed", "==", false)
-      .get();
-    return this.snapshotGetAll(snapshot);
+
+    switch(type) {
+      case 'text':
+        snapshot = snapshot
+          .where("message.trigger", "==", trigger)
+          .where("deletedAt", ">", Timestamp.now())
+          .where("readed", "==", false)
+        break;
+      case 'story':
+        snapshot = snapshot
+          .where("story.trigger", "==", trigger)
+          .where("deletedAt", ">", Timestamp.now())
+          .where("readed", "==", false)
+      case 'form':
+        snapshot = snapshot
+          .where("form.trigger", "==", trigger)
+          .where("deletedAt", ">", Timestamp.now())
+          .where("readed", "==", false)
+    } 
+    return this.snapshotGetAll(await snapshot.get());
   }
 
   public async setReadedAt(id: string): Promise<Notification | undefined> {
