@@ -4,7 +4,7 @@ import {
   ResourceType,
   SearchableResource,
 } from "./resource";
-import { Form, NotificationMessage, Story } from "../schema";
+import { Form, NotificationMessage, NotificationTrigger, Story } from "../schema";
 
 import { SystemTag, Tag } from "./tag";
 import { Timestamp } from "firebase-admin/firestore";
@@ -50,6 +50,7 @@ export class Campaign extends Resource implements SearchableResource {
   // Date
   dateStart?: string | Timestamp;
   expiresAt?: string | Timestamp;
+  trigger?: NotificationTrigger;
   cronExpression?: string;
   // Related
   userTags?: Partial<Tag>[];
