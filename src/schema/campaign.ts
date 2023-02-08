@@ -4,7 +4,7 @@ import {
   ResourceType,
   SearchableResource,
 } from "./resource";
-import { Form, NotificationMessage, NotificationTrigger, Story } from "../schema";
+import { Form, NotificationMessage, Story } from "../schema";
 
 import { SystemTag, Tag } from "./tag";
 import { Timestamp } from "firebase-admin/firestore";
@@ -42,15 +42,14 @@ export class Campaign extends Resource implements SearchableResource {
   pushNotificationAction?: NotificationMessage;
   emailNotificationAction?: NotificationMessage;
   storiesAction?: {
-    story?: Pick<Story, "resourceId" | "name" | "trigger">;
+    story?: Pick<Story, "resourceId" | "name" >;
   };
   formsAction?: {
-    form?: Pick<Form, "resourceId" | "name">;
+    form?: Pick<Form, "resourceId" | "name" >;
   };
   // Date
   dateStart?: string | Timestamp;
   expiresAt?: string | Timestamp;
-  trigger?: NotificationTrigger;
   cronExpression?: string;
   // Related
   userTags?: Partial<Tag>[];
