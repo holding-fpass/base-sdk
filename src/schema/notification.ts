@@ -75,6 +75,7 @@ export class Notification
   public static asDisplayResource(resource: Notification): DisplayResource {
     // NO "name" RELATIVE STRING FIELD
     return {
+      type: resource.type,
       readed: resource.readed,
       resourceType: ResourceType.NOTIFICATION,
       resourceId: resource.resourceId,
