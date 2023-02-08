@@ -68,6 +68,7 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
       .where("trigger", "==", trigger)
       .where("deletedAt", ">", Timestamp.now())
       .where("readed", "==", false)
+      .orderBy("createdAt", "desc")
       .get();
 
     return this.snapshotGetAll(snapshot);
