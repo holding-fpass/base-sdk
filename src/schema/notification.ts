@@ -16,6 +16,7 @@ export class NotificationMessage {
   body!: string;
   cta?: string;
   ctaUrl?: string;
+  trigger?: NotificationTrigger;
 }
 
 export enum NotificationTrigger {
@@ -59,8 +60,8 @@ export class Notification
   // Message
   message?: NotificationMessage;
   // Related
-  form?: Pick<Form, "resourceId" | "name" | "trigger">;
-  story?: Pick<Story, "resourceId" | "name" | "trigger">;
+  form?: Pick<Form, "resourceId" | "name" >;
+  story?: Pick<Story, "resourceId" | "name" >;
   campaign?: Pick<Campaign, "resourceId" | "name">;
   deletedAt?: string | Timestamp;
   // Schedule

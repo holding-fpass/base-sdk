@@ -45,33 +45,32 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
     return this.snapshotGetAll(snapshot);
   }
 
-  public async findApplicableByTrigger(
+  public async findApplicableByTypeAndTrigger(
     type: NotificationType,
     trigger: StoryTrigger | NotificationTrigger | FormTrigger
   ): Promise<Notification[] | undefined> {
-    let snapshot = this.firestore
+    let snapshot = await this.firestore
       .collection(this.baseCollectionPath)
       .where("type", "==", type)
+      .where("trigger", "==", trigger)
+      .where("deletedAt", ">", Timestamp.now())
+      .where("readed", "==", false)
+      .get();
 
-    switch(type) {
-      case 'text':
-        snapshot = snapshot
-          .where("message.trigger", "==", trigger)
-          .where("deletedAt", ">", Timestamp.now())
-          .where("readed", "==", false)
-        break;
-      case 'story':
-        snapshot = snapshot
-          .where("story.trigger", "==", trigger)
-          .where("deletedAt", ">", Timestamp.now())
-          .where("readed", "==", false)
-      case 'form':
-        snapshot = snapshot
-          .where("form.trigger", "==", trigger)
-          .where("deletedAt", ">", Timestamp.now())
-          .where("readed", "==", false)
-    } 
-    return this.snapshotGetAll(await snapshot.get());
+    return this.snapshotGetAll(snapshot);
+  }
+
+  public async findApplicableByTrigger(
+    trigger: NotificationTrigger
+  ): Promise<Notification[] | undefined> {
+    let snapshot = await this.firestore
+      .collection(this.baseCollectionPath)
+      .where("trigger", "==", trigger)
+      .where("deletedAt", ">", Timestamp.now())
+      .where("readed", "==", false)
+      .get();
+
+    return this.snapshotGetAll(snapshot);
   }
 
   public async setReadedAt(id: string): Promise<Notification | undefined> {
