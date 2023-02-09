@@ -65,7 +65,6 @@ export class UserNotificationFirestoreRepository extends CommonFirestoreReposito
   ): Promise<Notification[] | undefined> {
     let snapshot = await this.firestore
       .collection(this.baseCollectionPath)
-      .orderBy("createdAt", "desc")
       .where("trigger", "==", trigger)
       .where("deletedAt", ">", Timestamp.now())
       .where("readed", "==", false)
