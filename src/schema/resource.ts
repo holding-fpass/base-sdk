@@ -32,6 +32,7 @@ export enum ResourceType {
   MFA = "mfa",
   MODULE = "module",
   NOTIFICATION = "notification",
+  NOTIFICATION_TEXT = "notification.text",
   PAGE = "page",
   PAGE_VIEW = "page.view",
   PLAN = "plan",
@@ -101,8 +102,8 @@ export abstract class SearchableResource {
   public isPublic!: boolean;
   // Base tranformation to all resource be storage on search service
   public static asDisplayResource<T>(resource: T): DisplayResource {
-    throw new Error('Method not implemented.')
-  };
+    throw new Error("Method not implemented.");
+  }
 }
 
 export class DisplayResource<Type = any> extends Resource {
