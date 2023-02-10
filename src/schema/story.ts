@@ -17,6 +17,7 @@ export class StoryItem {
   image1080x1920_alt?: string;
   video1080X1920?: string;
   video1080X1920_alt?: string;
+  duration?: number;
   cta?: string;
   ctaUrl?: string;
 }
