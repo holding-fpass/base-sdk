@@ -77,6 +77,7 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   taxId?: string;
   phone?: string;
   externalId?: string;
+  externalParentId?: string;
   token?: string;
   permission!: UserPermission;
   providerExtra?: ProviderExtra[];
