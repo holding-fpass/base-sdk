@@ -263,10 +263,12 @@ export class Course
   isPublic = true;
   public static asDisplayResource(resource: Course): DisplayResource {
     return {
-      resourceType: ResourceType.COURSE,
       resourceId: resource.resourceId,
+      resourceType: ResourceType.COURSE,
       h1: resource.name,
       h2: resource?.producer?.name,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
       status: resource.status,
       imageUrl: ImageUtils.imageOptimized(
         resource.image400x512 as string,

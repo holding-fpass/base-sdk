@@ -4,7 +4,12 @@ import {
   ResourceType,
   SearchableResource,
 } from "./resource";
-import { Form, NotificationMessage, NotificationTrigger, Story } from "../schema";
+import {
+  Form,
+  NotificationMessage,
+  NotificationTrigger,
+  Story,
+} from "../schema";
 
 import { SystemTag, Tag } from "./tag";
 import { Timestamp } from "firebase-admin/firestore";
@@ -61,9 +66,11 @@ export class Campaign extends Resource implements SearchableResource {
   isPublic = false;
   public static asDisplayResource(resource: Campaign): DisplayResource {
     return {
-      resourceType: ResourceType.CAMPAIGN,
       resourceId: resource.resourceId,
+      resourceType: ResourceType.CAMPAIGN,
       h1: resource.name,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
       status: resource.status,
       isPublic: resource.isPublic,
     };
