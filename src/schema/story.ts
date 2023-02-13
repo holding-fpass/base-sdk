@@ -5,8 +5,6 @@ import {
   SearchableResource,
 } from "./resource";
 
-import { Tag } from "./tag";
-
 export enum StoryItemType {
   IMAGE = "story-item.type.image",
   VIDEO = "story-item.type.video",
