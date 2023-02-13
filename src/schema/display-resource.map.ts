@@ -11,7 +11,7 @@ import { Mfa } from "./mfa";
 import { Notification } from "./notification";
 import { Plan } from "./plan";
 import { Playlist } from "./playlist";
-import { ResourceType } from "./resource";
+import { DisplayResource, ResourceType } from "./resource";
 import { Signature } from "./signature";
 import { Stage } from "./stage";
 import { Story } from "./story";
@@ -20,7 +20,14 @@ import { Subtitle } from "./subtitle";
 import { User } from "./user";
 import { Video } from "./video";
 
-export const DisplayResourceFunctionMap = new Map<ResourceType, Function>([
+export interface IDisplayResourceFunction extends Function {
+  (resource: any): DisplayResource;
+}
+
+export const DisplayResourceFunctionMap = new Map<
+  ResourceType,
+  IDisplayResourceFunction
+>([
   [ResourceType.CAMPAIGN, Campaign.asDisplayResource],
   [ResourceType.CHANNEL, Channel.asDisplayResource],
   [ResourceType.CONTENT, Content.asDisplayResource],
