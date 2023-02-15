@@ -10,18 +10,18 @@ import { Contract } from "./contract";
 import { ProviderExtra } from "./provider";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
-import { ImageUtils } from "media";
+import { ImageUtils } from "../media";
 
 export enum SubscriptionStatus {
   ACTIVE = "active",
   CANCELED = "canceled",
   CREATED = "created",
   DELETED = "deleted",
-  REACTIVATED = 'reactivated',
+  REACTIVATED = "reactivated",
   SUSPENDED = "suspended",
   PROVIDER_SUBSCRIPTION_CANCELED = "provider.subscription.canceled",
   PROVIDER_SUBSCRIPTION_CREATED = "provider.subscription.created",
-  PROVIDER_SUBSCRIPTION_REACTIVATED = 'provider.subscription.reactivated',
+  PROVIDER_SUBSCRIPTION_REACTIVATED = "provider.subscription.reactivated",
   PROVIDER_SUBSCRIPTION_SUSPENDED = "provider.subscription.suspended",
 }
 
@@ -57,9 +57,15 @@ export const SubscriptionStatusTransitionMap = new Map<
   ],
   [
     SubscriptionStatus.SUSPENDED,
-    [SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED, SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED],
+    [
+      SubscriptionStatus.PROVIDER_SUBSCRIPTION_CANCELED,
+      SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED,
+    ],
   ],
-  [SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED, [SubscriptionStatus.REACTIVATED]],
+  [
+    SubscriptionStatus.PROVIDER_SUBSCRIPTION_REACTIVATED,
+    [SubscriptionStatus.REACTIVATED],
+  ],
   [SubscriptionStatus.REACTIVATED, [SubscriptionStatus.ACTIVE]],
 ]);
 

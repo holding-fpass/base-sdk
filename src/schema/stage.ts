@@ -11,7 +11,7 @@ import { Metadata } from "./metadata";
 import { Plan } from "./plan";
 import { Timestamp } from "firebase-admin/firestore";
 import { User } from "./user";
-import { ImageUtils } from "media";
+import { ImageUtils } from "../media";
 
 export enum StageStatus {
   CREATED = "created",

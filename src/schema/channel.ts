@@ -7,7 +7,7 @@ import {
 
 import { Playlist } from "./playlist";
 import { Whitelabel } from "./whitelabel";
-import { ImageUtils } from "media";
+import { ImageUtils } from "../media";
 
 export enum ChannelStatus {
   CREATED = "created",

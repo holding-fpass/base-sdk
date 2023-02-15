@@ -8,7 +8,7 @@ import {
 
 import { Course } from "./course";
 import { Tag } from "./tag";
-import { ImageUtils } from "media";
+import { ImageUtils } from "../media";
 
 export class Playlist extends Resource implements SearchableResource {
   resourceType = ResourceType.PLAYLIST;

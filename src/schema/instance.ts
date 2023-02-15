@@ -9,7 +9,7 @@ import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
 import { Whitelabel } from "./whitelabel";
-import { ImageUtils } from "media";
+import { ImageUtils } from "../media";
 
 export enum InstanceStatus {
   CREATED = "created",
@@ -30,7 +30,7 @@ interface InstanceCertificateSettings {
   minimumWatchTime: number;
   primaryTextColor: string;
   platformDisplayName: string;
-    /**
+  /**
    * Certificate background
    */
   image824x556?: string;

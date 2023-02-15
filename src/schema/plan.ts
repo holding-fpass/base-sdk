@@ -8,7 +8,7 @@ import {
 import { Contract } from "./contract";
 import { ProviderExtra } from "./provider";
 import { Whitelabel } from "./whitelabel";
-import { ImageUtils } from "media";
+import { ImageUtils } from "../media";
 
 export enum PlanStatus {
   CREATED = "created",
