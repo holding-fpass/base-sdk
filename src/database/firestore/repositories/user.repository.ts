@@ -2,15 +2,10 @@ import {
   CommonFirestoreRepository,
   ICommonFirestoreRepositoryConstructorParams,
 } from "./common.repository";
-import { FirestoreSDK } from "../FirestoreSDK";
+import { FirestoreResourceDataConverter, FirestoreSDK } from "../FirestoreSDK";
 import { IUserRepository } from "../../repositories/userRepository.interface";
-import {
-  ResourceType,
-  SystemTag,
-  TagType,
-  User,
-  UserPermission,
-} from "../../../schema";
+import { ResourceType, SystemTag, User, UserPermission } from "../../../schema";
+import { Query } from "firebase-admin/firestore";
 
 interface IUserFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
@@ -46,35 +41,33 @@ export class UserFirestoreRepository
     return this.snapshotGetFirst(snapshot);
   }
 
-  public findByTags(tags: string[] | SystemTag): NodeJS.ReadableStream {
+  public findByTags(tags: string[] | SystemTag): Query<User> {
+    const firestoreResourceDataConverter =
+      new FirestoreResourceDataConverter<User>();
     switch (tags) {
       case SystemTag.USER_AUTHENTICATED:
         return this.firestore
           .collection(this.baseCollectionPath)
-          .withConverter(FirestoreSDK.withConverter)
-          .where("permission", "==", UserPermission.STUDENT)
-          .stream();
+          .withConverter<User>(firestoreResourceDataConverter)
+          .where("permission", "==", UserPermission.STUDENT);
       case SystemTag.USER_MACHINE:
         return this.firestore
           .collection(this.baseCollectionPath)
-          .withConverter(FirestoreSDK.withConverter)
-          .where("permission", "==", UserPermission.MACHINE)
-          .stream();
+          .withConverter(firestoreResourceDataConverter)
+          .where("permission", "==", UserPermission.MACHINE);
       case SystemTag.USER_ALL:
         return this.firestore
           .collection(this.baseCollectionPath)
-          .withConverter(FirestoreSDK.withConverter)
+          .withConverter(firestoreResourceDataConverter)
           .where("permission", "in", [
             UserPermission.MACHINE,
             UserPermission.STUDENT,
-          ])
-          .stream();
+          ]);
       default:
         return this.firestore
           .collection(this.baseCollectionPath)
-          .withConverter(FirestoreSDK.withConverter)
-          .where("tags_idx", "array-contains-any", tags)
-          .stream();
+          .withConverter(firestoreResourceDataConverter)
+          .where("tags_idx", "array-contains-any", tags);
     }
   }
 }
