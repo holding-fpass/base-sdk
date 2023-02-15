@@ -61,7 +61,7 @@ export class Interaction
   // ownerId!: string;
   // Dataforward
   __dataforward?: InteractionDataforward;
-  //
+  // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Interaction): DisplayResource {
     return {

@@ -272,6 +272,7 @@ export abstract class StateMachine<Entity, Status> {
         parentType: event.parentType as unknown as ResourceType,
         timestamp: Timestamp.now(),
         whitelabel: event.whitelabel as unknown as Whitelabel,
+        isPublic: false,
       }
     );
     // Return
