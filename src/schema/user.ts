@@ -126,6 +126,9 @@ export class User extends Resource<UserStatus> implements SearchableResource {
       type: resource.permission,
       isPublic: false,
       isSearchable: resource?.isSearchable,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

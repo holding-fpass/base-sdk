@@ -38,11 +38,15 @@ export class Coupon
   isPublic = false;
   public static asDisplayResource(resource: Coupon): DisplayResource {
     return {
-      resourceType: ResourceType.CONTRACT,
+      resourceType: ResourceType.COUPON,
       resourceId: resource.resourceId,
       h1: resource.code,
       status: resource.status,
       isPublic: resource.isPublic,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt
     };
   }
 }

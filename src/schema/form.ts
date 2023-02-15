@@ -105,8 +105,14 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
       resourceType: ResourceType.FORM,
       resourceId: resource.resourceId,
       h1: resource.name,
+      type: resource.layout,
       status: resource.status,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

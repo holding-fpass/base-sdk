@@ -40,7 +40,13 @@ export class Video extends Resource<VideoStatus> implements SearchableResource {
       resourceId: resource.resourceId,
       h1: resource.resourceUrl,
       status: resource.status,
+      type: resource.productType,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

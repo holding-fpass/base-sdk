@@ -11,6 +11,7 @@ import { Metadata } from "./metadata";
 import { Plan } from "./plan";
 import { Timestamp } from "firebase-admin/firestore";
 import { User } from "./user";
+import { ImageUtils } from "media";
 
 export enum StageStatus {
   CREATED = "created",
@@ -94,6 +95,15 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
       h1: resource.name,
       status: resource.status,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image968x168 as string,
+        "968x168"
+      ),
     };
   }
 }

@@ -8,6 +8,7 @@ import {
 import { Contract } from "./contract";
 import { ProviderExtra } from "./provider";
 import { Whitelabel } from "./whitelabel";
+import { ImageUtils } from "media";
 
 export enum PlanStatus {
   CREATED = "created",
@@ -57,6 +58,15 @@ export class Plan extends Resource<PlanStatus> implements SearchableResource {
       h1: data.name,
       status: data.status,
       isPublic: data.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image128x128 as string,
+        "128x128"
+      ),
     };
   }
 }

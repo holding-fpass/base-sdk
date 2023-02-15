@@ -1,6 +1,7 @@
 import {
   DisplayResource,
   Resource,
+  ResourceStatus,
   ResourceType,
   SearchableResource,
 } from "./resource";
@@ -34,6 +35,13 @@ export class Page extends Resource implements SearchableResource {
       resourceId: data.resourceId,
       h1: data.name,
       isPublic: data.isPublic,
+      resourceUrl: resource.url,
+      whitelabel: resource.whitelabel,
+      status: ResourceStatus.CREATED,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

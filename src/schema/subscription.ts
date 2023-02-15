@@ -10,6 +10,7 @@ import { Contract } from "./contract";
 import { ProviderExtra } from "./provider";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
+import { ImageUtils } from "media";
 
 export enum SubscriptionStatus {
   ACTIVE = "active",
@@ -103,6 +104,15 @@ export class Subscription
       h1: data.name,
       status: data.status,
       isPublic: data.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image128x128 as string,
+        "128x128"
+      ),
     };
   }
 }

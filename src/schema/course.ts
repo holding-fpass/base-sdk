@@ -1,6 +1,7 @@
 import {
   DisplayResource,
   Resource,
+  ResourceStatus,
   ResourceType,
   SearchableResource,
 } from "./resource";
@@ -40,6 +41,13 @@ export class ContentItem extends Resource {
       resourceType: ResourceType.CONTENT_ITEM,
       resourceId: resource.resourceId,
       h1: resource.name,
+      status: ResourceStatus.CREATED,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
+      type: resource.type
     };
   }
 }
@@ -154,6 +162,9 @@ export class Content
       type: resource.type,
       isPublic: true,
       isSearchable: resource?.isSearchable,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt
     };
   }
 }
@@ -173,6 +184,16 @@ export class Module extends Resource {
       resourceType: ResourceType.MODULE,
       resourceId: resource.resourceId,
       h1: resource.name,
+      whitelabel: resource.whitelabel,
+      status: ResourceStatus.CREATED,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image256x256 as string,
+        "256x256"
+      ),
     };
   }
 }
@@ -277,7 +298,11 @@ export class Course
         "400x512"
       ),
       isPublic: true,
+      type: resource.type,
       isSearchable: resource?.isSearchable,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

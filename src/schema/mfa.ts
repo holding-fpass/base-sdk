@@ -48,7 +48,13 @@ export class Mfa extends Resource<MfaStatus> implements SearchableResource {
       resourceId: resource.resourceId,
       h1: resource.code,
       status: resource.status,
+      type: resource.type,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

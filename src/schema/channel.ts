@@ -7,6 +7,7 @@ import {
 
 import { Playlist } from "./playlist";
 import { Whitelabel } from "./whitelabel";
+import { ImageUtils } from "media";
 
 export enum ChannelStatus {
   CREATED = "created",
@@ -54,6 +55,14 @@ export class Channel
       status: resource.status,
       isPublic: true,
       isSearchable: resource?.isSearchable,
+      timestamp: resource.timestamp,
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image160x40 as string,
+        "160x40"
+      ),
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

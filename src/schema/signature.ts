@@ -1,6 +1,7 @@
 import {
   DisplayResource,
   Resource,
+  ResourceStatus,
   ResourceType,
   SearchableResource,
 } from "./resource";
@@ -19,6 +20,12 @@ export class Signature extends Resource implements SearchableResource {
       resourceId: resource.resourceId,
       h1: resource.footprint,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      status: ResourceStatus.CREATED,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

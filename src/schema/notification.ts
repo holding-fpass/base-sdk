@@ -1,6 +1,7 @@
 import {
   DisplayResource,
   Resource,
+  ResourceStatus,
   ResourceType,
   SearchableResource,
 } from "./resource";
@@ -81,6 +82,12 @@ export class Notification
       resourceId: resource.resourceId,
       h1: resource.message?.body,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      status: ResourceStatus.CREATED,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

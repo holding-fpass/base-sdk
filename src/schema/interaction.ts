@@ -77,6 +77,9 @@ export class Interaction
       type: resource.type,
       isPublic: false,
       isSearchable: resource?.isSearchable,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

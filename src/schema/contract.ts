@@ -62,6 +62,10 @@ export class Contract
       h1: resource.name,
       status: resource.status,
       isPublic: resource.isPublic,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

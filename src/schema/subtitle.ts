@@ -90,6 +90,11 @@ export class Subtitle
       h1: resource.name,
       status: resource.status,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

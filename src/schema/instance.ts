@@ -9,6 +9,7 @@ import { InteractionDataforwardType } from "./interaction";
 import { Metadata } from "./metadata";
 import { ProviderExtra } from "./provider";
 import { Whitelabel } from "./whitelabel";
+import { ImageUtils } from "media";
 
 export enum InstanceStatus {
   CREATED = "created",
@@ -201,6 +202,15 @@ export class Instance
       h1: resource.name,
       status: resource.status,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image130x40 as string,
+        "130x40"
+      ),
     };
   }
 }

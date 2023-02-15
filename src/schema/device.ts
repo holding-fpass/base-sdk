@@ -1,6 +1,7 @@
 import {
   DisplayResource,
   Resource,
+  ResourceStatus,
   ResourceType,
   SearchableResource,
 } from "./resource";
@@ -20,6 +21,12 @@ export class Device extends Resource implements SearchableResource {
       resourceId: resource.resourceId,
       h1: resource.name,
       isPublic: resource.isPublic,
+      whitelabel: resource.whitelabel,
+      status: ResourceStatus.CREATED,
+      timestamp: resource.timestamp,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }

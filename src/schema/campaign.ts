@@ -73,6 +73,9 @@ export class Campaign extends Resource implements SearchableResource {
       timestamp: resource.timestamp,
       status: resource.status,
       isPublic: resource.isPublic,
+      createdAt: resource.createdAt,
+      updatedAt: resource.updatedAt,
+      deletedAt: resource.deletedAt,
     };
   }
 }
