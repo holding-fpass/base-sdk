@@ -140,10 +140,12 @@ export class Content
     resource: Content
   ): DisplayResource<ContentType> {
     return {
-      resourceType: ResourceType.CONTENT,
       resourceId: resource.resourceId,
+      resourceType: ResourceType.CONTENT,
       h1: resource.name,
       h2: resource?.mentors?.map((mentor) => mentor.name)?.join(", "),
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
       status: resource.status,
       imageUrl: ImageUtils.imageOptimized(
         resource.image144x80 as string,

@@ -18,6 +18,7 @@ import { Subscription } from "./subscription";
 import { Tag } from "./tag";
 import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
+import { ImageUtils } from "../media";
 
 export enum UserPermission {
   ADMINISTRATOR = "administrator",
@@ -111,10 +112,20 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   isPublic = false;
   public static asDisplayResource(resource: User): DisplayResource {
     return {
-      resourceType: ResourceType.USER,
       resourceId: resource.resourceId,
+      resourceType: ResourceType.USER,
       h1: resource.name,
+      h2: resource.email,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      status: resource.status,
+      imageUrl: ImageUtils.imageOptimized(
+        resource.image128x128 as string,
+        "128x128"
+      ),
+      type: resource.permission,
       isPublic: false,
+      isSearchable: resource?.isSearchable,
     };
   }
 }
