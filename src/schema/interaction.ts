@@ -1,6 +1,11 @@
 import { User } from "@sentry/node";
 import { Timestamp } from "firebase-admin/firestore";
-import { Resource, ResourceType } from "./resource";
+import {
+  Resource,
+  ResourceType,
+  SearchableResource,
+  DisplayResource,
+} from "./resource";
 
 export enum InteractionStatus {
   CREATED = "created",
@@ -34,7 +39,10 @@ export const InteractionStatusTransitionMap = new Map<
   InteractionStatus[]
 >([[InteractionStatus.CREATED, [InteractionStatus.ACTIVE]]]);
 
-export class Interaction extends Resource<InteractionStatus> {
+export class Interaction
+  extends Resource<InteractionStatus>
+  implements SearchableResource
+{
   resourceType = ResourceType.INTERACTION;
   transitionMap? = InteractionStatusTransitionMap;
   productId!: string;
@@ -53,4 +61,22 @@ export class Interaction extends Resource<InteractionStatus> {
   // ownerId!: string;
   // Dataforward
   __dataforward?: InteractionDataforward;
+  //
+  isPublic = false;
+  public static asDisplayResource(resource: Interaction): DisplayResource {
+    return {
+      resourceId: resource.resourceId,
+      resourceType: ResourceType.INTERACTION,
+      h1: resource.productId,
+      h2: resource.productType,
+      parentId: resource.parentId,
+      parentType: resource.parentType,
+      whitelabel: resource.whitelabel,
+      timestamp: resource.timestamp,
+      status: resource.status,
+      type: resource.type,
+      isPublic: false,
+      isSearchable: resource?.isSearchable,
+    };
+  }
 }
