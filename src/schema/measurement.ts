@@ -17,7 +17,7 @@ export enum MeasurementType {
   COURSE_STUDENTS_COUNT = "course.students.count",
   COURSE_REACTION_COUNT = "course.reaction.count",
   COURSE_COMPLETION_RATE = "course.completion.rate",
-  COURSE_CONTENT_WITH_HIGHER_DROPOUT = 'course.content.with.higher.dropout',
+  COURSE_CONTENT_WITH_HIGHER_DROPOUT = "course.content.with.higher.dropout",
   COURSE_SPEED_AVERAGE = "course.speed.average",
   // Content
   CONTENT_CLICK = "content.click",
@@ -39,11 +39,12 @@ export enum MeasurementType {
   RESPONSE_COUNT_4 = "response.count.4",
   RESPONSE_COUNT_5 = "response.count.5",
   // Transaction
-  TRANSACTIONS_TOTAL_VALUE = 'transactions.total.value',
+  TRANSACTIONS_TOTAL_VALUE = "transactions.total.value",
   // User
-  USERS_TOTAL_COUNT = 'users.total.count',
-  DEVICES_TOTAL_COUNT = 'devices.total.count',
-  USERS_ACTIVE_COUNT = 'users.active.count',
+  USERS_TOTAL_COUNT = "users.total.count",
+  DEVICES_TOTAL_COUNT = "devices.total.count",
+  USERS_ACTIVE_COUNT = "users.active.count",
+  SEARCH_QUERIES = "search.queries",
 }
 
 export enum MeasurementStatus {
