@@ -8,7 +8,7 @@ import {
   ICommonRepository,
   ICommonRepositoryFindAllParams,
 } from "../../repositories/commonRepository.interface";
-import { ResourceType, Whitelabel } from "../../../schema";
+import { Resource, ResourceType, Whitelabel } from "../../../schema";
 
 export interface ICommonFirestoreRepositoryConstructorParams {
   entity: ResourceType;
@@ -54,7 +54,10 @@ export class CommonFirestoreRepository<T = unknown>
     await this.firestore
       .collection(this.baseCollectionPath)
       .doc(id)
-      .create(params as any);
+      .create({
+        ...(params as any),
+        resourceType: this.entity,
+      } as Resource);
 
     return this.findById(id) as Promise<T>;
   }
