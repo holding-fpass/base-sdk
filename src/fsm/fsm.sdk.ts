@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { FSMError } from "../error";
-import { FieldValue, Timestamp, getFirestore } from "firebase-admin/firestore";
+import { FieldValue, Timestamp } from "firebase-admin/firestore";
 import { Document } from "../data";
 import { Publisher } from "../messageBroker";
 import {
