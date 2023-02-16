@@ -50,7 +50,7 @@ export class CommonFirestoreRepository<T = unknown>
     return document.data() as T | undefined;
   }
 
-  public async create(id: string, params: T): Promise<T> {
+  public async create(id: string, params: Omit<T, "resourceType">): Promise<T> {
     await this.firestore
       .collection(this.baseCollectionPath)
       .doc(id)
