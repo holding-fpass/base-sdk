@@ -96,10 +96,10 @@ export class Measurement extends Resource<MeasurementStatus> {
   filter!: Partial<MeasurementFilter>;
   filterHash!: string;
   user!: Partial<User>;
-  value!: string;
+  value?: string;
   values?: MeasurementValue[];
   // Provider
-  force!: boolean;
-  permanent!: boolean;
+  force?: boolean;
+  permanent?: boolean;
   providerExtra?: ProviderExtra[];
 }
