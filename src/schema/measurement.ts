@@ -83,6 +83,11 @@ export class MeasurementFilter {
   dateStart!: string;
   dateEnd!: string;
 }
+
+export interface MeasurementValue {
+  key: string;
+  value: any;
+}
 export class Measurement extends Resource<MeasurementStatus> {
   resourceType = ResourceType.MEASUREMENT;
   //
@@ -92,6 +97,7 @@ export class Measurement extends Resource<MeasurementStatus> {
   filterHash!: string;
   user!: Partial<User>;
   value!: string;
+  values?: MeasurementValue[];
   // Provider
   force!: boolean;
   permanent!: boolean;
