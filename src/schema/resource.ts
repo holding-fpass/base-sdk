@@ -91,6 +91,8 @@ export class Resource<Status = any> {
   statusTo?: Status;
   statusToError?: string;
   transitionMap?: Map<Status, Status[]>;
+  // Responsability
+  ownerId?: string;
   // Searchablility
   isSearchable?: boolean;
   // Approval
