@@ -5,7 +5,7 @@ import {
 import { FirestoreResourceDataConverter, FirestoreSDK } from "../FirestoreSDK";
 import { IUserRepository } from "../../repositories/userRepository.interface";
 import { ResourceType, SystemTag, User, UserPermission } from "../../../schema";
-import { Query } from "firebase-admin/firestore";
+import { QuerySnapshot } from "firebase-admin/firestore";
 
 interface IUserFirestoreRepositoryConstructorParams
   extends Omit<ICommonFirestoreRepositoryConstructorParams, "entity"> {}
@@ -41,7 +41,7 @@ export class UserFirestoreRepository
     return this.snapshotGetFirst(snapshot);
   }
 
-  public findByTags(tags: string[] | SystemTag): Query<User> {
+  public findByTags(tags: string[] | SystemTag): Promise<QuerySnapshot<User>> {
     const firestoreResourceDataConverter =
       new FirestoreResourceDataConverter<User>();
     switch (tags) {
@@ -49,12 +49,14 @@ export class UserFirestoreRepository
         return this.firestore
           .collection(this.baseCollectionPath)
           .withConverter<User>(firestoreResourceDataConverter)
-          .where("permission", "==", UserPermission.STUDENT);
+          .where("permission", "==", UserPermission.STUDENT)
+          .get();
       case SystemTag.USER_MACHINE:
         return this.firestore
           .collection(this.baseCollectionPath)
           .withConverter(firestoreResourceDataConverter)
-          .where("permission", "==", UserPermission.MACHINE);
+          .where("permission", "==", UserPermission.MACHINE)
+          .get();
       case SystemTag.USER_ALL:
         return this.firestore
           .collection(this.baseCollectionPath)
@@ -62,12 +64,14 @@ export class UserFirestoreRepository
           .where("permission", "in", [
             UserPermission.MACHINE,
             UserPermission.STUDENT,
-          ]);
+          ])
+          .get();
       default:
         return this.firestore
           .collection(this.baseCollectionPath)
           .withConverter(firestoreResourceDataConverter)
-          .where("tags_idx", "array-contains-any", tags);
+          .where("tags_idx", "array-contains-any", tags)
+          .get();
     }
   }
 }
