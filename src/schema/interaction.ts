@@ -70,6 +70,8 @@ export class Interaction
       h1: resource.productId,
       h2: resource.productType,
       ownerId: resource.user?.id,
+      referenceId: resource.productId,
+      referenceType: resource.productType,
       parentId: resource.parentId,
       parentType: resource.parentType,
       whitelabel: resource.whitelabel,

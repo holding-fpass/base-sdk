@@ -127,6 +127,8 @@ export class DisplayResource<Type = any> extends Resource {
   parent?: DisplayResource;
   parentId?: string;
   parentType?: ResourceType;
+  referenceId?: string;
+  referenceType?: ResourceType;
   dateStart?: string;
   dateEnd?: string;
   isPublic?: boolean;
