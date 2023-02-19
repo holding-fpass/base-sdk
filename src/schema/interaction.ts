@@ -67,7 +67,7 @@ export class Interaction
       resourceId: resource.resourceId,
       resourceType: ResourceType.INTERACTION,
       h1: `${resource.productType}:${resource.type}`,
-      ownerId: resource.user?.id,
+      ownerId: resource.ownerId || resource.user?.id,
       referenceId: resource.productId,
       referenceType: resource.productType,
       parentId: resource.parentId,
