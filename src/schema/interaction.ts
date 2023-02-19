@@ -41,10 +41,9 @@ export const InteractionStatusTransitionMap = new Map<
 
 export class Interaction
   extends Resource<InteractionStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.INTERACTION;
-  transitionMap? = InteractionStatusTransitionMap;
+  transitionMap?= InteractionStatusTransitionMap;
   productId!: string;
   productType!: ResourceType;
   parentId?: string;
@@ -67,8 +66,7 @@ export class Interaction
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.INTERACTION,
-      h1: resource.productId,
-      h2: resource.productType,
+      h1: `${resource.productType}:${resource.type}`,
       ownerId: resource.user?.id,
       referenceId: resource.productId,
       referenceType: resource.productType,
