@@ -19,6 +19,7 @@ import { Subscription } from "./subscription";
 import { Subtitle } from "./subtitle";
 import { User } from "./user";
 import { Video } from "./video";
+import { Interaction } from "./interaction";
 
 export interface IDisplayResourceFunction extends Function {
   (resource: any): DisplayResource;
@@ -37,6 +38,7 @@ export const DisplayResourceFunctionMap = new Map<
   [ResourceType.COURSE, Course.asDisplayResource],
   [ResourceType.DEVICE, Device.asDisplayResource],
   [ResourceType.FORM, Form.asDisplayResource],
+  [ResourceType.INTERACTION, Interaction.asDisplayResource],
   [ResourceType.INSTANCE, Instance.asDisplayResource],
   [ResourceType.MFA, Mfa.asDisplayResource],
   [ResourceType.MODULE, Module.asDisplayResource],

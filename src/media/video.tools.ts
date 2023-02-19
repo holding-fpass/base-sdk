@@ -5,7 +5,7 @@ export enum VideoFileFormat {
 }
 
 export class VideoUtils {
-  static getApiUrl(url: string) {
+  static getApiUrl(url?: string) {
     if (!url) return url;
     return url.replace(
       "storage.googleapis.com/fpass-content",

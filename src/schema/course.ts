@@ -9,7 +9,7 @@ import {
 import { Channel } from "./channel";
 import { Contract } from "./contract";
 import { Form } from "./form";
-import { ImageUtils } from "../media";
+import { ImageUtils, VideoUtils } from "../media";
 import { ProviderExtra } from "./provider";
 import { Stage } from "./stage";
 import { Subtitle } from "./subtitle";
@@ -99,8 +99,7 @@ export const ContentStatusTransitionMap = new Map<
 
 export class Content
   extends Resource<ContentStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.CONTENT;
   transitionMap = ContentStatusTransitionMap;
   type!: ContentType;
@@ -159,6 +158,9 @@ export class Content
         resource.image144x80 as string,
         "144x80"
       ),
+      resourceUrl: VideoUtils.getApiUrl(resource.video1920x1080),
+      parentId: resource.parentId,
+      parentType: resource.parentType,
       type: resource.type,
       isPublic: true,
       isSearchable: resource?.isSearchable,
@@ -243,8 +245,7 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
 ]);
 export class Course
   extends Resource<CourseStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.COURSE;
   transitionMap = CourseStatusTransitionMap;
   resourceId!: string;
