@@ -108,6 +108,14 @@ export abstract class SearchableResource {
   }
 }
 
+export interface BigQueryResourceInsert {
+  table: string;
+  data: any;
+}
+export interface BigQueryResource {
+  toBigQueryResourceInsert(): BigQueryResourceInsert;
+}
+
 export class DisplayResource<Type = any> extends Resource {
   h1?: string;
   h2?: string;

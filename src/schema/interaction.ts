@@ -1,3 +1,4 @@
+import { BigQueryTimestamp } from "@google-cloud/bigquery";
 import { User } from "@sentry/node";
 import { Timestamp } from "firebase-admin/firestore";
 import {
@@ -5,6 +6,8 @@ import {
   ResourceType,
   SearchableResource,
   DisplayResource,
+  BigQueryResource,
+  BigQueryResourceInsert,
 } from "./resource";
 
 export enum InteractionStatus {
@@ -41,7 +44,7 @@ export const InteractionStatusTransitionMap = new Map<
 
 export class Interaction
   extends Resource<InteractionStatus>
-  implements SearchableResource {
+  implements SearchableResource, BigQueryResource {
   resourceType = ResourceType.INTERACTION;
   transitionMap?= InteractionStatusTransitionMap;
   productId!: string;
@@ -81,6 +84,55 @@ export class Interaction
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
       deletedAt: resource.deletedAt,
+    };
+  }
+
+  public toBigQueryResourceInsert(): BigQueryResourceInsert {
+    if (
+      this.resourceType === ResourceType.INTERACTION &&
+      this.productType === ResourceType.CONTENT &&
+      this.type === InteractionType.VIEW
+    ) {
+      return this.bigQueryInteractionContentViewInsertData();
+    }
+    return {
+      table: 'resource',
+      data: Interaction.asDisplayResource(this)
+    };
+  }
+
+  private bigQueryInteractionContentViewInsertData() {
+    return {
+      table: 'InteractionContentView',
+      data: {
+        resourceId: this.resourceId,
+        whitelabel: this.whitelabel,
+        productId: this.productId,
+        productType: this.productType,
+        parentId: this.parentId,
+        parentType: this.parentType,
+        ownerId: this.ownerId,
+        mediaStart: this.mediaStart,
+        mediaEnd: this.mediaEnd,
+        mediaCount: this.mediaCount || 10,
+        mediaSpeed: this.mediaSpeed || 1,
+        mediaResolution: this.mediaResolution || '1080p',
+        createdAt: new BigQueryTimestamp((this.timestamp as Timestamp).toDate()),
+      } as Pick<
+        Interaction,
+        | 'resourceId'
+        | 'whitelabel'
+        | 'productId'
+        | 'productType'
+        | 'parentId'
+        | 'parentType'
+        | 'ownerId'
+        | 'mediaStart'
+        | 'mediaEnd'
+        | 'mediaCount'
+        | 'mediaSpeed'
+        | 'mediaResolution'
+      > & { createdAt: BigQueryTimestamp },
     };
   }
 }
