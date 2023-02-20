@@ -5,6 +5,7 @@ import { Document } from "../data";
 import { Publisher } from "../messageBroker";
 import {
   BaseEvent,
+  Interaction,
   InteractionType,
   ResourceType,
   SlimEvent,
@@ -273,7 +274,7 @@ export abstract class StateMachine<Entity, Status> {
         timestamp: Timestamp.now(),
         whitelabel: event.whitelabel as unknown as Whitelabel,
         isPublic: false,
-      }
+      } as unknown as Interaction
     );
     // Return
     return {
