@@ -117,7 +117,7 @@ export class Interaction
         mediaCount: this.mediaCount || 10,
         mediaSpeed: this.mediaSpeed || 1,
         mediaResolution: this.mediaResolution || '1080p',
-        createdAt: new BigQueryTimestamp((this.timestamp as Timestamp).toDate()),
+        createdAt: new BigQueryTimestamp(this.timestamp instanceof Timestamp ? this.timestamp.toDate() : new Date(this.timestamp as string)),
       } as Pick<
         Interaction,
         | 'resourceId'
