@@ -114,8 +114,8 @@ export class Interaction
         ownerId: this.ownerId,
         mediaStart: Number(this.mediaStart?.toFixed(6)),
         mediaEnd: Number(this.mediaEnd?.toFixed(6)),
-        mediaCount: Number(this.mediaCount?.toFixed(2)) || 10,
-        mediaSpeed: Number(this.mediaSpeed?.toFixed(2)) || 1,
+        mediaCount: this.mediaCount ? Number(this.mediaCount)?.toFixed(2) : 10,
+        mediaSpeed: this.mediaSpeed ? Number(this.mediaSpeed)?.toFixed(2) : 1,
         mediaResolution: this.mediaResolution || '1080p',
         createdAt: new BigQueryTimestamp(this.timestamp instanceof Timestamp ? this.timestamp.toDate() : new Date(this.timestamp as string)),
       } as Pick<
