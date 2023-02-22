@@ -5,7 +5,7 @@ import {
   StoryFirestoreRepository,
   UserNotificationFirestoreRepository,
 } from "../src/database/firestore/repositories";
-import { NotificationType, StoryTrigger, Whitelabel } from "../src/schema";
+import { NotificationTrigger, Whitelabel } from "../src/schema";
 
 // Initialize firebaseApp
 Document.app = initializeApp();
@@ -26,8 +26,7 @@ const storyFirestoreRepository = new StoryFirestoreRepository({
 const bootstrap = async () => {
   const notifications =
     await userNotificationFirestoreRepository.findApplicableByTrigger(
-      NotificationType.STORY,
-      StoryTrigger.APP_OPEN,
+      NotificationTrigger.APP_OPEN,
     );
 
   return notifications?.map(({ story }) => {
