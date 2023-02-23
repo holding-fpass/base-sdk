@@ -1,6 +1,5 @@
 import { BigQueryTimestamp } from "@google-cloud/bigquery";
-import { User } from "@sentry/node";
-import { Timestamp } from "firebase-admin/firestore";
+import { Timestamp } from "@google-cloud/firestore";
 import {
   Resource,
   ResourceType,
@@ -9,6 +8,7 @@ import {
   BigQueryResource,
   BigQueryResourceInsert,
 } from "./resource";
+import { User } from "./user";
 
 export enum InteractionStatus {
   CREATED = "created",

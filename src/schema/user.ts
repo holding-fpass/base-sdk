@@ -1,4 +1,6 @@
 import {
+  BigQueryResource,
+  BigQueryResourceInsert,
   DisplayResource,
   Resource,
   ResourceType,
@@ -19,6 +21,8 @@ import { Tag } from "./tag";
 import { Transaction } from "./transaction";
 import { Whitelabel } from "./whitelabel";
 import { ImageUtils } from "../media";
+import { BigQueryTimestamp } from "@google-cloud/bigquery";
+import { Timestamp } from "@google-cloud/firestore";
 
 export enum UserPermission {
   ADMINISTRATOR = "administrator",
@@ -69,7 +73,7 @@ export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.UNAVALIABLE, [UserStatus.DELETED]],
   [UserStatus.DELETED, [UserStatus.CREATED]],
 ]);
-export class User extends Resource<UserStatus> implements SearchableResource {
+export class User extends Resource<UserStatus> implements SearchableResource, BigQueryResource {
   id!: string;
   resourceType = ResourceType.USER;
   transitionMap = UserStatusTransitionMap;
@@ -129,6 +133,22 @@ export class User extends Resource<UserStatus> implements SearchableResource {
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
       deletedAt: resource.deletedAt,
+    };
+  }
+  public toBigQueryResourceInsert(): BigQueryResourceInsert {
+    return {
+      table: 'User',
+      data: {
+        resourceId: this.resourceId,
+        name: this.name,
+        email: this.email,
+        taxId: this.taxId,
+        permission: this.permission,
+        externalId: this.externalId,
+        externalParentId: this.externalParentId,
+        createdAt: new BigQueryTimestamp(this.createdAt instanceof Timestamp ? this.createdAt.toDate() : new Date(this.createdAt as string)),
+        timestamp: new BigQueryTimestamp(this.timestamp instanceof Timestamp ? this.timestamp.toDate() : new Date(this.timestamp as string)),
+      }
     };
   }
 }
