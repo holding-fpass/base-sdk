@@ -70,6 +70,9 @@ export interface DataForwardConfig {
   mongodbUri?: string;
   gcpStorageBucket?: string;
   googleSpreadsheet?: string;
+  azureBlobStorage?: {
+    connectionString: string;
+  }
 }
 
 export interface KycField {
@@ -115,8 +118,7 @@ export const InstanceStatusTransitionMap = new Map<
 
 export class Instance
   extends Resource<InstanceStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.INSTANCE;
   transitionMap = InstanceStatusTransitionMap;
   //

@@ -29,6 +29,7 @@ export enum InteractionDataforwardType {
   MONGODB = "mongodb",
   GCP_CLOUD_STORAGE = "gcp-cloud-storage",
   GOOGLE_SPREADSHEET = "google-spreadsheet",
+  AZURE_BLOB_STORAGE = "azure-blog-storage",
 }
 
 export interface InteractionDataforward {
