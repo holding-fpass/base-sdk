@@ -20,6 +20,7 @@ export * from "./player";
 export * from "./playlist";
 export * from "./provider";
 export * from "./resource";
+export * from "./reaction";
 export * from "./scope";
 export * from "./signature";
 export * from "./stage";
