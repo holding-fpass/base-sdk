@@ -7,6 +7,7 @@ import {
   DisplayResource,
   BigQueryResource,
   SQLQueryResourceInsert,
+  SpannerQueryResource,
 } from "./resource";
 import { User } from "./user";
 
@@ -46,7 +47,7 @@ export const InteractionStatusTransitionMap = new Map<
 
 export class Interaction
   extends Resource<InteractionStatus, InteractionType>
-  implements SearchableResource, BigQueryResource {
+  implements SearchableResource, BigQueryResource, SpannerQueryResource {
   resourceType = ResourceType.INTERACTION;
   productId!: string;
   productType!: ResourceType;
@@ -133,6 +134,42 @@ export class Interaction
         | 'mediaSpeed'
         | 'mediaResolution'
       > & { createdAt: BigQueryTimestamp },
+    };
+  }
+
+  // SpannerQueryResource
+  toSpannerQueryResourceInsert(): SQLQueryResourceInsert {
+    return {
+      table: 'InteractionContentView',
+      data: {
+        resourceId: this.resourceId,
+        whitelabel: this.whitelabel,
+        productId: this.productId,
+        productType: this.productType,
+        parentId: this.parentId,
+        parentType: this.parentType,
+        ownerId: this.ownerId,
+        mediaStart: Number(this.mediaStart?.toFixed(6)),
+        mediaEnd: Number(this.mediaEnd?.toFixed(6)),
+        mediaCount: this.mediaCount ? Number(this.mediaCount)?.toFixed(2) : 10,
+        mediaSpeed: this.mediaSpeed ? Number(this.mediaSpeed)?.toFixed(2) : 1,
+        mediaResolution: this.mediaResolution || '1080p',
+        createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string),
+      } as Pick<
+        Interaction,
+        | 'resourceId'
+        | 'whitelabel'
+        | 'productId'
+        | 'productType'
+        | 'parentId'
+        | 'parentType'
+        | 'ownerId'
+        | 'mediaStart'
+        | 'mediaEnd'
+        | 'mediaCount'
+        | 'mediaSpeed'
+        | 'mediaResolution'
+      > & { createdAt: Date },
     };
   }
 }
