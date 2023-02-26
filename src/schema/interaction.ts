@@ -156,10 +156,10 @@ export class Interaction
         parentId: this.parentId,
         parentType: this.parentType,
         ownerId: this.ownerId,
-        mediaStart: Number(this.mediaStart?.toFixed(6)),
-        mediaEnd: Number(this.mediaEnd?.toFixed(6)),
-        mediaCount: Number(this.mediaCount ? Number(this.mediaCount)?.toFixed(2) : 10),
-        mediaSpeed: Number(this.mediaSpeed ? Number(this.mediaSpeed)?.toFixed(2) : 1),
+        mediaStart: this.mediaStart?.toFixed(6),
+        mediaEnd: this.mediaEnd?.toFixed(6),
+        mediaCount: this.mediaCount ? Number(this.mediaCount)?.toFixed(2) : '10',
+        mediaSpeed: this.mediaSpeed ? Number(this.mediaSpeed)?.toFixed(2) : '1',
         mediaResolution: this.mediaResolution || '1080p',
         createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string),
       } as Pick<
@@ -171,12 +171,8 @@ export class Interaction
         | 'parentId'
         | 'parentType'
         | 'ownerId'
-        | 'mediaStart'
-        | 'mediaEnd'
-        | 'mediaCount'
-        | 'mediaSpeed'
         | 'mediaResolution'
-      > & { createdAt: Date },
+      > & { mediaStart: string, mediaEnd: string, mediaCount: string, mediaSpeed: string, createdAt: Date },
     };
   }
 }
