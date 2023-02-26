@@ -6,7 +6,7 @@ import {
   SearchableResource,
   DisplayResource,
   BigQueryResource,
-  BigQueryResourceInsert,
+  SQLQueryResourceInsert,
 } from "./resource";
 import { User } from "./user";
 
@@ -88,7 +88,7 @@ export class Interaction
     };
   }
 
-  public toBigQueryResourceInsert(): BigQueryResourceInsert {
+  public toBigQueryResourceInsert(): SQLQueryResourceInsert {
     if (
       this.resourceType === ResourceType.INTERACTION &&
       this.productType === ResourceType.CONTENT &&

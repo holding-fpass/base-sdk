@@ -1,6 +1,6 @@
 import {
   BigQueryResource,
-  BigQueryResourceInsert,
+  SQLQueryResourceInsert,
   DisplayResource,
   Resource,
   ResourceType,
@@ -135,7 +135,7 @@ export class User extends Resource<UserStatus> implements SearchableResource, Bi
       deletedAt: resource.deletedAt,
     };
   }
-  public toBigQueryResourceInsert(): BigQueryResourceInsert {
+  public toBigQueryResourceInsert(): SQLQueryResourceInsert {
     return {
       table: 'User',
       data: {

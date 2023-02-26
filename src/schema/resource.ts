@@ -111,12 +111,16 @@ export abstract class SearchableResource {
   }
 }
 
-export interface BigQueryResourceInsert {
+export interface SQLQueryResourceInsert {
   table: string;
   data: any;
 }
 export interface BigQueryResource {
-  toBigQueryResourceInsert(): BigQueryResourceInsert;
+  toBigQueryResourceInsert(): SQLQueryResourceInsert;
+}
+
+export interface SpannerQueryResource {
+  toSpannerQueryResourceInsert(): SQLQueryResourceInsert;
 }
 
 export class DisplayResource<Type = any> extends Resource {
