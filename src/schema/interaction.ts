@@ -21,6 +21,7 @@ export enum InteractionType {
   LEAVE = "leave",
   VIEW = "view",
   UPDATE = "update",
+  REACTION = "reaction",
 }
 
 export enum InteractionDataforwardType {
