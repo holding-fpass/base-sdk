@@ -47,7 +47,6 @@ export class Interaction
   extends Resource<InteractionStatus, InteractionType>
   implements SearchableResource, BigQueryResource {
   resourceType = ResourceType.INTERACTION;
-  transitionMap?= InteractionStatusTransitionMap;
   productId!: string;
   productType!: ResourceType;
   parentId?: string;
