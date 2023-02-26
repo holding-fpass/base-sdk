@@ -8,9 +8,9 @@
     "prebuild": "rimraf dist",
     "build": "npm run prebuild && tsc",
     "build:publish": "npm run build && npm publish",
-    "patch": "npm version patch && npm run build && npm publish",
-    "minor": "npm version minor && npm run build && npm publish",
-    "major": "npm version major && npm run build && npm publish",
+    "patch": "npm version patch && npm run build && npm publish && git push",
+    "minor": "npm version minor && npm run build && npm publish && git push",
+    "major": "npm version major && npm run build && npm publish && git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
