@@ -110,7 +110,6 @@ export class Resource<Status = any, Type = any> {
   statusAt?: string | Timestamp;
   statusTo?: Status;
   statusToError?: string;
-  transitionMap?: Map<Status, Status[]>;
   //
   type?: Type;
   // Responsability

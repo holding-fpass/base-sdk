@@ -31,7 +31,6 @@ export class Channel
   extends Resource<ChannelStatus>
   implements SearchableResource {
   resourceType = ResourceType.CHANNEL;
-  transitionMap = ChannelStatusTransitionMap;
   name!: string;
   slug!: string;
   primaryColor!: string;

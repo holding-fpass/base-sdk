@@ -100,7 +100,6 @@ export class Content
   extends Resource<ContentStatus, ContentType>
   implements SearchableResource {
   resourceType = ResourceType.CONTENT;
-  transitionMap = ContentStatusTransitionMap;
   name!: string;
   slug?: string;
   description?: string;
@@ -245,7 +244,6 @@ export class Course
   extends Resource<CourseStatus, CourseType>
   implements SearchableResource {
   resourceType = ResourceType.COURSE;
-  transitionMap = CourseStatusTransitionMap;
   resourceId!: string;
   name!: string;
   description?: string;

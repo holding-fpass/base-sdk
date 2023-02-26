@@ -23,7 +23,6 @@ export const TagStatusTransitionMap = new Map<TagStatus, TagStatus[]>([
 
 export class Tag extends Resource<TagStatus, TagStatus> {
   resourceType = ResourceType.TAG;
-  transitionMap = TagStatusTransitionMap;
   //
   h1!: string;
 }

@@ -48,7 +48,6 @@ export class Contract
   extends Resource<ContractStatus>
   implements SearchableResource {
   resourceType = ResourceType.CONTRACT;
-  transitionMap = ContractStatusTransitionMap;
   name!: string;
   whitelabel!: Whitelabel;
   items!: ContractItem[];

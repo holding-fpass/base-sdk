@@ -33,7 +33,6 @@ export enum MonthFrequency {
 
 export class Plan extends Resource<PlanStatus> implements SearchableResource {
   resourceType = ResourceType.PLAN;
-  transitionMap = PlanStatusTransitionMap;
   // Plan
   productId!: string;
   productType!: ResourceType.PLATFORM | ResourceType.CHANNEL;

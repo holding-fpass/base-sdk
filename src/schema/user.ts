@@ -76,7 +76,6 @@ export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
 export class User extends Resource<UserStatus> implements SearchableResource, BigQueryResource {
   id!: string;
   resourceType = ResourceType.USER;
-  transitionMap = UserStatusTransitionMap;
   email!: string;
   name?: string;
   taxId?: string;

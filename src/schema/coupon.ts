@@ -22,7 +22,6 @@ export class Coupon
   extends Resource<CouponStatus>
   implements SearchableResource {
   resourceType = ResourceType.COUPON;
-  transitionMap = CouponStatusTransitionMap;
   code!: string;
   quantity?: number;
   productId?: string;

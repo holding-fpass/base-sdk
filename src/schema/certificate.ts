@@ -21,7 +21,6 @@ export enum CertificateType {
 }
 export class Certificate extends Resource<CertificateStatus, CertificateType> {
   resourceType = ResourceType.CERTIFICATE;
-  transitionMap = CertificateStatusTransitionMap;
   product?: Partial<Course>;
   user!: Partial<User>;
   // Media

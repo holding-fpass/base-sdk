@@ -120,7 +120,6 @@ export class Instance
   extends Resource<InstanceStatus>
   implements SearchableResource {
   resourceType = ResourceType.INSTANCE;
-  transitionMap = InstanceStatusTransitionMap;
   //
   name!: Whitelabel;
   description!: string;

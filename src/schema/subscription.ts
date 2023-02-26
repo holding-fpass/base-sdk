@@ -79,7 +79,6 @@ export class Subscription
   extends Resource<SubscriptionStatus>
   implements SearchableResource {
   resourceType = ResourceType.SUBSCRIPTION;
-  transitionMap = SubscriptionStatusTransitionMap;
   // Plan
   productId!: string;
   productType!: ResourceType.PLATFORM | ResourceType.CHANNEL;

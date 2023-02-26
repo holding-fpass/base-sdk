@@ -30,7 +30,6 @@ export const MfaStatusTransitionMap = new Map<MfaStatus, MfaStatus[]>([
 
 export class Mfa extends Resource<MfaStatus, MfaType> implements SearchableResource {
   resourceType = ResourceType.MFA;
-  transitionMap = MfaStatusTransitionMap;
   value!: string;
   code!: string;
   extra?: MfaExtra;
