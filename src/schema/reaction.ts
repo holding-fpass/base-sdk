@@ -29,7 +29,7 @@ export class Reaction extends Resource<ResourceStatus, ReactionType> implements 
       table: 'InteractionReaction',
       data: {
         resourceId: this.resourceId,
-        whitelabel: this.ownerWhitelabel,
+        whitelabel: this.whitelabel,
         productId: this.threadId,
         productType: ResourceType.CONTENT,
         parentId: this.parentId || '00000000-0000-0000-0000-000000000000',
