@@ -38,6 +38,7 @@ export enum ResourceType {
   PLAN = "plan",
   PLATFORM = "platform",
   PLAYLIST = "playlist",
+  REACTION = "reaction",
   SIGNATURE = "signature",
   STAGE = "stage",
   STAGE_CALENDAR_GROUP = "stage.calendar.group",
@@ -76,7 +77,7 @@ export enum ResourceStatus {
   PROVIDER_EXECUTED = "provider.executed",
 }
 
-export class Resource<Status = any> {
+export class Resource<Status = any, Type = any> {
   resourceId!: string;
   resourceType?: ResourceType;
   whitelabel?: Whitelabel;
@@ -91,6 +92,8 @@ export class Resource<Status = any> {
   statusTo?: Status;
   statusToError?: string;
   transitionMap?: Map<Status, Status[]>;
+  //
+  type?: Type;
   // Responsability
   ownerId?: string;
   // Searchablility
