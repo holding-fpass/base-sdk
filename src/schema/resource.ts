@@ -1,6 +1,25 @@
-import { Signature } from "./signature";
 import { Timestamp } from "firebase-admin/firestore";
+import { Campaign } from "./campaign";
+import { Certificate } from "./certificate";
+import { Channel } from "./channel";
+import { Content, Course } from "./course";
+import { Contract } from "./contract";
+import { Coupon } from "./coupon";
+import { FormResponse } from "./form";
+import { Instance } from "./instance";
+import { Measurement } from "./measurement";
+import { Plan } from "./plan";
+import { Playlist } from "./playlist";
+import { Reaction } from "./reaction";
+import { Signature } from "./signature";
+import { Stage } from "./stage";
+import { Story } from "./story";
+import { Subscription } from "./subscription";
+import { Subtitle } from "./subtitle";
+import { Thread } from "./thread";
+import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
+import { Notification } from "./notification";
 
 export enum ResourceType {
   APIKEY = "apikey",
@@ -148,3 +167,26 @@ export class DisplayResource<Type = any> extends Resource {
   dateEnd?: string;
   isPublic?: boolean;
 }
+
+export const ResourceTypePrototypeMap = new Map<ResourceType, Resource>([
+  [ResourceType.CAMPAIGN, Campaign.prototype],
+  [ResourceType.CERTIFICATE, Certificate.prototype],
+  [ResourceType.CHANNEL, Channel.prototype],
+  [ResourceType.CONTENT, Content.prototype],
+  [ResourceType.CONTRACT, Contract.prototype],
+  [ResourceType.COUPON, Coupon.prototype],
+  [ResourceType.COURSE, Course.prototype],
+  [ResourceType.FORM_RESPONSE, FormResponse.prototype],
+  [ResourceType.INSTANCE, Instance.prototype],
+  [ResourceType.MEASUREMENT, Measurement.prototype],
+  [ResourceType.NOTIFICATION, Notification.prototype],
+  [ResourceType.PLAN, Plan.prototype],
+  [ResourceType.PLAYLIST, Playlist.prototype],
+  [ResourceType.REACTION, Reaction.prototype],
+  [ResourceType.STAGE, Stage.prototype],
+  [ResourceType.STORY, Story.prototype],
+  [ResourceType.SUBSCRIPTION, Subscription.prototype],
+  [ResourceType.SUBTITLE, Subtitle.prototype],
+  [ResourceType.THREAD, Thread.prototype],
+  [ResourceType.USER, User.prototype],
+])
