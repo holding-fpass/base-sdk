@@ -29,14 +29,14 @@ export class Reaction extends Resource<ResourceStatus, ReactionType> implements 
       table: 'InteractionReaction',
       data: {
         resourceId: this.resourceId,
-        whitelabel: this.whitelabel,
+        whitelabel: this.ownerWhitelabel,
         productId: this.threadId,
         productType: ResourceType.CONTENT,
-        parentId: this.parentId,
-        parentType: this.parentType,
+        parentId: this.parentId || '00000000-0000-0000-0000-000000000000',
+        parentType: this.parentType || ResourceType.PLATFORM,
         ownerId: this.ownerId,
         emoji: this.content,
-        createdAt: this.timestamp instanceof Timestamp ? this.timestamp.toDate() : new Date(this.timestamp as string)
+        createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string)
       }
     }
   }
