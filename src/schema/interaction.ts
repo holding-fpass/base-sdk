@@ -44,7 +44,7 @@ export const InteractionStatusTransitionMap = new Map<
 >([[InteractionStatus.CREATED, [InteractionStatus.ACTIVE]]]);
 
 export class Interaction
-  extends Resource<InteractionStatus>
+  extends Resource<InteractionStatus, InteractionType>
   implements SearchableResource, BigQueryResource {
   resourceType = ResourceType.INTERACTION;
   transitionMap?= InteractionStatusTransitionMap;
@@ -52,7 +52,6 @@ export class Interaction
   productType!: ResourceType;
   parentId?: string;
   parentType?: ResourceType;
-  type!: InteractionType;
   user?: Pick<User, "id">;
   // Media
   mediaStart?: number;
@@ -66,7 +65,7 @@ export class Interaction
   __dataforward?: InteractionDataforward;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Interaction): DisplayResource {
+  public static asDisplayResource(resource: Interaction): DisplayResource<any, InteractionStatus> {
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.INTERACTION,

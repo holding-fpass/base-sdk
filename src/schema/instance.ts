@@ -197,7 +197,7 @@ export class Instance
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Instance): DisplayResource {
+  public static asDisplayResource(resource: Instance): DisplayResource<any, InstanceStatus> {
     return {
       resourceType: ResourceType.INSTANCE,
       resourceId: resource.resourceId,

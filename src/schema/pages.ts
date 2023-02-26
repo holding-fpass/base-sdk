@@ -28,7 +28,7 @@ export class Page extends Resource implements SearchableResource {
   userTags_idx?: string[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: any): DisplayResource {
+  asDisplayResource(resource: any): DisplayResource<any, ResourceStatus> {
     const data = resource as Page;
     return {
       resourceType: ResourceType.PAGE,

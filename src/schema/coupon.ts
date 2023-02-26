@@ -20,8 +20,7 @@ export const CouponStatusTransitionMap = new Map<CouponStatus, CouponStatus[]>([
 
 export class Coupon
   extends Resource<CouponStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.COUPON;
   transitionMap = CouponStatusTransitionMap;
   code!: string;
@@ -36,7 +35,7 @@ export class Coupon
   percentage?: number;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Coupon): DisplayResource {
+  public static asDisplayResource(resource: Coupon): DisplayResource<any, CouponStatus> {
     return {
       resourceType: ResourceType.COUPON,
       resourceId: resource.resourceId,

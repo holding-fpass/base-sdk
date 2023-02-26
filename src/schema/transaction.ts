@@ -87,9 +87,8 @@ export enum Asset {
   BRL = "brl",
   FTOKEN = "ftoken",
 }
-export class Transaction extends Resource<TransactionStatus> {
+export class Transaction extends Resource<TransactionStatus, TransactionType> {
   resourceType = ResourceType.TRANSACTION;
-  type!: TransactionType;
   paymentMethod!: `${TransactionPaymentMethod}`;
   description!: string;
   asset!: Asset;

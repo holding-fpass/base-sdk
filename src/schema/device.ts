@@ -15,7 +15,7 @@ export class Device extends Resource implements SearchableResource {
   user?: Partial<User>;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Device): DisplayResource {
+  public static asDisplayResource(resource: Device): DisplayResource<any, ResourceStatus> {
     return {
       resourceType: ResourceType.DEVICE,
       resourceId: resource.resourceId,

@@ -50,19 +50,17 @@ export const NotificationStatusTransitionMap = new Map<
 ]);
 
 export class Notification
-  extends Resource<NotificationStatus>
-  implements SearchableResource
-{
+  extends Resource<NotificationStatus, NotificationType>
+  implements SearchableResource {
   resourceType = ResourceType.NOTIFICATION;
-  type!: NotificationType;
   // User
   user!: Pick<User, "resourceId" | "name">;
   to!: string;
   // Message
   message?: NotificationMessage;
   // Related
-  form?: Pick<Form, "resourceId" | "name" >;
-  story?: Pick<Story, "resourceId" | "name" >;
+  form?: Pick<Form, "resourceId" | "name">;
+  story?: Pick<Story, "resourceId" | "name">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
   deletedAt?: string | Timestamp;
   // Schedule
@@ -73,7 +71,7 @@ export class Notification
   readed?: boolean;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Notification): DisplayResource {
+  public static asDisplayResource(resource: Notification): DisplayResource<NotificationType, ResourceStatus> {
     // NO "name" RELATIVE STRING FIELD
     return {
       type: resource.type,

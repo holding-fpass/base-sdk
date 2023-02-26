@@ -142,12 +142,11 @@ export interface SpannerQueryResource {
   toSpannerQueryResourceInsert(): SQLQueryResourceInsert;
 }
 
-export class DisplayResource<Type = any> extends Resource {
+export class DisplayResource<Type = any, Status = ResourceStatus> extends Resource<Status, Type> {
   h1?: string;
   h2?: string;
   h3?: string;
   h4?: string;
-  type?: Type;
   percentage?: number;
   value?: number;
   cta?: string;

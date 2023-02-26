@@ -19,10 +19,9 @@ export enum CertificateType {
   COURSE = "course",
   STAGE = "stage",
 }
-export class Certificate extends Resource<CertificateStatus> {
+export class Certificate extends Resource<CertificateStatus, CertificateType> {
   resourceType = ResourceType.CERTIFICATE;
   transitionMap = CertificateStatusTransitionMap;
-  type!: CertificateType;
   product?: Partial<Course>;
   user!: Partial<User>;
   // Media
@@ -35,4 +34,4 @@ export interface CertificateEventData {
   publicUrl: string;
 }
 
-export class CertificateEvent extends BaseEvent<CertificateEventData> {}
+export class CertificateEvent extends BaseEvent<CertificateEventData> { }

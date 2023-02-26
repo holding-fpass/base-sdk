@@ -88,7 +88,7 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
   features!: Metadata<StageFeatureFlags>[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Stage): DisplayResource {
+  public static asDisplayResource(resource: Stage): DisplayResource<any, StageStatus> {
     return {
       resourceType: ResourceType.STAGE,
       resourceId: resource.resourceId,

@@ -38,7 +38,7 @@ export class Story extends Resource<StoryStatus> implements SearchableResource {
   items?: StoryItem[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Story): DisplayResource {
+  public static asDisplayResource(resource: Story): DisplayResource<any, StoryStatus> {
     return {
       resourceType: ResourceType.STORY,
       resourceId: resource.resourceId,

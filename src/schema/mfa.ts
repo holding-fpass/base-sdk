@@ -28,10 +28,9 @@ export const MfaStatusTransitionMap = new Map<MfaStatus, MfaStatus[]>([
   [MfaStatus.CREATED, [MfaStatus.ACTIVE]],
 ]);
 
-export class Mfa extends Resource<MfaStatus> implements SearchableResource {
+export class Mfa extends Resource<MfaStatus, MfaType> implements SearchableResource {
   resourceType = ResourceType.MFA;
   transitionMap = MfaStatusTransitionMap;
-  type!: MfaType;
   value!: string;
   code!: string;
   extra?: MfaExtra;
@@ -42,7 +41,7 @@ export class Mfa extends Resource<MfaStatus> implements SearchableResource {
   machineId!: string;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Mfa): DisplayResource {
+  public static asDisplayResource(resource: Mfa): DisplayResource<MfaType, MfaStatus> {
     return {
       resourceType: ResourceType.CONTRACT,
       resourceId: resource.resourceId,

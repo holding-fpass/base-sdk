@@ -28,15 +28,14 @@ export enum ContentItemType {
   DOWNLOAD = "download",
   LINK = "link",
 }
-export class ContentItem extends Resource {
+export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
   resourceType = ResourceType.CONTENT_ITEM;
-  type!: ContentItemType;
   name?: string;
   // Media
   resourceUrl?: string;
   fileUrl?: string;
   // SearchableResource implementation
-  public static asDisplayResource(resource: ContentItem): DisplayResource {
+  public static asDisplayResource(resource: ContentItem): DisplayResource<any, ResourceStatus> {
     return {
       resourceType: ResourceType.CONTENT_ITEM,
       resourceId: resource.resourceId,
@@ -98,11 +97,10 @@ export const ContentStatusTransitionMap = new Map<
 ]);
 
 export class Content
-  extends Resource<ContentStatus>
+  extends Resource<ContentStatus, ContentType>
   implements SearchableResource {
   resourceType = ResourceType.CONTENT;
   transitionMap = ContentStatusTransitionMap;
-  type!: ContentType;
   name!: string;
   slug?: string;
   description?: string;
@@ -145,7 +143,7 @@ export class Content
   isPublic = true;
   public static asDisplayResource(
     resource: Content
-  ): DisplayResource<ContentType> {
+  ): DisplayResource<ContentType, ContentStatus> {
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.CONTENT,
@@ -181,7 +179,7 @@ export class Module extends Resource {
   // Related
   contents?: Partial<Content>[];
   // SearchableResource implementation
-  public static asDisplayResource(resource: Module): DisplayResource {
+  public static asDisplayResource(resource: Module): DisplayResource<any, ResourceStatus> {
     return {
       resourceType: ResourceType.MODULE,
       resourceId: resource.resourceId,
@@ -244,13 +242,12 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
   [CourseStatus.ACTIVE, [CourseStatus.UNAVALIABLE]],
 ]);
 export class Course
-  extends Resource<CourseStatus>
+  extends Resource<CourseStatus, CourseType>
   implements SearchableResource {
   resourceType = ResourceType.COURSE;
   transitionMap = CourseStatusTransitionMap;
   resourceId!: string;
   name!: string;
-  type?: CourseType;
   description?: string;
   slug?: string;
   premium?: boolean;
@@ -285,7 +282,7 @@ export class Course
   forms?: CourseForms;
   // SearchableResource implementation
   isPublic = true;
-  public static asDisplayResource(resource: Course): DisplayResource {
+  public static asDisplayResource(resource: Course): DisplayResource<CourseType, CourseStatus> {
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.COURSE,

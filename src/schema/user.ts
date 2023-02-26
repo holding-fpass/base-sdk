@@ -114,7 +114,7 @@ export class User extends Resource<UserStatus> implements SearchableResource, Bi
   suggestPlaylist?: Partial<Playlist>;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: User): DisplayResource {
+  public static asDisplayResource(resource: User): DisplayResource<any, UserStatus> {
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.USER,

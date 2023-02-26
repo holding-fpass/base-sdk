@@ -77,8 +77,7 @@ export enum ProductType {
 
 export class Subscription
   extends Resource<SubscriptionStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.SUBSCRIPTION;
   transitionMap = SubscriptionStatusTransitionMap;
   // Plan
@@ -102,7 +101,7 @@ export class Subscription
   plan!: Pick<Plan, "resourceId" | "resourceType">;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Subscription): DisplayResource {
+  public static asDisplayResource(resource: Subscription): DisplayResource<any, SubscriptionStatus> {
     const data = resource as Subscription;
     return {
       resourceType: ResourceType.SUBSCRIPTION,

@@ -50,7 +50,7 @@ export class Plan extends Resource<PlanStatus> implements SearchableResource {
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: any): DisplayResource {
+  public static asDisplayResource(resource: any): DisplayResource<any, PlanStatus> {
     const data = resource as Plan;
     return {
       resourceType: ResourceType.PLAN,

@@ -1,4 +1,4 @@
-import { Resource, ResourceType } from "./resource";
+import { Resource, ResourceStatus, ResourceType } from "./resource";
 
 export enum ThreadType {
   CHAT = "chat",
@@ -10,7 +10,6 @@ export enum ThreadType {
   CONTENT = "content",
 }
 
-export class Thread extends Resource {
+export class Thread extends Resource<ResourceStatus, ThreadType> {
   resourceType = ResourceType.THREAD;
-  type!: ThreadType;
 }

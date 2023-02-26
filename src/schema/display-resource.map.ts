@@ -22,7 +22,7 @@ import { Video } from "./video";
 import { Interaction } from "./interaction";
 
 export interface IDisplayResourceFunction extends Function {
-  (resource: any): DisplayResource;
+  (resource: any): DisplayResource<any, any>;
 }
 
 export const DisplayResourceFunctionMap = new Map<

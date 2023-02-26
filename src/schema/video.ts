@@ -34,7 +34,7 @@ export class Video extends Resource<VideoStatus> implements SearchableResource {
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
   isPublic = false;
-  asDisplayResource(resource: Video): DisplayResource {
+  asDisplayResource(resource: Video): DisplayResource<any, VideoStatus> {
     return {
       resourceType: ResourceType.VIDEO,
       resourceId: resource.resourceId,
@@ -59,15 +59,15 @@ export class Video extends Resource<VideoStatus> implements SearchableResource {
 export interface VideoCreatedEventData {
   language: string;
 }
-export class VideoCreatedEvent extends BaseEvent<VideoCreatedEventData> {}
+export class VideoCreatedEvent extends BaseEvent<VideoCreatedEventData> { }
 // Audio
 export interface VideoAudioCreatedEventData {
   language: string;
   resourceUrl: string;
 }
-export class VideoAudioCreatedEvent extends BaseEvent<VideoAudioCreatedEventData> {}
+export class VideoAudioCreatedEvent extends BaseEvent<VideoAudioCreatedEventData> { }
 // Subtitle
 export interface VideoSubtitleRequestedEventData {
   language: string;
 }
-export class VideoSubtitleRequestedEvent extends BaseEvent<VideoSubtitleRequestedEventData> {}
+export class VideoSubtitleRequestedEvent extends BaseEvent<VideoSubtitleRequestedEventData> { }

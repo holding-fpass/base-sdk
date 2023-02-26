@@ -20,7 +20,7 @@ export class Playlist extends Resource implements SearchableResource {
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
   isPublic = true;
-  public static asDisplayResource(resource: Playlist): DisplayResource {
+  public static asDisplayResource(resource: Playlist): DisplayResource<any, ResourceStatus> {
     return {
       resourceType: ResourceType.PLAYLIST,
       resourceId: resource.resourceId,

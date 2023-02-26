@@ -57,8 +57,7 @@ export const SubtitleStatusTransitionMap = new Map<
 
 export class Subtitle
   extends Resource<SubtitleStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.SUBTITLE;
   name!: string;
   // Related
@@ -83,7 +82,7 @@ export class Subtitle
   partSentences_enUs?: Sentence[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Subtitle): DisplayResource {
+  public static asDisplayResource(resource: Subtitle): DisplayResource<any, SubtitleStatus> {
     return {
       resourceType: ResourceType.SUBTITLE,
       resourceId: resource.resourceId,

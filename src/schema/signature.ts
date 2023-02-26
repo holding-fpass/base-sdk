@@ -14,7 +14,7 @@ export class Signature extends Resource implements SearchableResource {
   footprint!: string;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Signature): DisplayResource {
+  public static asDisplayResource(resource: Signature): DisplayResource<any, ResourceStatus> {
     return {
       resourceType: ResourceType.SIGNATURE,
       resourceId: resource.resourceId,

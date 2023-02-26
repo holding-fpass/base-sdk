@@ -46,8 +46,7 @@ export interface ContractItem {
 
 export class Contract
   extends Resource<ContractStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.CONTRACT;
   transitionMap = ContractStatusTransitionMap;
   name!: string;
@@ -55,7 +54,7 @@ export class Contract
   items!: ContractItem[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Contract): DisplayResource {
+  public static asDisplayResource(resource: Contract): DisplayResource<any, ContractStatus> {
     return {
       resourceType: ResourceType.CONTRACT,
       resourceId: resource.resourceId,

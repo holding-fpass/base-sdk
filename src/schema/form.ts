@@ -100,7 +100,7 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Form): DisplayResource {
+  public static asDisplayResource(resource: Form): DisplayResource<any, FormStatus> {
     return {
       resourceType: ResourceType.FORM,
       resourceId: resource.resourceId,

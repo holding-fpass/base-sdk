@@ -90,10 +90,9 @@ export interface MeasurementValue {
   key: string;
   value: any;
 }
-export class Measurement extends Resource<MeasurementStatus> {
+export class Measurement extends Resource<MeasurementStatus, MeasurementType> {
   resourceType = ResourceType.MEASUREMENT;
   //
-  type!: MeasurementType;
   group?: MeasurementGroup;
   filter!: Partial<MeasurementFilter>;
   filterHash!: string;

@@ -64,7 +64,7 @@ export class Campaign extends Resource implements SearchableResource {
   __systemTag?: SystemTag;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Campaign): DisplayResource {
+  public static asDisplayResource(resource: Campaign): DisplayResource<any, CampaignStatus> {
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.CAMPAIGN,
