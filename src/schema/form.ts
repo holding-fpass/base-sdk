@@ -155,7 +155,7 @@ export class FormResponse extends Resource<FormResponseStatus> implements Spanne
         productId: this.product?.resourceId || '00000000-0000-0000-0000-000000000000',
         productType: this.product?.resourceType || ResourceType.PLATFORM,
         formId: this.form.resourceId,
-        totalValue: this.value || 0,
+        totalValue: Number(this.value || 0).toFixed(2),
         ownerId: this.user.resourceId,
         createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string),
       }
