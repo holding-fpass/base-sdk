@@ -3,12 +3,15 @@ import {
   Resource,
   ResourceType,
   SearchableResource,
+  SpannerQueryResource,
+  SQLQueryResourceInsert,
 } from "./resource";
 
 import { Playlist } from "./playlist";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
+import { Timestamp } from "@google-cloud/firestore";
 
 export class FormQuestionOption {
   name!: string;
@@ -133,7 +136,7 @@ export const FormResponseStatusTransitionMap = new Map<
   FormResponseStatus[]
 >([[FormResponseStatus.CREATED, [FormResponseStatus.ACTIVE]]]);
 
-export class FormResponse extends Resource<FormResponseStatus> {
+export class FormResponse extends Resource<FormResponseStatus> implements SpannerQueryResource {
   resourceType = ResourceType.FORM_RESPONSE;
   form!: Pick<Form, "resourceId" | "name">;
   product?: Pick<Resource, "resourceId" | "resourceType"> & { name: string };
@@ -142,6 +145,22 @@ export class FormResponse extends Resource<FormResponseStatus> {
   user!: Pick<User, "resourceId" | "name" | "email" | "image128x128">;
   // Process
   value!: number;
+  // SpannerQueryResource
+  toSpannerQueryResourceInsert(): SQLQueryResourceInsert {
+    return {
+      table: 'FormResponse',
+      data: {
+        resourceId: this.resourceId,
+        whitelabel: this.whitelabel,
+        productId: this.product?.resourceId,
+        productType: this.product?.resourceType,
+        formId: this.form.resourceId,
+        totalValue: this.value,
+        ownerId: this.user.resourceId,
+        createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string),
+      }
+    };
+  }
 }
 
 export interface FormResponseActiveActionEvent {
