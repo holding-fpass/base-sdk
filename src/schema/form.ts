@@ -152,8 +152,8 @@ export class FormResponse extends Resource<FormResponseStatus> implements Spanne
       data: {
         resourceId: this.resourceId,
         whitelabel: this.whitelabel,
-        productId: this.product?.resourceId,
-        productType: this.product?.resourceType,
+        productId: this.product?.resourceId || '00000000-0000-0000-0000-000000000000',
+        productType: this.product?.resourceType || ResourceType.PLATFORM,
         formId: this.form.resourceId,
         totalValue: this.value || 0,
         ownerId: this.user.resourceId,
