@@ -18,7 +18,7 @@ export enum MeasurementType {
   COURSE_REACTION_COUNT = "course.reaction.count",
   COURSE_REACTION_COUNT_LIST = "course.reaction.count.list",
   COURSE_RATING_COUNT = "course.rating.count",
-  COURSE_RATING_COUNT_LIST = "course.rating.count.list",
+  COURSE_RATING_AVG = "course.rating.avg",
   COURSE_COMPLETION_RATE = "course.completion.rate",
   COURSE_CONTENT_WITH_HIGHER_DROPOUT = "course.content.with.higher.dropout",
   COURSE_SPEED_AVERAGE = "course.speed.average",
