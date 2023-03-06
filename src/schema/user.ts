@@ -156,7 +156,7 @@ export class User extends Resource<UserStatus> implements SearchableResource, Bi
     return {
       table: 'User',
       data: {
-        resourceId: this.resourceId,
+        resourceId: this.resourceId || this.id,
         email: this.email,
         name,
         taxId: this.taxId || this.data?.taxId || '',
