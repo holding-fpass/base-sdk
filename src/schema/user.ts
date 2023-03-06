@@ -5,6 +5,7 @@ import {
   Resource,
   ResourceType,
   SearchableResource,
+  SpannerQueryResource,
 } from "./resource";
 
 import { Certificate } from "./certificate";
@@ -73,7 +74,7 @@ export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.UNAVALIABLE, [UserStatus.DELETED]],
   [UserStatus.DELETED, [UserStatus.CREATED]],
 ]);
-export class User extends Resource<UserStatus> implements SearchableResource, BigQueryResource {
+export class User extends Resource<UserStatus> implements SearchableResource, BigQueryResource, SpannerQueryResource {
   id!: string;
   resourceType = ResourceType.USER;
   email!: string;
@@ -149,5 +150,24 @@ export class User extends Resource<UserStatus> implements SearchableResource, Bi
         timestamp: new BigQueryTimestamp(this.timestamp instanceof Timestamp ? this.timestamp.toDate() : new Date(this.timestamp as string)),
       }
     };
+  }
+  public toSpannerQueryResourceInsert(): SQLQueryResourceInsert {
+    const name = this.name || this.data?.name || 'Indefinido';
+    return {
+      table: 'User',
+      data: {
+        resourceId: this.resourceId,
+        email: this.email,
+        name,
+        taxId: this.taxId || this.data?.taxId || '',
+        phone: this.phone || '',
+        externalId: this.externalId || '',
+        externalParentId: this.externalParentId || '',
+        permission: this.permission,
+        image128x128: this.image128x128 || this.imageUrl || ImageUtils.imagePlaceholder('128x128', name),
+        whitelabel: this.whitelabel,
+        createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string)
+      }
+    }
   }
 }
