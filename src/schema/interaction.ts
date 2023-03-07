@@ -147,7 +147,7 @@ export class Interaction
       throw new Error("Interaction dont have proper table insert avaliable this data");
     }
     return {
-      table: 'InteractionContentView',
+      table: 'InteractionContentView_v2',
       data: {
         resourceId: this.resourceId,
         whitelabel: this.whitelabel,
