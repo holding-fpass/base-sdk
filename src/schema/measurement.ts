@@ -15,6 +15,7 @@ export enum MeasurementType {
   COURSE_VIEW = "course.view",
   COURSE_WATCHERS_COUNT = "course.watchers.count",
   COURSE_STUDENTS_COUNT = "course.students.count",
+  COURSE_STUDENTS_LIST = "course.students.list",
   COURSE_REACTION_COUNT = "course.reaction.count",
   COURSE_REACTION_COUNT_LIST = "course.reaction.count.list",
   COURSE_RATING_COUNT = "course.rating.count",
