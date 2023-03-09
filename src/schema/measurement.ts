@@ -84,12 +84,16 @@ export class MeasurementFilterValues {
   value!: string;
 }
 export class MeasurementFilter {
-  userId!: string;
-  resourceId!: string;
-  resourceType!: ResourceType;
-  resourceValues!: MeasurementFilterValues[];
-  dateStart!: string;
-  dateEnd!: string;
+  userId?: string;
+  resourceId?: string;
+  resourceType?: ResourceType;
+  resourceValues?: MeasurementFilterValues[];
+  //
+  dateStart?: string;
+  dateEnd?: string;
+  //
+  limit?: number;
+  offset?: number;
 }
 
 export interface MeasurementValue {
