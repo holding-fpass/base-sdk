@@ -70,9 +70,8 @@ export interface DataForwardConfig {
   mongodbUri?: string;
   gcpStorageBucket?: string;
   googleSpreadsheet?: string;
-  azureBlobStorage?: {
-    connectionString: string;
-  }
+  azureBlobStorageContainerName?: string;
+  azureBlobStorageURI?: string;
 }
 
 export interface KycField {
