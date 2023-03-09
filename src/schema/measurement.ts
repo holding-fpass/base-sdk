@@ -92,8 +92,8 @@ export class MeasurementFilter {
   dateStart?: string;
   dateEnd?: string;
   //
-  limit?: number;
-  offset?: number;
+  limit?: string;
+  offset?: string;
 }
 
 export interface MeasurementValue {
