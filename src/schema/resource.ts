@@ -122,6 +122,21 @@ export interface SpannerQueryResource {
   toSpannerQueryResourceInsert(): SQLQueryResourceInsert;
 }
 
+export interface CacheResourse {
+  /**
+   * Object unique idetification
+   */
+  get hash(): string;
+  /**
+   * String use to refer this resource on cache provider
+   */
+  get cacheKey(): string;
+  /**
+   * Time in milliseconds
+   */
+  cacheTtl: number;
+}
+
 export class DisplayResource<Type = any, Status = ResourceStatus> extends Resource<Status, Type> {
   h1?: string;
   h2?: string;

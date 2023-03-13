@@ -1,6 +1,7 @@
 import { WhereFilterOp } from "firebase-admin/firestore";
+import { Hash } from "./hash";
 import { ProviderExtra } from "./provider";
-import { Resource, ResourceType } from "./resource";
+import { CacheResourse, Resource, ResourceType } from "./resource";
 import { User } from "./user";
 
 export enum MeasurementType {
@@ -100,7 +101,7 @@ export interface MeasurementValue {
   key: string;
   value: any;
 }
-export class Measurement extends Resource<MeasurementStatus, MeasurementType> {
+export class Measurement extends Resource<MeasurementStatus, MeasurementType> implements CacheResourse {
   resourceType = ResourceType.MEASUREMENT;
   //
   group?: MeasurementGroup;
@@ -113,4 +114,12 @@ export class Measurement extends Resource<MeasurementStatus, MeasurementType> {
   force?: boolean;
   permanent?: boolean;
   providerExtra?: ProviderExtra[];
+  // Cache Resource
+  get hash(): string {
+    return Hash.measurementFilter(this.type!, this.filter);
+  }
+  get cacheKey(): string {
+    return `${this.whitelabel}--${ResourceType.MEASUREMENT}--hash:${this.hash}`;
+  }
+  cacheTtl: number = 0;
 }
