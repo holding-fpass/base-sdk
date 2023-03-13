@@ -115,10 +115,10 @@ export class Measurement extends Resource<MeasurementStatus, MeasurementType> im
   permanent?: boolean;
   providerExtra?: ProviderExtra[];
   // Cache Resource
-  get hash(): string {
+  hash(): string {
     return Hash.measurementFilter(this.type!, this.filter);
   }
-  get cacheKey(): string {
+  cacheKey(): string {
     return `${this.whitelabel}--${ResourceType.MEASUREMENT}--hash:${this.hash}`;
   }
   cacheTtl: number = 0;

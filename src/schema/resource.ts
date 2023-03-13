@@ -126,11 +126,11 @@ export interface CacheResourse {
   /**
    * Object unique idetification
    */
-  get hash(): string;
+  hash(): string;
   /**
    * String use to refer this resource on cache provider
    */
-  get cacheKey(): string;
+  cacheKey(): string;
   /**
    * Time in milliseconds
    */
