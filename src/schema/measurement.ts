@@ -119,7 +119,7 @@ export class Measurement extends Resource<MeasurementStatus, MeasurementType> im
     return Hash.measurementFilter(this.type!, this.filter);
   }
   cacheKey(): string {
-    return `${this.whitelabel}--${ResourceType.MEASUREMENT}--hash:${this.hash}`;
+    return `${this.whitelabel}--${ResourceType.MEASUREMENT}--hash:${this.hash()}`;
   }
   cacheTtl: number = 0;
 }
