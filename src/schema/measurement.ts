@@ -39,6 +39,10 @@ export enum MeasurementType {
   CONTENT_TIME_WITH_HIGHER_DROPOUT = "content.time.with.higher.dropout",
   CONTENT_FORM_RESPONSE_AVERAGE = "content.form.response.average",
   CONTENT_COMPLETION_LAST_TWELVE_WEEKS = "content.completion.last.twelve.weeks",
+  // Stage
+  STAGE_WATCHERS_COUNT = "stage.watchers.count",
+  STAGE_WATCHERS_ONLINE = "stage.watchers.online",
+  STAGE_WATCHERS_PERMANENCY_AVG = "stage.watchers.permanency.avg",
   // Response
   RESPONSE_AVG = "response.avg",
   RESPONSE_COUNT = "response.count",
