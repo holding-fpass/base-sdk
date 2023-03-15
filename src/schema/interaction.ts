@@ -141,7 +141,7 @@ export class Interaction
   toSpannerQueryResourceInsert(): SQLQueryResourceInsert {
     if (
       this.resourceType !== ResourceType.INTERACTION ||
-      this.productType !== ResourceType.CONTENT ||
+      ![ResourceType.CONTENT, ResourceType.STAGE].includes(this.productType) ||
       this.type !== InteractionType.VIEW
     ) {
       throw new Error("Interaction dont have proper table insert avaliable this data");
