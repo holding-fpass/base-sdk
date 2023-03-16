@@ -59,7 +59,9 @@ export enum MeasurementType {
   USERS_TOTAL_COUNT = "users.total.count",
   DEVICES_TOTAL_COUNT = "devices.total.count",
   USERS_ACTIVE_COUNT = "users.active.count",
+  // Search
   SEARCH_QUERIES = "search.queries",
+  SEARCH_QUERIES_COUNT = "search.queries.count",
 }
 
 export enum MeasurementStatus {
