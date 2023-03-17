@@ -27,4 +27,5 @@ export enum Whitelabel {
   PLANNTOGO = "planntogo",
   MONEYEDUC = "moneyeduc",
   ACADEMYTECH = "academytech",
+  EDUTECH = "edutech",
 }
