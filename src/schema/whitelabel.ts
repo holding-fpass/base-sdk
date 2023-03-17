@@ -25,4 +25,6 @@ export enum Whitelabel {
   FUTURUM_TGP = "futurum-tgp",
   APRENDEJUNTO = "aprendejunto",
   PLANNTOGO = "planntogo",
+  MONEYEDUC = "moneyeduc",
+  ACADEMYTECH = "academytech",
 }
