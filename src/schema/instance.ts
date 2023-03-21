@@ -249,6 +249,7 @@ export enum InstanceFeatureFlags {
   EMAIL_TEMPLATE_MFA_TEXT = "instance.feature-flag.email.template.mfa.text",
   USER_PROFILE_HIDE = "instance.feature-flag.user.profile.hide",
   PLAYLIST_CARD_TAG_HIDE = "instance.feature-flag.playlist.card.tag.hide",
+  FORM_EVALUATION_HIDE = "instance.feature-flag.form.evaluation.hide",
 }
 
 export enum InstanceThemeSettings {
