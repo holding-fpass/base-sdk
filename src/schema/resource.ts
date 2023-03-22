@@ -110,11 +110,6 @@ export abstract class SearchableResource {
   }
 }
 
-export interface SQLQueryResourceInsert {
-  table: string;
-  data: any;
-}
-
 export interface CacheResourse {
   /**
    * Object unique idetification
