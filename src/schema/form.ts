@@ -1,17 +1,8 @@
-import {
-  DisplayResource,
-  Resource,
-  ResourceType,
-  SearchableResource,
-  SpannerQueryResource,
-  SQLQueryResourceInsert,
-} from "./resource";
-
-import { Playlist } from "./playlist";
-import { Tag } from "./tag";
-import { User } from "./user";
-import { Whitelabel } from "./whitelabel";
-import { Timestamp } from "@google-cloud/firestore";
+import { Playlist } from './playlist';
+import { DisplayResource, Resource, ResourceType, SearchableResource } from './resource';
+import { Tag } from './tag';
+import { User } from './user';
+import { Whitelabel } from './whitelabel';
 
 export class FormQuestionOption {
   name!: string;
@@ -136,7 +127,7 @@ export const FormResponseStatusTransitionMap = new Map<
   FormResponseStatus[]
 >([[FormResponseStatus.CREATED, [FormResponseStatus.ACTIVE]]]);
 
-export class FormResponse extends Resource<FormResponseStatus> implements SpannerQueryResource {
+export class FormResponse extends Resource<FormResponseStatus> {
   resourceType = ResourceType.FORM_RESPONSE;
   form!: Pick<Form, "resourceId" | "name">;
   product?: Pick<Resource, "resourceId" | "resourceType"> & { name: string };
@@ -145,22 +136,6 @@ export class FormResponse extends Resource<FormResponseStatus> implements Spanne
   user!: Pick<User, "resourceId" | "name" | "email" | "image128x128">;
   // Process
   value!: number;
-  // SpannerQueryResource
-  toSpannerQueryResourceInsert(): SQLQueryResourceInsert {
-    return {
-      table: 'FormResponse',
-      data: {
-        resourceId: this.resourceId,
-        whitelabel: this.whitelabel,
-        productId: this.product?.resourceId || '00000000-0000-0000-0000-000000000000',
-        productType: this.product?.resourceType || ResourceType.PLATFORM,
-        formId: this.form.resourceId,
-        totalValue: Number(this.value || 0).toFixed(2),
-        ownerId: this.user.resourceId,
-        createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string),
-      }
-    };
-  }
 }
 
 export interface FormResponseActiveActionEvent {

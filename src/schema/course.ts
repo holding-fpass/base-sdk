@@ -16,7 +16,6 @@ import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
-import hash from "object-hash";
 
 interface CourseCertificateSettings {
   minimumWatchTime: number;

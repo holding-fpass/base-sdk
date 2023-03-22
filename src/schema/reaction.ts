@@ -3,7 +3,6 @@ import {
   Resource,
   ResourceStatus,
   ResourceType,
-  SpannerQueryResource,
   SQLQueryResourceInsert,
 } from "./resource";
 
@@ -13,7 +12,7 @@ export enum ReactionType {
   CREATED = "reaction.created"
 }
 
-export class Reaction extends Resource<ResourceStatus, ReactionType> implements SpannerQueryResource {
+export class Reaction extends Resource<ResourceStatus, ReactionType> {
   resourceType = ResourceType.REACTION;
   ownerName?: string;
   ownerWhitelabel?: Whitelabel;

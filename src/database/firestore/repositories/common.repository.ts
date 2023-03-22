@@ -8,7 +8,7 @@ import {
   ICommonRepository,
   ICommonRepositoryFindAllParams,
 } from "../../repositories/commonRepository.interface";
-import { Resource, ResourceType, Whitelabel } from "../../../schema";
+import { ResourceType, Whitelabel } from "../../../schema";
 
 export interface ICommonFirestoreRepositoryConstructorParams {
   entity: ResourceType;

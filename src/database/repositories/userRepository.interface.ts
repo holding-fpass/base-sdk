@@ -1,4 +1,4 @@
-import { Query, QuerySnapshot } from "firebase-admin/firestore";
+import { QuerySnapshot } from "firebase-admin/firestore";
 import { User, SystemTag } from "../../schema";
 import { ICommonRepository } from "./commonRepository.interface";
 

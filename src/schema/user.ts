@@ -1,29 +1,19 @@
-import {
-  BigQueryResource,
-  SQLQueryResourceInsert,
-  DisplayResource,
-  Resource,
-  ResourceType,
-  SearchableResource,
-  SpannerQueryResource,
-} from "./resource";
+import { ImageUtils } from '../media';
 
-import { Certificate } from "./certificate";
-import { Course } from "./course";
-import { Device } from "./device";
-import { FormResponse } from "./form";
-import { Interaction } from "./interaction";
-import { Metadata } from "./metadata";
-import { Playlist } from "./playlist";
-import { ProviderExtra } from "./provider";
-import { Scope } from "./scope";
-import { Subscription } from "./subscription";
-import { Tag } from "./tag";
-import { Transaction } from "./transaction";
-import { Whitelabel } from "./whitelabel";
-import { ImageUtils } from "../media";
-import { BigQueryTimestamp } from "@google-cloud/bigquery";
-import { Timestamp } from "@google-cloud/firestore";
+import { Certificate } from './certificate';
+import { Course } from './course';
+import { Device } from './device';
+import { FormResponse } from './form';
+import { Interaction } from './interaction';
+import { Metadata } from './metadata';
+import { Playlist } from './playlist';
+import { ProviderExtra } from './provider';
+import { DisplayResource, Resource, ResourceType, SearchableResource } from './resource';
+import { Scope } from './scope';
+import { Subscription } from './subscription';
+import { Tag } from './tag';
+import { Transaction } from './transaction';
+import { Whitelabel } from './whitelabel';
 
 export enum UserPermission {
   ADMINISTRATOR = "administrator",
@@ -74,7 +64,7 @@ export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.UNAVALIABLE, [UserStatus.DELETED]],
   [UserStatus.DELETED, [UserStatus.CREATED]],
 ]);
-export class User extends Resource<UserStatus> implements SearchableResource, BigQueryResource, SpannerQueryResource {
+export class User extends Resource<UserStatus> implements SearchableResource {
   id!: string;
   resourceType = ResourceType.USER;
   email!: string;
@@ -134,40 +124,5 @@ export class User extends Resource<UserStatus> implements SearchableResource, Bi
       updatedAt: resource.updatedAt,
       deletedAt: resource.deletedAt,
     };
-  }
-  public toBigQueryResourceInsert(): SQLQueryResourceInsert {
-    return {
-      table: 'User',
-      data: {
-        resourceId: this.resourceId,
-        name: this.name,
-        email: this.email,
-        taxId: this.taxId,
-        permission: this.permission,
-        externalId: this.externalId,
-        externalParentId: this.externalParentId,
-        createdAt: new BigQueryTimestamp(this.createdAt instanceof Timestamp ? this.createdAt.toDate() : new Date(this.createdAt as string)),
-        timestamp: new BigQueryTimestamp(this.timestamp instanceof Timestamp ? this.timestamp.toDate() : new Date(this.timestamp as string)),
-      }
-    };
-  }
-  public toSpannerQueryResourceInsert(): SQLQueryResourceInsert {
-    const name = this.name || this.data?.name || 'Indefinido';
-    return {
-      table: 'User',
-      data: {
-        resourceId: this.resourceId || this.id,
-        email: this.email,
-        name,
-        taxId: this.taxId || this.data?.taxId || '',
-        phone: this.phone || '',
-        externalId: this.externalId || '',
-        externalParentId: this.externalParentId || '',
-        permission: this.permission,
-        image128x128: this.image128x128 || this.imageUrl || ImageUtils.imagePlaceholder('128x128', name),
-        whitelabel: this.whitelabel,
-        createdAt: (this.timestamp as Timestamp).toDate ? (this.timestamp as Timestamp).toDate() : new Date(this.timestamp as string)
-      }
-    }
   }
 }

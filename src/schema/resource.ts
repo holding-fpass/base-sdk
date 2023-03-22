@@ -114,13 +114,6 @@ export interface SQLQueryResourceInsert {
   table: string;
   data: any;
 }
-export interface BigQueryResource {
-  toBigQueryResourceInsert(): SQLQueryResourceInsert;
-}
-
-export interface SpannerQueryResource {
-  toSpannerQueryResourceInsert(): SQLQueryResourceInsert;
-}
 
 export interface CacheResourse {
   /**

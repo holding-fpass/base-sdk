@@ -1,4 +1,4 @@
-import { Certificate, ResourceType, Story } from "../../../schema";
+import { ResourceType, Story } from "../../../schema";
 import {
   CommonFirestoreRepository,
   ICommonFirestoreRepositoryConstructorParams,
