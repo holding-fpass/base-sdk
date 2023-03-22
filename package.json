@@ -1,7 +1,7 @@
 {
   "name": "@holding-fpass/base-sdk",
   "version": "6.0.2",
-  "description": "Package de definições para integração de/com um partner orientado a eventos gerados e recebidos de sistemas da plataforma Fpass.",
+  "description": "Package de definições base do FPASS.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
