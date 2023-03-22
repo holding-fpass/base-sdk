@@ -1,1 +1,0 @@
-declare module 'rdstation-node-client';
