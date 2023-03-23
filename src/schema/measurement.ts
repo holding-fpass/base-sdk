@@ -96,6 +96,7 @@ export class MeasurementFilter {
   userId?: string;
   resourceId?: string;
   resourceType?: ResourceType;
+  type?: string;
   resourceValues?: MeasurementFilterValues[];
   //
   dateStart?: string;
