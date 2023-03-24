@@ -60,7 +60,8 @@ export enum MeasurementType {
   USERS_ACTIVITY_DETAIL = "users.activity.detail",
   DEVICES_TOTAL_COUNT = "devices.total.count",
   USERS_ACTIVE_COUNT = "users.active.count",
-  USER_PROGRESS_RATE = "user.progress.rate",
+  USER_COURSE_PROGRESS_RATE = "user.course.progress.rate",
+  USER_COURSE_COMPLETION_RATE = "user.course.completion.rate",
   // Search
   SEARCH_QUERIES = "search.queries",
 }
