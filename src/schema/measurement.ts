@@ -108,19 +108,19 @@ export class MeasurementFilter {
   offset?: string;
 }
 
-export interface MeasurementValue {
+export interface MeasurementValue<T = any> {
   key: string;
-  value: any;
+  value: T;
 }
-export class Measurement extends Resource<MeasurementStatus, MeasurementType> implements CacheResourse {
+export class Measurement<ValueType = any> extends Resource<MeasurementStatus, MeasurementType> implements CacheResourse {
   resourceType = ResourceType.MEASUREMENT;
   //
   group?: MeasurementGroup;
   filter!: Partial<MeasurementFilter>;
   filterHash!: string;
   user!: Partial<User>;
-  value?: string;
-  values?: MeasurementValue[];
+  value?: string | MeasurementValue<ValueType>;
+  values?: MeasurementValue<ValueType>[];
   // Provider
   force?: boolean;
   permanent?: boolean;
