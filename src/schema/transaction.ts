@@ -93,6 +93,7 @@ export class Transaction extends Resource<TransactionStatus, TransactionType> {
   description!: string;
   asset!: Asset;
   value!: number;
+  paymentVoucher?: string;
   //
   whitelabel!: Whitelabel;
   userFrom!: Partial<User>;
