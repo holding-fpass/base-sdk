@@ -115,7 +115,6 @@ export interface MeasurementValue<T = any> {
 
 export interface MeasurementValueCell {
   columnName: string;
-  columnOrder: number;
   cellValue: number | string;
 }
 
