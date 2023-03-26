@@ -112,6 +112,13 @@ export interface MeasurementValue<T = any> {
   key: string;
   value: T;
 }
+
+export interface MeasurementValueCell {
+  columnName: string;
+  columnOrder: number;
+  cellValue: number | string;
+}
+
 export class Measurement<ValueType = any> extends Resource<MeasurementStatus, MeasurementType> implements CacheResourse {
   resourceType = ResourceType.MEASUREMENT;
   //
