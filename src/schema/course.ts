@@ -147,6 +147,8 @@ export class Content
       resourceType: ResourceType.CONTENT,
       h1: resource.name,
       h2: resource?.mentors?.map((mentor) => mentor.name)?.join(", "),
+      dateStart: resource?.dateStart,
+      dateEnd: resource?.dateEnd,
       whitelabel: resource.whitelabel,
       timestamp: resource.timestamp,
       status: resource.status,
