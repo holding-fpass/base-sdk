@@ -99,6 +99,7 @@ export class Transaction extends Resource<TransactionStatus, TransactionType> {
   value!: number;
   paymentVoucher?: string;
   splitProcessedAt?: string | Timestamp;
+  refundedAt?: string | Timestamp;
   //
   whitelabel!: Whitelabel;
   userFrom!: Partial<User>;
