@@ -32,7 +32,11 @@ export enum TransactionStatus {
   PROVIDER_PAYMENT_CREATED = "provider.payment.created",
   PROVIDER_PAYMENT_PAID = "provider.payment.paid",
   PROVIDER_PAYMENT_FAILED = "provider.payment.failed",
+  PROVIDER_PAYMENT_REFUNDED = 'provider.payment.refunded',
+  PROVIDER_PAYMENT_CHARGEBACK = 'provider.payment.chargeback',
   PAID = "paid",
+  REFUNDED = 'refunded',
+  CHARGEBACK = 'chargeback',
   FAILED = "failed",
   DELETED = "deleted"
 }
