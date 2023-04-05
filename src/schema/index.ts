@@ -34,6 +34,7 @@ export * from "./user";
 export * from "./video";
 export * from "./whitelabel";
 export * from "./email";
+export * from "./calendar-appointment";
 // After all
 export * from "./transition.maps";
 export * from "./display-resource.map";
