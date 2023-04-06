@@ -20,6 +20,7 @@ export class CalendarAppointment
   resourceType = ResourceType.CALENDAR_APPOINTMENT;
   rvsp?: boolean;
   productId?: string;
+  name?: string;
   productType = ResourceType.CONTENT;
   type?: AppointmentType;
   productDateStart?: string;
@@ -31,6 +32,7 @@ export class CalendarAppointment
     return {
       resourceType: ResourceType.CALENDAR_APPOINTMENT,
       resourceId: resource.resourceId,
+      h1: resource.name,
       parentId: resource.productId,
       parentType: ResourceType.CONTENT,
       isPublic: true,
