@@ -32,7 +32,11 @@ export enum TransactionStatus {
   PROVIDER_PAYMENT_CREATED = "provider.payment.created",
   PROVIDER_PAYMENT_PAID = "provider.payment.paid",
   PROVIDER_PAYMENT_FAILED = "provider.payment.failed",
+  PROVIDER_PAYMENT_REFUNDED = 'provider.payment.refunded',
+  PROVIDER_PAYMENT_CHARGED_BACK = 'provider.payment.charged_back',
   PAID = "paid",
+  REFUNDED = 'refunded',
+  CHARGED_BACK = 'charged_back',
   FAILED = "failed",
   DELETED = "deleted"
 }
@@ -75,6 +79,8 @@ export const TransactionStatusTransitionMap = new Map<
     ],
   ],
   [TransactionStatus.PROVIDER_PAYMENT_PAID, [TransactionStatus.PAID]],
+  [TransactionStatus.PROVIDER_PAYMENT_REFUNDED, [TransactionStatus.REFUNDED]],
+  [TransactionStatus.PROVIDER_PAYMENT_CHARGED_BACK, [TransactionStatus.CHARGED_BACK]],
   [TransactionStatus.PROVIDER_PAYMENT_FAILED, [TransactionStatus.FAILED]],
   [
     TransactionStatus.FAILED,
@@ -95,6 +101,7 @@ export class Transaction extends Resource<TransactionStatus, TransactionType> {
   value!: number;
   paymentVoucher?: string;
   splitProcessedAt?: string | Timestamp;
+  refundedAt?: string | Timestamp;
   //
   whitelabel!: Whitelabel;
   userFrom!: Partial<User>;
