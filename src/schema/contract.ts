@@ -42,6 +42,7 @@ export interface ContractItem {
   // Purchase
   type: ContractItemType;
   value: number;
+  items: Omit<ContractItem, 'items' | 'scopeKey'>[];
 }
 
 export class Contract
