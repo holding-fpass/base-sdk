@@ -14,6 +14,11 @@ export enum AppointmentType {
   LIVE = "live"
 }
 
+export enum CalendarDownloadFormats {
+  ICS = "calendar.ics",
+  ICAL = "calendar.ical"
+}
+
 export class CalendarAppointment
   extends Resource<ContentType>
   implements SearchableResource {
