@@ -23,7 +23,7 @@ export class Page extends Resource implements SearchableResource {
   name!: string;
   url!: string;
   // Related
-  playlists!: Pick<Playlist, "resourceId" | "name" | "userTags_idx">[];
+  playlists!: Pick<Playlist, "resourceId" | "name">[];
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
   // SearchableResource implementation
