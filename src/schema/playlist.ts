@@ -18,6 +18,7 @@ export class Playlist extends Resource implements SearchableResource {
   // Related
   courses?: Partial<Course>[];
   userTags?: Partial<Tag>[];
+  userTags_idx?: string[];
   // SearchableResource implementation
   isPublic = true;
   public static asDisplayResource(resource: Playlist): DisplayResource<any, ResourceStatus> {
