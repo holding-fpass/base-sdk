@@ -26,3 +26,9 @@ export class I18nDictionary {
     return Mustache.render(text, context);
   }
 }
+
+export const i18nIntlMap = new Map<string, string>([
+  ["ptBr", "pt-BR"],
+  ["enUs", "en-US"],
+  ["es", "es"],
+]);
