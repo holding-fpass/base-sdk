@@ -36,6 +36,7 @@ export class Channel
   primaryColor!: string;
   resourceUrl!: string;
   whitelabel!: Whitelabel;
+  isFree?: boolean;
   // Media
   image1400x720!: string;
   image160x40!: string;
