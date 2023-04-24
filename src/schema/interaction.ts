@@ -54,7 +54,7 @@ export class Interaction
   mediaSpeed?: number;
   mediaResolution?: string;
   // Channel
-  channel?: Partial<Channel>;
+  channelId?: string;
   //
   // ownerId!: string;
   // Dataforward
