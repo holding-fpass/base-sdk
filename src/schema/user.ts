@@ -1,6 +1,7 @@
 import { ImageUtils } from '../media';
 
 import { Certificate } from './certificate';
+import { Channel } from './channel';
 import { Course } from './course';
 import { Device } from './device';
 import { FormResponse } from './form';
@@ -99,6 +100,8 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   subscriptions?: Partial<Subscription>[];
   courses?: Partial<Course>[];
   transactions?: Partial<Transaction>[];
+  // Channel
+  channel?: Partial<Channel>;
   // Playlist
   favoritePlaylist?: Partial<Playlist>;
   suggestPlaylist?: Partial<Playlist>;

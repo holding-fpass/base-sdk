@@ -1,6 +1,7 @@
 import { Timestamp } from 'firebase-admin/firestore';
 import { DisplayResource, Resource, ResourceType, SearchableResource } from './resource';
 import { User } from './user';
+import { Channel } from './channel';
 
 export enum InteractionStatus {
   CREATED = "created",
@@ -52,6 +53,8 @@ export class Interaction
   mediaCount?: number;
   mediaSpeed?: number;
   mediaResolution?: string;
+  // Channel
+  channel?: Partial<Channel>;
   //
   // ownerId!: string;
   // Dataforward
