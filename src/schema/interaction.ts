@@ -54,7 +54,7 @@ export class Interaction
   mediaSpeed?: number;
   mediaResolution?: string;
   // Channel
-  channelId?: string;
+  channel?: Pick<Channel, "resourceId" | "slug" | "name">
   //
   // ownerId!: string;
   // Dataforward
