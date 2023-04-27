@@ -117,7 +117,8 @@ export const InstanceStatusTransitionMap = new Map<
 
 export class Instance
   extends Resource<InstanceStatus>
-  implements SearchableResource {
+  implements SearchableResource
+{
   resourceType = ResourceType.INSTANCE;
   //
   name!: Whitelabel;
@@ -195,7 +196,9 @@ export class Instance
   providerExtra?: ProviderExtra[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Instance): DisplayResource<any, InstanceStatus> {
+  public static asDisplayResource(
+    resource: Instance
+  ): DisplayResource<any, InstanceStatus> {
     return {
       resourceType: ResourceType.INSTANCE,
       resourceId: resource.resourceId,
@@ -250,6 +253,7 @@ export enum InstanceFeatureFlags {
   USER_PROFILE_HIDE = "instance.feature-flag.user.profile.hide",
   PLAYLIST_CARD_TAG_HIDE = "instance.feature-flag.playlist.card.tag.hide",
   FORM_EVALUATION_HIDE = "instance.feature-flag.form.evaluation.hide",
+  CHANNEL_USER_LOGIN_ONLY = "instance.feature-flag.channel.user.login.only",
 }
 
 export enum InstanceThemeSettings {
