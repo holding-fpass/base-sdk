@@ -55,6 +55,7 @@ export enum FLabelAppPagePath {
   CHANNEL_COURSE = "/channel/:channelId/course/:courseId",
   CHANNEL_PLAYER = "/channel/:channelId/player/:contentId",
   CHANNEL_CALENDAR = "/channel/:channelId/calendar",
+  CHANNEL_STAGE = "/channel/:channelId/stage/:slug",
   PREMIUM_HOME = "/premium",
   PREMIUM_COURSE = "/premium/:courseId",
   COURSE = "/course/:courseId",
