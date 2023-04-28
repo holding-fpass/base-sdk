@@ -55,6 +55,15 @@ export class ContentForms {
   userTestForm?: Partial<Form>;
 }
 
+export class ContentSchedule {
+  dateStart!: Date;
+  dateEnd!: Date;
+  channel!: Partial<Channel>
+  resourceId!: string;
+  meetUrl?: string;
+  slug?: string;
+}
+
 export enum ContentType {
   VIDEO = "video",
   MEET = "meet",
@@ -102,6 +111,7 @@ export class Content
   name!: string;
   slug?: string;
   description?: string;
+  schedule?: ContentSchedule[];
   providerExtra?: ProviderExtra<ContentProviderTranscodeMetadata>[];
   providerTranscoderExternalId?: string;
   // Media
