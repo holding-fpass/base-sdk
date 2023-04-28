@@ -56,10 +56,10 @@ export class ContentForms {
 }
 
 export class ContentSchedule {
-  dateStart?: Date;
-  dateEnd?: Date;
-  meetDateStart?: Date;
-  meetDateEnd?: Date;
+  dateStart?: string;
+  dateEnd?: string;
+  meetDateStart?: string;
+  meetDateEnd?: string;
   channel!: Partial<Channel>
   resourceId!: string;
   meetUrl?: string;
