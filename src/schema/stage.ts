@@ -87,8 +87,6 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
   // Finance
   payment?: StagePayment;
   features!: Metadata<StageFeatureFlags>[];
-  // Channel
-  channel?: Pick<Channel, "resourceId" | "slug" | "name">;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(
