@@ -12,6 +12,7 @@ import { Plan } from "./plan";
 import { Timestamp } from "firebase-admin/firestore";
 import { User } from "./user";
 import { ImageUtils } from "../media";
+import { Channel } from "./channel";
 
 export enum StageStatus {
   CREATED = "created",
@@ -86,9 +87,13 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
   // Finance
   payment?: StagePayment;
   features!: Metadata<StageFeatureFlags>[];
+  // Channel
+  channel?: Pick<Channel, "resourceId" | "slug" | "name">;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Stage): DisplayResource<any, StageStatus> {
+  public static asDisplayResource(
+    resource: Stage,
+  ): DisplayResource<any, StageStatus> {
     return {
       resourceType: ResourceType.STAGE,
       resourceId: resource.resourceId,
@@ -102,7 +107,7 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
       deletedAt: resource.deletedAt,
       imageUrl: ImageUtils.imageOptimized(
         resource.image968x168 as string,
-        "968x168"
+        "968x168",
       ),
     };
   }
