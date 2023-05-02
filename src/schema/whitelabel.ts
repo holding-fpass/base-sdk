@@ -29,5 +29,5 @@ export enum Whitelabel {
   ACADEMYTECH = "academytech",
   EDUTECH = "edutech",
   THINKPLAY = "thinkplay",
-  VETORBRASIL = "vertorbrasil",
+  VETORBRASIL = "vetorbrasil",
 }
