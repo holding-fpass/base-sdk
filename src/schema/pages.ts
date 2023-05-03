@@ -73,6 +73,7 @@ export enum FLabelAppPagePath {
   DEVELOPERS = "/developers",
   METAVERSO = "/metaverso",
   CALENDAR = "/calendar",
+  CERTIFICATE = "/certificate",
 }
 
 export function PageUrl(pagePath: string, args?: any) {
