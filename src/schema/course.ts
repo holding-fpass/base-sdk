@@ -61,7 +61,7 @@ export class ContentSchedule {
   meetDateStart?: string;
   meetDateEnd?: string;
   channel!: Partial<Channel>
-  resourceId!: string;
+  stage?: Pick<Stage, 'slug' | 'resourceId' | 'name'>
   meetUrl?: string;
   slug?: string;
 }
