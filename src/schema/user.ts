@@ -59,6 +59,11 @@ export enum UserStatus {
   DELETED = "deleted",
 }
 
+export type ZoomProvider = {
+  id: string;
+  email: string;
+}
+
 export const UserStatusTransitionMap = new Map<UserStatus, UserStatus[]>([
   [UserStatus.CREATED, [UserStatus.ACTIVE, UserStatus.DELETED]],
   [UserStatus.ACTIVE, [UserStatus.DELETED, UserStatus.UNAVALIABLE]],
@@ -105,6 +110,8 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   // Playlist
   favoritePlaylist?: Partial<Playlist>;
   suggestPlaylist?: Partial<Playlist>;
+  // Providers
+  __zoom?: ZoomProvider;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: User): DisplayResource<any, UserStatus> {
