@@ -21,8 +21,8 @@ export enum CertificateType {
 }
 export class Certificate extends Resource<CertificateStatus, CertificateType> {
   resourceType = ResourceType.CERTIFICATE;
-  product?: Partial<Course>;
-  user!: Partial<User>;
+  product?: Pick<Course, "name" | "resourceId">;
+  user!: Pick<User, "name" | "email" | "resourceId">;
   // Media
   image1000x1000?: string;
 }
