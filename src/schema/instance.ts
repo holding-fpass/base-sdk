@@ -106,6 +106,14 @@ interface InstanceJwt {
   secret: string;
 }
 
+interface ZoomProvider {
+  ZOOM_SECRET_WEBHOOK_TOKEN: string;
+  ZOOM_WEBHOOK_VERIFICATION_TOKEN: string;
+  ZOOM_ACCOUNT_ID: string;
+  ZOOM_CLIENT_ID: string;
+  ZOOM_CLIENT_SECRET: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -188,6 +196,7 @@ export class Instance
   __elascticSearch?: ElasticSearchProvider;
   __rdstation?: RDStationProvider;
   __jwt?: InstanceJwt;
+  __zoom?: ZoomProvider;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
