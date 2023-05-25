@@ -55,6 +55,11 @@ export class ContentForms {
   userTestForm?: Partial<Form>;
 }
 
+export interface MeetProvider {
+  meetingId: string;
+  name: string;
+}
+
 export class ContentSchedule {
   dateStart?: string;
   dateEnd?: string;
@@ -133,6 +138,8 @@ export class Content
   // Transmission
   rtmpUrl?: string;
   meetUrl?: string;
+  // Providers
+  meetProvider?: MeetProvider;
   // Date
   dateStart?: string;
   dateEnd?: string;
