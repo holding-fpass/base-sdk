@@ -62,7 +62,7 @@ export class Notification
   form?: Pick<Form, "resourceId" | "name">;
   story?: Pick<Story, "resourceId" | "name">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
-  deletedAt: string | Timestamp | undefined = undefined;
+  deletedAt: string | Timestamp | null = null;
   // Schedule
   notBeforeAt?: string | Timestamp;
   deliveredAt?: string | Timestamp;
