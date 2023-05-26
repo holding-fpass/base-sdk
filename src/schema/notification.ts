@@ -62,6 +62,7 @@ export class Notification
   form?: Pick<Form, "resourceId" | "name">;
   story?: Pick<Story, "resourceId" | "name">;
   campaign?: Pick<Campaign, "resourceId" | "name">;
+  // @ts-ignore
   deletedAt: string | Timestamp | null = null;
   // Schedule
   notBeforeAt?: string | Timestamp;
@@ -85,7 +86,7 @@ export class Notification
       timestamp: resource.timestamp,
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
-      deletedAt: resource.deletedAt,
+      deletedAt: resource.deletedAt as string | Timestamp | undefined,
     };
   }
 }

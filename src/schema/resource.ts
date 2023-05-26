@@ -86,7 +86,7 @@ export class Resource<Status = any, Type = any> {
   timestamp?: string | Timestamp;
   createdAt?: string | Timestamp;
   updatedAt?: string | Timestamp;
-  deletedAt?: string | Timestamp | null;
+  deletedAt?: string | Timestamp;
   // Status
   status?: Status;
   statusAt?: string | Timestamp;
