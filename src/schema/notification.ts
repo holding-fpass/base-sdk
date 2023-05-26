@@ -86,7 +86,8 @@ export class Notification
       timestamp: resource.timestamp,
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
-      deletedAt: resource.deletedAt as string | Timestamp | undefined,
+      // @ts-ignore
+      deletedAt: resource.deletedAt as string | Timestamp | null,
     };
   }
 }
