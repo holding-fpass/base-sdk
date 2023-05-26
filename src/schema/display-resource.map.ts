@@ -58,6 +58,7 @@ export const DisplayResourceFunctionMap = new Map<
   [ResourceType.VIDEO, Video.prototype.asDisplayResource],
 ]);
 
+// @ts-ignore
 export const ResourceTypePrototypeMap = new Map<ResourceType, Resource>([
   [ResourceType.CAMPAIGN, Campaign.prototype],
   [ResourceType.CERTIFICATE, Certificate.prototype],
