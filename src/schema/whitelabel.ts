@@ -31,4 +31,5 @@ export enum Whitelabel {
   THINKPLAY = "thinkplay",
   VETORBRASIL = "vetorbrasil",
   ENSINABOOK = 'ensinabook',
+  FAAP = 'faap',
 }
