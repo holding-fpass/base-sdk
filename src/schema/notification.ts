@@ -64,6 +64,7 @@ export class Notification
   campaign?: Pick<Campaign, "resourceId" | "name">;
   // @ts-ignore
   deletedAt: string | Timestamp | null = null;
+  expiresAt?: string | Timestamp;
   // Schedule
   notBeforeAt?: string | Timestamp;
   deliveredAt?: string | Timestamp;
