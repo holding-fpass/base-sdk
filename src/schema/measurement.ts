@@ -64,6 +64,15 @@ export enum MeasurementType {
   USER_COURSE_COMPLETION_RATE = "user.course.completion.rate",
   // Search
   SEARCH_QUERIES = "search.queries",
+  // Channel
+  CHANNEL_USERS_TOTAL_COUNT = "channel.users.total.count",
+  CHANNEL_USERS_ACCESS = "channel.users.access",
+  CHANNEL_INACTIVE_USERS = "channel.inactive.users",
+  CHANNEL_TOTAL_WATCHTIME = "channel.total.watchtime",
+  CHANNEL_USERS_WATCHTIME = "channel.users.watchtime",
+  CHANNEL_MOST_FREQUENT_USERS = "channel.most.frequent.users",
+  CHANNEL_USERS_PROGRESS = "channel.users.progress",
+  CHANNEL_USERS_REPORT = "channel.users.report",
 }
 
 export enum MeasurementStatus {
