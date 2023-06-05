@@ -115,6 +115,7 @@ export class MeasurementFilter {
   //
   limit?: string;
   offset?: string;
+  channel?: string;
 }
 
 export interface MeasurementValue<T = any> {
