@@ -69,6 +69,7 @@ export const ResourceTypePrototypeMap = new Map<ResourceType, Resource>([
   [ResourceType.COURSE, Course.prototype],
   [ResourceType.FORM_RESPONSE, FormResponse.prototype],
   [ResourceType.INSTANCE, Instance.prototype],
+  [ResourceType.INTERACTION, Interaction.prototype],
   [ResourceType.MEASUREMENT, Measurement.prototype],
   [ResourceType.NOTIFICATION, Notification.prototype],
   [ResourceType.PLAN, Plan.prototype],
