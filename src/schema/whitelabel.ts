@@ -32,4 +32,5 @@ export enum Whitelabel {
   VETORBRASIL = "vetorbrasil",
   ENSINABOOK = 'ensinabook',
   FAAP = 'faap',
+  SORORIDADE_CONECTA = 'sororidade-conecta',
 }
