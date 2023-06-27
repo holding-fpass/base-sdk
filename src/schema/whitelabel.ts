@@ -34,5 +34,6 @@ export enum Whitelabel {
   FAAP = 'faap',
   SORORIDADE_CONECTA = 'sororidade-conecta',
   EDUCPAY = 'educpay',
-  GOBLOCKCHAIN = 'goblockchain'
+  GOBLOCKCHAIN = 'goblockchain',
+  LUCCA = 'lucca'
 }
