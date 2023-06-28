@@ -23,7 +23,7 @@ export const languagesMap = new Map<TLanguageTags, string>([
   [ELanguageTags.ES_CO, "Espanhol (Colômbia)"],
   [ELanguageTags.ES_ES, "Espanhol (Espanha)"],
   [ELanguageTags.ES_MX, "Espanhol (México)"],
-  [ELanguageTags.ES_US, "Espanhol (Estados Unidos)"],
+  [ELanguageTags.ES_US, "Espanhol"],
   [ELanguageTags.FI_FI, "finlandês (Finlândia)"],
   [ELanguageTags.FR_BE, "Francês (Bélgica)"],
   [ELanguageTags.FR_CA, "Francês (Canadá)"],
