@@ -90,6 +90,7 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   questions?: Partial<FormQuestion>[];
   resultRanges?: Partial<FormResultRange>[];
   trigger?: FormTrigger;
+  timer?: string;
   // Related
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
