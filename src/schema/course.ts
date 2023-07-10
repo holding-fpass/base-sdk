@@ -53,6 +53,7 @@ export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
 export class ContentForms {
   contentEndForm?: Partial<Form>;
   userTestForm?: Partial<Form>;
+  publicRatingForm?: Partial<Form>;
 }
 
 export interface MeetProvider {
