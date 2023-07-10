@@ -77,6 +77,7 @@ export enum ContentType {
   MEET = "meet",
   LIVE = "live",
   LINK = "link",
+  EXAM = "exam"
 }
 
 export enum ContentStatus {
