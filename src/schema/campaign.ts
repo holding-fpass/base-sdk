@@ -42,6 +42,7 @@ export const CampaignStatusTransitionMap = new Map<
 export class Campaign extends Resource implements SearchableResource {
   resourceType = ResourceType.CAMPAIGN;
   name!: string;
+  viewLimit?: number;
   // Actions
   textNotificationAction?: NotificationMessage;
   pushNotificationAction?: NotificationMessage;

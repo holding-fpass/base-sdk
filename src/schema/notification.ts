@@ -72,7 +72,7 @@ export class Notification
   trigger?: NotificationTrigger;
   // Usage
   readed?: boolean;
-  viewLimit?: number;
+  viewCount?: number;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Notification): DisplayResource<NotificationType, ResourceStatus> {
@@ -80,7 +80,7 @@ export class Notification
     return {
       type: resource.type,
       readed: resource.readed,
-      value: resource.viewLimit,
+      value: resource.viewCount,
       resourceType: ResourceType.NOTIFICATION,
       resourceId: resource.resourceId,
       h1: resource.message?.body,
