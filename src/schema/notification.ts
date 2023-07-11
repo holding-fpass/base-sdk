@@ -23,6 +23,7 @@ export class NotificationMessage {
 export enum NotificationTrigger {
   NONE = "notification.trigger.none",
   APP_OPEN = "notification.trigger.app.open",
+  FIRST_ACCESS = "notification.trigger.first.access",
 }
 
 export enum NotificationStatus {
@@ -71,6 +72,7 @@ export class Notification
   trigger?: NotificationTrigger;
   // Usage
   readed?: boolean;
+  viewLimit?: number;
   // SearchableResource implementation
   isPublic = false;
   public static asDisplayResource(resource: Notification): DisplayResource<NotificationType, ResourceStatus> {
@@ -78,6 +80,7 @@ export class Notification
     return {
       type: resource.type,
       readed: resource.readed,
+      value: resource.viewLimit,
       resourceType: ResourceType.NOTIFICATION,
       resourceId: resource.resourceId,
       h1: resource.message?.body,
