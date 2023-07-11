@@ -32,6 +32,7 @@ export class Channel
   implements SearchableResource {
   resourceType = ResourceType.CHANNEL;
   name!: string;
+  description?: string;
   slug!: string;
   primaryColor!: string;
   resourceUrl!: string;
@@ -46,14 +47,16 @@ export class Channel
   playlists!: Partial<Playlist>[];
   // SearchableResource implementation
   isPublic = true;
+  isSearchable = true;
   public static asDisplayResource(resource: Channel): DisplayResource<any, ChannelStatus> {
     return {
       resourceType: ResourceType.CHANNEL,
       resourceId: resource.resourceId,
       h1: resource.name,
+      h2: resource.description,
       status: resource.status,
       isPublic: true,
-      isSearchable: resource?.isSearchable,
+      isSearchable: true,
       timestamp: resource.timestamp,
       imageUrl: ImageUtils.imageOptimized(
         resource.image160x40 as string,

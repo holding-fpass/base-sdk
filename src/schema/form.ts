@@ -82,6 +82,11 @@ export enum FormTrigger {
   APP_OPEN = "form.trigger.app.open",
 }
 
+export enum FormAssessmentMethod {
+  QUANTITATIVE = 'quantitative',
+  QUALITATIVE = 'qualitative'
+}
+
 export class Form extends Resource<FormStatus> implements SearchableResource {
   resourceType = ResourceType.FORM;
   name!: string;
@@ -91,6 +96,7 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   resultRanges?: Partial<FormResultRange>[];
   trigger?: FormTrigger;
   timer?: string;
+  assessmentMethod?: FormAssessmentMethod;
   // Related
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
