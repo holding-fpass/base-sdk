@@ -32,6 +32,7 @@ export class Channel
   implements SearchableResource {
   resourceType = ResourceType.CHANNEL;
   name!: string;
+  description?: string;
   slug!: string;
   primaryColor!: string;
   resourceUrl!: string;
@@ -52,6 +53,7 @@ export class Channel
       resourceType: ResourceType.CHANNEL,
       resourceId: resource.resourceId,
       h1: resource.name,
+      h2: resource.description,
       status: resource.status,
       isPublic: true,
       isSearchable: true,
