@@ -37,5 +37,6 @@ export enum Whitelabel {
   GOBLOCKCHAIN = 'goblockchain',
   LUCCA = 'lucca',
   FARM = 'farm',
-  AMANDAFRANCOZO = 'amandafrancozo'
+  AMANDAFRANCOZO = 'amandafrancozo',
+  UNIVERSIDADE_BRASIL = 'universidade-brasil'
 }
