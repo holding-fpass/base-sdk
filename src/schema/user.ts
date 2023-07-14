@@ -121,8 +121,8 @@ export class User extends Resource<UserStatus> implements SearchableResource {
         "128x128"
       ),
       type: resource.permission,
-      isPublic: resource.permission === UserPermission.MENTOR ? true : false,
-      isSearchable: resource.permission === UserPermission.MENTOR ? true : false,
+      isPublic: false,
+      isSearchable: resource?.isSearchable,
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
       deletedAt: resource.deletedAt,
