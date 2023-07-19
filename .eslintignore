@@ -1,0 +1,11 @@
+# Envariment
+node_modules
+.history
+.vscode
+.idea
+.env
+.env.*
+*.log
+
+# Test
+/coverage
