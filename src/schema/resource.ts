@@ -21,6 +21,7 @@ export enum ResourceType {
   COURSE = "course",
   DEVICE = "device",
   EMAIL = "email",
+  EVENT = 'event',
   FILE = "file",
   FORM = "form",
   FORM_RESPONSE = "form.response",
