@@ -54,10 +54,10 @@ export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
 }
 
 export class ContentForms {
-  contentEndForm?: Partial<Form>;
-  userTestForm?: Partial<Form>;
-  publicRatingForm?: Partial<Form>;
-  examForm?: RequiredBy<Partial<Form>, 'resourceId' | 'resourceType'>;
+  contentEndForm?: Pick<Form, 'resourceId' | 'name'>;
+  userTestForm?: Pick<Form, 'resourceId' | 'name'>;
+  publicRatingForm?: Pick<Form, 'resourceId' | 'name'>;
+  examForm?: Pick<Form, 'resourceId' | 'name'>;
 }
 
 export interface MeetProvider {
