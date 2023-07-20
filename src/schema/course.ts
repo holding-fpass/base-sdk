@@ -16,7 +16,7 @@ import { Subtitle } from './subtitle';
 import { Tag } from './tag';
 import { User } from './user';
 import { Whitelabel } from './whitelabel';
-import { RequiredBy } from 'types/required-by';
+import { RequiredBy } from '../types/required-by';
 
 interface CourseCertificateSettings {
   minimumWatchTime: number;
