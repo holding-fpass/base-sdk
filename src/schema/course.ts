@@ -4,18 +4,19 @@ import {
   ResourceStatus,
   ResourceType,
   SearchableResource,
-} from "./resource";
+} from './resource';
 
-import { Channel } from "./channel";
-import { Contract } from "./contract";
-import { Form } from "./form";
-import { ImageUtils, VideoUtils } from "../media";
-import { ProviderExtra } from "./provider";
-import { Stage } from "./stage";
-import { Subtitle } from "./subtitle";
-import { Tag } from "./tag";
-import { User } from "./user";
-import { Whitelabel } from "./whitelabel";
+import { Channel } from './channel';
+import { Contract } from './contract';
+import { Form } from './form';
+import { ImageUtils, VideoUtils } from '../media';
+import { ProviderExtra } from './provider';
+import { Stage } from './stage';
+import { Subtitle } from './subtitle';
+import { Tag } from './tag';
+import { User } from './user';
+import { Whitelabel } from './whitelabel';
+import { RequiredBy } from 'types/required-by';
 
 interface CourseCertificateSettings {
   minimumWatchTime: number;
@@ -24,8 +25,8 @@ interface CourseCertificateSettings {
 // Content
 
 export enum ContentItemType {
-  DOWNLOAD = "download",
-  LINK = "link",
+  DOWNLOAD = 'download',
+  LINK = 'link',
 }
 export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
   resourceType = ResourceType.CONTENT_ITEM;
@@ -34,7 +35,9 @@ export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
   resourceUrl?: string;
   fileUrl?: string;
   // SearchableResource implementation
-  public static asDisplayResource(resource: ContentItem): DisplayResource<any, ResourceStatus> {
+  public static asDisplayResource(
+    resource: ContentItem
+  ): DisplayResource<any, ResourceStatus> {
     return {
       resourceType: ResourceType.CONTENT_ITEM,
       resourceId: resource.resourceId,
@@ -45,7 +48,7 @@ export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
       deletedAt: resource.deletedAt,
-      type: resource.type
+      type: resource.type,
     };
   }
 }
@@ -54,6 +57,7 @@ export class ContentForms {
   contentEndForm?: Partial<Form>;
   userTestForm?: Partial<Form>;
   publicRatingForm?: Partial<Form>;
+  examForm?: RequiredBy<Partial<Form>, 'resourceId' | 'resourceType'>;
 }
 
 export interface MeetProvider {
@@ -66,35 +70,35 @@ export class ContentSchedule {
   dateEnd?: string;
   meetDateStart?: string;
   meetDateEnd?: string;
-  channel!: Partial<Channel>
-  stage?: Pick<Stage, 'slug' | 'resourceId' | 'name'>
+  channel!: Partial<Channel>;
+  stage?: Pick<Stage, 'slug' | 'resourceId' | 'name'>;
   meetUrl?: string;
   slug?: string;
 }
 
 export enum ContentType {
-  VIDEO = "video",
-  MEET = "meet",
-  LIVE = "live",
-  LINK = "link",
-  EXAM = "exam"
+  VIDEO = 'video',
+  MEET = 'meet',
+  LIVE = 'live',
+  LINK = 'link',
+  EXAM = 'exam',
 }
 
 export enum ContentStatus {
-  CREATED = "created",
-  PROVIDER_TRANSCODE_JOB_CREATED = "provider.transcode.job.created",
-  PROVIDER_TRANSCODE_JOB_SUCCEEDED = "provider.transcode.job.succeeded",
-  PROVIDER_TRANSCODE_JOB_FAILED = "provider.transcode.job.failed",
-  ACTIVE = "active",
+  CREATED = 'created',
+  PROVIDER_TRANSCODE_JOB_CREATED = 'provider.transcode.job.created',
+  PROVIDER_TRANSCODE_JOB_SUCCEEDED = 'provider.transcode.job.succeeded',
+  PROVIDER_TRANSCODE_JOB_FAILED = 'provider.transcode.job.failed',
+  ACTIVE = 'active',
 }
 
 export enum ContentProviderTranscodeMetadata {
-  JOB_ID = "content.provider.transcode.metadata.job.id",
-  STATUS = "content.provider.transcode.metadata.status",
-  CREATE_TIME = "content.provider.transcode.metadata.create.time",
-  START_TIME = "content.provider.transcode.metadata.start.time",
-  END_TIME = "content.provider.transcode.metadata.end.time",
-  ERROR = "content.provider.transcode.metadata.error",
+  JOB_ID = 'content.provider.transcode.metadata.job.id',
+  STATUS = 'content.provider.transcode.metadata.status',
+  CREATE_TIME = 'content.provider.transcode.metadata.create.time',
+  START_TIME = 'content.provider.transcode.metadata.start.time',
+  END_TIME = 'content.provider.transcode.metadata.end.time',
+  ERROR = 'content.provider.transcode.metadata.error',
 }
 
 export const ContentStatusTransitionMap = new Map<
@@ -115,7 +119,8 @@ export const ContentStatusTransitionMap = new Map<
 
 export class Content
   extends Resource<ContentStatus, ContentType>
-  implements SearchableResource {
+  implements SearchableResource
+{
   resourceType = ResourceType.CONTENT;
   name!: string;
   slug?: string;
@@ -132,7 +137,7 @@ export class Content
   video1920x1080_subtitles?: Subtitle[];
   // Transcoded
   audio?: string;
-  audioCodec?: "mp3" | "mp4";
+  audioCodec?: 'mp3' | 'mp4';
   video640x360?: string;
   video1280x720?: string;
   // For download files of ContentType.LINK
@@ -152,8 +157,8 @@ export class Content
   // Payment
   free?: boolean;
   // Related
-  stage?: Pick<Stage, "resourceId" | "name" | "slug">;
-  mentors?: Pick<User, "resourceId" | "name" | "email">[];
+  stage?: Pick<Stage, 'resourceId' | 'name' | 'slug'>;
+  mentors?: Pick<User, 'resourceId' | 'name' | 'email'>[];
   tags?: Tag[];
   parentId!: string;
   parentType!: ResourceType;
@@ -167,7 +172,7 @@ export class Content
       resourceId: resource.resourceId,
       resourceType: ResourceType.CONTENT,
       h1: resource.name,
-      h2: resource?.mentors?.map((mentor) => mentor.name)?.join(", "),
+      h2: resource?.mentors?.map((mentor) => mentor.name)?.join(', '),
       dateStart: resource?.dateStart,
       dateEnd: resource?.dateEnd,
       whitelabel: resource.whitelabel,
@@ -175,7 +180,7 @@ export class Content
       status: resource.status,
       imageUrl: ImageUtils.imageOptimized(
         resource.image144x80 as string,
-        "144x80"
+        '144x80'
       ),
       resourceUrl: VideoUtils.getApiUrl(resource.video1920x1080),
       parentId: resource.parentId,
@@ -185,7 +190,7 @@ export class Content
       isSearchable: resource?.isSearchable,
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
-      deletedAt: resource.deletedAt
+      deletedAt: resource.deletedAt,
     };
   }
 }
@@ -200,7 +205,9 @@ export class Module extends Resource {
   // Related
   contents?: Partial<Content>[];
   // SearchableResource implementation
-  public static asDisplayResource(resource: Module): DisplayResource<any, ResourceStatus> {
+  public static asDisplayResource(
+    resource: Module
+  ): DisplayResource<any, ResourceStatus> {
     return {
       resourceType: ResourceType.MODULE,
       resourceId: resource.resourceId,
@@ -213,7 +220,7 @@ export class Module extends Resource {
       deletedAt: resource.deletedAt,
       imageUrl: ImageUtils.imageOptimized(
         resource.image256x256 as string,
-        "256x256"
+        '256x256'
       ),
     };
   }
@@ -222,9 +229,9 @@ export class Module extends Resource {
 // Course
 
 export enum CourseStatus {
-  CREATED = "created",
-  ACTIVE = "active",
-  UNAVALIABLE = "unavaliable",
+  CREATED = 'created',
+  ACTIVE = 'active',
+  UNAVALIABLE = 'unavaliable',
 }
 
 interface FAQ {
@@ -245,11 +252,11 @@ interface KnowledgeItens {
 }
 
 export enum CourseType {
-  FREE = "course.free",
-  LIVE = "course.live",
-  IMERSION = "course.immersion",
-  HYBRID = "course.hybrid",
-  CATALOG = "course.catalog",
+  FREE = 'course.free',
+  LIVE = 'course.live',
+  IMERSION = 'course.immersion',
+  HYBRID = 'course.hybrid',
+  CATALOG = 'course.catalog',
 }
 
 export class CourseForms {
@@ -264,7 +271,8 @@ export const CourseStatusTransitionMap = new Map<CourseStatus, CourseStatus[]>([
 ]);
 export class Course
   extends Resource<CourseStatus, CourseType>
-  implements SearchableResource {
+  implements SearchableResource
+{
   resourceType = ResourceType.COURSE;
   resourceId!: string;
   name!: string;
@@ -302,7 +310,9 @@ export class Course
   forms?: CourseForms;
   // SearchableResource implementation
   isPublic = true;
-  public static asDisplayResource(resource: Course): DisplayResource<CourseType, CourseStatus> {
+  public static asDisplayResource(
+    resource: Course
+  ): DisplayResource<CourseType, CourseStatus> {
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.COURSE,
@@ -313,7 +323,7 @@ export class Course
       status: resource.status,
       imageUrl: ImageUtils.imageOptimized(
         resource.image400x512 as string,
-        "400x512"
+        '400x512'
       ),
       isPublic: true,
       type: resource.type,
