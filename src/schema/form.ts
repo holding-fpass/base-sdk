@@ -33,6 +33,7 @@ export enum FormQuestionType {
   OPTIONS = 'options',
   TEXT = 'text',
   SCALE = 'scale',
+  UPLOAD = 'upload',
 }
 
 export class FormQuestion {
