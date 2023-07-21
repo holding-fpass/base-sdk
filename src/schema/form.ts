@@ -1,5 +1,10 @@
 import { Playlist } from './playlist';
-import { DisplayResource, Resource, ResourceType, SearchableResource } from './resource';
+import {
+  DisplayResource,
+  Resource,
+  ResourceType,
+  SearchableResource,
+} from './resource';
 import { Tag } from './tag';
 import { User } from './user';
 import { Whitelabel } from './whitelabel';
@@ -16,7 +21,7 @@ export class FormQuestionText {
 }
 
 export enum FormQuestionScaleType {
-  STAR = "star",
+  STAR = 'star',
 }
 export class FormQuestionScale<Type> {
   type!: Type;
@@ -25,9 +30,9 @@ export class FormQuestionScale<Type> {
 }
 
 export enum FormQuestionType {
-  OPTIONS = "options",
-  TEXT = "text",
-  SCALE = "scale",
+  OPTIONS = 'options',
+  TEXT = 'text',
+  SCALE = 'scale',
 }
 
 export class FormQuestion {
@@ -62,13 +67,13 @@ export class FormResultRange {
 }
 
 export enum FormLayout {
-  SLIDES = "slides",
-  PAGE = "page",
+  SLIDES = 'slides',
+  PAGE = 'page',
 }
 
 export enum FormStatus {
-  CREATED = "created",
-  ACTIVE = "active",
+  CREATED = 'created',
+  ACTIVE = 'active',
 }
 
 export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
@@ -77,14 +82,14 @@ export const FormStatusTransitionMap = new Map<FormStatus, FormStatus[]>([
 ]);
 
 export enum FormTrigger {
-  MACHINE_LOGIN = "form.trigger.machine.login",
-  USER_LOGIN = "form.trigger.user.login",
-  APP_OPEN = "form.trigger.app.open",
+  MACHINE_LOGIN = 'form.trigger.machine.login',
+  USER_LOGIN = 'form.trigger.user.login',
+  APP_OPEN = 'form.trigger.app.open',
 }
 
 export enum FormAssessmentMethod {
   QUANTITATIVE = 'quantitative',
-  QUALITATIVE = 'qualitative'
+  QUALITATIVE = 'qualitative',
 }
 
 export class Form extends Resource<FormStatus> implements SearchableResource {
@@ -96,12 +101,15 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   resultRanges?: Partial<FormResultRange>[];
   trigger?: FormTrigger;
   timer?: string;
+  maxRetry?: string;
   assessmentMethod?: FormAssessmentMethod;
   // Related
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: Form): DisplayResource<any, FormStatus> {
+  public static asDisplayResource(
+    resource: Form
+  ): DisplayResource<any, FormStatus> {
     return {
       resourceType: ResourceType.FORM,
       resourceId: resource.resourceId,
@@ -125,8 +133,8 @@ export class FormUserResponse {
 }
 
 export enum FormResponseStatus {
-  CREATED = "created",
-  ACTIVE = "active",
+  CREATED = 'created',
+  ACTIVE = 'active',
 }
 
 export const FormResponseStatusTransitionMap = new Map<
@@ -136,11 +144,11 @@ export const FormResponseStatusTransitionMap = new Map<
 
 export class FormResponse extends Resource<FormResponseStatus> {
   resourceType = ResourceType.FORM_RESPONSE;
-  form!: Pick<Form, "resourceId" | "name">;
-  product?: Pick<Resource, "resourceId" | "resourceType"> & { name: string };
+  form!: Pick<Form, 'resourceId' | 'name'>;
+  product?: Pick<Resource, 'resourceId' | 'resourceType'> & { name: string };
   userResponses!: FormUserResponse[];
   // Related
-  user!: Pick<User, "resourceId" | "name" | "email" | "image128x128">;
+  user!: Pick<User, 'resourceId' | 'name' | 'email' | 'image128x128'>;
   // Process
   value!: number;
 }
