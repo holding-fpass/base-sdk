@@ -12,6 +12,7 @@ import { Whitelabel } from './whitelabel';
 export class FormQuestionOption {
   name!: string;
   value!: number;
+  resourceId!: string;
   image600x400?: string;
 }
 
