@@ -54,6 +54,7 @@ export class Channel
       resourceId: resource.resourceId,
       h1: resource.name,
       h2: resource.description,
+      h3: resource.slug,
       status: resource.status,
       isPublic: true,
       isSearchable: true,
