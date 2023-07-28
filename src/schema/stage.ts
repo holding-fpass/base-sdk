@@ -69,6 +69,7 @@ export class StagePayment {
 export class Stage extends Resource<StageStatus> implements SearchableResource {
   // Data
   resourceType = ResourceType.STAGE;
+  parentType?: ResourceType;
   name?: string;
   slug?: string;
   description?: string;
@@ -95,6 +96,7 @@ export class Stage extends Resource<StageStatus> implements SearchableResource {
     return {
       resourceType: ResourceType.STAGE,
       resourceId: resource.resourceId,
+      parentType: resource.parentType,
       h1: resource.name,
       status: resource.status,
       isPublic: resource.isPublic,
