@@ -44,6 +44,7 @@ export enum MeasurementType {
   STAGE_REACTION_COUNT = "stage.reaction.count",
   STAGE_REACTION_COUNT_LIST = "stage.reaction.count.list",
   STAGE_WATCHERS_COUNT = "stage.watchers.count",
+  STAGE_WATCHERS_LIST = "stage.watchers.list",
   STAGE_WATCHERS_ONLINE = "stage.watchers.online",
   STAGE_WATCHERS_PERMANENCY_AVG = "stage.watchers.permanency.avg",
   // Response
