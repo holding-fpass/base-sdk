@@ -40,6 +40,7 @@ export enum MeasurementType {
   CONTENT_TIME_WITH_HIGHER_DROPOUT = "content.time.with.higher.dropout",
   CONTENT_VIEW = "content.view",
   CONTENT_WATCHERS_COUNT = "content.watchers.count",
+  CONTENT_WATCHERS_LIST = "content.watchers.list",
   // Stage
   STAGE_REACTION_COUNT = "stage.reaction.count",
   STAGE_REACTION_COUNT_LIST = "stage.reaction.count.list",
