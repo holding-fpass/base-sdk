@@ -3,7 +3,6 @@ import { ImageUtils } from '../media';
 import { Certificate } from './certificate';
 import { Channel } from './channel';
 import { Course } from './course';
-import { Device } from './device';
 import { FormResponse } from './form';
 import { Interaction } from './interaction';
 import { Metadata } from './metadata';
@@ -84,7 +83,7 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   image128x128?: string;
   // Permissions
   whitelabel!: Whitelabel;
-  devices?: Partial<Device>[];
+  devices!: string[];
   scopes?: Scope[];
   restricted?: boolean;
   // Assessements
