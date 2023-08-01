@@ -10,6 +10,7 @@ export enum ResourceType {
   CHANNEL = "channel",
   CHANNEL_IMAGE_AVATAR = "channel.image.avatar",
   CHANNEL_IMAGE_BANNER = "channel.image.banner",
+  CHAT = "chat",
   CHAT_FILE = "chat.file",
   CHAT_IMAGE = "chat.image",
   CHAT_MESSAGE = "chat.message",
