@@ -1,7 +1,24 @@
-import { TLanguageTags } from "../i18n";
-import { ResourceType, Whitelabel } from "../schema";
+import { TLanguageTags } from "../../../i18n";
+import { ResourceType, Whitelabel } from "../../../schema";
 
 export namespace IDeviceClient {
+  export interface IHTTPDevice<Metadata = Record<string, unknown>> {
+    resourceId: string;
+    resourceType: ResourceType.DEVICE;
+    name: string;
+    userIds: string[];
+    fingerprint: string;
+    language: TLanguageTags;
+    latitude: number | null;
+    longitude: number | null;
+    token: string;
+    refreshToken: string;
+    whitelabel: Whitelabel;
+    metadata: Metadata | null;
+    createdAt: string;
+    updatedAt: string;
+  }
+
   export namespace IClass {
     export interface IProps<Metadata = Record<string, unknown>> {
       resourceId: string;
