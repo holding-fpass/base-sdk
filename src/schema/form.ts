@@ -46,6 +46,7 @@ export class FormQuestion {
   text?: FormQuestionText;
   scale?: FormQuestionScale<FormQuestionScaleType>[];
   public?: boolean;
+  value?: string;
   // Hash
   hash!: string;
 }
