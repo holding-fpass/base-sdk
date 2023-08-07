@@ -47,6 +47,7 @@ export class Interaction
   parentId?: string;
   parentType?: ResourceType;
   user?: Pick<User, "id">;
+  content?: string;
   // Media
   mediaStart?: number;
   mediaEnd?: number;
