@@ -32,6 +32,7 @@ export enum ResourceType {
   JWT = "jwt",
   LESSON = "lesson",
   LIVE = "live",
+  CONTENT_SLIDESHOW = "content.slideshow",
   MEASUREMENT = "measurement",
   MFA = "mfa",
   MODULE = "module",

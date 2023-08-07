@@ -60,6 +60,12 @@ export class ContentForms {
   examForm?: Pick<Form, 'resourceId' | 'name'>;
 }
 
+export class ContentSlideshow {
+  resourceType = ResourceType.CONTENT_SLIDESHOW;
+  resourceid?: string;
+  resourceUrl?: string;
+}
+
 export interface MeetProvider {
   meetingId: string;
   providerName: string;
@@ -163,6 +169,7 @@ export class Content
   tags?: Tag[];
   parentId!: string;
   parentType!: ResourceType;
+  slideshow?: Partial<ContentSlideshow>[];
   items?: Partial<ContentItem>[];
   // SearchableResource implementation
   isPublic = true;
