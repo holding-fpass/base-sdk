@@ -62,7 +62,7 @@ export class ContentForms {
 
 export class ContentSlideshow {
   resourceType = ResourceType.CONTENT_SLIDESHOW;
-  resourceid?: string;
+  resourceId?: string;
   resourceUrl?: string;
 }
 
