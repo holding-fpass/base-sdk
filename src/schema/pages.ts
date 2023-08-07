@@ -75,6 +75,7 @@ export enum FLabelAppPagePath {
   CALENDAR = "/calendar",
   CERTIFICATE = "/certificate",
   EXAM = "/exam/:contentId",
+  SLIDESHOW = "/slideshow/:contentId",
 }
 
 export function PageUrl(pagePath: string, args?: any) {

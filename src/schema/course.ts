@@ -82,6 +82,7 @@ export enum ContentType {
   LIVE = 'live',
   LINK = 'link',
   EXAM = 'exam',
+  SLIDESHOW = 'slideshow',
 }
 
 export enum ContentStatus {
