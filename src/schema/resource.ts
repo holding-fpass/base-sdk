@@ -34,6 +34,7 @@ export enum ResourceType {
   LIVE = "live",
   CONTENT_SLIDESHOW = "content.slideshow",
   MEASUREMENT = "measurement",
+  MESSAGES = "messages",
   MFA = "mfa",
   MODULE = "module",
   NOTIFICATION = "notification",
