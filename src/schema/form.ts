@@ -95,6 +95,12 @@ export enum FormAssessmentMethod {
   QUALITATIVE = 'qualitative',
 }
 
+interface UserOverlay {
+  maxRetry: string;
+  resourceId: string;
+  user: Pick<User, 'email' | 'name' | 'resourceId'>;
+}
+
 export class Form extends Resource<FormStatus> implements SearchableResource {
   resourceType = ResourceType.FORM;
   name!: string;
@@ -106,6 +112,7 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   timer?: string;
   maxRetry?: string;
   assessmentMethod?: FormAssessmentMethod;
+  userOverlay?: UserOverlay;
   // Related
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
