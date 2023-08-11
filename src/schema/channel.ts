@@ -45,6 +45,8 @@ export class Channel
   image64x64!: string;
   // Related
   playlists!: Partial<Playlist>[];
+  // Security
+  restricted?: boolean;
   // SearchableResource implementation
   isPublic = true;
   isSearchable = true;
