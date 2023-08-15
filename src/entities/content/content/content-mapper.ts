@@ -1,4 +1,4 @@
-import { ComplementaryMaterialMapper } from "../complementary-material";
+import { ComplementaryMaterialClientMapper } from "../complementary-material";
 import { ContentClient, IContentClient } from "./content-entity";
 
 export class ContentClientMapper {
@@ -19,7 +19,7 @@ export class ContentClientMapper {
       mentors: HTTPContent.mentors,
       tags: HTTPContent.tags,
       courseId: HTTPContent.courseId,
-      complementaryMaterials: HTTPContent.complementaryMaterials.map((complementaryMaterial) => ComplementaryMaterialMapper.toApplication(complementaryMaterial)),
+      complementaryMaterials: HTTPContent.complementaryMaterials.map((complementaryMaterial) => ComplementaryMaterialClientMapper.toApplication(complementaryMaterial)),
       whitelabel: HTTPContent.whitelabel,
       metadata: HTTPContent.metadata,
       createdAt: new Date(HTTPContent.createdAt),
@@ -44,7 +44,7 @@ export class ContentClientMapper {
       mentors: content.mentors,
       tags: content.tags,
       courseId: content.courseId,
-      complementaryMaterials: content.complementaryMaterials.map((complementaryMaterial) => ComplementaryMaterialMapper.toHTTP(complementaryMaterial)),
+      complementaryMaterials: content.complementaryMaterials.map((complementaryMaterial) => ComplementaryMaterialClientMapper.toHTTP(complementaryMaterial)),
       whitelabel: content.whitelabel,
       metadata: content.metadata,
       createdAt: content.createdAt.toISOString(),

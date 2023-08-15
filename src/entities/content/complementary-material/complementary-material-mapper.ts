@@ -1,6 +1,6 @@
 import { ComplementaryMaterialClient, IComplementaryMaterialClient } from "./complementary-material-entity";
 
-export class ComplementaryMaterialMapper {
+export class ComplementaryMaterialClientMapper {
   public static toApplication(HTTPComplementaryMaterial: IComplementaryMaterialClient.IHTTPComplementaryMaterial): ComplementaryMaterialClient {
     return new ComplementaryMaterialClient({
       resourceId: HTTPComplementaryMaterial.resourceId,
