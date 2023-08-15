@@ -39,5 +39,6 @@ export enum Whitelabel {
   FARM = 'farm',
   AMANDAFRANCOZO = 'amandafrancozo',
   UNIVERSIDADE_BRASIL = 'universidade-brasil',
-  VALVERDE = 'valverde'
+  VALVERDE = 'valverde',
+  BV = 'bv',
 }
