@@ -16,7 +16,11 @@ export namespace IContentClient {
     image1440x720: string;
     dateStart: string | null;
     dateEnd: string | null;
-    forms: string[];
+    forms: {
+      userTestForm: string | null;
+      examForm: string | null;
+      contentEndForm: string | null;
+    };
     free: boolean;
     mentors: string[];
     tags: string[];
@@ -49,7 +53,11 @@ export namespace IContentClient {
       image1440x720: string;
       dateStart: Date | null;
       dateEnd: Date | null;
-      forms: string[];
+      forms: {
+        userTestForm: string | null;
+        examForm: string | null;
+        contentEndForm: string | null;
+      };
       free: boolean;
       mentors: string[];
       tags: string[];
