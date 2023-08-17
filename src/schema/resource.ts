@@ -24,6 +24,7 @@ export enum ResourceType {
   EMAIL = "email",
   EVENT = "event",
   FORUM_POST = "forum.post",
+  FORUM_TAG = "forum.tag",
   FILE = "file",
   FORM = "form",
   FORM_RESPONSE = "form.response",
