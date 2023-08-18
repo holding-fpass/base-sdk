@@ -16,7 +16,7 @@ export namespace IContentClient {
     image1440x720: string;
     dateStart: string | null;
     dateEnd: string | null;
-    duration: string | null;
+    duration: number | null;
     forms: {
       userTestForm: string | null;
       examForm: string | null;
@@ -54,7 +54,7 @@ export namespace IContentClient {
       image1440x720: string;
       dateStart: Date | null;
       dateEnd: Date | null;
-      duration: string | null;
+      duration: number | null;
       forms: {
         userTestForm: string | null;
         examForm: string | null;
