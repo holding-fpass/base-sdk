@@ -16,6 +16,7 @@ export namespace IContentClient {
     image1440x720: string;
     dateStart: string | null;
     dateEnd: string | null;
+    duration: string | null;
     forms: {
       userTestForm: string | null;
       examForm: string | null;
@@ -53,6 +54,7 @@ export namespace IContentClient {
       image1440x720: string;
       dateStart: Date | null;
       dateEnd: Date | null;
+      duration: string | null;
       forms: {
         userTestForm: string | null;
         examForm: string | null;
@@ -81,6 +83,7 @@ export namespace IContentClient {
         image1440x720: IContentClient.IClass.IProps['image1440x720'];
         dateStart: IContentClient.IClass.IProps['dateStart'];
         dateEnd: IContentClient.IClass.IProps['dateEnd'];
+        duration: IContentClient.IClass.IProps['duration'];
         forms: IContentClient.IClass.IProps['forms'];
         free: IContentClient.IClass.IProps['free'];
         mentors: IContentClient.IClass.IProps['mentors'];
@@ -141,6 +144,10 @@ export class ContentClient {
 
   public get dateEnd(): IContentClient.IClass.IProps['dateEnd'] {
     return this.props.dateEnd;
+  }
+
+  public get duration(): IContentClient.IClass.IProps['duration'] {
+    return this.props.duration;
   }
 
   public get forms(): IContentClient.IClass.IProps['forms'] {
