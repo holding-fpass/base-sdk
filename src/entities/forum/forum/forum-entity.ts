@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 export namespace IForumClient {
 
-  export interface IHTTPForum<Metadata = Record<string, unknown>> {
+  export interface IHTTPForum {
     resourceId: string;
     resourceType: ResourceType.FORUM;
     members: string[];
@@ -12,6 +12,7 @@ export namespace IForumClient {
     channelId: string | null;
     type: IForumClient.EType;
     name: string;
+    description: string;
     ownerId: string;
     isPrivate: boolean;
     whitelabel: Whitelabel;
@@ -34,6 +35,7 @@ export namespace IForumClient {
     channelId: string | null;
     type: IForumClient.EType;
     name: string;
+    description: string;
     ownerId: string;
     isPrivate: boolean;
     whitelabel: Whitelabel;
@@ -48,6 +50,7 @@ export namespace IForumClient {
     members: IForumClient.IProps['members'];
     moderators: IForumClient.IProps['moderators'];
     name: IForumClient.IProps['name'];
+    description: IForumClient.IProps['description'];
     type: IForumClient.IProps['type'];
     courseId: IForumClient.IProps['courseId'];
     channelId: IForumClient.IProps['channelId'];
@@ -75,6 +78,7 @@ export class ForumClient {
       moderators: props.moderators || [],
       isPrivate: props.isPrivate || false,
       name: props.name,
+      description: props.description,
       whitelabel: props.whitelabel,
       ownerId: props.ownerId,
       createdAt: props.createdAt || new Date(),
@@ -105,6 +109,10 @@ export class ForumClient {
 
   public get name(): IForumClient.IProps['name'] {
     return this.props.name;
+  }
+
+  public get description(): IForumClient.IProps['description'] {
+    return this.props.description;
   }
 
   public get ownerId(): IForumClient.IProps['ownerId'] {
