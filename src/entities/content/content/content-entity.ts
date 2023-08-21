@@ -21,6 +21,7 @@ export namespace IContentClient {
       userTestForm: string | null;
       examForm: string | null;
       contentEndForm: string | null;
+      publicRatingForm: string | null;
     };
     free: boolean;
     mentors: string[];
@@ -59,6 +60,7 @@ export namespace IContentClient {
         userTestForm: string | null;
         examForm: string | null;
         contentEndForm: string | null;
+        publicRatingForm: string | null;
       };
       free: boolean;
       mentors: string[];
