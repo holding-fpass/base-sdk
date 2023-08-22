@@ -38,6 +38,7 @@ export enum FormQuestionType {
 }
 
 export class FormQuestion {
+  resourceId!: string;
   name!: string;
   description?: string;
   type?: FormQuestionType;
