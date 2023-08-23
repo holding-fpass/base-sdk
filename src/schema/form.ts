@@ -13,6 +13,7 @@ export class FormQuestionOption {
   name!: string;
   value!: number;
   resourceId!: string;
+  correctAnswer!: boolean;
   image600x400?: string;
 }
 
