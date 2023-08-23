@@ -9,7 +9,7 @@ export namespace IUserExamAnswerClient {
     userExamId: string;
     userId: string;
     questionId: string;
-    correct: boolean;
+    isCorrect: boolean;
     value: string | null;
     whitelabel: Whitelabel;
     metadata: Metadata | null;
@@ -26,7 +26,7 @@ export namespace IUserExamAnswerClient {
       userExamId: string;
       userId: string;
       questionId: string;
-      correct: boolean;
+      isCorrect: boolean;
       value: string | null;
       whitelabel: Whitelabel;
       metadata: Metadata | null;
@@ -43,7 +43,7 @@ export namespace IUserExamAnswerClient {
         userExamId: IUserExamAnswerClient.IClass.IProps['userExamId'];
         userId: IUserExamAnswerClient.IClass.IProps['userId'];
         questionId: IUserExamAnswerClient.IClass.IProps['questionId'];
-        correct: IUserExamAnswerClient.IClass.IProps['correct'];
+        isCorrect: IUserExamAnswerClient.IClass.IProps['isCorrect'];
         value: IUserExamAnswerClient.IClass.IProps['value'];
         whitelabel: IUserExamAnswerClient.IClass.IProps['whitelabel'];
         metadata: IUserExamAnswerClient.IClass.IProps['metadata'];
@@ -89,8 +89,8 @@ export class UserExamAnswerClient {
     return this.props.questionId;
   }
 
-  public get correct(): IUserExamAnswerClient.IClass.IProps['correct'] {
-    return this.props.correct;
+  public get isCorrect(): IUserExamAnswerClient.IClass.IProps['isCorrect'] {
+    return this.props.isCorrect;
   }
 
   public get value(): IUserExamAnswerClient.IClass.IProps['value'] {
