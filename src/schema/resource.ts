@@ -14,6 +14,7 @@ export enum ResourceType {
   CHAT_FILE = "chat.file",
   CHAT_IMAGE = "chat.image",
   CHAT_MESSAGE = "chat.message",
+  CLASS = "class",
   COMMENT = "comment",
   COMPLEMENTARY_MATERIAL = 'complementary.material',
   CONTENT = "content",
