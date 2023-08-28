@@ -14,7 +14,6 @@ export namespace IChatMessageClient {
     metadata: Metadata | null;
     createdAt: string;
     updatedAt: string;
-    deletedAt: string | null;
   }
 
   export enum EType {
