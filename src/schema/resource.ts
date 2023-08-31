@@ -66,6 +66,7 @@ export enum ResourceType {
   TRANSACTION = "transaction",
   USER = "user",
   USER_CLASS = "user.class",
+  USER_CLASS_COURSE = "user.class.course",
   USER_CONSENT = "user.consent",
   USER_EXAM = 'user.exam',
   USER_EXAM_ANSWER = 'user.exam.answer',
