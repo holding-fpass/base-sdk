@@ -1,17 +1,13 @@
-import { IUserClass, UserClassClient } from "./user-class-entity";
+import { IUserClassClient, UserClassClient } from "./user-class-entity";
 
 export class UserClassClientMapper {
-  public static toApplication(HTTPUserClass: IUserClass.IHTTPUserClass): UserClassClient {
+  public static toApplication(HTTPUserClass: IUserClassClient.IHTTPUserClass): UserClassClient {
     return new UserClassClient({
       resourceId: HTTPUserClass.resourceId,
       resourceType: HTTPUserClass.resourceType,
       name: HTTPUserClass.name,
-      code: HTTPUserClass.code,
       channelId: HTTPUserClass.channelId,
-      userId: HTTPUserClass.userId,
-      interval: HTTPUserClass.interval,
-      intervalNumber: HTTPUserClass.intervalNumber,
-      year: HTTPUserClass.year,
+      classId: HTTPUserClass.classId,
       startDate: new Date(HTTPUserClass.startDate),
       endDate: new Date(HTTPUserClass.endDate),
       whitelabel: HTTPUserClass.whitelabel,
@@ -21,17 +17,13 @@ export class UserClassClientMapper {
     })
   }
 
-  public static toHTTP(userClass: UserClassClient): IUserClass.IHTTPUserClass {
+  public static toHTTP(userClass: UserClassClient): IUserClassClient.IHTTPUserClass {
     return {
       resourceId: userClass.resourceId,
       resourceType: userClass.resourceType,
       name: userClass.name,
-      code: userClass.code,
       channelId: userClass.channelId,
-      userId: userClass.userId,
-      interval: userClass.interval,
-      intervalNumber: userClass.intervalNumber,
-      year: userClass.year,
+      classId: userClass.classId,
       startDate: userClass.startDate.toISOString(),
       endDate: userClass.endDate.toISOString(),
       whitelabel: userClass.whitelabel,

@@ -1,17 +1,13 @@
 import { ResourceType, Whitelabel } from "schema";
 
 
-export namespace IUserClass {
+export namespace IUserClassClient {
   export interface IHTTPUserClass {
     resourceId: string;
     resourceType: ResourceType.CLASS;
     name: string;
-    code?: string | null;
     channelId: string;
-    userId: string;
-    interval: IUserClass.EInterval;
-    intervalNumber: number;
-    year: number;
+    classId: string;
     startDate: string;
     endDate: string;
     whitelabel: Whitelabel;
@@ -29,12 +25,8 @@ export namespace IUserClass {
     resourceId: string;
     resourceType: ResourceType.CLASS;
     name: string;
-    code?: string | null;
     channelId: string;
-    userId: string;
-    interval: IUserClass.EInterval;
-    intervalNumber: number;
-    year: number;
+    classId: string;
     startDate: Date;
     endDate: Date;
     whitelabel: Whitelabel;
@@ -44,28 +36,24 @@ export namespace IUserClass {
   }
 
   export interface IConstructor {
-    resourceId: IUserClass.IProps['resourceId'];
-    resourceType: IUserClass.IProps['resourceType'];
-    name: IUserClass.IProps['name'];
-    code?: IUserClass.IProps['code'];
-    channelId: IUserClass.IProps['channelId'];
-    userId: IUserClass.IProps['userId'];
-    interval: IUserClass.IProps['interval'];
-    intervalNumber: IUserClass.IProps['intervalNumber'];
-    year: IUserClass.IProps['year'];
-    startDate: IUserClass.IProps['startDate'];
-    endDate: IUserClass.IProps['endDate'];
-    whitelabel: IUserClass.IProps['whitelabel'];
-    createdAt: IUserClass.IProps['createdAt'];
-    updatedAt: IUserClass.IProps['updatedAt'];
-    deletedAt: IUserClass.IProps['deletedAt'];
+    resourceId: IUserClassClient.IProps['resourceId'];
+    resourceType: IUserClassClient.IProps['resourceType'];
+    name: IUserClassClient.IProps['name'];
+    channelId: IUserClassClient.IProps['channelId'];
+    classId: IUserClassClient.IProps['classId'];
+    startDate: IUserClassClient.IProps['startDate'];
+    endDate: IUserClassClient.IProps['endDate'];
+    whitelabel: IUserClassClient.IProps['whitelabel'];
+    createdAt: IUserClassClient.IProps['createdAt'];
+    updatedAt: IUserClassClient.IProps['updatedAt'];
+    deletedAt: IUserClassClient.IProps['deletedAt'];
   }
 }
 
 export class UserClassClient {
-  private props: IUserClass.IProps;
+  private props: IUserClassClient.IProps;
 
-  public constructor(props: IUserClass.IConstructor) {
+  public constructor(props: IUserClassClient.IConstructor) {
     this.props = props;
   }
 
@@ -81,28 +69,12 @@ export class UserClassClient {
     return this.props.name;
   }
 
-  public get code(): string | null {
-    return this.props.code || null;
-  }
-
   public get channelId(): string {
     return this.props.channelId;
   }
 
-  public get userId(): string {
-    return this.props.userId;
-  }
-
-  public get interval(): IUserClass.EInterval {
-    return this.props.interval;
-  }
-
-  public get intervalNumber(): number {
-    return this.props.intervalNumber;
-  }
-
-  public get year(): number {
-    return this.props.year;
+  public get classId(): string {
+    return this.props.classId;
   }
 
   public get startDate(): Date {
