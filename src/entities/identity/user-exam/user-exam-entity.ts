@@ -91,6 +91,10 @@ export class UserExamClient {
     return this.props.attempts;
   }
 
+  public retry() {
+    this.props.attempts += 1;
+  }
+
   public get orderQuestions(): IUserExamClient.IClass.IProps['orderQuestions'] {
     return this.props.orderQuestions;
   }
