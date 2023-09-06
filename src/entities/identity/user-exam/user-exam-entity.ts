@@ -103,6 +103,10 @@ export class UserExamClient {
     return this.props.status;
   }
 
+  public setStatus(status: IUserExamClient.IClass.IProps['status']) {
+    this.props.status = status;
+  }
+
   public get whitelabel(): IUserExamClient.IClass.IProps['whitelabel'] {
     return this.props.whitelabel;
   }
