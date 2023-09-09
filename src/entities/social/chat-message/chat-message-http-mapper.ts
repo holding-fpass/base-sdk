@@ -1,6 +1,6 @@
 import { ChatMessageClient, IChatMessageClient } from "./chat-message-entity";
 
-export class ChatMessageClientMapper {
+export class ChatMessageClientHTTPMapper {
   public static toHTTP(chatMessage: ChatMessageClient): IChatMessageClient.IHTTPChatMessage {
     return {
       resourceId: chatMessage.resourceId,

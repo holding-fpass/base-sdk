@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/lib/firestore";
 import { ResourceType, Whitelabel } from '../../../schema';
 import { v4 as uuid } from 'uuid';
 
@@ -14,6 +15,21 @@ export namespace IChatMessageClient {
     metadata: Metadata | null;
     createdAt: string;
     updatedAt: string;
+  }
+
+  export interface IFirestoreChatMessage<Metadata = Record<string, unknown>> {
+    resourceId: string;
+    resourceType: ResourceType.CHAT_MESSAGE;
+    userId: string;
+    chatId: string;
+    type: IChatMessageClient.EType;
+    text: string | null;
+    fileUrl: string | null;
+    whitelabel: Whitelabel;
+    metadata: Metadata | null;
+    createdAt: Timestamp;
+    updatedAt: Timestamp;
+    deletedAt: Timestamp | null;
   }
 
   export enum EType {
