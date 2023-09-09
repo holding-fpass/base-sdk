@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/firestore";
 import { v4 as uuid } from 'uuid';
 import { ResourceType, Whitelabel } from "../../../schema";
 
@@ -12,6 +13,19 @@ export namespace IChatClient {
     whitelabel: Whitelabel;
     createdAt: string;
     updatedAt: string;
+  }
+
+  export interface IFirestoreChat {
+    resourceId: string;
+    resourceType: ResourceType.CHAT;
+    users: string[];
+    moderators: string[];
+    name: string;
+    type: IChatClient.EType;
+    whitelabel: Whitelabel;
+    createdAt: Timestamp;
+    updatedAt: Timestamp;
+    deletedAt: Timestamp | null;
   }
 
   export enum EType {

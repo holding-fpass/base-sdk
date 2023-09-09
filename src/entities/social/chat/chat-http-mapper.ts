@@ -1,6 +1,6 @@
 import { ChatClient, IChatClient } from "./chat-entity";
 
-export class ChatClientMapper {
+export class ChatClientHTTPMapper {
   public static toHTTP(chat: ChatClient): IChatClient.IHTTPChat {
     return {
       resourceId: chat.resourceId,

@@ -1,2 +1,3 @@
 export * from './chat-entity';
-export * from './chat-mapper';
+export * from './chat-firestore-mapper';
+export * from './chat-http-mapper';
