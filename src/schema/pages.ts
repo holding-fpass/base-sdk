@@ -63,6 +63,7 @@ export enum FLabelAppPagePath {
   COURSE_CERTIFICATE = "/course/:courseId/certificate/:certificateId",
   DEVELOPERS = "/developers",
   EXAM = "/exam/:contentId",
+  COMMUNITY = "/community/:communityId",
   FLABEL = "/flabel",
   HOME = "/",
   LIBRARY = "/library",
