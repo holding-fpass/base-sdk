@@ -93,8 +93,34 @@ export class ChatClient {
     return this.props.users;
   }
 
+  public addUser(userId: string): void {
+    if (this.props.type !== IChatClient.EType.GROUP) {
+      return;
+    }
+
+    this.props.users.push(userId);
+  }
+
+  public removeUser(userId: string): void {
+    if (this.props.type !== IChatClient.EType.GROUP) {
+      return;
+    }
+
+    this.props.users = this.props.users.filter(id => id !== userId);
+  }
+
   public get moderators(): IChatClient.IProps['moderators'] {
     return this.props.moderators;
+  }
+
+  public addModerator(moderatorId: string): void {
+    this.props.moderators.push(moderatorId);
+  }
+
+  public removeModerator(moderatorId: string): void {
+    this.props.moderators = this.props.moderators.filter(
+      moderator => moderator !== moderatorId
+    );
   }
 
   public get whitelabel(): IChatClient.IProps['whitelabel'] {
