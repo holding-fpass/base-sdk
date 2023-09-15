@@ -5,7 +5,7 @@ export namespace ICommunityClient {
 
   export interface IHTTPCommunity {
     resourceId: string;
-    resourceType: ResourceType.FORUM;
+    resourceType: ResourceType.COMMUNITY;
     members: string[];
     moderators: string[];
     courseId: string | null;

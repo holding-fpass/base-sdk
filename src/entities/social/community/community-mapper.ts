@@ -1,43 +1,43 @@
-import { ForumClient, IForumClient } from "./forum-entity";
+import { CommunityClient, ICommunityClient } from "./community-entity";
 
-export class ForumClientMapper {
-  public static toApplication(forum: IForumClient.IHTTPForum): ForumClient {
-    return new ForumClient({
-      resourceId: forum.resourceId,
-      resourceType: forum.resourceType,
-      channelId: forum.channelId,
-      courseId: forum.courseId,
-      members: forum.members,
-      type: forum.type,
-      moderators: forum.moderators,
-      isPrivate: forum.isPrivate,
-      name: forum.name,
-      description: forum.description,
-      whitelabel: forum.whitelabel,
-      ownerId: forum.ownerId,
-      createdAt: new Date(forum.createdAt),
-      updatedAt: new Date(forum.updatedAt),
-      deletedAt: forum.deletedAt ? new Date(forum.deletedAt) : null,
+export class CommunityClientMapper {
+  public static toApplication(community: ICommunityClient.IHTTPCommunity): CommunityClient {
+    return new CommunityClient({
+      resourceId: community.resourceId,
+      resourceType: community.resourceType,
+      channelId: community.channelId,
+      courseId: community.courseId,
+      members: community.members,
+      type: community.type,
+      moderators: community.moderators,
+      isPrivate: community.isPrivate,
+      name: community.name,
+      description: community.description,
+      whitelabel: community.whitelabel,
+      ownerId: community.ownerId,
+      createdAt: new Date(community.createdAt),
+      updatedAt: new Date(community.updatedAt),
+      deletedAt: community.deletedAt ? new Date(community.deletedAt) : null,
     });
   }
 
-  public static toHTTP(forum: ForumClient): IForumClient.IHTTPForum {
+  public static toHTTP(community: CommunityClient): ICommunityClient.IHTTPCommunity {
     return {
-      resourceId: forum.resourceId,
-      resourceType: forum.resourceType,
-      channelId: forum.channelId,
-      courseId: forum.courseId,
-      members: forum.members,
-      type: forum.type,
-      moderators: forum.moderators,
-      isPrivate: forum.isPrivate,
-      name: forum.name,
-      description: forum.description,
-      whitelabel: forum.whitelabel,
-      ownerId: forum.ownerId,
-      createdAt: forum.createdAt.toISOString(),
-      updatedAt: forum.updatedAt.toISOString(),
-      deletedAt: forum.deletedAt ? forum.deletedAt.toISOString() : null,
+      resourceId: community.resourceId,
+      resourceType: community.resourceType,
+      channelId: community.channelId,
+      courseId: community.courseId,
+      members: community.members,
+      type: community.type,
+      moderators: community.moderators,
+      isPrivate: community.isPrivate,
+      name: community.name,
+      description: community.description,
+      whitelabel: community.whitelabel,
+      ownerId: community.ownerId,
+      createdAt: community.createdAt.toISOString(),
+      updatedAt: community.updatedAt.toISOString(),
+      deletedAt: community.deletedAt ? community.deletedAt.toISOString() : null,
     }
   }
 }

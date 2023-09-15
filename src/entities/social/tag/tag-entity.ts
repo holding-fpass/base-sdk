@@ -5,7 +5,7 @@ export namespace ITagClient {
     resourceId: string;
     resourceType: ResourceType.TAG;
     name: string;
-    forumId: string;
+    communityId: string;
     userId: string;
     whitelabel: Whitelabel;
     createdAt: Date;
@@ -17,7 +17,7 @@ export namespace ITagClient {
     resourceId: string;
     resourceType: ResourceType.TAG;
     name: string;
-    forumId: string;
+    communityId: string;
     userId: string;
     whitelabel: Whitelabel;
     createdAt: Date;
@@ -29,7 +29,7 @@ export namespace ITagClient {
     resourceId: ITagClient.IProps['resourceId'];
     resourceType: ITagClient.IProps['resourceType'];
     name: ITagClient.IProps['name'];
-    forumId: ITagClient.IProps['forumId'];
+    communityId: ITagClient.IProps['communityId'];
     userId: ITagClient.IProps['userId'];
     whitelabel: ITagClient.IProps['whitelabel'];
     createdAt?: ITagClient.IProps['createdAt'];
@@ -47,7 +47,7 @@ export class TagClient {
       resourceId: props.resourceId,
       resourceType: props.resourceType,
       name: props.name,
-      forumId: props.forumId,
+      communityId: props.communityId,
       userId: props.userId,
       whitelabel: props.whitelabel,
       createdAt: props.createdAt || new Date(),
@@ -68,8 +68,8 @@ export class TagClient {
     return this.props.name;
   }
 
-  public get forumId(): ITagClient.IProps['forumId'] {
-    return this.props.forumId;
+  public get communityId(): ITagClient.IProps['communityId'] {
+    return this.props.communityId;
   }
 
   public get userId(): ITagClient.IProps['userId'] {

@@ -1,31 +1,31 @@
 import { TagClient, ITagClient } from "./tag-entity";
 
 export class TagClientMapper {
-  public static toApplication(forumTag: ITagClient.IHTTPTag): TagClient {
+  public static toApplication(tag: ITagClient.IHTTPTag): TagClient {
     return new TagClient({
-      resourceId: forumTag.resourceId,
-      resourceType: forumTag.resourceType,
-      name: forumTag.name,
-      forumId: forumTag.forumId,
-      userId: forumTag.userId,
-      whitelabel: forumTag.whitelabel,
-      createdAt: forumTag.createdAt,
-      updatedAt: forumTag.updatedAt,
-      deletedAt: forumTag.deletedAt,
+      resourceId: tag.resourceId,
+      resourceType: tag.resourceType,
+      name: tag.name,
+      communityId: tag.communityId,
+      userId: tag.userId,
+      whitelabel: tag.whitelabel,
+      createdAt: tag.createdAt,
+      updatedAt: tag.updatedAt,
+      deletedAt: tag.deletedAt,
     });
   }
 
-  public static toHTTP(forumTag: TagClient): ITagClient.IHTTPTag {
+  public static toHTTP(tag: TagClient): ITagClient.IHTTPTag {
     return {
-      resourceId: forumTag.resourceId,
-      resourceType: forumTag.resourceType,
-      name: forumTag.name,
-      forumId: forumTag.forumId,
-      userId: forumTag.userId,
-      whitelabel: forumTag.whitelabel,
-      createdAt: forumTag.createdAt,
-      updatedAt: forumTag.updatedAt,
-      deletedAt: forumTag.deletedAt,
+      resourceId: tag.resourceId,
+      resourceType: tag.resourceType,
+      name: tag.name,
+      communityId: tag.communityId,
+      userId: tag.userId,
+      whitelabel: tag.whitelabel,
+      createdAt: tag.createdAt,
+      updatedAt: tag.updatedAt,
+      deletedAt: tag.deletedAt,
     }
   }
 }

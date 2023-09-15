@@ -5,7 +5,7 @@ export namespace IPostClient {
   export interface IHTTPPost {
     resourceId: string;
     resourceType: ResourceType.POST;
-    forumId: string;
+    communityId: string;
     type: IPostClient.EType;
     imageUrl: string | null;
     title: string;
@@ -26,7 +26,7 @@ export namespace IPostClient {
   export interface IProps {
     resourceId: string;
     resourceType: ResourceType.POST;
-    forumId: string;
+    communityId: string;
     type: IPostClient.EType;
     imageUrl: string | null;
     title: string;
@@ -42,7 +42,7 @@ export namespace IPostClient {
     resourceId?: IPostClient.IProps['resourceId'];
     resourceType: IPostClient.IProps['resourceType'];
     ownerId: IPostClient.IProps['ownerId'];
-    forumId: IPostClient.IProps['forumId'];
+    communityId: IPostClient.IProps['communityId'];
     type: IPostClient.IProps['type'];
     imageUrl?: IPostClient.IProps['imageUrl'];
     title: IPostClient.IProps['title'];
@@ -63,7 +63,7 @@ export class PostClient {
       resourceId: props.resourceId || uuid(),
       resourceType: props.resourceType,
       type: props.type,
-      forumId: props.forumId,
+      communityId: props.communityId,
       imageUrl: props.imageUrl || null,
       title: props.title,
       description: props.description,
@@ -103,8 +103,8 @@ export class PostClient {
     return this.props.imageUrl;
   }
 
-  public get forumId(): IPostClient.IProps['forumId'] {
-    return this.props.forumId;
+  public get communityId(): IPostClient.IProps['communityId'] {
+    return this.props.communityId;
   }
 
   public get whitelabel(): IPostClient.IProps['whitelabel'] {
