@@ -1,8 +1,8 @@
 import { ResourceType, Whitelabel } from 'schema';
 import { v4 as uuid } from 'uuid';
 
-export namespace IForumCommentClient {
-  export interface IHTTPForumComment {
+export namespace ICommentClient {
+  export interface IHTTPComment {
     resourceId: string;
     resourceType: ResourceType.COMMENT;
     postId: string;
@@ -35,26 +35,26 @@ export namespace IForumCommentClient {
   }
 
   export interface IConstructor {
-    resourceId?: IForumCommentClient.IProps['resourceId'];
-    resourceType: IForumCommentClient.IProps['resourceType'];
-    postId: IForumCommentClient.IProps['postId'];
-    userId: IForumCommentClient.IProps['userId'];
-    isReply: IForumCommentClient.IProps['isReply'];
-    isGraded: IForumCommentClient.IProps['isGraded'];
-    isApproved: IForumCommentClient.IProps['isApproved'];
-    parentCommentId: IForumCommentClient.IProps['parentCommentId'];
-    text: IForumCommentClient.IProps['text'];
-    whitelabel: IForumCommentClient.IProps['whitelabel'];
-    createdAt: IForumCommentClient.IProps['createdAt'];
-    updatedAt: IForumCommentClient.IProps['updatedAt'];
-    deletedAt: IForumCommentClient.IProps['deletedAt'];
+    resourceId?: ICommentClient.IProps['resourceId'];
+    resourceType: ICommentClient.IProps['resourceType'];
+    postId: ICommentClient.IProps['postId'];
+    userId: ICommentClient.IProps['userId'];
+    isReply: ICommentClient.IProps['isReply'];
+    isGraded: ICommentClient.IProps['isGraded'];
+    isApproved: ICommentClient.IProps['isApproved'];
+    parentCommentId: ICommentClient.IProps['parentCommentId'];
+    text: ICommentClient.IProps['text'];
+    whitelabel: ICommentClient.IProps['whitelabel'];
+    createdAt: ICommentClient.IProps['createdAt'];
+    updatedAt: ICommentClient.IProps['updatedAt'];
+    deletedAt: ICommentClient.IProps['deletedAt'];
   }
 }
 
-export class ForumCommentClient {
-  private props: IForumCommentClient.IProps;
+export class CommentClient {
+  private props: ICommentClient.IProps;
 
-  public constructor(props: IForumCommentClient.IConstructor) {
+  public constructor(props: ICommentClient.IConstructor) {
     this.props = {
       ...props,
       resourceId: props.resourceId || uuid(),
@@ -73,19 +73,19 @@ export class ForumCommentClient {
     };
   }
 
-  public get resourceId(): IForumCommentClient.IProps['resourceId'] {
+  public get resourceId(): ICommentClient.IProps['resourceId'] {
     return this.props.resourceId;
   }
 
-  public get userId(): IForumCommentClient.IProps['userId'] {
+  public get userId(): ICommentClient.IProps['userId'] {
     return this.props.userId;
   }
 
-  public get isReply(): IForumCommentClient.IProps['isReply'] {
+  public get isReply(): ICommentClient.IProps['isReply'] {
     return this.props.isReply;
   }
 
-  public get isGraded(): IForumCommentClient.IProps['isGraded'] {
+  public get isGraded(): ICommentClient.IProps['isGraded'] {
     return this.props.isGraded;
   }
 
@@ -93,35 +93,35 @@ export class ForumCommentClient {
     return this.props.isApproved;
   }
 
-  public get text(): IForumCommentClient.IProps['text'] {
+  public get text(): ICommentClient.IProps['text'] {
     return this.props.text;
   }
 
-  public get createdAt(): IForumCommentClient.IProps['createdAt'] {
+  public get createdAt(): ICommentClient.IProps['createdAt'] {
     return this.props.createdAt;
   }
 
-  public get updatedAt(): IForumCommentClient.IProps['updatedAt'] {
+  public get updatedAt(): ICommentClient.IProps['updatedAt'] {
     return this.props.updatedAt;
   }
 
-  public get deletedAt(): IForumCommentClient.IProps['deletedAt'] {
+  public get deletedAt(): ICommentClient.IProps['deletedAt'] {
     return this.props.deletedAt;
   }
 
-  public get parentCommentId(): IForumCommentClient.IProps['parentCommentId'] {
+  public get parentCommentId(): ICommentClient.IProps['parentCommentId'] {
     return this.props.parentCommentId;
   }
 
-  public get whitelabel(): IForumCommentClient.IProps['whitelabel'] {
+  public get whitelabel(): ICommentClient.IProps['whitelabel'] {
     return this.props.whitelabel;
   }
 
-  public get postId(): IForumCommentClient.IProps['postId'] {
+  public get postId(): ICommentClient.IProps['postId'] {
     return this.props.postId;
   }
 
-  public get resourceType(): IForumCommentClient.IProps['resourceType'] {
+  public get resourceType(): ICommentClient.IProps['resourceType'] {
     return this.props.resourceType;
   }
 }

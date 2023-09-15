@@ -1,7 +1,7 @@
 import { ResourceType, Whitelabel } from "schema";
 
-export namespace IForumTagClient {
-  export interface IHTTPForumTag {
+export namespace ITagClient {
+  export interface IHTTPTag {
     resourceId: string;
     resourceType: ResourceType.TAG;
     name: string;
@@ -26,22 +26,22 @@ export namespace IForumTagClient {
   }
 
   export interface IConstructor {
-    resourceId: IForumTagClient.IProps['resourceId'];
-    resourceType: IForumTagClient.IProps['resourceType'];
-    name: IForumTagClient.IProps['name'];
-    forumId: IForumTagClient.IProps['forumId'];
-    userId: IForumTagClient.IProps['userId'];
-    whitelabel: IForumTagClient.IProps['whitelabel'];
-    createdAt?: IForumTagClient.IProps['createdAt'];
-    updatedAt?: IForumTagClient.IProps['updatedAt'];
-    deletedAt?: IForumTagClient.IProps['deletedAt'];
+    resourceId: ITagClient.IProps['resourceId'];
+    resourceType: ITagClient.IProps['resourceType'];
+    name: ITagClient.IProps['name'];
+    forumId: ITagClient.IProps['forumId'];
+    userId: ITagClient.IProps['userId'];
+    whitelabel: ITagClient.IProps['whitelabel'];
+    createdAt?: ITagClient.IProps['createdAt'];
+    updatedAt?: ITagClient.IProps['updatedAt'];
+    deletedAt?: ITagClient.IProps['deletedAt'];
   }
 }
 
-export class ForumTagClient {
-  private props: IForumTagClient.IProps;
+export class TagClient {
+  private props: ITagClient.IProps;
 
-  public constructor(props: IForumTagClient.IProps) {
+  public constructor(props: ITagClient.IProps) {
     this.props = {
       ...props,
       resourceId: props.resourceId,
@@ -56,39 +56,39 @@ export class ForumTagClient {
     };
   }
 
-  public get resourceId(): IForumTagClient.IProps['resourceId'] {
+  public get resourceId(): ITagClient.IProps['resourceId'] {
     return this.props.resourceId;
   }
 
-  public get resourceType(): IForumTagClient.IProps['resourceType'] {
+  public get resourceType(): ITagClient.IProps['resourceType'] {
     return this.props.resourceType;
   }
 
-  public get name(): IForumTagClient.IProps['name'] {
+  public get name(): ITagClient.IProps['name'] {
     return this.props.name;
   }
 
-  public get forumId(): IForumTagClient.IProps['forumId'] {
+  public get forumId(): ITagClient.IProps['forumId'] {
     return this.props.forumId;
   }
 
-  public get userId(): IForumTagClient.IProps['userId'] {
+  public get userId(): ITagClient.IProps['userId'] {
     return this.props.userId;
   }
 
-  public get whitelabel(): IForumTagClient.IProps['whitelabel'] {
+  public get whitelabel(): ITagClient.IProps['whitelabel'] {
     return this.props.whitelabel;
   }
 
-  public get createdAt(): IForumTagClient.IProps['createdAt'] {
+  public get createdAt(): ITagClient.IProps['createdAt'] {
     return this.props.createdAt;
   }
 
-  public get updatedAt(): IForumTagClient.IProps['updatedAt'] {
+  public get updatedAt(): ITagClient.IProps['updatedAt'] {
     return this.props.updatedAt;
   }
 
-  public get deletedAt(): IForumTagClient.IProps['deletedAt'] {
+  public get deletedAt(): ITagClient.IProps['deletedAt'] {
     return this.props.deletedAt;
   }
 }

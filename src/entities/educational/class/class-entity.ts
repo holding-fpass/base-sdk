@@ -2,7 +2,6 @@ import { ResourceType, Whitelabel } from "schema";
 
 
 export namespace IClassClient {
-
   export interface IHTTPClass {
     resourceId: string;
     resourceType: ResourceType.CLASS;

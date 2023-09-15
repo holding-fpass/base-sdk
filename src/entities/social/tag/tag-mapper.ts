@@ -1,8 +1,8 @@
-import { ForumTagClient, IForumTagClient } from "./forum-tag-entity";
+import { TagClient, ITagClient } from "./tag-entity";
 
-export class ForumTagClientMapper {
-  public static toApplication(forumTag: IForumTagClient.IHTTPForumTag): ForumTagClient {
-    return new ForumTagClient({
+export class TagClientMapper {
+  public static toApplication(forumTag: ITagClient.IHTTPTag): TagClient {
+    return new TagClient({
       resourceId: forumTag.resourceId,
       resourceType: forumTag.resourceType,
       name: forumTag.name,
@@ -15,7 +15,7 @@ export class ForumTagClientMapper {
     });
   }
 
-  public static toHTTP(forumTag: ForumTagClient): IForumTagClient.IHTTPForumTag {
+  public static toHTTP(forumTag: TagClient): ITagClient.IHTTPTag {
     return {
       resourceId: forumTag.resourceId,
       resourceType: forumTag.resourceType,
