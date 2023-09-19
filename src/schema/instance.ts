@@ -237,6 +237,7 @@ export enum InstanceFeatureFlags {
   CALENDAR = "calendar",
   CERTIFICATE = "instance.feature-flag.certificate",
   CHANNEL = "channel",
+  CHAT = "chat",
   COMMUNITY = "community",
   COUPON = "coupon",
   COURSE_SHARE_LINK = "course.share.link",
