@@ -76,6 +76,8 @@ export enum MeasurementType {
   CHANNEL_USERS_REPORT = "channel.users.report",
   CHANNEL_USERS_TOTAL_COUNT = "channel.users.total.count",
   CHANNEL_USERS_WATCHTIME = "channel.users.watchtime",
+  // Post
+  POST_REACTION_COUNT_LIST = "post.reaction.count.list",
 }
 
 export enum MeasurementStatus {
