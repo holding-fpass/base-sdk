@@ -30,6 +30,7 @@ export enum MeasurementType {
   CONTENT_COMPLETION_COUNT = "content.completion.count",
   CONTENT_COMPLETION_LAST_TWELVE_WEEKS = "content.completion.last.twelve.weeks",
   CONTENT_COMPLETION_RATE = "content.completion.rate",
+  CONTENT_COMPLETION_RATE_BY_USER = "content.completion.rate.by.user",
   CONTENT_FORM_RESPONSE_AVERAGE = "content.form.response.average",
   CONTENT_OPEN = "content.open",
   CONTENT_RATING_COUNT = "content.rating.count",
@@ -133,7 +134,10 @@ export interface MeasurementValueCell {
   cellValue: number | string;
 }
 
-export class Measurement<ValueType = any> extends Resource<MeasurementStatus, MeasurementType> implements CacheResourse {
+export class Measurement<ValueType = any>
+  extends Resource<MeasurementStatus, MeasurementType>
+  implements CacheResourse
+{
   resourceType = ResourceType.MEASUREMENT;
   //
   group?: MeasurementGroup;
@@ -151,7 +155,9 @@ export class Measurement<ValueType = any> extends Resource<MeasurementStatus, Me
     return Hash.measurementFilter(this.type!, this.filter);
   }
   cacheKey(): string {
-    return `${this.whitelabel}--${ResourceType.MEASUREMENT}--hash:${this.hash()}`;
+    return `${this.whitelabel}--${
+      ResourceType.MEASUREMENT
+    }--hash:${this.hash()}`;
   }
   cacheTtl: number = 0;
 }
