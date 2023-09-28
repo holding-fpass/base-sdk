@@ -23,6 +23,8 @@ export namespace IClassClient {
   export enum EInterval {
     SEMESTER = 'semester',
     TRIMESTER = 'trimester',
+    BIMESTER = 'bimester',
+    MONTHLY = 'monthly'
   }
 
   export interface IProps {
