@@ -7,6 +7,7 @@ export namespace IUserClassClient {
     resourceType: ResourceType.CLASS;
     name: string;
     channelId: string;
+    userId: string;
     classId: string;
     startDate: string;
     endDate: string;
@@ -17,8 +18,10 @@ export namespace IUserClassClient {
   }
 
   export enum EInterval {
-    SEMESTER = 'SEMESTER',
-    TRIMESTER = 'TRIMESTER',
+    SEMESTER = 'semester',
+    TRIMESTER = 'trimester',
+    BIMESTER = 'bimester',
+    MONTHLY = 'monthly'
   }
 
   export interface IProps {
@@ -26,6 +29,7 @@ export namespace IUserClassClient {
     resourceType: ResourceType.CLASS;
     name: string;
     channelId: string;
+    userId: string;
     classId: string;
     startDate: Date;
     endDate: Date;
@@ -40,6 +44,7 @@ export namespace IUserClassClient {
     resourceType: IUserClassClient.IProps['resourceType'];
     name: IUserClassClient.IProps['name'];
     channelId: IUserClassClient.IProps['channelId'];
+    userId: IUserClassClient.IProps['userId'];
     classId: IUserClassClient.IProps['classId'];
     startDate: IUserClassClient.IProps['startDate'];
     endDate: IUserClassClient.IProps['endDate'];
@@ -75,6 +80,10 @@ export class UserClassClient {
 
   public get classId(): string {
     return this.props.classId;
+  }
+
+  public get userId(): string {
+    return this.props.userId;
   }
 
   public get startDate(): Date {

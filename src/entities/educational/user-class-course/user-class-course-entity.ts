@@ -8,6 +8,7 @@ export namespace IUserClassCourseClient {
     resourceType: ResourceType.CLASS_COURSE;
     courseId: string;
     skipped: boolean;
+    classId: string;
     userId: string;
     finishedAt: string | null;
     whitelabel: Whitelabel;
@@ -21,6 +22,7 @@ export namespace IUserClassCourseClient {
     resourceType: ResourceType.CLASS_COURSE;
     courseId: string;
     skipped: boolean;
+    classId: string;
     userId: string;
     finishedAt: Date | null;
     whitelabel: Whitelabel;
@@ -34,6 +36,7 @@ export namespace IUserClassCourseClient {
     resourceType: IUserClassCourseClient.IProps['resourceType'];
     courseId: IUserClassCourseClient.IProps['courseId'];
     skipped: IUserClassCourseClient.IProps['skipped'];
+    classId: IUserClassCourseClient.IProps['classId'];
     userId: IUserClassCourseClient.IProps['userId'];
     finishedAt: IUserClassCourseClient.IProps['finishedAt'];
     whitelabel: IUserClassCourseClient.IProps['whitelabel'];
@@ -64,6 +67,10 @@ export class UserClassCourseClient {
 
   public get skipped(): IUserClassCourseClient.IProps['skipped'] {
     return this.props.skipped;
+  }
+
+  public get classId(): IUserClassCourseClient.IProps['classId'] {
+    return this.props.classId;
   }
 
   public get userId(): IUserClassCourseClient.IProps['userId'] {
