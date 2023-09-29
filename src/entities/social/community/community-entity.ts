@@ -10,6 +10,7 @@ export namespace ICommunityClient {
     moderators: string[];
     courseId: string | null;
     channelId: string | null;
+    coverImage: string | null;
     type: ICommunityClient.EType;
     name: string;
     description: string;
@@ -30,6 +31,7 @@ export namespace ICommunityClient {
     resourceType: ResourceType.COMMUNITY;
     members: string[];
     moderators: string[];
+    coverImage: string | null;
     courseId: string | null;
     channelId: string | null;
     type: ICommunityClient.EType;
@@ -47,6 +49,7 @@ export namespace ICommunityClient {
     resourceType: ICommunityClient.IProps['resourceType'];
     members: ICommunityClient.IProps['members'];
     moderators: ICommunityClient.IProps['moderators'];
+    coverImage: ICommunityClient.IProps['coverImage'];
     name: ICommunityClient.IProps['name'];
     description: ICommunityClient.IProps['description'];
     type: ICommunityClient.IProps['type'];
@@ -70,6 +73,7 @@ export class CommunityClient {
       resourceType: ResourceType.COMMUNITY,
       channelId: props.channelId || null,
       courseId: props.courseId || null,
+      coverImage: props.coverImage || null,
       members: props.members || [],
       type: props.type,
       moderators: props.moderators || [],
@@ -101,6 +105,10 @@ export class CommunityClient {
 
   public get isPrivate(): ICommunityClient.IProps['isPrivate'] {
     return this.props.isPrivate;
+  }
+
+  public get coverImage(): ICommunityClient.IProps['coverImage'] {
+    return this.props.coverImage;
   }
 
   public get name(): ICommunityClient.IProps['name'] {
