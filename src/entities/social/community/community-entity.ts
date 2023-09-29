@@ -18,7 +18,6 @@ export namespace ICommunityClient {
     whitelabel: Whitelabel;
     createdAt: string;
     updatedAt: string;
-    deletedAt: string | null;
   }
 
   export enum EType {
@@ -41,7 +40,6 @@ export namespace ICommunityClient {
     whitelabel: Whitelabel;
     createdAt: Date;
     updatedAt: Date;
-    deletedAt: Date | null;
   }
 
   export interface IConstructor {
@@ -59,7 +57,6 @@ export namespace ICommunityClient {
     whitelabel: ICommunityClient.IProps['whitelabel'];
     createdAt: ICommunityClient.IProps['createdAt'];
     updatedAt: ICommunityClient.IProps['updatedAt'];
-    deletedAt: ICommunityClient.IProps['deletedAt'];
   }
 }
 
@@ -83,7 +80,6 @@ export class CommunityClient {
       ownerId: props.ownerId,
       createdAt: props.createdAt || new Date(),
       updatedAt: props.updatedAt || new Date(),
-      deletedAt: props.deletedAt || null,
     };
   }
 
@@ -141,9 +137,5 @@ export class CommunityClient {
 
   public get updatedAt(): ICommunityClient.IProps['updatedAt'] {
     return this.props.updatedAt;
-  }
-
-  public get deletedAt(): ICommunityClient.IProps['deletedAt'] {
-    return this.props.deletedAt;
   }
 }
