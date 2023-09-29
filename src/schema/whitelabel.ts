@@ -42,4 +42,5 @@ export enum Whitelabel {
   VALVERDE = 'valverde',
   BV = 'bv',
   PERFORMANCE_SCHOOL = 'performance-school',
+  DICOLORE = 'dicolore'
 }
