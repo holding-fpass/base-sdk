@@ -17,7 +17,6 @@ export class CommunityClientMapper {
       ownerId: community.ownerId,
       createdAt: new Date(community.createdAt),
       updatedAt: new Date(community.updatedAt),
-      deletedAt: community.deletedAt ? new Date(community.deletedAt) : null,
     });
   }
 
@@ -37,7 +36,6 @@ export class CommunityClientMapper {
       ownerId: community.ownerId,
       createdAt: community.createdAt.toISOString(),
       updatedAt: community.updatedAt.toISOString(),
-      deletedAt: community.deletedAt ? community.deletedAt.toISOString() : null,
     }
   }
 }
