@@ -80,6 +80,7 @@ export enum FLabelAppPagePath {
   TIMELINE = "/timeline",
   WAITING_ROOM = "/waiting-room",
   WALLET = "/wallet",
+  POST = "/post/:contentId",
 }
 
 export function PageUrl(pagePath: string, args?: any) {
