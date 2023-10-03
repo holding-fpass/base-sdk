@@ -14,7 +14,6 @@ export class PostClientMapper {
       description: post.description,
       createdAt: new Date(post.createdAt),
       updatedAt: new Date(post.updatedAt),
-      deletedAt: post.deletedAt ? new Date(post.deletedAt) : null,
     });
   }
 
@@ -31,7 +30,6 @@ export class PostClientMapper {
       description: post.description,
       createdAt: post.createdAt.toISOString(),
       updatedAt: post.updatedAt.toISOString(),
-      deletedAt: post.deletedAt ? post.deletedAt.toISOString() : null,
     }
   }
 }
