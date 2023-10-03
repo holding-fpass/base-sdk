@@ -8,8 +8,8 @@ export namespace ITagClient {
     communityId: string;
     userId: string;
     whitelabel: Whitelabel;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
   }
 
   export interface IProps {

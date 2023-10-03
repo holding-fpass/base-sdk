@@ -9,8 +9,8 @@ export class TagClientMapper {
       communityId: tag.communityId,
       userId: tag.userId,
       whitelabel: tag.whitelabel,
-      createdAt: tag.createdAt,
-      updatedAt: tag.updatedAt,
+      createdAt: new Date(tag.createdAt),
+      updatedAt: new Date(tag.updatedAt),
     });
   }
 
@@ -22,8 +22,8 @@ export class TagClientMapper {
       communityId: tag.communityId,
       userId: tag.userId,
       whitelabel: tag.whitelabel,
-      createdAt: tag.createdAt,
-      updatedAt: tag.updatedAt,
+      createdAt: tag.createdAt.toISOString(),
+      updatedAt: tag.updatedAt.toISOString(),
     }
   }
 }
