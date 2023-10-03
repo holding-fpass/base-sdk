@@ -20,7 +20,6 @@ export namespace IPostClient {
     expiresAt: string | null;
     createdAt: string;
     updatedAt: string;
-    deletedAt: string | null;
   }
 
   export enum EType {
@@ -47,7 +46,6 @@ export namespace IPostClient {
     expiresAt: Date | null;
     createdAt: Date;
     updatedAt: Date;
-    deletedAt: Date | null;
   }
 
   export interface IConstructor {
@@ -68,7 +66,6 @@ export namespace IPostClient {
     expiresAt?: IPostClient.IProps['expiresAt'];
     createdAt?: IPostClient.IProps['createdAt'];
     updatedAt?: IPostClient.IProps['updatedAt'];
-    deletedAt?: IPostClient.IProps['deletedAt'];
   }
 }
 
@@ -95,7 +92,6 @@ export class PostClient {
       expiresAt: props.expiresAt || null,
       createdAt: props.createdAt || new Date(),
       updatedAt: props.updatedAt || new Date(),
-      deletedAt: props.deletedAt || null,
     };
   }
 
@@ -165,9 +161,5 @@ export class PostClient {
 
   public get updatedAt(): IPostClient.IProps['updatedAt'] {
     return this.props.updatedAt;
-  }
-
-  public get deletedAt(): IPostClient.IProps['deletedAt'] {
-    return this.props.deletedAt;
   }
 }

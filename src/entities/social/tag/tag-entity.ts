@@ -10,7 +10,6 @@ export namespace ITagClient {
     whitelabel: Whitelabel;
     createdAt: Date;
     updatedAt: Date;
-    deletedAt: Date | null;
   }
 
   export interface IProps {
@@ -22,7 +21,6 @@ export namespace ITagClient {
     whitelabel: Whitelabel;
     createdAt: Date;
     updatedAt: Date;
-    deletedAt: Date | null;
   }
 
   export interface IConstructor {
@@ -34,7 +32,6 @@ export namespace ITagClient {
     whitelabel: ITagClient.IProps['whitelabel'];
     createdAt?: ITagClient.IProps['createdAt'];
     updatedAt?: ITagClient.IProps['updatedAt'];
-    deletedAt?: ITagClient.IProps['deletedAt'];
   }
 }
 
@@ -52,7 +49,6 @@ export class TagClient {
       whitelabel: props.whitelabel,
       createdAt: props.createdAt || new Date(),
       updatedAt: props.updatedAt || new Date(),
-      deletedAt: props.deletedAt || null,
     };
   }
 
@@ -86,9 +82,5 @@ export class TagClient {
 
   public get updatedAt(): ITagClient.IProps['updatedAt'] {
     return this.props.updatedAt;
-  }
-
-  public get deletedAt(): ITagClient.IProps['deletedAt'] {
-    return this.props.deletedAt;
   }
 }

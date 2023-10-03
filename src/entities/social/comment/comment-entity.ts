@@ -15,7 +15,6 @@ export namespace ICommentClient {
     whitelabel: Whitelabel;
     createdAt: string;
     updatedAt: string;
-    deletedAt: string | null;
   }
 
   export interface IProps {
@@ -31,7 +30,6 @@ export namespace ICommentClient {
     whitelabel: Whitelabel;
     createdAt: Date;
     updatedAt: Date;
-    deletedAt: Date | null;
   }
 
   export interface IConstructor {
@@ -47,7 +45,6 @@ export namespace ICommentClient {
     whitelabel: ICommentClient.IProps['whitelabel'];
     createdAt: ICommentClient.IProps['createdAt'];
     updatedAt: ICommentClient.IProps['updatedAt'];
-    deletedAt: ICommentClient.IProps['deletedAt'];
   }
 }
 
@@ -69,7 +66,6 @@ export class CommentClient {
       whitelabel: props.whitelabel,
       createdAt: props.createdAt,
       updatedAt: props.updatedAt,
-      deletedAt: props.deletedAt || null,
     };
   }
 
@@ -103,10 +99,6 @@ export class CommentClient {
 
   public get updatedAt(): ICommentClient.IProps['updatedAt'] {
     return this.props.updatedAt;
-  }
-
-  public get deletedAt(): ICommentClient.IProps['deletedAt'] {
-    return this.props.deletedAt;
   }
 
   public get parentCommentId(): ICommentClient.IProps['parentCommentId'] {

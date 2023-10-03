@@ -20,7 +20,6 @@ export class PostClientMapper {
       expiresAt: post.expiresAt ? new Date(post.expiresAt) : null,
       createdAt: new Date(post.createdAt),
       updatedAt: new Date(post.updatedAt),
-      deletedAt: post.deletedAt ? new Date(post.deletedAt) : null,
     });
   }
 
@@ -43,7 +42,6 @@ export class PostClientMapper {
       expiresAt: post.expiresAt ? post.expiresAt.toISOString() : null,
       createdAt: post.createdAt.toISOString(),
       updatedAt: post.updatedAt.toISOString(),
-      deletedAt: post.deletedAt ? post.deletedAt.toISOString() : null,
     };
   }
 }

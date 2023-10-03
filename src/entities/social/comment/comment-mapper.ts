@@ -15,7 +15,6 @@ export class CommentClientMapper {
       parentCommentId: comment.parentCommentId,
       createdAt: new Date(comment.createdAt),
       updatedAt: new Date(comment.updatedAt),
-      deletedAt: comment.deletedAt ? new Date(comment.deletedAt) : null,
     });
   }
 
@@ -33,7 +32,6 @@ export class CommentClientMapper {
       parentCommentId: comment.parentCommentId,
       createdAt: comment.createdAt.toISOString(),
       updatedAt: comment.updatedAt.toISOString(),
-      deletedAt: comment.deletedAt ? comment.deletedAt.toISOString() : null,
     }
   }
 }

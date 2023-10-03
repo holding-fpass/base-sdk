@@ -11,7 +11,6 @@ export class TagClientMapper {
       whitelabel: tag.whitelabel,
       createdAt: tag.createdAt,
       updatedAt: tag.updatedAt,
-      deletedAt: tag.deletedAt,
     });
   }
 
@@ -25,7 +24,6 @@ export class TagClientMapper {
       whitelabel: tag.whitelabel,
       createdAt: tag.createdAt,
       updatedAt: tag.updatedAt,
-      deletedAt: tag.deletedAt,
     }
   }
 }
