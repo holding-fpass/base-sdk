@@ -14,7 +14,6 @@ export namespace IPostClient {
     whitelabel: Whitelabel;
     createdAt: string;
     updatedAt: string;
-    deletedAt: string | null;
   }
   
   export enum EType {
