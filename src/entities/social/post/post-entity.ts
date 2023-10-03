@@ -7,13 +7,20 @@ export namespace IPostClient {
     resourceType: ResourceType.POST;
     communityId: string;
     type: IPostClient.EType;
+    value: number | null;
     imageUrl: string | null;
+    url: string | null;
     title: string;
     description: string;
     ownerId: string;
+    pinned: boolean | false;
+    tags: string[];
     whitelabel: Whitelabel;
+    allowed: boolean;
+    expiresAt: string | null;
     createdAt: string;
     updatedAt: string;
+    deletedAt: string | null;
   }
 
   export enum EType {
