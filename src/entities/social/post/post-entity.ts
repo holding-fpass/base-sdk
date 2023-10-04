@@ -186,4 +186,8 @@ export class PostClient {
   public update(): void {
     this.props.updatedAt = new Date();
   }
+
+  public clone() {
+    return new PostClient(this.props);
+  }
 }
