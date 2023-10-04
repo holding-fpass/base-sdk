@@ -13,7 +13,6 @@ export class UserClassCourseClientMapper {
       whitelabel: HTTPUserClassCourse.whitelabel,
       createdAt: new Date(HTTPUserClassCourse.createdAt),
       updatedAt: new Date(HTTPUserClassCourse.updatedAt),
-      deletedAt: HTTPUserClassCourse.deletedAt ? new Date(HTTPUserClassCourse.deletedAt) : HTTPUserClassCourse.deletedAt as null,
     })
   }
 
@@ -29,7 +28,6 @@ export class UserClassCourseClientMapper {
       whitelabel: userClassCourse.whitelabel,
       createdAt: userClassCourse.createdAt.toISOString(),
       updatedAt: userClassCourse.updatedAt.toISOString(),
-      deletedAt: userClassCourse.deletedAt ? userClassCourse.deletedAt.toISOString() : userClassCourse.deletedAt,
     }
   }
 }

@@ -17,7 +17,6 @@ export class ClassClientMapper {
       whitelabel: HTTPClass.whitelabel,
       createdAt: new Date(HTTPClass.createdAt),
       updatedAt: new Date(HTTPClass.updatedAt),
-      deletedAt: HTTPClass.deletedAt ? new Date(HTTPClass.deletedAt) : HTTPClass.deletedAt as null,
     })
   }
 
@@ -37,7 +36,6 @@ export class ClassClientMapper {
       whitelabel: userClass.whitelabel,
       createdAt: userClass.createdAt.toISOString(),
       updatedAt: userClass.updatedAt.toISOString(),
-      deletedAt: userClass.deletedAt ? userClass.deletedAt.toISOString() : userClass.deletedAt,
     }
   }
 }

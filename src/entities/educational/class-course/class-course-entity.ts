@@ -11,7 +11,6 @@ export namespace IClassCourseClient {
     whitelabel: Whitelabel;
     createdAt: string;
     updatedAt: string;
-    deletedAt: string | null;
   }
 
   export interface IProps {
@@ -23,7 +22,6 @@ export namespace IClassCourseClient {
     whitelabel: Whitelabel;
     createdAt: Date;
     updatedAt: Date;
-    deletedAt: Date | null;
   }
 
   export interface IConstructor {
@@ -35,7 +33,6 @@ export namespace IClassCourseClient {
     whitelabel: IClassCourseClient.IProps['whitelabel'];
     createdAt?: IClassCourseClient.IProps['createdAt'];
     updatedAt?: IClassCourseClient.IProps['updatedAt'];
-    deletedAt?: IClassCourseClient.IProps['deletedAt'];
   }
 }
 
@@ -53,7 +50,6 @@ export class ClassCourseClient {
       whitelabel: props.whitelabel,
       createdAt: props.createdAt || new Date(),
       updatedAt: props.updatedAt || new Date(),
-      deletedAt: props.deletedAt || null,
     };
   }
 
@@ -87,9 +83,5 @@ export class ClassCourseClient {
 
   public get updatedAt(): IClassCourseClient.IProps['updatedAt'] {
     return this.props.updatedAt;
-  }
-
-  public get deletedAt(): IClassCourseClient.IProps['deletedAt'] {
-    return this.props.deletedAt;
   }
 }

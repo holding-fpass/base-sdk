@@ -14,7 +14,6 @@ export namespace IUserClassClient {
     whitelabel: Whitelabel;
     createdAt: string;
     updatedAt: string;
-    deletedAt: string | null;
   }
 
   export enum EInterval {
@@ -36,7 +35,6 @@ export namespace IUserClassClient {
     whitelabel: Whitelabel;
     createdAt: Date;
     updatedAt: Date;
-    deletedAt: Date | null;
   }
 
   export interface IConstructor {
@@ -51,7 +49,6 @@ export namespace IUserClassClient {
     whitelabel: IUserClassClient.IProps['whitelabel'];
     createdAt: IUserClassClient.IProps['createdAt'];
     updatedAt: IUserClassClient.IProps['updatedAt'];
-    deletedAt: IUserClassClient.IProps['deletedAt'];
   }
 }
 
@@ -104,9 +101,5 @@ export class UserClassClient {
 
   public get updatedAt(): Date {
     return this.props.updatedAt;
-  }
-
-  public get deletedAt(): Date | null {
-    return this.props.deletedAt;
   }
 }
