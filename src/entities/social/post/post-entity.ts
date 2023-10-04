@@ -10,6 +10,7 @@ export namespace IPostClient {
     value: number | null;
     imageUrl: string | null;
     url: string | null;
+    fileUrl: string | null;
     title: string;
     description: string;
     ownerId: string;
@@ -35,6 +36,7 @@ export namespace IPostClient {
     type: IPostClient.EType;
     value: number | null;
     imageUrl: string | null;
+    fileUrl: string | null;
     url: string | null;
     title: string;
     description: string;
@@ -58,6 +60,7 @@ export namespace IPostClient {
     type: IPostClient.IProps['type'];
     pinned: IPostClient.IProps['pinned'];
     imageUrl?: IPostClient.IProps['imageUrl'];
+    fileUrl?: IPostClient.IProps['fileUrl'];
     url?: IPostClient.IProps['url'];
     title: IPostClient.IProps['title'];
     description: IPostClient.IProps['description'];
@@ -82,6 +85,7 @@ export class PostClient {
       tags: props.tags || [],
       value: props.value || null,
       imageUrl: props.imageUrl || null,
+      fileUrl: props.fileUrl || null,
       url: props.url || null,
       title: props.title,
       description: props.description,
@@ -133,6 +137,10 @@ export class PostClient {
 
   public get imageUrl(): IPostClient.IProps['imageUrl'] {
     return this.props.imageUrl;
+  }
+
+  public get fileUrl(): IPostClient.IProps['fileUrl'] {
+    return this.props.fileUrl;
   }
 
   public get url(): IPostClient.IProps['url'] {
