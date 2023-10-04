@@ -6,6 +6,7 @@ export class ClassCourseClientMapper {
     return new ClassCourseClient({
       resourceId: HTTPClassCourse.resourceId,
       resourceType: ResourceType.CLASS_COURSE,
+      name: HTTPClassCourse.name,
       courseId: HTTPClassCourse.courseId,
       classId: HTTPClassCourse.classId,
       finishedAt: HTTPClassCourse.finishedAt ? new Date(HTTPClassCourse.finishedAt) : HTTPClassCourse.finishedAt as null,
@@ -15,16 +16,17 @@ export class ClassCourseClientMapper {
     })
   }
 
-  public static toHTTP(userClass: ClassCourseClient): IClassCourseClient.IHTTPClassCourse {
+  public static toHTTP(classCourse: ClassCourseClient): IClassCourseClient.IHTTPClassCourse {
     return {
-      resourceId: userClass.resourceId,
-      resourceType: userClass.resourceType,
-      courseId: userClass.courseId,
-      classId: userClass.classId,
-      finishedAt: userClass.finishedAt ? userClass.finishedAt.toISOString() : null,
-      whitelabel: userClass.whitelabel,
-      createdAt: userClass.createdAt.toISOString(),
-      updatedAt: userClass.updatedAt.toISOString(),
+      resourceId: classCourse.resourceId,
+      resourceType: classCourse.resourceType,
+      name: classCourse.name,
+      courseId: classCourse.courseId,
+      classId: classCourse.classId,
+      finishedAt: classCourse.finishedAt ? classCourse.finishedAt.toISOString() : null,
+      whitelabel: classCourse.whitelabel,
+      createdAt: classCourse.createdAt.toISOString(),
+      updatedAt: classCourse.updatedAt.toISOString(),
     }
   }
 }

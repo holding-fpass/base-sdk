@@ -5,6 +5,7 @@ export namespace IClassCourseClient {
   export interface IHTTPClassCourse {
     resourceId: string;
     resourceType: ResourceType.CLASS_COURSE;
+    name: string;
     courseId: string;
     classId: string;
     finishedAt: string | null;
@@ -16,6 +17,7 @@ export namespace IClassCourseClient {
   export interface IProps {
     resourceId: string;
     resourceType: ResourceType.CLASS_COURSE;
+    name: string;
     courseId: string;
     classId: string;
     finishedAt: Date | null;
@@ -27,6 +29,7 @@ export namespace IClassCourseClient {
   export interface IConstructor {
     resourceId?: IClassCourseClient.IProps['resourceId'];
     resourceType?: IClassCourseClient.IProps['resourceType'];
+    name: IClassCourseClient.IProps['name'];
     courseId: IClassCourseClient.IProps['courseId'];
     classId: IClassCourseClient.IProps['classId'];
     finishedAt: IClassCourseClient.IProps['finishedAt'];
@@ -44,6 +47,7 @@ export class ClassCourseClient {
       ...props,
       resourceId: props.resourceId || uuid(),
       resourceType: ResourceType.CLASS_COURSE,
+      name: props.name,
       courseId: props.courseId,
       classId: props.classId,
       finishedAt: props.finishedAt || null,
@@ -61,6 +65,10 @@ export class ClassCourseClient {
     return this.props.resourceType;
   }
 
+  public get name(): IClassCourseClient.IProps['name'] {
+    return this.props.name;
+  }
+  
   public get courseId(): IClassCourseClient.IProps['courseId'] {
     return this.props.courseId;
   }
