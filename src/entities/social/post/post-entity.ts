@@ -111,6 +111,18 @@ export class PostClient {
     return this.props.pinned;
   }
 
+  public pin(): void {
+    this.props.pinned = true;
+
+    this.update();
+  }
+
+  public unpin(): void {
+    this.props.pinned = false;
+
+    this.update();
+  }
+
   public get tags(): IPostClient.IProps['tags'] {
     return this.props.tags;
   }
@@ -169,5 +181,9 @@ export class PostClient {
 
   public get updatedAt(): IPostClient.IProps['updatedAt'] {
     return this.props.updatedAt;
+  }
+
+  public update(): void {
+    this.props.updatedAt = new Date();
   }
 }
