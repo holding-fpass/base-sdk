@@ -94,6 +94,7 @@ export enum ContentType {
   LINK = "link",
   EXAM = "exam",
   SLIDESHOW = "slideshow",
+  POST = "post",
 }
 
 export enum ContentStatus {
