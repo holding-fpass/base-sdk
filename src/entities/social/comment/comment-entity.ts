@@ -9,6 +9,7 @@ export namespace ICommentClient {
     userId: string;
     isReply: boolean;
     isGraded: boolean;
+    fileUrl: string | null;
     parentCommentId: string | null;
     text: string;
     whitelabel: Whitelabel;
@@ -23,6 +24,7 @@ export namespace ICommentClient {
     userId: string;
     isReply: boolean;
     isGraded: boolean;
+    fileUrl: string | null;
     parentCommentId: string | null;
     text: string;
     whitelabel: Whitelabel;
@@ -37,6 +39,7 @@ export namespace ICommentClient {
     userId: ICommentClient.IProps['userId'];
     isReply: ICommentClient.IProps['isReply'];
     isGraded: ICommentClient.IProps['isGraded'];
+    fileUrl: ICommentClient.IProps['fileUrl']
     parentCommentId: ICommentClient.IProps['parentCommentId'];
     text: ICommentClient.IProps['text'];
     whitelabel: ICommentClient.IProps['whitelabel'];
@@ -56,6 +59,7 @@ export class CommentClient {
       postId: props.postId,
       parentCommentId: props.parentCommentId || null,
       userId: props.userId,
+      fileUrl: props.fileUrl,
       isReply: props.isReply || false,
       isGraded: props.isGraded || false,
       text: props.text,
@@ -83,6 +87,10 @@ export class CommentClient {
 
   public get text(): ICommentClient.IProps['text'] {
     return this.props.text;
+  }
+
+  public get fileUrl(): ICommentClient.IProps['fileUrl'] {
+    return this.props.fileUrl;
   }
 
   public get createdAt(): ICommentClient.IProps['createdAt'] {
