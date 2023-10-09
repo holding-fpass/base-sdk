@@ -16,7 +16,6 @@ import { Subtitle } from "./subtitle";
 import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
-import { RequiredBy } from "../types/required-by";
 
 interface CourseCertificateSettings {
   minimumWatchTime: number;
@@ -165,6 +164,9 @@ export class Content
   dateEnd?: string;
   meetDateStart?: string;
   meetDateEnd?: string;
+  // When type is post
+  communityId?: string;
+  postId?: string;
   // Forms
   forms?: Partial<ContentForms>;
   // Payment
