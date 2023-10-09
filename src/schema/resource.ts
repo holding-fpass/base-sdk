@@ -53,6 +53,7 @@ export enum ResourceType {
   PLAYLIST = "playlist",
   POST = 'post',
   REACTION = "reaction",
+  REACTION_METRICS = "reaction.metrics",
   SIGNATURE = "signature",
   STAGE = "stage",
   STAGE_CALENDAR_GROUP = "stage.calendar.group",
