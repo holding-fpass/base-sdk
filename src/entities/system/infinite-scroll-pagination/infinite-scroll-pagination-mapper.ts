@@ -9,6 +9,7 @@ export class InfiniteScrollPaginationClientMapper {
       items: infiniteScrollPagination.items.map(callback),
       limit: infiniteScrollPagination.limit,
       nextPage: infiniteScrollPagination.nextPage,
+      total: infiniteScrollPagination.total
     }
   }
 
@@ -19,7 +20,8 @@ export class InfiniteScrollPaginationClientMapper {
     return new InfiniteScrollPaginationClient({
       items: httpInfiniteScrollPagination.items.map(callback),
       limit: httpInfiniteScrollPagination.limit,
-      nextPage: httpInfiniteScrollPagination.nextPage
+      nextPage: httpInfiniteScrollPagination.nextPage,
+      total: httpInfiniteScrollPagination.total,
     });
   }
 }
