@@ -6,6 +6,7 @@ export namespace ICommentClient {
     resourceId: string;
     resourceType: ResourceType.COMMENT;
     postId: string;
+    communityId: string;
     userId: string;
     isReply: boolean;
     isGraded: boolean;
@@ -21,6 +22,7 @@ export namespace ICommentClient {
     resourceId: string;
     resourceType: ResourceType.COMMENT;
     postId: string;
+    communityId: string;
     userId: string;
     isReply: boolean;
     isGraded: boolean;
@@ -36,6 +38,7 @@ export namespace ICommentClient {
     resourceId?: ICommentClient.IProps['resourceId'];
     resourceType: ICommentClient.IProps['resourceType'];
     postId: ICommentClient.IProps['postId'];
+    communityId: ICommentClient.IProps['communityId'];
     userId: ICommentClient.IProps['userId'];
     isReply: ICommentClient.IProps['isReply'];
     isGraded: ICommentClient.IProps['isGraded'];
@@ -57,6 +60,7 @@ export class CommentClient {
       resourceId: props.resourceId || uuid(),
       resourceType: props.resourceType,
       postId: props.postId,
+      communityId: props.communityId,
       parentCommentId: props.parentCommentId || null,
       userId: props.userId,
       fileUrl: props.fileUrl,
@@ -75,6 +79,10 @@ export class CommentClient {
 
   public get userId(): ICommentClient.IProps['userId'] {
     return this.props.userId;
+  }
+
+  public get communityId(): ICommentClient.IProps['communityId'] {
+    return this.props.communityId;
   }
 
   public get isReply(): ICommentClient.IProps['isReply'] {
