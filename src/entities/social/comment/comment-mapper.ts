@@ -1,6 +1,6 @@
 import { CommentClient, ICommentClient } from "./comment-entity";
 
-export class CommentClientMapper {
+export class CommentClientHTTPMapper {
   public static toApplication(comment: ICommentClient.IHTTPComment): CommentClient {
     return new CommentClient({
       resourceId: comment.resourceId,
