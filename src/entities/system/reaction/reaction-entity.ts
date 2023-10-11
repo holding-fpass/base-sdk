@@ -2,6 +2,13 @@ import { ResourceType, Whitelabel } from 'schema';
 import { v4 as uuid } from 'uuid';
 
 export namespace IReactionClient {
+  export enum EEmoji {
+    HEART = 'heart',
+    THUMBS_UP = 'thumbs-up',
+    CLAP = 'clap',
+    STAR_STRUCK = 'star-struck',
+    SAD_BUT_RELIEVED_FACE = 'sad-but-relieved-face',
+  }
   export interface IHTTPReaction {
     resourceId: string;
     resourceType: ResourceType.REACTION;
@@ -12,7 +19,7 @@ export namespace IReactionClient {
     postId?: string | null;
     commentId?: string | null;
     whitelabel: Whitelabel;
-    emoji: string;
+    emoji: IReactionClient.EEmoji;
     createdAt: string;
     updatedAt: string;
   }
@@ -27,7 +34,7 @@ export namespace IReactionClient {
     postId?: string | null;
     commentId?: string | null;
     whitelabel: Whitelabel;
-    emoji: string;
+    emoji: IReactionClient.EEmoji;
     createdAt: Date;
     updatedAt: Date;
   }
