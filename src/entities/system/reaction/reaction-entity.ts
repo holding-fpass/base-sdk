@@ -7,6 +7,7 @@ export namespace IReactionClient {
     resourceType: ResourceType.REACTION;
     userId: string;
     contentId?: string | null;
+    communityId?: string | null;
     courseId?: string | null;
     postId?: string | null;
     commentId?: string | null;
@@ -21,6 +22,7 @@ export namespace IReactionClient {
     resourceType: ResourceType.REACTION;
     userId: string;
     contentId?: string | null;
+    communityId?: string | null;
     courseId?: string | null;
     postId?: string | null;
     commentId?: string | null;
@@ -35,6 +37,7 @@ export namespace IReactionClient {
     resourceType: IReactionClient.IProps['resourceType'];
     userId: IReactionClient.IProps['userId'];
     contentId?: IReactionClient.IProps['contentId'];
+    communityId?: IReactionClient.IProps['communityId'];
     courseId?: IReactionClient.IProps['courseId'];
     postId?: IReactionClient.IProps['postId'];
     commentId?: IReactionClient.IProps['commentId'];
@@ -57,6 +60,7 @@ export class ReactionClient {
       userId: props.userId,
       whitelabel: props.whitelabel,
       contentId: props.contentId || null,
+      communityId: props.communityId || null,
       courseId: props.courseId || null,
       postId: props.postId || null,
       commentId: props.commentId || null,
@@ -87,6 +91,10 @@ export class ReactionClient {
 
   public get contentId(): IReactionClient.IProps['contentId'] {
     return this.props.contentId;
+  }
+
+  public get communityId(): IReactionClient.IProps['communityId'] {
+    return this.props.communityId;
   }
 
   public get courseId(): IReactionClient.IProps['courseId'] {

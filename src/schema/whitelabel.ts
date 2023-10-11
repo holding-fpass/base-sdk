@@ -44,5 +44,6 @@ export enum Whitelabel {
   PERFORMANCE_SCHOOL = 'performance-school',
   DICOLORE = 'dicolore',
   ALFAPEOPLE = 'alfapeople',
-  EDUARDO_VIAN = 'eduardo-vian'
+  EDUARDO_VIAN = 'eduardo-vian',
+  ABRAE = 'abrae'
 }
