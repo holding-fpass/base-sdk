@@ -9,6 +9,7 @@ export namespace ICommunityPostCommentMetricsClient {
     whitelabel: Whitelabel;
     communityId: string;
     postId: string;
+    commentId: string;
     reactionsCount: Record<IReactionClient.EEmoji | 'total', number>;
     createdAt: string;
     updatedAt: string;
@@ -20,6 +21,7 @@ export namespace ICommunityPostCommentMetricsClient {
     whitelabel: Whitelabel;
     communityId: string;
     postId: string;
+    commentId: string;
     reactionsCount: Record<IReactionClient.EEmoji | 'total', number>;
     createdAt: Date;
     updatedAt: Date;
@@ -30,6 +32,7 @@ export namespace ICommunityPostCommentMetricsClient {
     resourceType?: ICommunityPostCommentMetricsClient.IProps['resourceType'];
     communityId: ICommunityPostCommentMetricsClient.IProps['communityId'];
     postId: ICommunityPostCommentMetricsClient.IProps['postId'];
+    commentId: ICommunityPostCommentMetricsClient.IProps['commentId'];
     reactionsCount?: ICommunityPostCommentMetricsClient.IProps['reactionsCount'];
     whitelabel: ICommunityPostCommentMetricsClient.IProps['whitelabel'];
     createdAt?: ICommunityPostCommentMetricsClient.IProps['createdAt'];
@@ -76,6 +79,10 @@ export class CommunityPostCommentMetricsClient {
 
   public get postId(): ICommunityPostCommentMetricsClient.IProps['postId'] {
     return this.props.postId;
+  }
+
+  public get commentId(): ICommunityPostCommentMetricsClient.IProps['commentId'] {
+    return this.props.commentId;
   }
 
   public get reactionsCount(): ICommunityPostCommentMetricsClient.IProps['reactionsCount'] {
