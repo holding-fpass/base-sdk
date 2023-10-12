@@ -58,6 +58,7 @@ export enum FLabelAppPagePath {
   CHANNEL_PLAYER = "/channel/:channelId/player/:contentId",
   CHANNEL_STAGE = "/channel/:channelId/stage/:slug",
   CHANNEL_SLIDESHOW_PLAYER = "/channel/:channelId/slideshow/:contentId",
+  CHANNEL_POST_PLAYER = "/channel/:channelId/post/:contentId",
   COMPANIES = "/companies",
   COURSE = "/course/:courseId",
   COURSE_CERTIFICATE = "/course/:courseId/certificate/:certificateId",
@@ -70,6 +71,7 @@ export enum FLabelAppPagePath {
   METAVERSO = "/metaverso",
   OPEN_REVOLUTION = "/open-revolution",
   PLAYER = "/player/:contentId",
+  POST = "/post/:contentId",
   PREMIUM_COURSE = "/premium/:courseId",
   PREMIUM_HOME = "/premium",
   PROFILE = "/profile",
@@ -80,7 +82,6 @@ export enum FLabelAppPagePath {
   TIMELINE = "/timeline",
   WAITING_ROOM = "/waiting-room",
   WALLET = "/wallet",
-  POST = "/post/:contentId",
 }
 
 export function PageUrl(pagePath: string, args?: any) {
