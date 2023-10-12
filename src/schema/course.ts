@@ -17,7 +17,7 @@ import { Tag } from "./tag";
 import { User } from "./user";
 import { Whitelabel } from "./whitelabel";
 
-interface CourseCertificateSettings {
+export interface CourseCertificateSettings {
   minimumWatchTime: number;
 }
 
