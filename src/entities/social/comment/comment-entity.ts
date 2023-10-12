@@ -93,6 +93,18 @@ export class CommentClient {
     return this.props.isGraded;
   }
 
+  public setGraded(): void {
+    this.props.isGraded = true;
+
+    this.update();
+  }
+
+  public setNotGraded(): void {
+    this.props.isGraded = false;
+
+    this.update();
+  }
+
   public get text(): ICommentClient.IProps['text'] {
     return this.props.text;
   }
@@ -123,5 +135,9 @@ export class CommentClient {
 
   public get resourceType(): ICommentClient.IProps['resourceType'] {
     return this.props.resourceType;
+  }
+
+  public update(): void {
+    this.props.updatedAt = new Date();
   }
 }
