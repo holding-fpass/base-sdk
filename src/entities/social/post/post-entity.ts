@@ -29,6 +29,16 @@ export namespace IPostClient {
     NON_INTERACTIVE = 'non-interactive',
   }
 
+  export interface IPostMetadata {
+    title: string;
+    description?: string;
+    domain: string;
+    duration?: number;
+    favicon?: string;
+    images: string[];
+    url: string;
+  }
+
   export interface IProps {
     resourceId: string;
     resourceType: ResourceType.POST;
