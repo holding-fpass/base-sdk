@@ -1,3 +1,4 @@
+import { EmojiClient } from "../emoji/emoji-entity";
 import { ReactionClient, IReactionClient } from "./reaction-entity";
 
 export class ReactionClientMapper {
@@ -6,7 +7,9 @@ export class ReactionClientMapper {
       resourceId: reaction.resourceId,
       resourceType: reaction.resourceType,
       userId: reaction.userId,
-      emoji: reaction.emoji,
+      emoji: new EmojiClient({
+        name: reaction.emoji,
+      }),
       commentId: reaction.commentId,
       communityId: reaction.communityId,
       contentId: reaction.contentId,

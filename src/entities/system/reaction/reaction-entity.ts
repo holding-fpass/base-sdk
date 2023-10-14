@@ -51,7 +51,7 @@ export namespace IReactionClient {
     postId?: IReactionClient.IProps['postId'];
     commentId?: IReactionClient.IProps['commentId'];
     whitelabel: IReactionClient.IProps['whitelabel'];
-    emoji: IReactionClient.EEmoji;
+    emoji: IReactionClient.IProps['emoji'];
     createdAt: IReactionClient.IProps['createdAt'];
     updatedAt: IReactionClient.IProps['updatedAt'];
   }
@@ -65,7 +65,6 @@ export class ReactionClient {
       ...props,
       resourceId: props.resourceId || uuid(),
       resourceType: ResourceType.REACTION,
-      emoji: new EmojiClient({ name: props.emoji }),
       userId: props.userId,
       whitelabel: props.whitelabel,
       contentId: props.contentId || null,
@@ -88,6 +87,10 @@ export class ReactionClient {
 
   public get emoji(): IReactionClient.IProps['emoji'] {
     return this.props.emoji;
+  }
+
+  public setEmoji(emoji: EmojiClient) {
+    this.props.emoji = emoji;
   }
 
   public get userId(): IReactionClient.IProps['userId'] {
@@ -123,5 +126,9 @@ export class ReactionClient {
 
   public get updatedAt(): IReactionClient.IProps['updatedAt'] {
     return this.props.updatedAt;
+  }
+
+  public clone() {
+    return new ReactionClient(this.props);
   }
 }
