@@ -1,13 +1,3 @@
-const emojiNameToIcon = new Map<IEmojiClient.EEmoji, string>(
-  [
-    [IEmojiClient.EEmoji.HEART, "❤️"],
-    [IEmojiClient.EEmoji.THUMBS_UP, "👍"],
-    [IEmojiClient.EEmoji.CLAP, "👏🏼"],
-    [IEmojiClient.EEmoji.STAR_STRUCK, "🤩"],
-    [IEmojiClient.EEmoji.SAD_BUT_RELIEVED_FACE, "😥"],
-  ]
-);
-
 export namespace IEmojiClient {
   export enum EEmoji {
     HEART = 'heart', // ❤️
@@ -25,6 +15,17 @@ export namespace IEmojiClient {
     name: IEmojiClient.IProps['name'];
   }
 }
+
+const emojiNameToIcon = new Map<IEmojiClient.EEmoji, string>(
+  [
+    [IEmojiClient.EEmoji.HEART, "❤️"],
+    [IEmojiClient.EEmoji.THUMBS_UP, "👍"],
+    [IEmojiClient.EEmoji.CLAP, "👏🏼"],
+    [IEmojiClient.EEmoji.STAR_STRUCK, "🤩"],
+    [IEmojiClient.EEmoji.SAD_BUT_RELIEVED_FACE, "😥"],
+  ]
+);
+
 
 export class EmojiClient {
   private props: IEmojiClient.IProps;
