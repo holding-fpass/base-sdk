@@ -264,6 +264,8 @@ export enum InstanceFeatureFlags {
   PLAYLIST_CARD_TAG_HIDE = "instance.feature-flag.playlist.card.tag.hide",
   FORM_EVALUATION_HIDE = "instance.feature-flag.form.evaluation.hide",
   CHANNEL_USER_LOGIN_ONLY = "instance.feature-flag.channel.user.login.only",
+  TIMELINE = 'timeline',
+  GLOBAL_CHAT = 'global-chat',
 }
 
 export enum InstanceThemeSettings {
