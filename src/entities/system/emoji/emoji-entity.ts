@@ -1,6 +1,4 @@
-import { IReactionClient } from "../reaction";
-
-const emojiNameToIcon = new Map<IReactionClient.EEmoji, string>(
+const emojiNameToIcon = new Map<IEmojiClient.EEmoji, string>(
   [
     [IEmojiClient.EEmoji.HEART, "❤️"],
     [IEmojiClient.EEmoji.THUMBS_UP, "👍"],
