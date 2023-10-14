@@ -1,4 +1,4 @@
-import { ResourceType, Whitelabel } from 'schema';
+import { ResourceType, Whitelabel } from '../../../schema';
 import { v4 as uuid } from 'uuid';
 
 export namespace IReactionClient {
