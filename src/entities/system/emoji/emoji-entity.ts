@@ -2,15 +2,15 @@ import { IReactionClient } from "../reaction";
 
 const emojiNameToIcon = new Map<IReactionClient.EEmoji, string>(
   [
-    [IReactionClient.EEmoji.HEART, "❤️"],
-    [IReactionClient.EEmoji.THUMBS_UP, "👍"],
-    [IReactionClient.EEmoji.CLAP, "👏🏼"],
-    [IReactionClient.EEmoji.STAR_STRUCK, "🤩"],
-    [IReactionClient.EEmoji.SAD_BUT_RELIEVED_FACE, "😥"],
+    [IEmojiClient.EEmoji.HEART, "❤️"],
+    [IEmojiClient.EEmoji.THUMBS_UP, "👍"],
+    [IEmojiClient.EEmoji.CLAP, "👏🏼"],
+    [IEmojiClient.EEmoji.STAR_STRUCK, "🤩"],
+    [IEmojiClient.EEmoji.SAD_BUT_RELIEVED_FACE, "😥"],
   ]
 );
 
-export namespace IEmojiEntity {
+export namespace IEmojiClient {
   export enum EEmoji {
     HEART = 'heart', // ❤️
     THUMBS_UP = 'thumbs-up', // 👍
@@ -20,22 +20,22 @@ export namespace IEmojiEntity {
   }
 
   export interface IProps {
-    name: IEmojiEntity.EEmoji;
+    name: IEmojiClient.EEmoji;
   }
 
   export interface IConstructor {
-    name: IEmojiEntity.IProps['name'];
+    name: IEmojiClient.IProps['name'];
   }
 }
 
 export class EmojiClient {
-  private props: IEmojiEntity.IProps;
+  private props: IEmojiClient.IProps;
 
-  public constructor(props: IEmojiEntity.IConstructor) {
+  public constructor(props: IEmojiClient.IConstructor) {
     this.props = props;
   }
 
-  public get name(): string {
+  public get name(): IEmojiClient.EEmoji {
     return this.props.name;
   }
 

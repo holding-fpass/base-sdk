@@ -23,7 +23,7 @@ export class ReactionClientMapper {
       resourceId: reaction.resourceId,
       resourceType: reaction.resourceType,
       userId: reaction.userId,
-      emoji: reaction.emoji,
+      emoji: reaction.emoji.name,
       commentId: reaction.commentId,
       communityId: reaction.communityId,
       contentId: reaction.contentId,
