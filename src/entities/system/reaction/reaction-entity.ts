@@ -1,14 +1,16 @@
 import { ResourceType, Whitelabel } from '../../../schema';
 import { v4 as uuid } from 'uuid';
+import { EmojiClient } from "../emoji/emoji-entity";
 
 export namespace IReactionClient {
   export enum EEmoji {
-    HEART = 'heart',
-    THUMBS_UP = 'thumbs-up',
-    CLAP = 'clap',
-    STAR_STRUCK = 'star-struck',
-    SAD_BUT_RELIEVED_FACE = 'sad-but-relieved-face',
+    HEART = 'heart', // ❤️
+    THUMBS_UP = 'thumbs-up', // 👍
+    CLAP = 'clap', // 👏🏼
+    STAR_STRUCK = 'star-struck', // 🤩
+    SAD_BUT_RELIEVED_FACE = 'sad-but-relieved-face', // 😥
   }
+
   export interface IHTTPReaction {
     resourceId: string;
     resourceType: ResourceType.REACTION;
@@ -34,7 +36,7 @@ export namespace IReactionClient {
     postId?: string | null;
     commentId?: string | null;
     whitelabel: Whitelabel;
-    emoji: IReactionClient.EEmoji;
+    emoji: EmojiClient;
     createdAt: Date;
     updatedAt: Date;
   }
@@ -49,7 +51,7 @@ export namespace IReactionClient {
     postId?: IReactionClient.IProps['postId'];
     commentId?: IReactionClient.IProps['commentId'];
     whitelabel: IReactionClient.IProps['whitelabel'];
-    emoji: IReactionClient.IProps['emoji'];
+    emoji: IReactionClient.EEmoji;
     createdAt: IReactionClient.IProps['createdAt'];
     updatedAt: IReactionClient.IProps['updatedAt'];
   }
@@ -58,12 +60,12 @@ export namespace IReactionClient {
 export class ReactionClient {
   private props: IReactionClient.IProps;
 
-  public constructor(props: IReactionClient.IProps) {
+  public constructor(props: IReactionClient.IConstructor) {
     this.props = {
       ...props,
       resourceId: props.resourceId || uuid(),
       resourceType: ResourceType.REACTION,
-      emoji: props.emoji,
+      emoji: new EmojiClient({ name: props.emoji }),
       userId: props.userId,
       whitelabel: props.whitelabel,
       contentId: props.contentId || null,
