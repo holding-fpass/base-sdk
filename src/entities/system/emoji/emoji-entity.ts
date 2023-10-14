@@ -7,6 +7,11 @@ export namespace IEmojiClient {
     SAD_BUT_RELIEVED_FACE = 'sad-but-relieved-face', // 😥
   }
 
+  export interface IList {
+    name: IEmojiClient.EEmoji;
+    icon: string;
+  }
+
   export interface IProps {
     name: IEmojiClient.EEmoji;
   }
@@ -42,5 +47,11 @@ export class EmojiClient {
     return emojiNameToIcon.get(this.props.name)!;
   }
 
-  public static list = ["❤️", "👍", "👏🏼", "🤩", "😥"];
+  public static list: IEmojiClient.IList[] = [
+    { name: IEmojiClient.EEmoji.HEART, icon: "❤️" },
+    { name: IEmojiClient.EEmoji.THUMBS_UP, icon: "👍" },
+    { name: IEmojiClient.EEmoji.CLAP, icon: "👏🏼" },
+    { name: IEmojiClient.EEmoji.STAR_STRUCK, icon:"🤩" },
+    { name: IEmojiClient.EEmoji.SAD_BUT_RELIEVED_FACE, icon: "😥" }
+  ];
 }
