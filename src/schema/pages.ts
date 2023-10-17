@@ -4,14 +4,14 @@ import {
   ResourceStatus,
   ResourceType,
   SearchableResource,
-} from "./resource";
+} from './resource';
 
-import { Playlist } from "./playlist";
-import { Tag } from "./tag";
+import { Playlist } from './playlist';
+import { Tag } from './tag';
 
 export enum PageStatus {
-  CREATED = "created",
-  ACTIVE = "active",
+  CREATED = 'created',
+  ACTIVE = 'active',
 }
 
 export const PageStatusTransitionMap = new Map<PageStatus, PageStatus[]>([
@@ -23,7 +23,7 @@ export class Page extends Resource implements SearchableResource {
   name!: string;
   url!: string;
   // Related
-  playlists!: Pick<Playlist, "resourceId" | "name">[];
+  playlists!: Pick<Playlist, 'resourceId' | 'name'>[];
   userTags?: Partial<Tag>[];
   userTags_idx?: string[];
   // SearchableResource implementation
@@ -47,47 +47,48 @@ export class Page extends Resource implements SearchableResource {
 }
 
 export enum FLabelAppPagePath {
-  ABOUT_US = "/about-us",
-  CALENDAR = "/calendar",
-  CERTIFICATE = "/certificate",
-  CHANNEL = "/channel/:channelId",
-  CHANNEL_CALENDAR = "/channel/:channelId/calendar",
-  CHANNEL_COURSE = "/channel/:channelId/course/:courseId",
-  CHANNEL_EXAM_PLAYER = "/channel/:channelId/exam/:contentId",
-  CHANNEL_HOME = "/channel",
-  CHANNEL_PLAYER = "/channel/:channelId/player/:contentId",
-  CHANNEL_STAGE = "/channel/:channelId/stage/:slug",
-  CHANNEL_SLIDESHOW_PLAYER = "/channel/:channelId/slideshow/:contentId",
-  CHANNEL_POST_PLAYER = "/channel/:channelId/post/:contentId",
-  COMPANIES = "/companies",
-  COURSE = "/course/:courseId",
-  COURSE_CERTIFICATE = "/course/:courseId/certificate/:certificateId",
-  DEVELOPERS = "/developers",
-  EXAM = "/exam/:contentId",
-  COMMUNITY = "/community/:communityId",
-  FLABEL = "/flabel",
-  HOME = "/",
-  LIBRARY = "/library",
-  METAVERSO = "/metaverso",
-  OPEN_REVOLUTION = "/open-revolution",
-  PLAYER = "/player/:contentId",
-  POST = "/post/:contentId",
-  PREMIUM_COURSE = "/premium/:courseId",
-  PREMIUM_HOME = "/premium",
-  PROFILE = "/profile",
-  SEARCH = "/search",
-  SEARCH_RESULTS = "/search/:text",
-  SLIDESHOW = "/slideshow/:contentId",
-  STAGE = "/stage/:slug",
-  TIMELINE = "/timeline",
-  WAITING_ROOM = "/waiting-room",
-  WALLET = "/wallet",
+  ABOUT_US = '/about-us',
+  CALENDAR = '/calendar',
+  CERTIFICATE = '/certificate',
+  CHANNEL = '/channel/:channelId',
+  CHANNEL_CALENDAR = '/channel/:channelId/calendar',
+  CHANNEL_COURSE = '/channel/:channelId/course/:courseId',
+  CHANNEL_EXAM_PLAYER = '/channel/:channelId/exam/:contentId',
+  CHANNEL_HOME = '/channel',
+  CHANNEL_PLAYER = '/channel/:channelId/player/:contentId',
+  CHANNEL_STAGE = '/channel/:channelId/stage/:slug',
+  CHANNEL_SLIDESHOW_PLAYER = '/channel/:channelId/slideshow/:contentId',
+  CHANNEL_POST_PLAYER = '/channel/:channelId/post/:contentId',
+  COMPANIES = '/companies',
+  COURSE = '/course/:courseId',
+  COURSE_CERTIFICATE = '/course/:courseId/certificate/:certificateId',
+  DEVELOPERS = '/developers',
+  EXAM = '/exam/:contentId',
+  COMMUNITIES = '/communities',
+  COMMUNITY = '/community/:communityId',
+  FLABEL = '/flabel',
+  HOME = '/',
+  LIBRARY = '/library',
+  METAVERSO = '/metaverso',
+  OPEN_REVOLUTION = '/open-revolution',
+  PLAYER = '/player/:contentId',
+  POST = '/post/:contentId',
+  PREMIUM_COURSE = '/premium/:courseId',
+  PREMIUM_HOME = '/premium',
+  PROFILE = '/profile',
+  SEARCH = '/search',
+  SEARCH_RESULTS = '/search/:text',
+  SLIDESHOW = '/slideshow/:contentId',
+  STAGE = '/stage/:slug',
+  TIMELINE = '/timeline',
+  WAITING_ROOM = '/waiting-room',
+  WALLET = '/wallet',
 }
 
 export function PageUrl(pagePath: string, args?: any) {
   if (!args) return pagePath;
   const keys = Object.keys(args);
-  let url = "";
+  let url = '';
   for (const key of keys) {
     url = !!url
       ? url.replace(`:${key}`, args[key])
