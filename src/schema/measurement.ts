@@ -43,6 +43,7 @@ export enum MeasurementType {
   CONTENT_WATCHERS_COUNT = "content.watchers.count",
   CONTENT_WATCHERS_LIST = "content.watchers.list",
   CONTENT_LINK_COUNT = "content.link.count",
+  CONTENT_POST_USERS_INTERACTION_LIST = "content.post.users.interaction.list",
   // Stage
   STAGE_REACTION_COUNT = "stage.reaction.count",
   STAGE_REACTION_COUNT_LIST = "stage.reaction.count.list",
