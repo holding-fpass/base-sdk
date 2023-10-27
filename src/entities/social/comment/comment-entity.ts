@@ -140,4 +140,8 @@ export class CommentClient {
   public update(): void {
     this.props.updatedAt = new Date();
   }
+
+  public clone() {
+    return new CommentClient(this.props);
+  }
 }
