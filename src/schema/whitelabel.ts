@@ -48,4 +48,5 @@ export enum Whitelabel {
   ABRAE = 'abrae',
   FUTURUM_EDUCATION = 'futurum-education',
   UNIERA = 'uniera',
+  DISRUPTE = 'disrupte',
 }
