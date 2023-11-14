@@ -29,6 +29,7 @@ export namespace IContentClient {
     courseId: string;
     communityId: string | null;
     postId: string | null;
+    stageId: string | null;
     fileUrl: string | null;
     meetUrl: string | null;
     complementaryMaterials: IComplementaryMaterialClient.IHTTPComplementaryMaterial[];
@@ -73,6 +74,7 @@ export namespace IContentClient {
       courseId: string;
       communityId: string | null;
       postId: string | null;
+      stageId: string | null;
       fileUrl: string | null;
       meetUrl: string | null;
       complementaryMaterials: ComplementaryMaterialClient[];
@@ -102,6 +104,7 @@ export namespace IContentClient {
         courseId: IContentClient.IClass.IProps["courseId"];
         communityId: IContentClient.IClass.IProps["communityId"];
         postId: IContentClient.IClass.IProps["postId"];
+        stageId: IContentClient.IClass.IProps['stageId'];
         fileUrl: IContentClient.IClass.IProps['fileUrl'];
         meetUrl: IContentClient.IClass.IProps['meetUrl'];
         complementaryMaterials: IContentClient.IClass.IProps["complementaryMaterials"];
@@ -191,6 +194,10 @@ export class ContentClient {
 
   public get postId(): IContentClient.IClass.IProps["postId"] {
     return this.props.postId;
+  }
+
+  public get stageId(): IContentClient.IClass.IProps['stageId'] {
+    return this.props.stageId;
   }
 
   public get fileUrl(): IContentClient.IClass.IProps['fileUrl'] {

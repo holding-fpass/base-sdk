@@ -28,6 +28,7 @@ export class ContentClientMapper {
       courseId: HTTPContent.courseId,
       communityId: HTTPContent.communityId,
       postId: HTTPContent.postId,
+      stageId: HTTPContent.stageId,
       fileUrl: HTTPContent.fileUrl,
       meetUrl: HTTPContent.meetUrl,
       complementaryMaterials: HTTPContent.complementaryMaterials.map(
@@ -65,6 +66,7 @@ export class ContentClientMapper {
       courseId: content.courseId,
       communityId: content.communityId,
       postId: content.postId,
+      stageId: content.stageId,
       fileUrl: content.fileUrl,
       meetUrl: content.meetUrl,
       complementaryMaterials: content.complementaryMaterials.map(
