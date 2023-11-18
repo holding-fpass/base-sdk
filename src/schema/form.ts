@@ -108,6 +108,7 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   name!: string;
   description?: string;
   layout!: FormLayout;
+  password?: string;
   questions?: Partial<FormQuestion>[];
   resultRanges?: Partial<FormResultRange>[];
   trigger?: FormTrigger;
