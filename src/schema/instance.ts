@@ -230,6 +230,7 @@ export class Instance
 export enum InstanceApplications {
   FLABEL = "flabel",
   FMANAGEMENT = "fmanagement",
+  FEDUCATOR = 'feducator',
 }
 
 export enum InstanceFeatureFlags {
