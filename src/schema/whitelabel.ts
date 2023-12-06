@@ -51,4 +51,5 @@ export enum Whitelabel {
   DISRUPTE = 'disrupte',
   BLINK = 'blink',
   SEK = 'sek',
+  DOSE_BRASIL = 'dose-brasil'
 }
