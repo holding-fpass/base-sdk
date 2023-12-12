@@ -175,6 +175,7 @@ export class Content
   stage?: Pick<Stage, "resourceId" | "name" | "slug">;
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
   tags?: Tag[];
+  token?: string;
   parentId!: string;
   parentType!: ResourceType;
   slideshow?: Partial<ContentSlideshow>[];
