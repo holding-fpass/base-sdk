@@ -17,6 +17,7 @@ export namespace IPostClient {
     pinned: boolean | false;
     tags: string[];
     whitelabel: Whitelabel;
+    token: string | null;
     allowed: boolean;
     expiresAt: string | null;
     createdAt: string;
@@ -53,6 +54,7 @@ export namespace IPostClient {
     ownerId: string;
     pinned: boolean | false;
     tags: string[];
+    token: string | null;
     whitelabel: Whitelabel;
     allowed: boolean;
     expiresAt: Date | null;
@@ -76,6 +78,7 @@ export namespace IPostClient {
     description: IPostClient.IProps['description'];
     whitelabel: IPostClient.IProps['whitelabel'];
     allowed: IPostClient.IProps['allowed'];
+    token?: IPostClient.IProps['token'];
     expiresAt?: IPostClient.IProps['expiresAt'];
     createdAt?: IPostClient.IProps['createdAt'];
     updatedAt?: IPostClient.IProps['updatedAt'];
@@ -103,6 +106,7 @@ export class PostClient {
       whitelabel: props.whitelabel,
       ownerId: props.ownerId,
       pinned: props.pinned,
+      token: props.token || null,
       expiresAt: props.expiresAt || null,
       createdAt: props.createdAt || new Date(),
       updatedAt: props.updatedAt || new Date(),
@@ -131,6 +135,10 @@ export class PostClient {
     this.props.pinned = false;
 
     this.update();
+  }
+
+  public get token(): IPostClient.IProps['token'] {
+    return this.props.token;
   }
 
   public get tags(): IPostClient.IProps['tags'] {

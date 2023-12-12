@@ -177,7 +177,7 @@ export class Content
   tags?: Tag[];
   token?: string;
   isRestricted?: boolean;
-  restrictedUsers?: string[];
+  restrictedUsers?: Pick<User, "resourceId" | "name" | "email">[];
   parentId!: string;
   parentType!: ResourceType;
   slideshow?: Partial<ContentSlideshow>[];
