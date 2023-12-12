@@ -35,6 +35,8 @@ export class ContentClientMapper {
         (complementaryMaterial) =>
           ComplementaryMaterialClientMapper.toApplication(complementaryMaterial)
       ),
+      isRestricted: HTTPContent.isRestricted,
+      restrictedUsers: HTTPContent.restrictedUsers,
       token: HTTPContent.token,
       whitelabel: HTTPContent.whitelabel,
       metadata: HTTPContent.metadata,
@@ -70,6 +72,8 @@ export class ContentClientMapper {
       stageId: content.stageId,
       fileUrl: content.fileUrl,
       meetUrl: content.meetUrl,
+      isRestricted: content.isRestricted,
+      restrictedUsers: content.restrictedUsers,
       complementaryMaterials: content.complementaryMaterials.map(
         (complementaryMaterial) =>
           ComplementaryMaterialClientMapper.toHTTP(complementaryMaterial)

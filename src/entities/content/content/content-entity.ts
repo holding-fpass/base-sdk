@@ -32,6 +32,8 @@ export namespace IContentClient {
     stageId: string | null;
     fileUrl: string | null;
     meetUrl: string | null;
+    isRestricted?: boolean;
+    restrictedUsers?: string[];
     complementaryMaterials: IComplementaryMaterialClient.IHTTPComplementaryMaterial[];
     token: string | null;
     whitelabel: Whitelabel;
@@ -78,6 +80,8 @@ export namespace IContentClient {
       stageId: string | null;
       fileUrl: string | null;
       meetUrl: string | null;
+      isRestricted?: boolean;
+      restrictedUsers?: string[];
       complementaryMaterials: ComplementaryMaterialClient[];
       token: string | null;
       whitelabel: Whitelabel;
@@ -110,6 +114,8 @@ export namespace IContentClient {
         fileUrl: IContentClient.IClass.IProps['fileUrl'];
         meetUrl: IContentClient.IClass.IProps['meetUrl'];
         complementaryMaterials: IContentClient.IClass.IProps["complementaryMaterials"];
+        isRestricted?: IContentClient.IClass.IProps['isRestricted'];
+        restrictedUsers?: IContentClient.IClass.IProps['restrictedUsers'];
         token: IContentClient.IClass.IProps['token'];
         whitelabel: IContentClient.IClass.IProps["whitelabel"];
         metadata: IContentClient.IClass.IProps["metadata"];
@@ -209,6 +215,14 @@ export class ContentClient {
 
   public get meetUrl(): IContentClient.IClass.IProps['meetUrl'] {
     return this.props.meetUrl;
+  }
+  
+  public get isRestricted(): IContentClient.IClass.IProps['isRestricted'] {
+    return this.props.isRestricted;
+  }
+
+  public get restrictedUsers(): IContentClient.IClass.IProps['restrictedUsers'] {
+    return this.props.restrictedUsers;
   }
 
   public get complementaryMaterials(): IContentClient.IClass.IProps["complementaryMaterials"] {

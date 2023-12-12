@@ -176,6 +176,8 @@ export class Content
   mentors?: Pick<User, "resourceId" | "name" | "email">[];
   tags?: Tag[];
   token?: string;
+  isRestricted?: boolean;
+  restrictedUsers?: string[];
   parentId!: string;
   parentType!: ResourceType;
   slideshow?: Partial<ContentSlideshow>[];
