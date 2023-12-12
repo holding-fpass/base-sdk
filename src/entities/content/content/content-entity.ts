@@ -33,6 +33,7 @@ export namespace IContentClient {
     fileUrl: string | null;
     meetUrl: string | null;
     complementaryMaterials: IComplementaryMaterialClient.IHTTPComplementaryMaterial[];
+    token: string | null;
     whitelabel: Whitelabel;
     metadata: Metadata | null;
     createdAt: string;
@@ -78,6 +79,7 @@ export namespace IContentClient {
       fileUrl: string | null;
       meetUrl: string | null;
       complementaryMaterials: ComplementaryMaterialClient[];
+      token: string | null;
       whitelabel: Whitelabel;
       metadata: Metadata | null;
       createdAt: Date;
@@ -108,6 +110,7 @@ export namespace IContentClient {
         fileUrl: IContentClient.IClass.IProps['fileUrl'];
         meetUrl: IContentClient.IClass.IProps['meetUrl'];
         complementaryMaterials: IContentClient.IClass.IProps["complementaryMaterials"];
+        token: IContentClient.IClass.IProps['token'];
         whitelabel: IContentClient.IClass.IProps["whitelabel"];
         metadata: IContentClient.IClass.IProps["metadata"];
         createdAt: IContentClient.IClass.IProps["createdAt"];
@@ -210,6 +213,10 @@ export class ContentClient {
 
   public get complementaryMaterials(): IContentClient.IClass.IProps["complementaryMaterials"] {
     return this.props.complementaryMaterials;
+  }
+
+  public get token(): IContentClient.IClass.IProps["token"] {
+    return this.props.token;
   }
 
   public get whitelabel(): IContentClient.IClass.IProps["whitelabel"] {

@@ -35,6 +35,7 @@ export class ContentClientMapper {
         (complementaryMaterial) =>
           ComplementaryMaterialClientMapper.toApplication(complementaryMaterial)
       ),
+      token: HTTPContent.token,
       whitelabel: HTTPContent.whitelabel,
       metadata: HTTPContent.metadata,
       createdAt: new Date(HTTPContent.createdAt),
@@ -73,6 +74,7 @@ export class ContentClientMapper {
         (complementaryMaterial) =>
           ComplementaryMaterialClientMapper.toHTTP(complementaryMaterial)
       ),
+      token: content.token,
       whitelabel: content.whitelabel,
       metadata: content.metadata,
       createdAt: content.createdAt.toISOString(),
