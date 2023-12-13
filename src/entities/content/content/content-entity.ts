@@ -34,8 +34,8 @@ export namespace IContentClient {
     meetUrl: string | null;
     isRestricted: boolean;
     restrictedUsers: string[];
-    restrictedDateStart: Date | null;
-    restrictedDateEnd: Date | null;
+    restrictedDateStart: string | null;
+    restrictedDateEnd: string | null;
     restrictedGrade: number | null;
     complementaryMaterials: IComplementaryMaterialClient.IHTTPComplementaryMaterial[];
     token: string | null;
@@ -139,7 +139,14 @@ export class ContentClient {
   private props: IContentClient.IClass.IProps;
 
   public constructor(props: IContentClient.IClass.IMethods.IConstructor) {
-    this.props = props;
+    this.props = {
+      ...props,
+      isRestricted: props.isRestricted || false,
+      restrictedUsers: props.restrictedUsers || [],
+      restrictedDateStart: props.restrictedDateStart || null,
+      restrictedDateEnd: props.restrictedDateEnd || null,
+      restrictedGrade: props.restrictedGrade || null
+    };
   }
 
   public get resourceId(): IContentClient.IClass.IProps["resourceId"] {
