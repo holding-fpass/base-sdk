@@ -195,8 +195,8 @@ export class Instance
   // Configurations
   emailConfig?: EmailConfig;
   splitConfig?: SplitConfig;
-  formula?: string | null;
-  gradeConfig?: IGradeConfig | null;
+  formula?: string;
+  gradeConfig?: IGradeConfig;
   // Provider
   __activeCampaign?: ActiveCampaignProvider;
   __fpay?: FpayProvider;
