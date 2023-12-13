@@ -234,6 +234,18 @@ export class ContentClient {
     return this.props.restrictedUsers;
   }
 
+  public get restrictedDateStart(): IContentClient.IClass.IProps['restrictedDateStart'] {
+    return this.props.restrictedDateStart;
+  }
+
+  public get restrictedDateEnd(): IContentClient.IClass.IProps['restrictedDateEnd'] {
+    return this.props.restrictedDateEnd;
+  }
+
+  public get restrictedGrade(): IContentClient.IClass.IProps['restrictedGrade'] {
+    return this.props.restrictedGrade;
+  }
+
   public get complementaryMaterials(): IContentClient.IClass.IProps["complementaryMaterials"] {
     return this.props.complementaryMaterials;
   }

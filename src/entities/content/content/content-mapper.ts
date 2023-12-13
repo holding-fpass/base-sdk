@@ -81,6 +81,13 @@ export class ContentClientMapper {
       meetUrl: content.meetUrl,
       isRestricted: content.isRestricted,
       restrictedUsers: content.restrictedUsers,
+      restrictedDateStart: content.restrictedDateStart
+        ? content.restrictedDateStart.toISOString()
+        : content.restrictedDateStart,
+        restrictedDateEnd: content.restrictedDateEnd
+        ? content.restrictedDateEnd.toISOString()
+        : content.restrictedDateEnd,
+      restrictedGrade: content.restrictedGrade,
       complementaryMaterials: content.complementaryMaterials.map(
         (complementaryMaterial) =>
           ComplementaryMaterialClientMapper.toHTTP(complementaryMaterial)
