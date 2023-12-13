@@ -114,7 +114,7 @@ interface ZoomProvider {
   ZOOM_CLIENT_SECRET: string;
 }
 
-interface IGradeConfig {
+export interface IGradeConfig {
   examGrade: number;
   approvalGrade: number;
 }
