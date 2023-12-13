@@ -178,6 +178,9 @@ export class Content
   token?: string;
   isRestricted?: boolean;
   restrictedUsers?: Pick<User, "resourceId" | "name" | "email">[];
+  restrictedDateStart?: string;
+  restrictedDateEnd?: string;
+  restrictedGrade?: number;
   parentId!: string;
   parentType!: ResourceType;
   slideshow?: Partial<ContentSlideshow>[];
