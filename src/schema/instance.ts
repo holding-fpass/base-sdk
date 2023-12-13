@@ -114,6 +114,11 @@ interface ZoomProvider {
   ZOOM_CLIENT_SECRET: string;
 }
 
+interface IGradeConfig {
+  examGrade: number;
+  approvalGrade: number;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -191,6 +196,7 @@ export class Instance
   emailConfig?: EmailConfig;
   splitConfig?: SplitConfig;
   formula?: string | null;
+  gradeConfig?: IGradeConfig | null;
   // Provider
   __activeCampaign?: ActiveCampaignProvider;
   __fpay?: FpayProvider;
