@@ -32,8 +32,11 @@ export namespace IContentClient {
     stageId: string | null;
     fileUrl: string | null;
     meetUrl: string | null;
-    isRestricted?: boolean;
-    restrictedUsers?: string[];
+    isRestricted: boolean;
+    restrictedUsers: string[];
+    restrictedDateStart: Date | null;
+    restrictedDateEnd: Date | null;
+    restrictedGrade: number | null;
     complementaryMaterials: IComplementaryMaterialClient.IHTTPComplementaryMaterial[];
     token: string | null;
     whitelabel: Whitelabel;
@@ -80,8 +83,11 @@ export namespace IContentClient {
       stageId: string | null;
       fileUrl: string | null;
       meetUrl: string | null;
-      isRestricted?: boolean;
-      restrictedUsers?: string[];
+      isRestricted: boolean;
+      restrictedUsers: string[];
+      restrictedDateStart: Date | null;
+      restrictedDateEnd: Date | null;
+      restrictedGrade: number | null;
       complementaryMaterials: ComplementaryMaterialClient[];
       token: string | null;
       whitelabel: Whitelabel;
@@ -116,6 +122,9 @@ export namespace IContentClient {
         complementaryMaterials: IContentClient.IClass.IProps["complementaryMaterials"];
         isRestricted?: IContentClient.IClass.IProps['isRestricted'];
         restrictedUsers?: IContentClient.IClass.IProps['restrictedUsers'];
+        restrictedDateStart?: IContentClient.IClass.IProps['restrictedDateStart'];
+        restrictedDateEnd?: IContentClient.IClass.IProps['restrictedDateEnd'];
+        restrictedGrade?: IContentClient.IClass.IProps['restrictedGrade'];
         token: IContentClient.IClass.IProps['token'];
         whitelabel: IContentClient.IClass.IProps["whitelabel"];
         metadata: IContentClient.IClass.IProps["metadata"];

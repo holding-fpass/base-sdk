@@ -37,6 +37,13 @@ export class ContentClientMapper {
       ),
       isRestricted: HTTPContent.isRestricted,
       restrictedUsers: HTTPContent.restrictedUsers,
+      restrictedDateStart: HTTPContent.restrictedDateStart
+      ? new Date(HTTPContent.restrictedDateStart)
+      : (HTTPContent.restrictedDateStart as null),
+      restrictedDateEnd: HTTPContent.restrictedDateEnd
+      ? new Date(HTTPContent.restrictedDateEnd)
+      : (HTTPContent.restrictedDateEnd as null),
+      restrictedGrade: HTTPContent.restrictedGrade,
       token: HTTPContent.token,
       whitelabel: HTTPContent.whitelabel,
       metadata: HTTPContent.metadata,
