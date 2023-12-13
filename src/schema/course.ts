@@ -177,7 +177,7 @@ export class Content
   tags?: Tag[];
   token?: string;
   isRestricted?: boolean;
-  restrictedUsers?: Pick<User, "resourceId" | "name" | "email">[];
+  restrictedUsers?: string[];
   restrictedDateStart?: string;
   restrictedDateEnd?: string;
   restrictedGrade?: number;
