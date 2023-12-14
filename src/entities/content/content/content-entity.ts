@@ -36,8 +36,8 @@ export namespace IContentClient {
     restrictions: {
       usersId: string[];
       date: {
-        start: string | null;
-        end: string | null;
+        start: Date | null;
+        end: Date | null;
       };
       grade: {
         token: string | null;
