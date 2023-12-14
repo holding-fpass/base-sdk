@@ -36,14 +36,7 @@ export class ContentClientMapper {
           ComplementaryMaterialClientMapper.toApplication(complementaryMaterial)
       ),
       isRestricted: HTTPContent.isRestricted,
-      restrictedUsers: HTTPContent.restrictedUsers,
-      restrictedDateStart: HTTPContent.restrictedDateStart
-      ? new Date(HTTPContent.restrictedDateStart)
-      : (HTTPContent.restrictedDateStart as null),
-      restrictedDateEnd: HTTPContent.restrictedDateEnd
-      ? new Date(HTTPContent.restrictedDateEnd)
-      : (HTTPContent.restrictedDateEnd as null),
-      restrictedGrade: HTTPContent.restrictedGrade,
+      restrictions: HTTPContent.restrictions,
       token: HTTPContent.token,
       whitelabel: HTTPContent.whitelabel,
       metadata: HTTPContent.metadata,
@@ -80,14 +73,7 @@ export class ContentClientMapper {
       fileUrl: content.fileUrl,
       meetUrl: content.meetUrl,
       isRestricted: content.isRestricted,
-      restrictedUsers: content.restrictedUsers,
-      restrictedDateStart: content.restrictedDateStart
-        ? content.restrictedDateStart.toISOString()
-        : content.restrictedDateStart,
-        restrictedDateEnd: content.restrictedDateEnd
-        ? content.restrictedDateEnd.toISOString()
-        : content.restrictedDateEnd,
-      restrictedGrade: content.restrictedGrade,
+      restrictions: content.restrictions,
       complementaryMaterials: content.complementaryMaterials.map(
         (complementaryMaterial) =>
           ComplementaryMaterialClientMapper.toHTTP(complementaryMaterial)

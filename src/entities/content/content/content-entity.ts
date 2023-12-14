@@ -33,10 +33,18 @@ export namespace IContentClient {
     fileUrl: string | null;
     meetUrl: string | null;
     isRestricted: boolean;
-    restrictedUsers: string[];
-    restrictedDateStart: string | null;
-    restrictedDateEnd: string | null;
-    restrictedGrade: number | null;
+    restrictions: {
+      usersId: string[];
+      date: {
+        start: string | null;
+        end: string | null;
+      };
+      grade: {
+        token: string | null;
+        min: number | null;
+        max: number | null;
+      };
+    };
     complementaryMaterials: IComplementaryMaterialClient.IHTTPComplementaryMaterial[];
     token: string | null;
     whitelabel: Whitelabel;
@@ -84,10 +92,18 @@ export namespace IContentClient {
       fileUrl: string | null;
       meetUrl: string | null;
       isRestricted: boolean;
-      restrictedUsers: string[];
-      restrictedDateStart: Date | null;
-      restrictedDateEnd: Date | null;
-      restrictedGrade: number | null;
+      restrictions: {
+        usersId: string[];
+        date: {
+          start: Date | null;
+          end: Date | null;
+        };
+        grade: {
+          token: string | null;
+          min: number | null;
+          max: number | null;
+        };
+      };
       complementaryMaterials: ComplementaryMaterialClient[];
       token: string | null;
       whitelabel: Whitelabel;
@@ -121,10 +137,7 @@ export namespace IContentClient {
         meetUrl: IContentClient.IClass.IProps['meetUrl'];
         complementaryMaterials: IContentClient.IClass.IProps["complementaryMaterials"];
         isRestricted?: IContentClient.IClass.IProps['isRestricted'];
-        restrictedUsers?: IContentClient.IClass.IProps['restrictedUsers'];
-        restrictedDateStart?: IContentClient.IClass.IProps['restrictedDateStart'];
-        restrictedDateEnd?: IContentClient.IClass.IProps['restrictedDateEnd'];
-        restrictedGrade?: IContentClient.IClass.IProps['restrictedGrade'];
+        restrictions?: IContentClient.IClass.IProps['restrictions'];
         token: IContentClient.IClass.IProps['token'];
         whitelabel: IContentClient.IClass.IProps["whitelabel"];
         metadata: IContentClient.IClass.IProps["metadata"];
@@ -142,10 +155,18 @@ export class ContentClient {
     this.props = {
       ...props,
       isRestricted: props.isRestricted || false,
-      restrictedUsers: props.restrictedUsers || [],
-      restrictedDateStart: props.restrictedDateStart || null,
-      restrictedDateEnd: props.restrictedDateEnd || null,
-      restrictedGrade: props.restrictedGrade || null
+      restrictions: {
+        usersId: [],
+        date: {
+          start: new Date(),
+          end: new Date(),
+        },
+        grade: {
+          token: "",
+          min: 0,
+          max: 0,
+        }
+      },
     };
   }
 
@@ -237,20 +258,8 @@ export class ContentClient {
     return this.props.isRestricted;
   }
 
-  public get restrictedUsers(): IContentClient.IClass.IProps['restrictedUsers'] {
-    return this.props.restrictedUsers;
-  }
-
-  public get restrictedDateStart(): IContentClient.IClass.IProps['restrictedDateStart'] {
-    return this.props.restrictedDateStart;
-  }
-
-  public get restrictedDateEnd(): IContentClient.IClass.IProps['restrictedDateEnd'] {
-    return this.props.restrictedDateEnd;
-  }
-
-  public get restrictedGrade(): IContentClient.IClass.IProps['restrictedGrade'] {
-    return this.props.restrictedGrade;
+  public get restrictions(): IContentClient.IClass.IProps['restrictions'] {
+    return this.props.restrictions;
   }
 
   public get complementaryMaterials(): IContentClient.IClass.IProps["complementaryMaterials"] {

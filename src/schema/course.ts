@@ -86,6 +86,19 @@ export class ContentSchedule {
   slug?: string;
 }
 
+export class ContentRestrictions {
+  usersId?: string[];
+  date?: {
+    start: string | null;
+    end: string | null;
+  };
+  grade?: {
+    token: string | null;
+    min: number | null;
+    max: number | null;
+  };
+}
+
 export enum ContentType {
   VIDEO = "video",
   MEET = "meet",
@@ -177,10 +190,7 @@ export class Content
   tags?: Tag[];
   token?: string;
   isRestricted?: boolean;
-  restrictedUsers?: string[];
-  restrictedDateStart?: string;
-  restrictedDateEnd?: string;
-  restrictedGrade?: number;
+  restrictions?: ContentRestrictions;
   parentId!: string;
   parentType!: ResourceType;
   slideshow?: Partial<ContentSlideshow>[];
