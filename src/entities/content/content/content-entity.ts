@@ -155,16 +155,16 @@ export class ContentClient {
     this.props = {
       ...props,
       isRestricted: props.isRestricted || false,
-      restrictions: {
+      restrictions: props.restrictions || {
         userIds: [],
         date: {
-          start: props.restrictions?.date.start || null,
-          end: props.restrictions?.date.end || null,
+          start: null,
+          end: null,
         },
         grade: {
-          token: props.restrictions?.grade.token || null,
-          min: props.restrictions?.grade.min || null,
-          max: props.restrictions?.grade.max || null,
+          token: null,
+          min: null,
+          max: null,
         }
       },
     };
