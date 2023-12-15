@@ -158,13 +158,13 @@ export class ContentClient {
       restrictions: {
         userIds: [],
         date: {
-          start: new Date(),
-          end: new Date(),
+          start: props.restrictions?.date.start || null,
+          end: props.restrictions?.date.end || null,
         },
         grade: {
-          token: "",
-          min: 0,
-          max: 0,
+          token: props.restrictions?.grade.token || null,
+          min: props.restrictions?.grade.min || null,
+          max: props.restrictions?.grade.max || null,
         }
       },
     };

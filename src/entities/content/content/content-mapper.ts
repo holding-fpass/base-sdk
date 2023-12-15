@@ -36,7 +36,18 @@ export class ContentClientMapper {
           ComplementaryMaterialClientMapper.toApplication(complementaryMaterial)
       ),
       isRestricted: HTTPContent.isRestricted,
-      restrictions: HTTPContent.restrictions,
+      restrictions: {
+        userIds: HTTPContent.restrictions.userIds,
+        grade: {
+          max: HTTPContent.restrictions.grade?.max || null,
+          min: HTTPContent.restrictions.grade?.min || null,
+          token: HTTPContent.restrictions.grade?.token || null,
+        },
+        date: {
+          end: HTTPContent.restrictions.date?.end || null,
+          start: HTTPContent.restrictions.date?.start || null,
+        }
+      },
       token: HTTPContent.token,
       whitelabel: HTTPContent.whitelabel,
       metadata: HTTPContent.metadata,
