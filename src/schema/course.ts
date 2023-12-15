@@ -86,7 +86,7 @@ export class ContentSchedule {
   slug?: string;
 }
 
-export class ContentRestrictions {
+export interface ContentRestrictions {
   usersId?: string[];
   date?: {
     start: string | null;
