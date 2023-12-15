@@ -89,8 +89,8 @@ export class ContentSchedule {
 export class ContentRestrictions {
   userIds?: string[];
   date?: {
-    start: string | null;
-    end: string | null;
+    start: Date | null;
+    end: Date | null;
   };
   grade?: {
     token: string | null;

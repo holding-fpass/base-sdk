@@ -44,8 +44,8 @@ export class ContentClientMapper {
           token: HTTPContent.restrictions.grade?.token || null,
         },
         date: {
-          end: HTTPContent.restrictions.date?.end || null,
-          start: HTTPContent.restrictions.date?.start || null,
+          end: HTTPContent.restrictions.date.end ? new Date(HTTPContent.restrictions.date.end) : null,
+          start: HTTPContent.restrictions.date.start ? new Date(HTTPContent.restrictions.date.start) : null,
         }
       },
       token: HTTPContent.token,
@@ -84,7 +84,18 @@ export class ContentClientMapper {
       fileUrl: content.fileUrl,
       meetUrl: content.meetUrl,
       isRestricted: content.isRestricted,
-      restrictions: content.restrictions,
+      restrictions: {
+        date: content.restrictions.date ? {
+          end: content.restrictions.date.end ? content.restrictions.date.end.toISOString() : null,
+          start: content.restrictions.date.start ? content.restrictions.date.start.toISOString(): null,
+        } : { end: null, start: null },
+        grade: content.restrictions.grade ? {
+          max: content.restrictions.grade.max || null,
+          min: content.restrictions.grade.min || null,
+          token: content.restrictions.grade.token || null
+        } : { max: null, min: null, token: null },
+        userIds: content.restrictions.userIds
+      },
       complementaryMaterials: content.complementaryMaterials.map(
         (complementaryMaterial) =>
           ComplementaryMaterialClientMapper.toHTTP(complementaryMaterial)
