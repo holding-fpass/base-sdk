@@ -87,7 +87,7 @@ export class ContentSchedule {
 }
 
 export class ContentRestrictions {
-  usersId?: string[];
+  userIds?: string[];
   date?: {
     start: string | null;
     end: string | null;

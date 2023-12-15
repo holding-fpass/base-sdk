@@ -34,7 +34,7 @@ export namespace IContentClient {
     meetUrl: string | null;
     isRestricted: boolean;
     restrictions: {
-      usersId: string[];
+      userIds: string[];
       date: {
         start: Date | null;
         end: Date | null;
@@ -93,7 +93,7 @@ export namespace IContentClient {
       meetUrl: string | null;
       isRestricted: boolean;
       restrictions: {
-        usersId: string[];
+        userIds: string[];
         date: {
           start: Date | null;
           end: Date | null;
@@ -156,7 +156,7 @@ export class ContentClient {
       ...props,
       isRestricted: props.isRestricted || false,
       restrictions: {
-        usersId: [],
+        userIds: [],
         date: {
           start: new Date(),
           end: new Date(),
