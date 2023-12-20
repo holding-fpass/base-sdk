@@ -52,5 +52,9 @@ export enum Whitelabel {
   BLINK = 'blink',
   SEK = 'sek',
   DOSE_BRASIL = 'dose-brasil',
-  ABRAMARK = 'abramark'
+  ABRAMARK = 'abramark',
+  UB_MEDICINA = 'ub-medicina',
+  UB_PRESENCIAL = 'ub-presencial',
+  UNIESP = 'uniesp',
+  UNIESP_EAD = 'uniesp-ead'
 }
