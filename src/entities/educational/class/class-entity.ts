@@ -31,6 +31,7 @@ export namespace IClassClient {
   export interface IPlaylistCourse {
     resourceId: string;
     name: string;
+    code: string;
   }
 
   export interface IClassPlaylist {
