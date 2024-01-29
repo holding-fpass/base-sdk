@@ -13,7 +13,7 @@ export namespace IClassClient {
     intervalNumber: number;
     year: number;
     courseIds: string[];
-    playlists: IClassPlaylist[];
+    playlistIds: string[];
     startDate: string;
     endDate: string;
     whitelabel: Whitelabel;
@@ -28,19 +28,6 @@ export namespace IClassClient {
     MONTHLY = 'monthly'
   }
 
-  export interface IPlaylistCourse {
-    resourceId: string;
-    name: string;
-    code: string;
-  }
-
-  export interface IClassPlaylist {
-    resourceId: string;
-    name: string;
-    courses: IPlaylistCourse[];
-  }
-
-
   export interface IProps {
     resourceId: string;
     resourceType: ResourceType.CLASS;
@@ -52,7 +39,7 @@ export namespace IClassClient {
     intervalNumber: number;
     year: number;
     courseIds: string[];
-    playlists: IClassPlaylist[];
+    playlistIds: string[];
     startDate: Date;
     endDate: Date;
     whitelabel: Whitelabel;
@@ -70,7 +57,7 @@ export namespace IClassClient {
     interval: IClassClient.IProps['interval'];
     intervalNumber: IClassClient.IProps['intervalNumber'];
     courseIds: IClassClient.IProps['courseIds'];
-    playlists: IClassClient.IProps['playlists']
+    playlistIds: IClassClient.IProps['playlistIds']
     year: IClassClient.IProps['year'];
     startDate: IClassClient.IProps['startDate'];
     endDate: IClassClient.IProps['endDate'];
@@ -127,8 +114,8 @@ export class ClassClient {
     return this.props.courseIds;
   }
   
-  public get playlists(): IClassClient.IProps['playlists'] {
-    return this.props.playlists;
+  public get playlistIds(): IClassClient.IProps['playlistIds'] {
+    return this.props.playlistIds;
   }
 
   public get startDate(): Date {
