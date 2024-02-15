@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase-admin/firestore";
 import {
   DisplayResource,
   Resource,
@@ -173,8 +174,8 @@ export class Content
   // Providers
   meetProvider?: MeetProvider;
   // Date
-  dateStart?: string;
-  dateEnd?: string;
+  dateStart?: Timestamp;
+  dateEnd?: Timestamp;
   meetDateStart?: string;
   meetDateEnd?: string;
   // When type is post
@@ -206,8 +207,8 @@ export class Content
       resourceType: ResourceType.CONTENT,
       h1: resource.name,
       h2: resource?.mentors?.map((mentor) => mentor.name)?.join(", "),
-      dateStart: resource?.dateStart,
-      dateEnd: resource?.dateEnd,
+      dateStart: resource?.dateStart?.toDate().toISOString(),
+      dateEnd: resource?.dateEnd?.toDate().toISOString(),
       whitelabel: resource.whitelabel,
       timestamp: resource.timestamp,
       status: resource.status,
