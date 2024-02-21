@@ -4,6 +4,7 @@ import { Whitelabel } from "./whitelabel";
 
 export enum ResourceType {
   APIKEY = "apikey",
+  ANSWER_DATABASE = 'answer.database',
   CALENDAR_APPOINTMENT = "calendar.appointment",
   CAMPAIGN = "campaign",
   CERTIFICATE = "certificate",
