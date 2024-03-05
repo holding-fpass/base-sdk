@@ -116,6 +116,10 @@ export class Form extends Resource<FormStatus> implements SearchableResource {
   maxRetry?: string;
   assessmentMethod?: FormAssessmentMethod;
   userOverlay?: UserOverlay[];
+  // Question Database
+  questionDatabaseCount?: number;
+  questionDatabaseTags?: string[];
+  questionDatabaseValue?: number;
   // Related
   userTags?: Partial<Tag>[];
   // SearchableResource implementation
