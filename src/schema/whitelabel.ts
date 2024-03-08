@@ -59,4 +59,5 @@ export enum Whitelabel {
   UNIESP_EAD = 'uniesp-ead',
   AMPLIFICA_CINE = 'amplifica-cine',
   ESCOLA_DA_MAGISTRATURA = 'escola-da-magistratura',
+  CAPACITACAODEPROFESSORES_UB = 'capacitacaodeprofessores-ub',
 }
