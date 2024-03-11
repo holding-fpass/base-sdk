@@ -60,4 +60,5 @@ export enum Whitelabel {
   AMPLIFICA_CINE = 'amplifica-cine',
   ESCOLA_DA_MAGISTRATURA = 'escola-da-magistratura',
   CAPACITACAODEPROFESSORES_UB = 'capacitacaodeprofessores-ub',
+  IBESG = 'ibesg'
 }
