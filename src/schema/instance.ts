@@ -114,6 +114,11 @@ interface ZoomProvider {
   ZOOM_CLIENT_SECRET: string;
 }
 
+export interface EBSCOProvider {
+  profileId?: string
+  password?: string
+}
+
 export interface IGradeConfig {
   examGrade: number;
   approvalGrade: number;
@@ -130,8 +135,7 @@ export const InstanceStatusTransitionMap = new Map<
 
 export class Instance
   extends Resource<InstanceStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.INSTANCE;
   //
   name!: Whitelabel;
@@ -190,6 +194,7 @@ export class Instance
   i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
+  ebsco?: boolean
   // Instance Certificate
   certificate?: InstanceCertificateSettings;
   // Configurations
@@ -204,8 +209,9 @@ export class Instance
   __rdstation?: RDStationProvider;
   __jwt?: InstanceJwt;
   __zoom?: ZoomProvider;
-  // Data Forward
-  __dataforward?: DataForwardConfig;
+  __ebsco?: EBSCOProvider
+    // Data Forward
+    __dataforward?: DataForwardConfig;
   // KyC
   kyc?: KyCConfig;
   // Provider Extra
