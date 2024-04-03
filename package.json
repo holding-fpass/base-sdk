@@ -1,6 +1,6 @@
 {
   "name": "@holding-fpass/base-sdk",
-  "version": "6.3.46-canary.0",
+  "version": "6.3.47-canary.0",
   "description": "Package de definições base do FPASS.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
