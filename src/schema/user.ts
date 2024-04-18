@@ -100,7 +100,7 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   courses?: Partial<Course>[];
   transactions?: Partial<Transaction>[];
   // Channel
-  channelIds?: string[];
+  channel?: Pick<Channel, 'resourceId' | 'slug' | 'name'>;
   // Playlist
   favoritePlaylist?: Partial<Playlist>;
   suggestPlaylist?: Partial<Playlist>;
