@@ -62,4 +62,5 @@ export enum Whitelabel {
   CAPACITACAODEPROFESSORES_UB = 'capacitacaodeprofessores-ub',
   IBESG = 'ibesg',
   NEXTEST = 'nextest',
+  JEX = 'jex',
 }

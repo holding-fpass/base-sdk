@@ -119,6 +119,12 @@ export interface IGradeConfig {
   approvalGrade: number;
 }
 
+interface EbscoProvider {
+  customerId: string;
+  password: string;
+  user: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -204,6 +210,7 @@ export class Instance
   __rdstation?: RDStationProvider;
   __jwt?: InstanceJwt;
   __zoom?: ZoomProvider;
+  __ebsco?: EbscoProvider;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
