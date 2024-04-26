@@ -63,5 +63,6 @@ export enum Whitelabel {
   IBESG = 'ibesg',
   NEXTEST = 'nextest',
   JEX = 'jex',
-  PARAMOUR = 'paramour'
+  PARAMOUR = 'paramour',
+  UNIBAN = 'uniban',
 }
