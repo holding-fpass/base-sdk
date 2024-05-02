@@ -114,14 +114,15 @@ interface ZoomProvider {
   ZOOM_CLIENT_SECRET: string;
 }
 
-export interface EBSCOProvider {
-  profileId?: string
-  password?: string
-}
-
 export interface IGradeConfig {
   examGrade: number;
   approvalGrade: number;
+}
+
+interface EbscoProvider {
+  customerId: string;
+  password: string;
+  user: string;
 }
 
 export const InstanceStatusTransitionMap = new Map<
@@ -209,9 +210,9 @@ export class Instance
   __rdstation?: RDStationProvider;
   __jwt?: InstanceJwt;
   __zoom?: ZoomProvider;
-  __ebsco?: EBSCOProvider
-    // Data Forward
-    __dataforward?: DataForwardConfig;
+  __ebsco?: EbscoProvider;
+  // Data Forward
+  __dataforward?: DataForwardConfig;
   // KyC
   kyc?: KyCConfig;
   // Provider Extra
