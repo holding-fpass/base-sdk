@@ -67,4 +67,5 @@ export enum Whitelabel {
   UNIBAN = 'uniban',
   FFOCUS = 'ffocus',
   MARTHALL_ARTES = 'marthall-artes',
+  EMS = 'ems',
 }
