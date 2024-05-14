@@ -66,4 +66,5 @@ export enum Whitelabel {
   PARAMOUR = 'paramour',
   UNIBAN = 'uniban',
   FFOCUS = 'ffocus',
+  MARTHALL_ARTES = 'marthall-artes',
 }
