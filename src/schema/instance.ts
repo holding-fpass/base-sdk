@@ -282,6 +282,7 @@ export enum InstanceFeatureFlags {
   TIMELINE = 'timeline',
   GLOBAL_CHAT = 'global-chat',
   HIDE_UNRELATED_CHANNELS = "instance.feature-flag.hide.unrelated.channels",
+  SHOW_CHANNELS_LOGIN_ONLY = "instance.feature-flag.show.channels.login.only",
 }
 
 export enum InstanceThemeSettings {
