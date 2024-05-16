@@ -68,5 +68,5 @@ export enum Whitelabel {
   FFOCUS = 'ffocus',
   MARTHALL_ARTES = 'marthall-artes',
   EMS = 'ems',
-  FOCUS = 'focus',
+  MARTIAL_FORCE = 'martial-force',
 }
