@@ -136,8 +136,7 @@ export const InstanceStatusTransitionMap = new Map<
 
 export class Instance
   extends Resource<InstanceStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.INSTANCE;
   //
   name!: Whitelabel;
@@ -196,6 +195,7 @@ export class Instance
   i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
+  ebsco?: boolean
   // Instance Certificate
   certificate?: InstanceCertificateSettings;
   // Configurations
