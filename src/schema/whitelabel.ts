@@ -71,5 +71,6 @@ export enum Whitelabel {
   MARTIAL_FORCE = 'martial-force',
   SOLVE = 'solve',
   PROGRAMA_SEJA_SUCESSO = 'programa-seja-sucesso',
-  ZANON = 'zanon'
+  ZANON = 'zanon',
+  BETHEL = 'bethel',
 }
