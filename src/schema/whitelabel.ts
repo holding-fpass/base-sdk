@@ -73,4 +73,5 @@ export enum Whitelabel {
   PROGRAMA_SEJA_SUCESSO = 'programa-seja-sucesso',
   ZANON = 'zanon',
   BETHEL = 'bethel',
+  HIGH = 'high',
 }
