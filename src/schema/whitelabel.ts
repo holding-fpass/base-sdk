@@ -74,4 +74,5 @@ export enum Whitelabel {
   ZANON = 'zanon',
   BETHEL = 'bethel',
   HIGH = 'high',
+  MAGOKALKI = 'magokalki',
 }
