@@ -119,6 +119,12 @@ export interface IGradeConfig {
   approvalGrade: number;
 }
 
+interface EbscoProvider {
+  customerId: string;
+  password: string;
+  user: string;
+}
+
 export const InstanceStatusTransitionMap = new Map<
   InstanceStatus,
   InstanceStatus[]
@@ -130,8 +136,7 @@ export const InstanceStatusTransitionMap = new Map<
 
 export class Instance
   extends Resource<InstanceStatus>
-  implements SearchableResource
-{
+  implements SearchableResource {
   resourceType = ResourceType.INSTANCE;
   //
   name!: Whitelabel;
@@ -190,6 +195,7 @@ export class Instance
   i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
+  ebsco?: boolean
   // Instance Certificate
   certificate?: InstanceCertificateSettings;
   // Configurations
@@ -204,6 +210,7 @@ export class Instance
   __rdstation?: RDStationProvider;
   __jwt?: InstanceJwt;
   __zoom?: ZoomProvider;
+  __ebsco?: EbscoProvider;
   // Data Forward
   __dataforward?: DataForwardConfig;
   // KyC
@@ -275,6 +282,7 @@ export enum InstanceFeatureFlags {
   TIMELINE = 'timeline',
   GLOBAL_CHAT = 'global-chat',
   HIDE_UNRELATED_CHANNELS = "instance.feature-flag.hide.unrelated.channels",
+  SHOW_CHANNELS_LOGIN_ONLY = "instance.feature-flag.show.channels.login.only",
 }
 
 export enum InstanceThemeSettings {
