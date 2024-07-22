@@ -76,5 +76,6 @@ export enum Whitelabel {
   HIGH = 'high',
   MAGOKALKI = 'magokalki',
   STOCCO_ACADEMY = 'stocco-academy',
-  ACADEMIA_LENDARIA = 'academia-lendaria'
+  ACADEMIA_LENDARIA = 'academia-lendaria',
+  COMPROVA_LGPD = 'comprova-lgpd'
 }
