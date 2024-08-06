@@ -283,6 +283,7 @@ export enum InstanceFeatureFlags {
   GLOBAL_CHAT = 'global-chat',
   HIDE_UNRELATED_CHANNELS = "instance.feature-flag.hide.unrelated.channels",
   SHOW_CHANNELS_LOGIN_ONLY = "instance.feature-flag.show.channels.login.only",
+  SUBSCRIPTION_ONLY_CHANNELS = "instance.feature-flag.subscription.only.channels"
 }
 
 export enum InstanceThemeSettings {
