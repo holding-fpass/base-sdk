@@ -79,4 +79,5 @@ export enum Whitelabel {
   ACADEMIA_LENDARIA = 'academia-lendaria',
   COMPROVA_LGPD = 'comprova-lgpd',
   ALLNET = 'allnet',
+  GESTAOEDUCACAO = 'gestaoeducacao',
 }
