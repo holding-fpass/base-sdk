@@ -80,4 +80,5 @@ export enum Whitelabel {
   COMPROVA_LGPD = 'comprova-lgpd',
   ALLNET = 'allnet',
   GESTAOEDUCACAO = 'gestaoeducacao',
+  QUALI_FAST = 'quali-fast',
 }
