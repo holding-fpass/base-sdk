@@ -81,4 +81,5 @@ export enum Whitelabel {
   ALLNET = 'allnet',
   GESTAOEDUCACAO = 'gestaoeducacao',
   QUALI_FAST = 'quali-fast',
+  MASTERCARREIRAS = 'mastercarreiras',
 }
