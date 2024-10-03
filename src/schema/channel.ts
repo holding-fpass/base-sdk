@@ -38,6 +38,7 @@ export class Channel
   resourceUrl!: string;
   whitelabel!: Whitelabel;
   isFree?: boolean;
+  isSale?: boolean;
   // Media
   image1400x720!: string;
   image160x40!: string;
