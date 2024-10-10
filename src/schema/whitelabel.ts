@@ -85,4 +85,5 @@ export enum Whitelabel {
   CAUCAIA = 'caucaia',
   HELIX = 'helix',
   CETREDE = 'cetrede',
+  LECI = 'leci',
 }
