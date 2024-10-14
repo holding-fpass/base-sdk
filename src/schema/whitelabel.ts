@@ -86,4 +86,6 @@ export enum Whitelabel {
   HELIX = 'helix',
   CETREDE = 'cetrede',
   LECI = 'leci',
+  MANDUVI = 'manduvi',
+  INSTITUTO_VALOR = 'instituto-valor'
 }
