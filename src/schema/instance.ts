@@ -54,6 +54,9 @@ interface ExternalAuthConfig {
   provider: ExternalAuthProvider;
   authUrl: string;
   purchaseUrl?: string;
+}
+
+interface ExternalAuthSecret {
   jwtSecret: string;
 }
 
@@ -215,7 +218,8 @@ export class Instance
   formula?: string;
   gradeConfig?: IGradeConfig;
   // Provider
-  __externalAuthProvider?: ExternalAuthConfig;
+  externalAuthProvider?: ExternalAuthConfig;
+  __externalAuthProviderSecret?: ExternalAuthSecret;
   __activeCampaign?: ActiveCampaignProvider;
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;
