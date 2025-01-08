@@ -90,5 +90,6 @@ export enum Whitelabel {
   INSTITUTO_VALOR = 'instituto-valor',
   IORM = 'iorm',
   UNIFENACON = 'unifenacon',
-  BEYOND_HEALTH = 'beyond-health'
+  BEYOND_HEALTH = 'beyond-health',
+  UNIFAST = 'unifast',
 }
