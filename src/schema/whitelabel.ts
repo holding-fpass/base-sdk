@@ -92,4 +92,5 @@ export enum Whitelabel {
   UNIFENACON = 'unifenacon',
   BEYOND_HEALTH = 'beyond-health',
   UNIFAST = 'unifast',
+  VIVERDELAS = 'viverdelas',
 }
