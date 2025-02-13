@@ -9,6 +9,7 @@ export enum ResourceType {
   CAMPAIGN = "campaign",
   CERTIFICATE = "certificate",
   CHANNEL = "channel",
+  CHANNELS = "channels",
   CHANNEL_IMAGE_AVATAR = "channel.image.avatar",
   CHANNEL_IMAGE_BANNER = "channel.image.banner",
   CHAT = "chat",
