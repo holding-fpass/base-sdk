@@ -18,6 +18,10 @@ export enum InstanceStatus {
   DELETED = "deleted",
 }
 
+export enum ExternalAuthProvider {
+  SOCIA = 'socia'
+}
+
 interface EmailConfig {
   image436x168?: string;
   senderEmail?: string;
@@ -44,6 +48,16 @@ interface SplitConfig {
 interface ActiveCampaignProvider {
   accountUrl?: string;
   accountKey?: string;
+}
+
+interface ExternalAuthConfig {
+  provider: ExternalAuthProvider;
+  authUrl: string;
+  purchaseUrl?: string;
+}
+
+interface ExternalAuthSecret {
+  jwtSecret: string;
 }
 
 interface RDStationProvider {
@@ -204,6 +218,8 @@ export class Instance
   formula?: string;
   gradeConfig?: IGradeConfig;
   // Provider
+  externalAuthProvider?: ExternalAuthConfig;
+  __externalAuthProviderSecret?: ExternalAuthSecret;
   __activeCampaign?: ActiveCampaignProvider;
   __fpay?: FpayProvider;
   __elascticSearch?: ElasticSearchProvider;

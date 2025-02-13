@@ -83,5 +83,15 @@ export enum Whitelabel {
   QUALI_FAST = 'quali-fast',
   MASTERCARREIRAS = 'mastercarreiras',
   CAUCAIA = 'caucaia',
-  HELIX = 'helix'
+  HELIX = 'helix',
+  CETREDE = 'cetrede',
+  LECI = 'leci',
+  MANDUVI = 'manduvi',
+  INSTITUTO_VALOR = 'instituto-valor',
+  IORM = 'iorm',
+  UNIFENACON = 'unifenacon',
+  BEYOND_HEALTH = 'beyond-health',
+  UNIFAST = 'unifast',
+  VIVERDELAS = 'viverdelas',
+  VIVERDEIA = 'viverdeia',
 }
