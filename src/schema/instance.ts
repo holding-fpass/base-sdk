@@ -19,7 +19,7 @@ export enum InstanceStatus {
 }
 
 export enum ExternalAuthProvider {
-  SOCIA = 'socia'
+  SOCIA = "socia",
 }
 
 interface EmailConfig {
@@ -150,7 +150,8 @@ export const InstanceStatusTransitionMap = new Map<
 
 export class Instance
   extends Resource<InstanceStatus>
-  implements SearchableResource {
+  implements SearchableResource
+{
   resourceType = ResourceType.INSTANCE;
   //
   name!: Whitelabel;
@@ -209,7 +210,7 @@ export class Instance
   i18n_es!: Metadata<string>[];
   disclaimers!: Metadata<InstanceDisclaimers>[];
   urlRedirect?: string;
-  ebsco?: boolean
+  ebsco?: boolean;
   // Instance Certificate
   certificate?: InstanceCertificateSettings;
   // Configurations
@@ -260,7 +261,7 @@ export class Instance
 export enum InstanceApplications {
   FLABEL = "flabel",
   FMANAGEMENT = "fmanagement",
-  FEDUCATOR = 'feducator',
+  FEDUCATOR = "feducator",
 }
 
 export enum InstanceFeatureFlags {
@@ -276,7 +277,7 @@ export enum InstanceFeatureFlags {
   COURSE_SHARE_LINK = "course.share.link",
   EMAIL_TEMPLATE_MFA_TEXT = "instance.feature-flag.email.template.mfa.text",
   FORM_EVALUATION_HIDE = "instance.feature-flag.form.evaluation.hide",
-  GLOBAL_CHAT = 'global-chat',
+  GLOBAL_CHAT = "global-chat",
   HEADER_BUY_CTA_HIDE = "instance.feature-flag.header.buy.cta.hide",
   HIDE_UNRELATED_CHANNELS = "instance.feature-flag.hide.unrelated.channels",
   LEARNING_ANALYTICS = "learning.analytics",
@@ -295,12 +296,13 @@ export enum InstanceFeatureFlags {
   STORY = "story",
   SUBSCRIPTION_ONLY_CHANNELS = "instance.feature-flag.subscription.only.channels",
   SUBSCRIPTION_PLATFORM = "subscription.platform",
-  TIMELINE = 'timeline',
+  TIMELINE = "timeline",
   USER_CREATION_RESTRICT = "instance.feature-flag.user.creation",
   USER_PROFILE_HIDE = "instance.feature-flag.user.profile.hide",
   USER_SAMPLE = "instance.feature-flag.user.sample",
   WALLET = "instance.feature-flag.wallet",
   WIZARD = "wizard",
+  VLIBRAS = "vlibras",
 }
 
 export enum InstanceThemeSettings {
