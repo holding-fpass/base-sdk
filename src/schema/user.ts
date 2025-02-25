@@ -100,13 +100,15 @@ export class User extends Resource<UserStatus> implements SearchableResource {
   courses?: Partial<Course>[];
   transactions?: Partial<Transaction>[];
   // Channel
-  channelIds?: string[];
+  channel?: Pick<Channel, "resourceId" | "slug" | "name">;
   // Playlist
   favoritePlaylist?: Partial<Playlist>;
   suggestPlaylist?: Partial<Playlist>;
   // SearchableResource implementation
   isPublic = false;
-  public static asDisplayResource(resource: User): DisplayResource<any, UserStatus> {
+  public static asDisplayResource(
+    resource: User
+  ): DisplayResource<any, UserStatus> {
     return {
       resourceId: resource.resourceId,
       resourceType: ResourceType.USER,
