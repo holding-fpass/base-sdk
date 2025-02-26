@@ -94,5 +94,6 @@ export enum Whitelabel {
   UNIFAST = 'unifast',
   VIVERDELAS = 'viverdelas',
   VIVERDEIA = 'viverdeia',
-  HOSPITAL_OSWALDO_CRUZ = 'hospital-oswaldo-cruz'
+  HOSPITAL_OSWALDO_CRUZ = 'hospital-oswaldo-cruz',
+  FIG = 'fig'
 }
