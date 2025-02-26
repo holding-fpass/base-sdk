@@ -95,5 +95,6 @@ export enum Whitelabel {
   VIVERDELAS = 'viverdelas',
   VIVERDEIA = 'viverdeia',
   HOSPITAL_OSWALDO_CRUZ = 'hospital-oswaldo-cruz',
-  FIG = 'fig'
+  FIG = 'fig',
+  TWOBK = 'twobk'
 }
