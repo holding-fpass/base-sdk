@@ -297,12 +297,13 @@ export enum InstanceFeatureFlags {
   SUBSCRIPTION_ONLY_CHANNELS = "instance.feature-flag.subscription.only.channels",
   SUBSCRIPTION_PLATFORM = "subscription.platform",
   TIMELINE = "timeline",
+  SMARTPLAYER_ADMIN = "smartplayer.admin",
   USER_CREATION_RESTRICT = "instance.feature-flag.user.creation",
   USER_PROFILE_HIDE = "instance.feature-flag.user.profile.hide",
   USER_SAMPLE = "instance.feature-flag.user.sample",
+  VLIBRAS = "vlibras",
   WALLET = "instance.feature-flag.wallet",
   WIZARD = "wizard",
-  VLIBRAS = "vlibras",
 }
 
 export enum InstanceThemeSettings {
