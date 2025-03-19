@@ -98,5 +98,6 @@ export enum Whitelabel {
   FIG = 'fig',
   TWOBK = 'twobk',
   CRIE = 'crie',
-  BARSI = 'barsi'
+  BARSI = 'barsi',
+  IEJA = 'ieja'
 }
