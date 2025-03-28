@@ -8,6 +8,7 @@ export class ComplementaryMaterialClientMapper {
       name: HTTPComplementaryMaterial.name,
       type: HTTPComplementaryMaterial.type,
       url: HTTPComplementaryMaterial.url,
+      password: HTTPComplementaryMaterial.password,
       createdAt: new Date(HTTPComplementaryMaterial.createdAt),
       updatedAt: new Date(HTTPComplementaryMaterial.updatedAt),
     });
@@ -20,6 +21,7 @@ export class ComplementaryMaterialClientMapper {
       name: complementaryMaterial.name,
       type: complementaryMaterial.type,
       url: complementaryMaterial.url,
+      password: complementaryMaterial.password,
       createdAt: complementaryMaterial.createdAt.toISOString(),
       updatedAt: complementaryMaterial.updatedAt.toISOString(),
     }

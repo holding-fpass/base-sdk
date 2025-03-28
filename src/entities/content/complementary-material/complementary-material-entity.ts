@@ -7,6 +7,7 @@ export namespace IComplementaryMaterialClient {
     name: string;
     type: IComplementaryMaterialClient.EComplementaryMaterialType;
     url: string;
+    password?: string;
     createdAt: string;
     updatedAt: string;
   }
@@ -23,6 +24,7 @@ export namespace IComplementaryMaterialClient {
       name: string;
       type: IComplementaryMaterialClient.EComplementaryMaterialType;
       url: string;
+      password?: string
       createdAt: Date;
       updatedAt: Date;
     }
@@ -34,6 +36,7 @@ export namespace IComplementaryMaterialClient {
         name: IComplementaryMaterialClient.IClass.IProps['name'];
         type: IComplementaryMaterialClient.IClass.IProps['type'];
         url: IComplementaryMaterialClient.IClass.IProps['url'];
+        password?: IComplementaryMaterialClient.IClass.IProps['password'];
         createdAt: IComplementaryMaterialClient.IClass.IProps['createdAt'];
         updatedAt: IComplementaryMaterialClient.IClass.IProps['updatedAt'];
       }
@@ -66,6 +69,10 @@ export class ComplementaryMaterialClient {
 
   public get url(): IComplementaryMaterialClient.IClass.IProps['url'] {
     return this.props.url;
+  }
+
+  public get password(): IComplementaryMaterialClient.IClass.IProps['password'] {
+    return this.props.password;
   }
 
   public get createdAt(): IComplementaryMaterialClient.IClass.IProps['createdAt'] {
