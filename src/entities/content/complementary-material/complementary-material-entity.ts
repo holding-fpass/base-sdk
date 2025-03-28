@@ -7,7 +7,7 @@ export namespace IComplementaryMaterialClient {
     name: string;
     type: IComplementaryMaterialClient.EComplementaryMaterialType;
     url: string;
-    password?: string;
+    password: string | null;
     createdAt: string;
     updatedAt: string;
   }
@@ -24,7 +24,7 @@ export namespace IComplementaryMaterialClient {
       name: string;
       type: IComplementaryMaterialClient.EComplementaryMaterialType;
       url: string;
-      password?: string
+      password: string | null
       createdAt: Date;
       updatedAt: Date;
     }
@@ -37,8 +37,8 @@ export namespace IComplementaryMaterialClient {
         type: IComplementaryMaterialClient.IClass.IProps['type'];
         url: IComplementaryMaterialClient.IClass.IProps['url'];
         password?: IComplementaryMaterialClient.IClass.IProps['password'];
-        createdAt: IComplementaryMaterialClient.IClass.IProps['createdAt'];
-        updatedAt: IComplementaryMaterialClient.IClass.IProps['updatedAt'];
+        createdAt?: IComplementaryMaterialClient.IClass.IProps['createdAt'];
+        updatedAt?: IComplementaryMaterialClient.IClass.IProps['updatedAt'];
       }
     }
   }
@@ -48,7 +48,12 @@ export class ComplementaryMaterialClient {
   private props: IComplementaryMaterialClient.IClass.IProps;
 
   public constructor(props: IComplementaryMaterialClient.IClass.IMethods.IConstructor) {
-    this.props = props;
+    this.props = {
+      ...props,
+      password: props.password || null,
+      createdAt: props.createdAt || new Date(),
+      updatedAt: props.updatedAt || new Date()
+    };
   }
 
   public get resourceId(): IComplementaryMaterialClient.IClass.IProps['resourceId'] {
