@@ -31,6 +31,7 @@ export enum ContentItemType {
 export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
   resourceType = ResourceType.CONTENT_ITEM;
   name?: string;
+  password!: string | null
   // Media
   resourceUrl?: string;
   fileUrl?: string;
@@ -44,11 +45,11 @@ export class ContentItem extends Resource<ResourceStatus, ContentItemType> {
       h1: resource.name,
       status: ResourceStatus.CREATED,
       whitelabel: resource.whitelabel,
+      type: resource.type,
       timestamp: resource.timestamp,
       createdAt: resource.createdAt,
       updatedAt: resource.updatedAt,
       deletedAt: resource.deletedAt,
-      type: resource.type,
     };
   }
 }
