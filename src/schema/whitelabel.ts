@@ -100,5 +100,6 @@ export enum Whitelabel {
   CRIE = 'crie',
   BARSI = 'barsi',
   IEJA = 'ieja',
-  BELAS_ARTES = 'belas-artes'
+  BELAS_ARTES = 'belas-artes',
+  DETRAN_CEARA = 'detran-ceara'
 }
