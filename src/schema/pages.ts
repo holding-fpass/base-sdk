@@ -83,7 +83,7 @@ export enum FLabelAppPagePath {
   SLIDESHOW = '/slideshow/:contentId',
   STAGE = '/stage/:slug',
   TIMELINE = '/timeline',
-  USER_EXAM = '/users/:userId/exam/:userExamId',
+  USER_EXAM = '/users/:userId/exams/:userExamId',
   WAITING_ROOM = '/waiting-room',
   WALLET = '/wallet',
 }
