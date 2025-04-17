@@ -304,6 +304,7 @@ export enum InstanceFeatureFlags {
   VLIBRAS = "vlibras",
   WALLET = "instance.feature-flag.wallet",
   WIZARD = "wizard",
+  MY_ACTIVITIES = "my.activities",
 }
 
 export enum InstanceThemeSettings {
