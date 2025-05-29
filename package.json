@@ -1,6 +1,6 @@
 {
   "name": "@holding-fpass/base-sdk",
-  "version": "6.4.18",
+  "version": "6.4.19",
   "description": "Package de definições base do FPASS.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
