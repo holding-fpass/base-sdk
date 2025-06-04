@@ -332,8 +332,8 @@ export class Course
   image1400x720?: string;
   image400x512?: string;
   // Dates
-  dateStart?: string;
-  dateEnd?: string;
+  dateStart?: Timestamp;
+  dateEnd?: Timestamp;
   // Purchase
   isFree?: boolean;
   value?: number;
