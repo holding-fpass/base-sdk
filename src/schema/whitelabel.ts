@@ -104,5 +104,6 @@ export enum Whitelabel {
   DETRAN_CEARA = 'detran-ceara',
   OTIMISTA_EDUCACAO = 'otimista-educacao',
   HOTMART = 'hotmart',
-  QUERO_BOLSA = 'quero-bolsa'
+  QUERO_BOLSA = 'quero-bolsa',
+  UNIPASS = 'unipass'
 }
