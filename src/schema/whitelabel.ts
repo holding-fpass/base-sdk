@@ -105,5 +105,6 @@ export enum Whitelabel {
   OTIMISTA_EDUCACAO = 'otimista-educacao',
   HOTMART = 'hotmart',
   QUERO_BOLSA = 'quero-bolsa',
-  UNIPASS = 'unipass'
+  UNIPASS = 'unipass',
+  COGFY = 'cogfy'
 }
