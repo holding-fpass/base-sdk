@@ -106,5 +106,6 @@ export enum Whitelabel {
   HOTMART = 'hotmart',
   QUERO_BOLSA = 'quero-bolsa',
   UNIPASS = 'unipass',
-  COGFY = 'cogfy'
+  COGFY = 'cogfy',
+  UNIBF = 'unibf'
 }
