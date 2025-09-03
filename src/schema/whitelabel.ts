@@ -107,5 +107,6 @@ export enum Whitelabel {
   QUERO_BOLSA = 'quero-bolsa',
   UNIPASS = 'unipass',
   COGFY = 'cogfy',
-  UNIBF = 'unibf'
+  UNIBF = 'unibf',
+  PONTODOC = 'pontodoc'
 }
